@@ -8,18 +8,20 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Pets Saver</title>
+  <title>Pet Saver</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="homepage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/scrolling-nav.css" rel="stylesheet">
+  <link href="homepage/css/scrolling-nav.css" rel="stylesheet">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
 
   <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+  <link href="css/myStyle.css" rel="stylesheet">
 
   <style>
     .btn:focus,.btn:active {
@@ -30,12 +32,12 @@
 
 </head>
 
-<body id="page-top" style="font-family: 'Work Sans', sans-serif;">
+<body id="page-top" style="font-family: 'Work Sans', sans-serif;" ng-app="pets" ng-controller="homeController">
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Pets Saver</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="homepage/icons/logo_fundo_roxo.png" height="40px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -46,26 +48,26 @@
             <a class="nav-link js-scroll-trigger" href="#servicos">o que fazemos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#porque">por que fazemos</a>
+            <a class="nav-link js-scroll-trigger" href="#porque">por quê?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#pets">pets</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#buscar">buscar</a>
           </li>
           <li class="nav-item">
-            <!-- <a class="nav-link js-scroll-trigger" href="#contact">entrar</a> -->
-            <button type="submit" class="btn btn-secondary">entrar</button>
+            <button type="submit" class="btn btn-secondary" onclick="document.location.href='login.html'">entrar</button>
           </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <header class="text-white" style="background-image: url('fonts/header1.jpg'); height: 844px; display: flex; align-items: center; background-position: center;">
-    <div class="container-fluid">
-      <div class="col-md-3 offset-md-1 text-center">
-        <h1 style="font-size: 60px">Pets Saver</h1>
-        <br><br><br>
-        <h4 class="lead">unidos podemos salvar a vida de milhões de pets</h4>
+  <header class="text-white" style="background-image: url('homepage/fonts/header1.jpg'); height: 844px; display: flex; align-items: center; background-position: center;">
+    <div class="container">
+      <div class="col-md-6">
+        <h1>unidos podemos salvar a vida de milhões de pets</h1>
         <br><br><br>
         <button type="submit" class="btn btn-primary btn-lg" style="border: none" id="btnSaibaMais">saiba mais</button>
       </div>
@@ -76,24 +78,20 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2 class="text-center">como ajudar?</h2>
-          <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita
-            quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore
-            ut velit dignissimos.</p> -->
+          <h2 class="text-center">o que fazemos</h2>
           <div class="row" style="text-align: center">
             <div class="col-md-4" style="margin-top: 30px">
-              <img src="icons/adoption.png" width="96px" style="display: inline; text-align: center">
-              <!-- <i class="fas fa-heart fa-8x" style="color:#500b89"></i> -->
+              <img src="homepage/icons/adoption.png" width="96px" style="display: inline; text-align: center">
               <h5 style="margin-top: 5px">adoção</h5>
               <small id="emailHelp" class="form-text text-muted">ofereça um lar para um novo amigo</small>
             </div>
             <div class="col-md-4" style="margin-top: 30px">
-              <img src="icons/donation.png" width="96px">
+              <img src="homepage/icons/donation.png" width="96px">
               <h5 style="margin-top: 5px">doação</h5>
               <small id="emailHelp" class="form-text text-muted">encontre um lar para ele</small>
             </div>
             <div class="col-md-4" style="margin-top: 30px">
-              <img src="icons/lost.png" width="96px">
+              <img src="homepage/icons/lost.png" width="96px">
               <h5 style="margin-top: 5px">pet perdido</h5>
               <small id="emailHelp" class="form-text text-muted">perdeu seu pet? conte com a gente</small>
             </div>
@@ -116,7 +114,7 @@
             <div class="col-md-4" style="margin-top: 60px">
               <!-- <img src="icons/adoption.png" width="96px"> -->
               <!-- <i class="fas fa-heart fa-8x" style="color:#500b89"></i> -->
-              <h1>20 milhões</h1>
+              <h1>30 milhões</h1>
               <h5>de cães sem lar no Brasil</h5>
             </div>
             <div class="col-md-4" style="margin-top: 60px">
@@ -141,7 +139,37 @@
     </div>
   </section>
 
-  <section id="buscar" style="background-image: url('icons/gray_paws.png'); height: 100vh; display: flex; align-items: center">
+  <section id="pets" style="min-height: 100vh; display: flex; align-items: center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center">seu melhor amigo pode estar aqui</h2>
+          <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut optio velit inventore, expedita
+            quo laboriosam possimus ea consequatur vitae, doloribus consequuntur ex. Nemo assumenda laborum vel, labore
+            ut velit dignissimos.</p> -->
+          <!-- pets -->
+          <div class="row col-md-12" style="margin: 0; padding: 0">
+            <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in [].constructor(4) track by $index"
+              ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" onclick="document.location.href='pet.html'">
+              <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+              <div class="col-md-12 text-center" style="margin-top:15px;">
+                <h2 style="color: #500B89">Thor</h2>
+                <p><img src="icons/gender.png" width="25px">macho <img src="icons/size.png" width="25px">filhote</p>
+                <p><img src="icons/location.png" width="25px">belo horizonte</p>
+                <button ng-show="adBoxHover" class="btn btn-primary">conhecer pet</button>
+              </div>
+            </div>
+          </div>
+          <!-- end pets -->
+          <div class="col-md-12" style="text-align: center; margin-top: 40px">
+            <button type="submit" class="btn btn-primary" style="width: 160px; height: 50px; outline: none;" id="btnBuscar">perfeito pra você</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="buscar" style="background-image: url('homepage/icons/gray_paws.png'); height: 100vh; display: flex; align-items: center">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto col-md-12 p-5" style=" background-color: rgba(255, 255, 255, 0.95)">
@@ -201,14 +229,18 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="homepage/vendor/jquery/jquery.min.js"></script>
+  <script src="homepage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="homepage/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom JavaScript for this theme -->
-  <script src="js/scrolling-nav.js"></script>
+  <script src="homepage/js/scrolling-nav.js"></script>
+
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="js/controllers/home.js"></script>
 
   <script>
     $("#btnSaibaMais").click(function () {
@@ -226,6 +258,13 @@
     });
 
     $("#btnComecar").click(function () {
+      $('html,body').animate({
+        scrollTop: $("#pets").offset().top - 20
+      },
+        'slow');
+    });
+
+    $("#btnBuscar").click(function () {
       $('html,body').animate({
         scrollTop: $("#buscar").offset().top - 20
       },
