@@ -49,11 +49,6 @@ body{
     border-radius: 30px;
 }
 
-.footer{
-    background-color: #500B89 !important;
-    width: 100% !important;
-}
-
 .imgPetOpened {
     width: 100%;
     border-radius: 10px;
@@ -97,4 +92,8 @@ body{
 .imgIconShare {
     width: 50px;
     cursor: pointer;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: #500B89 !important;
 }
