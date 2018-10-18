@@ -93,7 +93,3 @@ body{
     width: 50px;
     cursor: pointer;
 }
-
-a:link, a:visited, a:hover, a:active {
-    color: #500B89 !important;
-}
