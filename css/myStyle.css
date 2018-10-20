@@ -2,6 +2,8 @@ body{
     font-family: 'Work Sans', sans-serif;
 }
 
+/* #region .: Buttons :. */
+
 .btn-primary {
     background-color: #500B89 !important;
 }
@@ -21,6 +23,8 @@ body{
 	background-color: #500B89 !important;
 	border-color: #500B89 !important;
 }
+
+/* #endregion */
 
 #mainNav {
     background-color: #500B89 !important;
@@ -93,3 +97,19 @@ body{
     width: 50px;
     cursor: pointer;
 }
+
+/* #region .: Intern Sidebar :. */
+
+#sidebar-intern a {
+    color: #500B89 !important;
+} 
+
+#sidebar-intern .has-arrow {
+    color: #500B89 !important;
+}
+
+#sidebar-intern .has-arrow:after {
+    border-color: #500B89 !important;
+}
+
+/* #endregion */
