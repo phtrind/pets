@@ -8,8 +8,18 @@ body{
     background-color: #500B89 !important;
 }
 
+.btn-primary:active {
+    color: white !important;
+}
+
 .btn-primary:hover {
     background-color: rgba(80, 11, 137, 0.74) !important;
+}
+
+.btn-primary:disabled {
+    cursor: not-allowed !important;
+    border: none !important;
+    opacity: 0.3;
 }
 
 .btn-secondary {
@@ -39,9 +49,9 @@ body{
     border-radius: 25px;
 }
 
-.adBoxHover {
-    /* background-color: lightgrey; */
-}
+/* .adBoxHover {
+    background-color: lightgrey;
+} */
 
 .imgAdBox {
     max-height: 300px;
@@ -113,3 +123,32 @@ body{
 }
 
 /* #endregion */
+
+/* #region .: Modal :. */
+
+.modal-footer {
+    border-top: none !important;
+}
+
+/* #endregion */
+
+.boxSelecaoPet {
+    padding: 20px;
+    cursor: pointer;
+}
+
+.boxSelecaoPetSelecionado {
+    padding: 20px;
+    border: #500B89 solid 1px;
+    border-radius: 5px;
+}
+
+.boxSelecaoPet img, 
+.boxSelecaoPetSelecionado img {
+    width: 80%;
+    max-width: 240px;
+}
+
+h3 {
+    color: #500B89 !important;
+}

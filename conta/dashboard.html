@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../icons/favicon.png">
     <title>Pet Saver</title>
 
     <link href="../css/lib/chartist/chartist.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="cobranca" ng-controller="controller">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="dashboardController">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -46,15 +46,15 @@
                 <!-- Logo -->
                 <div class="navbar-header">
                     <a class="navbar-brand" href="../index.html">
+                        <!-- Logo text -->
+                        <span>
+                            <img src="../homepage/icons/logo_fundo_branco.png" height="40px" alt="homepage" class="dark-logo" />
+                        </span>
                         <!-- Logo icon -->
                         <b>
-                            <img src="../homepage/icons/logo_fundo_branco.png" height="40px" alt="homepage" class="dark-logo" />
+                            <img src="../homepage/icons/logo_short.png" width="40px" alt="homepage" class="dark-logo" />
                         </b>
                         <!--End Logo icon -->
-                        <!-- Logo text -->
-                        <!-- <span>
-                            <img src="../homepage/icons/logo_fundo_roxo.png" height="30px" alt="homepage" class="dark-logo" />
-                        </span> -->
                     </a>
                 </div>
                 <!-- End Logo -->
@@ -63,12 +63,12 @@
                     <ul class="navbar-nav mr-auto mt-md-0">
                         <!-- This is  -->
                         <li class="nav-item">
-                            <a class="nav-link nav-toggler hidden-md-up text-muted  " href="javascript:void(0)">
+                            <a class="nav-link nav-toggler hidden-md-up text-muted" href="javascript:void(0)">
                                 <i class="mdi mdi-menu"></i>
                             </a>
                         </li>
                         <li class="nav-item m-l-10">
-                            <a class="nav-link sidebartoggler hidden-sm-down text-muted  " href="javascript:void(0)">
+                            <a class="nav-link sidebartoggler hidden-sm-down text-muted" href="javascript:void(0)">
                                 <img src="../icons/menu.png" width="30px">
                             </a>
                         </li>
@@ -76,10 +76,9 @@
                     </ul>
                     <!-- User profile and search -->
                     <ul class="navbar-nav my-lg-0">
-
                         <!-- Comment -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <!-- <i class="fa fa-bell"></i> -->
                                 <img src="../icons/notification.png" width="30">
@@ -153,9 +152,8 @@
                         <!-- End Comment -->
                         <!-- Messages -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle text-muted" href="#" id="2" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                <!-- <i class="fa fa-envelope"></i> -->
                                 <img src="../icons/chat.png" width="30">
                                 <div class="notify">
                                     <span class="heartbit"></span>
@@ -231,21 +229,21 @@
                         <!-- End Messages -->
                         <!-- Profile -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/profile.png" width="30px" alt="user">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
                                     <li>
-                                        <a href="#">
+                                        <a style="color: #500B89 !important;" href="meus_dados.html">
                                             <img src="../icons/profile_edit.png" width="30px" alt="meus dados"></i>
                                             meus
                                             dados</a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <img src="../icons/logout.png" width="30px" alt="sair"></i> sair</a>
+                                        <a style="color: #500B89 !important;" href="#">
+                                            <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i> sair</a>
                                     </li>
                                 </ul>
                             </div>
@@ -276,13 +274,13 @@
                             </a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="doacoes_cadastro" aria-expanded="false">
+                                    <a href="doacoes_cadastro.html" aria-expanded="false">
                                         <img src="../icons/new.png" width="30px">
                                         <span class="show-menu">Cadastrar</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="doacoes_relatorio" aria-expanded="false">
+                                    <a href="doacoes_relatorio.html" aria-expanded="false">
                                             <img src="../icons/list.png" width="30px">
                                         <span class="show-menu">Visualizar</span>
                                     </a>
@@ -297,13 +295,13 @@
                             </a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="adocoes_interesses" aria-expanded="false">
+                                    <a href="adocoes_interesses.html" aria-expanded="false">
                                         <img src="../icons/heart.png" width="30px">
                                         <span class="show-menu">Meus interesses</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="adocoes_relatorio" aria-expanded="false">
+                                    <a href="adocoes_relatorio.html" aria-expanded="false">
                                             <img src="../icons/list.png" width="30px">
                                         <span class="show-menu">Visualizar</span>
                                     </a>
@@ -318,13 +316,13 @@
                             </a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="petperdido_cadastro" aria-expanded="false">
+                                    <a href="petperdido_cadastro.html" aria-expanded="false">
                                         <img src="../icons/find.png" width="30px">
                                         <span class="show-menu">Perdi meu pet</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="petencontrado_cadastrar" aria-expanded="false">
+                                    <a href="petencontrado_cadastrar.html" aria-expanded="false">
                                             <img src="../icons/location.png" width="30px">
                                         <span class="show-menu">Encontrei um pet</span>
                                     </a>
@@ -800,8 +798,8 @@
     <script src="../js/custom.min.js"></script>
 
     <!-- AngularJS -->
-    <script src="../https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="../../js/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/dashboard.js"></script>
 
 </body>
 

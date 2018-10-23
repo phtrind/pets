@@ -674,7 +674,6 @@ a:focus,
 button:focus,
 a:hover,
 button:hover {
-  color: #252525;
   outline: none!important;
   text-decoration: none!important;
 }
@@ -821,7 +820,7 @@ h6.h1 {
 -------------------*/
 .color-primary,
 .text-primary {
-  color: #4680ff;
+  color: #500B89 !important;
 }
 .color-success,
 .text-success {
@@ -1093,7 +1092,7 @@ h6.h1 {
 .header .top-navbar .navbar-header {
   line-height: 45px;
   text-align: center;
-  background: #fff;
+  background: #F8F9FA;
 }
 .header .top-navbar .navbar-header .navbar-brand {
   margin-right: 0;
@@ -1573,7 +1572,7 @@ textarea {
 }
 .sidebar-nav ul li a {
   color: #607d8b;
-  padding: 7px 35px 7px 15px;
+  padding: 10px 12px 10px 12px;
   display: block;
   font-size: 14px;
   white-space: nowrap;
@@ -1732,7 +1731,7 @@ textarea {
     display: none;
   }
   .mini-sidebar .sidebar-nav #sidebarnav > li > a {
-    padding: 9px 18px;
+    /* padding: 9px 18px; */
     width: 50px;
   }
   .mini-sidebar .user-profile {
@@ -2869,14 +2868,10 @@ table.dataTable thead .sorting::after {
 }
 .btn-primary.disabled:hover {
   background: #5c4ac7;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
-  border: 1px solid #5c4ac7;
+  cursor: not-allowed;
 }
 .btn-primary.disabled:active {
   background: #6352ce;
-  -webkit-box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
-  box-shadow: 0 14px 26px -12px rgba(116, 96, 238, 0.42), 0 4px 23px 0 rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(116, 96, 238, 0.2);
 }
 .btn-primary.disabled:focus {
   background: #6352ce;
