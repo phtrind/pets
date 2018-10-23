@@ -10,15 +10,16 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>Pet Saver</title>
+    <title>Ela - Bootstrap Admin Dashboard Template</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/myStyle.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
+        
+    <link href="css/myStyle.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
@@ -28,82 +29,62 @@
     <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+    <style>
+        a:active {
+            color: #500b89 !important;
+        }
+
+        .btn-secondary:hover{
+            background-color: rgba(255, 255, 255, .5) !important;
+        }
+    </style>
 </head>
 
-
-<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="indexController" ng-init="verificarSession()">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="homepage/icons/logo_fundo_roxo.png"
-                    height="40px"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar">quero adotar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar">quero doar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar">perdi meu pet</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar">encontrei um pet</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar" ng-show="isLogged">minha conta</a>
-                    </li>
-                    <li class="nav-item">
-                        <button type="submit" class="btn btn-secondary" onclick="document.location.href='login.html'"
-                            ng-hide="isLogged">entrar</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+<body class="fix-header fix-sidebar" style="background-color: #500b89">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
     </div>
-
-    <!-- Main wrapper  -->
-    <div id="main-wrapper" style="margin-top: 100px">
-        <div class="container-fluid">
-            <div class="container">
-                <!-- filter -->
-                <div class="col-md-12" style="text-align: center;">
-                    <div class="collapse" id="formFiltro">
-
-                        <p><img src="homepage/icons/logo_fundo_roxo.png" width="80px"></p>
-                    </div>
-                </div>
-                </div>
-                <!-- end filter -->
-                <!-- pets -->
-                <div class="row col-md-12" style="margin: 0; padding: 0">
-                    <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in [].constructor(20) track by $index"
-                        ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" onclick="document.location.href='pet.html'">
-                        <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
-                        <div class="col-md-12 text-center" style="margin-top:15px;">
-                            <h2 style="color: #500B89">Thor</h2>
-                            <p><img src="icons/gender.png" width="25px">macho <img src="icons/size.png" width="25px">filhote</p>
-                            <p><img src="icons/location.png" width="25px">belo horizonte</p>
-                            <button ng-show="adBoxHover" class="btn btn-primary">conhecer pet</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- end pets -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
+                <img src="homepage/icons/logo_fundo_roxo.png" onclick="document.location.href='home.html'" width="320px"
+                    style="cursor: pointer">
             </div>
         </div>
-        <!-- <footer ng-include="'footer.html'" class="footer"></div> -->
+        <div class="row">
+            <div class="col-md-12" style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
+                <h1 style="font-size: 45px; color: rgb(227, 222, 231)">unidos podemos salvar a vida de milhares de pets
+                    ;)</h1>
+            </div>
+            <div class="col-md-12" style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
+                <h1 style="font-size: 35px; color: rgba(255, 255, 255, .5)">lançamento previsto para Dezembro!</h1>
+            </div>
+            <div class="col-md-12" style="text-align: center; margin-bottom: 10px; margin-top: 10px;">
+                <h1 style="font-size: 25px; color: rgba(255, 255, 255, .5)">enquanto isso, que tal nos ajudar
+                    respondendo a pesquisa abaixo ?</h1>
+            </div>
+            <div class="col-md-12" style="text-align: center; margin-bottom: 10px; margin-top: 10px;">
+                <button class="btn btn-secondary" style="height: 50px;">responder pesquisa</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align: center; margin-bottom: 50px; margin-top: 50px;">
+                <div class="col-md-12">
+                    <img class="imgIconShare" style="width:80px" src="icons/social/facebook.png">
+                    <img class="imgIconShare" style="width:80px" src="icons/social/instagram.png">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="text-align: center; margin-bottom: 20px; margin-top: 20px;">
+                <h3 style="color: rgb(227, 222, 231) !important">#SouPetSaver</h3>
+            </div>
+        </div>
+
+    </div>
+    </div>
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
@@ -121,7 +102,7 @@
     <script src="js/custom.min.js"></script>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="js/controllers/index.js"></script>
+    <script src="js/controllers/login.js"></script>
 
 </body>
 
