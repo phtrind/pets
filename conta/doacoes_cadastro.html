@@ -384,7 +384,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Olá Saver, que coisa boa ter você aqui buscando um novo lar para um pet.</p>
+                                <p>Olá Saver, que felicidade ter você aqui buscando um novo lar para um pet.</p>
                                 <p>Para começarmos, escolha um dos Pets abaixo:</p>
                             </div>
                         </div>
@@ -441,8 +441,11 @@
                                         esse campo em branco, sem problemas.</small>
                                 </div>
                                 <div class="form-group col-md-6" ng-class="{'has-error':sexoError}">
-                                    <input type="text" class="form-control" id="sexo" aria-describedby="sexoHelp"
-                                        placeholder="Sexo" autocomplete="off">
+                                    <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp">
+                                        <option value="" disabled selected>Sexo</option>
+                                        <option value="1">Macho</option>
+                                        <option value="2">Fêmea</option>
+                                    </select>
                                     <small id="sexoHelp" class="form-text text-muted">Selecione o sexo do pet.</small>
                                     <small id="sexoError" class="form-control-feedback" ng-show="sexoError">Esse é um
                                         campo
@@ -453,10 +456,10 @@
                                 <div class="form-group col-md-6" ng-class="{'has-error':racaError}">
                                     <select class="form-control custom-select" aria-describedby="racaHelp">
                                         <option value="" disabled selected>Raça</option>
-                                        <option value="0">Não tenho certeza</option>
+                                        <option value="0">Desconhecida</option>
                                     </select>
                                     <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da raça,
-                                        selecione a opção "Não tenho certeza".</small>
+                                        selecione a opção "Desconhecida".</small>
                                     <small id="racaError" class="form-control-feedback" ng-show="racaError">Esse é um
                                         campo
                                         obrigatório.</small>
@@ -467,11 +470,11 @@
                                         <option value="1">Filhote</option>
                                         <option value="2">Adulto</option>
                                         <option value="3">Senior</option>
-                                        <option value="0">Desconhecido</option>
+                                        <option value="0">Desconhecida</option>
                                     </select>
                                     <small id="idadeHelp" class="form-text text-muted">Caso não tenha certeza da idade
                                         do
-                                        pet, selecione a opção "Desconhecido".</small>
+                                        pet, selecione a opção "Desconhecida".</small>
                                     <small id="idadeError" class="form-control-feedback" ng-show="idadeError">Esse é um
                                         campo
                                         obrigatório.</small>
@@ -495,8 +498,7 @@
                                     <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
                                         placeholder="Peso" autocomplete="off">
                                     <small id="pesoHelp" class="form-text text-muted">Nos diga qual o peso do pet, pode
-                                        ser um
-                                        peso aproximado.</small>
+                                        ser aproximado.</small>
                                     <small id="pesoError" class="form-control-feedback" ng-show="pesoError">Esse é um
                                         campo
                                         obrigatório.</small>
@@ -621,7 +623,7 @@
                             <div class="row" style="text-align: center">
                                 <div class="col-md-12" style="margin-bottom:50px;">
                                     <div class="input-group">
-                                        <textarea class="form-control" aria-label="With textarea" style="height: 150px; border-radius: 5px;"></textarea>
+                                        <textarea class="form-control" aria-label="With textarea" style="height: 150px; border-radius: 5px;" placeholder="Nos conte sobre a história, comportamento e relacionamento do seu pet ;)"></textarea>
                                     </div>
                                 </div>
                             </div>
