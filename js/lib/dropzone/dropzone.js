@@ -1269,7 +1269,7 @@
                 bytesSent: e.loaded
               };
             }
-          } else {
+          } else { 
             allFilesFinished = true;
             progress = 100;
             for (_k = 0, _len2 = files.length; _k < _len2; _k++) {

@@ -4,6 +4,10 @@ app.controller('daocaoCadastroController', function ($scope, $http, $compile, $s
 
     $scope.petSelection = true;
     // $scope.petInfos1 = true;
+    // $scope.petInfosSaude = true;
+    // $scope.petObservacoes = true;
+    // $scope.petFotos = true;
+    // $scope.confirmacao = true;
 
     $scope.SelectPet = function (pet) {
         if (pet == 1) {
@@ -40,11 +44,49 @@ app.controller('daocaoCadastroController', function ($scope, $http, $compile, $s
         if (number == 1) {
             $scope.petSelection = true;
             $scope.petInfos1 = false;
+            $scope.petInfosSaude = false;
+            $scope.petObservacoes = false;
+            $scope.petFotos = false;
         }
         else if (number == 2) {
             $scope.petSelection = false;
             $scope.petInfos1 = true;
+            $scope.petInfosSaude = false;
+            $scope.petObservacoes = false;
+            $scope.petFotos = false;
         }
+        else if (number == 3) {
+            $scope.petSelection = false;
+            $scope.petInfos1 = false;
+            $scope.petInfosSaude = true;
+            $scope.petObservacoes = false;
+            $scope.petFotos = false;
+        }
+        else if (number == 4) {
+            $scope.petSelection = false;
+            $scope.petInfos1 = false;
+            $scope.petInfosSaude = false;
+            $scope.petObservacoes = true;
+            $scope.petFotos = false;
+        }
+        else if (number == 5) {
+            $scope.petSelection = false;
+            $scope.petInfos1 = false;
+            $scope.petInfosSaude = false;
+            $scope.petObservacoes = false;
+            $scope.petFotos = true;
+        }
+
+        window.scrollTo(0, 0);
+    }
+
+    $scope.FinalizarCadastro = function () {
+        $scope.petSelection = false;
+        $scope.petInfos1 = false;
+        $scope.petInfosSaude = false;
+        $scope.petObservacoes = false;
+        $scope.petFotos = false;
+        $scope.confirmacao = true;
     }
 
 });
