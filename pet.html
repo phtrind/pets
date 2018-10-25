@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://www.petsaver.com.br" />
     <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
     <meta name="author" content="">
-  
+
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon.gif">
 
@@ -26,6 +26,21 @@
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
+    <style>
+        #buttonGostei {
+            width: 50px;
+            height: 50px;
+            position:fixed; 
+            z-index: 999; 
+            right: 35px;
+            bottom: 35px;
+            border-radius: 100%;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -34,7 +49,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="indexController" ng-init="verificarSession()">
+<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="petController" ng-init="verificarSession()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -81,7 +96,6 @@
     <div id="main-wrapper" style="margin-top: 85px">
         <div class="container-fluid">
             <div class="container">
-
                 <div class="row">
                     <div class="col-md-4">
                         <div class="col-md-12 bigImage">
@@ -251,6 +265,7 @@
                                 </div>
                             </div>
                         </div>
+                        <button id="buttonGostei" class="btn btn-secondary"><img src="icons/heart.png" width="30px"></button>
                     </div>
                 </div>
             </div>
@@ -267,7 +282,7 @@
     <script src="js/custom.min.js"></script>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="js/controllers/index.js"></script>
+    <script src="js/controllers/pet.js"></script>
 
 </body>
 

@@ -49,10 +49,6 @@ body{
     border-radius: 25px;
 }
 
-/* .adBoxHover {
-    background-color: lightgrey;
-} */
-
 .imgAdBox {
     max-height: 300px;
     border-radius: 10px;
@@ -61,6 +57,7 @@ body{
 .imgAdBoxHover {
     width: 70%;
     border-radius: 30px;
+    max-width: 200px;
 }
 
 .imgPetOpened {
