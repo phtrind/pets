@@ -1,6 +1,6 @@
 var app = angular.module('pets', [])
 
-app.controller('petPerdidoCadastroController', function ($scope, $http, $compile, $sce) {
+app.controller('petEncontradoCadastroController', function ($scope, $http, $compile, $sce) {
 
     $scope.petSelection = true;
     // $scope.petInfos1 = true;
@@ -43,12 +43,12 @@ app.controller('petPerdidoCadastroController', function ($scope, $http, $compile
     $scope.GoTo = function (number) {
         if (number == 1) {
             $scope.petSelection = true;
-            $scope.petLocalizacao = false;            
+            $scope.petLocalizacao = false;
             $scope.petInfos1 = false;
             $scope.petObservacoes = false;
             $scope.petFotos = false;
         }
-        else if (number == 2) {
+        if (number == 2) {
             $scope.petSelection = false;
             $scope.petLocalizacao = true;
             $scope.petInfos1 = false;
@@ -69,7 +69,6 @@ app.controller('petPerdidoCadastroController', function ($scope, $http, $compile
             $scope.petObservacoes = true;
             $scope.petFotos = false;
         }
-
         else if (number == 5) {
             $scope.petSelection = false;
             $scope.petLocalizacao = false;

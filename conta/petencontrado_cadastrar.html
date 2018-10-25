@@ -42,7 +42,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="petPerdidoCadastroController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="petEncontradoCadastroController">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -328,7 +328,7 @@
                             </a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="petperdido_cadastro.html" aria-expanded="false">
+                                    <a href="petencontrado_cadastro.html" aria-expanded="false">
                                         <img src="../icons/find.png" width="30px">
                                         <span class="show-menu">Perdi meu pet</span>
                                     </a>
@@ -359,7 +359,7 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Perdi meu Pet</h3>
+                    <h3 class="text-primary">Encontrei um Pet</h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
@@ -378,9 +378,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Olá Saver, sentimos muito por ter perdido seu pet... mas fique tranquilo, vamos lhe
-                                    ajudar!</p>
-                                <p>Para começarmos, escolha um dos Pets abaixo:</p>
+                                <p>Olá Saver, que bom que encontrou um pet e está o ajudando. Essas atitudes fazem a diferença!</p>
+                                <p>Para começarmos, escolha qual dos Pets abaixo é o que você encontrou:</p>
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
@@ -424,7 +423,7 @@
                             </div>
                         </div>
 
-                        <p>Marque no mapa o local aproximado em que você perdeu seu pet. Isso é muito importante, pois quem estiver por perto ficará atento.</p>
+                        <p>Marque no mapa o local aproximado em que você encontrou o pet. Isso é muito importante, pois seu Saver pode encontrá-lo com mais facilidade.</p>
 
                         <div class="form-body" style="margin-top:50px;">
                             <div class="row" style="text-align: center">
@@ -435,7 +434,7 @@
                                     <button class="btn btn-primary" ng-click="GoTo(1)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="GoTo(3)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="GoTo(3)">Finalizar</button>
                                 </div>
                             </div>
                         </div>
@@ -460,10 +459,10 @@
                                     <div class="form-group col-md-6" ng-class="{'has-error':nomeError}">
                                         <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp"
                                             placeholder="Nome" autocomplete="off">
-                                        <small id="nomeHelp" class="form-text text-muted">Nos conte qual o nome do seu pet.</small>
-                                        <small id="nomeError" class="form-control-feedback" ng-show="nomeError">Esse é um
-                                                campo
-                                                obrigatório.</small>
+                                            <small id="nomeHelp" class="form-text text-muted">Caso não saiba o nome,
+                                                pode
+                                                deixar
+                                                esse campo em branco, sem problemas.</small>
                                     </div>
                                 <div class="form-group col-md-6" ng-class="{'has-error':sexoError}">
                                     <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp">
@@ -590,14 +589,14 @@
                             </div>
                         </div>
 
-                        <p>Que tal nos contar um pouco mais sobre o pet, essas informações nos ajudarão a encontrá-lo</p>
+                        <p>Que tal nos contar um pouco mais sobre o pet, essas informações ajudarão algum saver encontrá-lo</p>
 
                         <div class="form-body" style="margin-top:50px;">
                             <div class="row" style="text-align: center">
                                 <div class="col-md-12" style="margin-bottom:50px;">
                                     <div class="input-group">
                                         <textarea class="form-control" aria-label="With textarea" style="height: 150px; border-radius: 5px;"
-                                            placeholder="É muito importante nos dizer se seu pet possui alguma coleira ou algo que facilite a sua identificação ;)"></textarea>
+                                            placeholder="É muito importante nos dizer se o pet possui alguma coleira ou algo que facilite a sua identificação ;)"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -652,10 +651,10 @@
                         </div>
 
                         <img src="../icons/ok.png" width="200px">
-                        <p>Seu anúncio de pet perdido foi cadastrado com sucesso ;)</p>
+                        <p>Seu anúncio de pet encontrado foi cadastrado com sucesso!</p>
                         <p>Precisamos de apenas 1h para colocá-lo no ar.</p>
                         <p>Mas não se preocupe, vamos lhe avisar assim que estiver tudo finalizado.</p>
-                        <p>Desejamos sorte e faremos o possível para que em breve o Thor esteja de volta ao seu lar!</p>
+                        <p>Esperamos que logo logo um Saver o encontre! Enquanto isso, cuide bem de nosso amigo ;)</p>
 
 
                         <div class="form-body" style="margin-top:50px;">
@@ -698,7 +697,7 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="../js/controllers/petPerdidoCadastro.js"></script>
+    <script src="../js/controllers/petencontradoCadastro.js"></script>
 
 </body>
 
