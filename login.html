@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="unidos podemos salvar a vida de milhões de pets">
+    <meta property="og:url" content="https://www.petsaver.com.br" />
+    <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>Ela - Bootstrap Admin Dashboard Template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon.gif">
+    <title>PetSaver</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -45,7 +47,7 @@
                     <div class="col-md-12">
                         <div class="col-md-4 offset-md-4 login-form" ng-hide="isRegister">
                             <div class="col-md-12" style="text-align: center; margin-bottom: 50px; margin-top: 50px;">
-                                <img src="homepage/icons/logo_fundo_branco.png" onclick="document.location.href='home.html'" width="300px" style="cursor: pointer">
+                                <img src="images/logos/logo_fundo_branco_fina.gif" onclick="document.location.href='home.html'" width="300px" style="cursor: pointer">
                             </div>
                             <form>
                                 <div class="form-group">
@@ -54,10 +56,10 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control" placeholder="Senha" style="border-radius: 8px">
                                 </div>
+                                <button type="button" class="btn btn-primary btn-flat m-b-20 m-t-10" style="background-color: #500b89" onclick="document.location.href='conta/dashboard.html'">Entrar</button>
                                 <div class="checkbox">
                                     <label class="pull-right" style="color: #500b89 !important">Esqueceu a senha?</label>
                                 </div>
-                                <button type="button" class="btn btn-primary btn-flat m-b-20 m-t-10" style="background-color: #500b89" onclick="document.location.href='conta/dashboard.html'">Entrar</button>
                                 <hr>
                                 <button type="button" class="btn btn-primary btn-flat m-b-10 m-t-20" style="background-color: #3B5998"><i
                                         class="fab fa-facebook-f"></i></button>
@@ -71,9 +73,9 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-md-4 offset-md-4 login-form" ng-show="isRegister">
-                            <div class="col-md-12" style="text-align: center; margin-bottom: 50px; margin-top: 50px;">
-                                <img src="homepage/icons/logo_fundo_branco.png" width="300px" onclick="document.location.href='home.html'" style="cursor: pointer">
+                        <div class="col-md-6 offset-md-3 login-form" ng-show="isRegister">
+                            <div class="col-md-12" style="text-align: center; margin-bottom: 50px; margin-top: 30px;">
+                                <img src="images/logos/logo_fundo_branco_fina.gif" width="300px" onclick="document.location.href='home.html'" style="cursor: pointer">
                             </div>
                             <form>
                                 <div class="row">
@@ -115,12 +117,18 @@
                                         <label style="color: #500b89 !important; cursor: pointer">Aceito os termos de
                                             uso</label>
                                     </div>
-                                    <button type="button" class="btn btn-primary btn-flat m-b-20 col-md-6" style="background-color: #500b89">Cadastrar</button>
+                                    <button type="button" class="btn btn-primary" style="background-color: #500b89">Cadastrar</button>
                                     <hr>
-                                    <button type="button" class="btn btn-primary btn-flat m-b-10 m-t-20 col-md-3" style="background-color: #3B5998"><i
-                                            class="fab fa-facebook-f"></i></button>
-                                    <button type="button" class="btn btn-primary btn-flat m-b-10 m-t-20 col-md-3" style="background-color: #D44C3D"><i
-                                            class="fab fa-google"></i></button>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary" style="background-color: #3B5998"><i
+                                                class="fab fa-facebook-f"></i></button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary" style="background-color: #D44C3D"><i
+                                                class="fab fa-google"></i></button>
+                                        </div>
+                                    </div>
                             </form>
                         </div>
                     </div>
