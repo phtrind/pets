@@ -34,6 +34,16 @@ body{
 	border-color: #500B89 !important;
 }
 
+#dropdownButton:focus,
+#dropdownButton:active,
+#dropdownButton:visited {
+    background-color: #500B89 !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+
 /* #endregion */
 
 #mainNav {
@@ -149,3 +159,40 @@ body{
 h3 {
     color: #500B89 !important;
 }
+
+.link {
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #500B89;
+}
+
+.imgDisabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+/* #region .: Table :. */
+
+th {
+    color: #500B89 !important;
+    font-weight: bold !important;
+}
+
+.columnFitCenter {
+    text-align: center !important;
+    white-space:nowrap !important;
+    width: 1% !important;
+}
+
+.columnBoldPrimary {
+    color: #500B89 !important;
+    font-weight: bold !important;
+}
+
+.dropdown-menu a:hover {
+    color: #500B89 !important;
+}
+
+/* #endregion */

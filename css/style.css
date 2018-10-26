@@ -1812,13 +1812,13 @@ textarea {
   transform: translate(0, -2px);
 }
 .badge-success {
-  background-color: #26dad2;
+  background-color: #61C46E;
 }
 .badge-info {
   background-color: #1976d2;
 }
 .badge-primary {
-  background-color: #5c4ac7;
+  background-color: #500B89;
 }
 .badge-warning {
   background-color: #ffb22b;

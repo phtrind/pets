@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
     <style>
-        #nenhumInteresse p {
+        #nenhumaDoacao p {
             color: #500B89 !important;
             font-size: 20px;
             text-align: center;
@@ -43,7 +43,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="adocoesInteressesController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="doacoesRelatorioController">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -360,7 +360,7 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Meus interesses</h3>
+                    <h3 class="text-primary">Minhas doações</h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
@@ -368,44 +368,206 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div>
-                    <div ng-show="nenhumInteresse">
+                    <div ng-show="nenhumaDoacao">
                         <div class="row">
-                            <div class="col-md-12" id="nenhumInteresse">
-                                <p>Olá Saver, por enquanto você não tem nenhum interesse cadastrado</p>
-                                <p>Mas que tal procurarmos um Pet agora?</p>
+                            <div class="col-md-12" id="nenhumaDoacao">
+                                <p>Olá Saver, por enquanto você não tem nenhuma doação cadastrada</p>
+                                <p>Mas que tal cadastrar uma agora?</p>
                             </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: center;">
-                                <button class="btn btn-primary"onclick="document.location.href='../index.html'">Quero um Pet!</button>
+                                <button class="btn btn-primary" onclick="document.location.href='doacoes_cadastro.html'">Quero
+                                    doar um pet!</button>
                             </div>
                         </div>
                     </div>
-                    <div ng-hide="nenhumInteresse">
+                    <div ng-hide="nenhumaDoacao">
                         <div class="row">
-                            <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in [].constructor(4) track by $index"
-                                ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;"
-                                onclick="document.location.href='../pet.html'">
-                                <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
-                                <div class="col-md-12 text-center" style="margin-top:15px;">
-                                    <h2 style="color: #500B89">Thor</h2>
-                                    <p><img src="../icons/gender.png" width="25px">macho <img src="../icons/size.png" width="25px">filhote</p>
-                                    <p><img src="../icons/location.png" width="25px">belo horizonte</p>
-                                    <button ng-show="adBoxHover" class="btn btn-primary">ver pet</button>
-                                </div>
+                            <div>
+                                <p>Saver, aqui estão todos os pets que você cadastrou</p>
+                                <p>Clique no nome para visualizar</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h2 class="color-primary">Filtros
+                                <img ng-show="closedFilter" src="../icons/minus.png" width="35px" style="cursor: pointer;"
+                                    data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                    aria-controls="formFiltro" ng-click="closedFilter = false;">
+                                <img ng-show="!closedFilter" src="../icons/plus.png" width="35px" style="cursor: pointer;"
+                                    data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                    aria-controls="formFiltro" ng-click="closedFilter = true;">
+                            </h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 collapse" id="formFiltro">
+                                <form>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="color-primary">Nome</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="color-primary">Tipo</label>
+                                            <select class="form-control custom-select">
+                                                <option>Todos</option>
+                                                <option>Cachorro</option>
+                                                <option>Gato</option>
+                                                <option>Ave</option>
+                                                <option>Peixe</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Cadastrado de</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Cadastrado até</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Status</label>
+                                            <select class="form-control custom-select">
+                                                <option>Todos</option>
+                                                <option>Ativo</option>
+                                                <option>Adotado</option>
+                                                <option>Em análise</option>
+                                                <option>Finalizado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="columnFitCenter">#</th>
+                                        <th>Pet</th>
+                                        <th>Tipo</th>
+                                        <th>Cadastro</th>
+                                        <th>Status
+                                            <!-- <div class="dropdown">
+                                                <button id="dropdownButton" class="btn btn-primary dropdown-toggle"
+                                                    type="button" data-toggle="dropdown" aria-expanded="false">Status
+                                                    <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Adotado</a></li>
+                                                    <li><a href="#">Ativo</a></li>
+                                                    <li><a href="#">Em análise</a></li>
+                                                    <li><a href="#">Finalizado</a></li>
+                                                </ul>
+                                            </div> -->
+                                        </th>
+                                        <th class="columnFitCenter">Visualizações</th>
+                                        <th class="columnFitCenter">Interessados</th>
+                                        <th class="columnFitCenter">Chats</th>
+                                        <th class="columnFitCenter">Editar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">1</th>
+                                        <td><span class="link">Thor</span></td>
+                                        <td>Cachorro</span></td>
+                                        <td>15/12/2018</td>
+                                        <td><span class="badge badge-primary">Adotado</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">120</td>
+                                        <td class="columnFitCenter columnBoldPrimary">10</td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/edit.png"
+                                                width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">2</th>
+                                        <td><span class="link">Lauren</span></td>
+                                        <td>Gato</span></td>
+                                        <td>02/01/2019</td>
+                                        <td><span class="badge badge-success">Ativo</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">30</td>
+                                        <td class="columnFitCenter columnBoldPrimary">5</td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/edit.png" width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">3</th>
+                                        <td><span class="link">Raimundo</span></td>
+                                        <td>Ave</span></td>
+                                        <td>28/01/2019</td>
+                                        <td><span class="badge badge-danger">Em análise</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">2</td>
+                                        <td class="columnFitCenter columnBoldPrimary">0</td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/edit.png" width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">4</th>
+                                        <td><span class="link">Thor</span></td>
+                                        <td>Cachorro</span></td>
+                                        <td>15/12/2018</td>
+                                        <td><span class="badge badge-primary">Adotado</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">120</td>
+                                        <td class="columnFitCenter columnBoldPrimary">10</td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/edit.png"
+                                                width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">5</th>
+                                        <td><span class="link">Lauren</span></td>
+                                        <td>Gato</span></td>
+                                        <td>02/01/2019</td>
+                                        <td><span class="badge badge-success">Ativo</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">30</td>
+                                        <td class="columnFitCenter columnBoldPrimary">5</td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/edit.png" width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">6</th>
+                                        <td><span class="link">Raimundo</span></td>
+                                        <td>Ave</span></td>
+                                        <td>28/01/2019</td>
+                                        <td><span class="badge badge-info">Finalizado</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">2</td>
+                                        <td class="columnFitCenter columnBoldPrimary">0</td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/edit.png"
+                                                width="30px"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-6" style="text-align: left;">
+                                <button class="btn btn-primary">Anterior</button>
+                            </div>
+                            <div class="col-6" style="text-align: right;">
+                                <button class="btn btn-primary">Próxima</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End PAge Content -->
             </div>
-            <!-- End Container fluid  -->
-            <!-- footer -->
-            <footer class="footer"> <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
-            </footer>
-            <!-- End footer -->
         </div>
-        <!-- End Page wrapper  -->
+        <!-- End PAge Content -->
+    </div>
+    <!-- End Container fluid  -->
+    <!-- footer -->
+    <footer class="footer"> <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+    </footer>
+    <!-- End footer -->
+    </div>
+    <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
@@ -429,7 +591,7 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="../js/controllers/adocoesInteresses.js"></script>
+    <script src="../js/controllers/doacoesRelatorio.js"></script>
 
 </body>
 
