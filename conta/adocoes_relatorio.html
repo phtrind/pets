@@ -23,8 +23,18 @@
     <link href="../css/helper.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/myStyle.css" rel="stylesheet">
+    <link href="../css/toggle.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+    <style>
+        #nenhumaAdocao p {
+            color: #500B89 !important;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -33,7 +43,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="dashboardController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="adocoesRelatorioController">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -346,148 +356,175 @@
         </div>
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="background-color: white;">
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Visão geral</h3>
+                    <h3 class="text-primary">Minhas adoções</h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
             <!-- Container fluid  -->
             <div class="container-fluid">
                 <!-- Start Page Content -->
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card bg-primary p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span>
-                                        <i class="ti-bag f-s-40"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">15</h2>
-                                    <p class="m-b-0">meus anúncios</p>
-                                </div>
+                <div>
+                    <div ng-show="nenhumaAdocao">
+                        <div class="row">
+                            <div class="col-md-12" id="nenhumaAdocao">
+                                <p>Olá Saver, por enquanto você não tem nenhuma adoção.</p>
+                                <p>Mas que tal procurarmos um pet agora?</p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-md-12" style="text-align: center;">
+                                <button class="btn btn-primary" onclick="document.location.href='../index.html'">Procurar um pet</button>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card bg-pink p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span>
-                                        <i class="ti-comment f-s-40"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">4</h2>
-                                    <p class="m-b-0">anúncios que gostei</p>
-                                </div>
+                    <div ng-hide="nenhumaAdocao">
+                        <div class="row">
+                            <div>
+                                <p>Saver, aqui estão todas as suas adoções.</p>
+                                <p>Clique no nome para visualizar.</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card bg-success p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span>
-                                        <i class="ti-vector f-s-40"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">22</h2>
-                                    <p class="m-b-0">anúncios que visitei hoje</p>
-                                </div>
+                        <div class="row">
+                            <h2 class="color-primary">Filtros
+                                <img ng-show="closedFilter" src="../icons/minus.png" width="35px" style="cursor: pointer;"
+                                    data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                    aria-controls="formFiltro" ng-click="closedFilter = false;">
+                                <img ng-show="!closedFilter" src="../icons/plus.png" width="35px" style="cursor: pointer;"
+                                    data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                    aria-controls="formFiltro" ng-click="closedFilter = true;">
+                            </h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 collapse" id="formFiltro">
+                                <form>
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Nome</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Tipo</label>
+                                            <select class="form-control custom-select">
+                                                <option>Todos</option>
+                                                <option>Cachorro</option>
+                                                <option>Gato</option>
+                                                <option>Ave</option>
+                                                <option>Peixe</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Status</label>
+                                            <select class="form-control custom-select">
+                                                <option>Todos</option>
+                                                <option>Adotado</option>
+                                                <option>Em andamento</option>
+                                                <option>Finalizado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card bg-danger p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span>
-                                        <i class="ti-location-pin f-s-40"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">3</h2>
-                                    <p class="m-b-0">minhas contribuições</p>
-                                </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="columnFitCenter">#</th>
+                                        <th>Pet</th>
+                                        <th>Tipo</th>
+                                        <th>Status
+                                            <!-- <div class="dropdown">
+                                                <button id="dropdownButton" class="btn btn-primary dropdown-toggle"
+                                                    type="button" data-toggle="dropdown" aria-expanded="false">Status
+                                                    <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Adotado</a></li>
+                                                    <li><a href="#">Ativo</a></li>
+                                                    <li><a href="#">Em análise</a></li>
+                                                    <li><a href="#">Finalizado</a></li>
+                                                </ul>
+                                            </div> -->
+                                        </th>
+                                        <th class="columnFitCenter">Chat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">1</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
+                                        <td>Cachorro</span></td>
+                                        <td><span class="badge badge-primary">Adotado</span></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
+                                                width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">2</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
+                                        <td>Gato</span></td>
+                                        <td><span class="badge badge-success">Em andamento</span></td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">3</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
+                                        <td>Ave</span></td>
+                                        <td><span class="badge badge-danger">Finalizado</span></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
+                                                width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">4</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
+                                        <td>Cachorro</span></td>
+                                        <td><span class="badge badge-primary">Adotado</span></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
+                                                width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">5</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
+                                        <td>Gato</span></td>
+                                        <td><span class="badge badge-success">Em andamento</span></td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">6</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
+                                        <td>Ave</span></td>
+                                        <td><span class="badge badge-danger">Finalizado</span></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
+                                                width="30px"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-6" style="text-align: left;">
+                                <button class="btn btn-primary">Anterior</button>
+                            </div>
+                            <div class="col-6" style="text-align: right;">
+                                <button class="btn btn-primary">Próxima</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-title">
-                                <h3>Números da PetSaver</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th style="color: #26DAD2 !important;">adoções concluídas</th>
-                                                <th style="background-color: #26DAD2 !important; text-align: center;">54</th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th style="color: #4680FF !important;">doações concluídas</th>
-                                                <th style="background-color: #4680FF !important; text-align: center;">12</th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th style="color: #E6A1F2 !important;">pets encontrados</th>
-                                                <th style="background-color: #E6A1F2 !important; text-align: center;">344</th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th style="color: #FC6180 !important">pets ainda perdidos</th>
-                                                <th style="background-color: #FC6180 !important; text-align: center;">3555</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-title" style="text-align: center">
-                                <h3>#SouPetSaver</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <a href="https://www.instagram.com/soupetsaver/" target="_blank">
-                                            <img class="link" src="../icons/instagram.png" width="100%">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <a href="https://www.facebook.com/soupetsaver/" target="_blank">
-                                            <img src="../icons/facebook.png" width="100%">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End PAge Content -->
             </div>
-            <!-- End Container fluid  -->
-            <!-- footer -->
-            <footer class="footer"> <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
-            </footer>
-            <!-- End footer -->
         </div>
-        <!-- End Page wrapper  -->
+        <!-- End PAge Content -->
+    </div>
+    <!-- End Container fluid  -->
+    <!-- footer -->
+    <footer class="footer"> <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+    </footer>
+    <!-- End footer -->
+    </div>
+    <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
@@ -499,6 +536,8 @@
     <script src="../js/jquery.slimscroll.js"></script>
     <!--Menu sidebar -->
     <script src="../js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../js/custom.min.js"></script>
     <!--stickey kit -->
     <script src="../js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
 
@@ -507,22 +546,9 @@
     <script src="../js/lib/datamap/datamaps.world.min.js"></script>
     <script src="../js/lib/datamap/datamap-init.js"></script>
 
-    <script src="../js/lib/weather/jquery.simpleWeather.min.js"></script>
-    <script src="../js/lib/weather/weather-init.js"></script>
-    <script src="../js/lib/owl-carousel/owl.carousel.min.js"></script>
-    <script src="../js/lib/owl-carousel/owl.carousel-init.js"></script>
-
-
-    <script src="../js/lib/chartist/chartist.min.js"></script>
-    <script src="../js/lib/chartist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../js/lib/chartist/chartist-init.js"></script>
-
-    <!--Custom JavaScript -->
-    <script src="../js/custom.min.js"></script>
-
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="../js/controllers/dashboard.js"></script>
+    <script src="../js/controllers/adocoesRelatorio.js"></script>
 
 </body>
 
