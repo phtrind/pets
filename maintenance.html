@@ -2,6 +2,39 @@
 <html lang="pt">
 
 <head>
+    <!-- Google Analytics Homologação -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128203439-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-128203439-1',
+            {
+                'page_title': 'Maintenance',
+                'page_path': '/maintenance'
+            });
+    </script>
+
+    <!-- Google Analytics Produção -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128174105-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-128174105-1',
+            {
+                'page_title': 'Maintenance',
+                'page_path': '/maintenance'
+            });
+    </script> -->
+
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
@@ -39,6 +72,8 @@
 
 <body class="fix-header fix-sidebar" style="background-color: #500b89; min-height: 100vh; display: flex; align-items: center">
 
+    <!-- ng-app="pets" ng-controller="maintenanceController" -->
+
     <div class="container">
         <div class="row">
             <div class="col-md-12" style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
@@ -64,8 +99,10 @@
         </div>
         <div class="row">
             <div class="col-md-12" style="text-align: center; margin-bottom: 45px; margin-top: 45px;">
-                <a href="pesquisa.html"
-                    target="_blank"><button class="btn btn-secondary" style="height: 50px;">responder pesquisa</button></a>
+                <a href="pesquisa.html" target="_blank" id="btnPesquisa">
+                    <button class="btn btn-secondary" style="height: 50px;">responder
+                        pesquisa</button>
+                </a>
             </div>
         </div>
         <div class="row">
@@ -87,6 +124,20 @@
         </div>
 
     </div>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+
+    <script>
+        $("#btnPesquisa").click(function () {
+            gtag('event',
+                'Click',
+                {
+                    'event_category': 'Pesquisa',
+                    'event_label': 'Responder Pesquisa',
+                    'value': 1
+                });
+        });
+    </script>
 
 </body>
 
