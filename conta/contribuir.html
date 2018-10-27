@@ -42,7 +42,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="daocaoCadastroController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="contribuirController">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -359,7 +359,7 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Doar Pet</h3>
+                    <h3 class="text-primary">Realizar Contribuição</h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
@@ -378,30 +378,31 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Olá Saver, que felicidade ter você aqui buscando um novo lar para um pet.</p>
-                                <p>Para começarmos, escolha um dos Pets abaixo:</p>
+                                <p>Olá Saver, a sua atitude de contribuir é importantíssima para manter a PetSaver.</p>
+                        <p>Saiba que sua contribuição é o que possibilita continuarmos salvando os pets.</p>
+                                <p>Vamos lá, primeiramente escolha um valor que esteja ao seu alcance:</p>
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
                             <div class="col-md-3" ng-class="{'boxSelecaoPetSelecionado': dogSelected, 'boxSelecaoPet': !dogSelected}"
                                 ng-click="SelectPet(1);">
                                 <img src="../icons/dog.png">
-                                <h3>Cachorro</h3>
+                                <h3>R$ 1,00</h3>
                             </div>
                             <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': catSelected, 'boxSelecaoPet': !catSelected}"
                                 ng-click="SelectPet(2);">
                                 <img src="../icons/cat.png">
-                                <h3>Gato</h3>
+                                <h3>R$ 5,00</h3>
                             </div>
                             <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': fishSelected, 'boxSelecaoPet': !fishSelected}"
                                 ng-click="SelectPet(3);">
                                 <img src="../icons/fish.png">
-                                <h3>Peixe</h3>
+                                <h3>R$ 10,00</h3>
                             </div>
                             <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': birdSelected, 'boxSelecaoPet': !birdSelected}"
                                 ng-click="SelectPet(4);">
                                 <img src="../icons/bird.png">
-                                <h3>Ave</h3>
+                                <h3>Outro valor</h3>
                             </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
@@ -422,7 +423,7 @@
                             </div>
                         </div>
 
-                        <p>Nos conte um pouquinho mais sobre nosso amigo</p>
+                        <p>Então o valor que você deseja contribuir é R$ 5,00.</p>
 
                         <div class="form-body" style="margin-top:50px;">
                             <div class="row">
@@ -718,7 +719,7 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="../js/controllers/doacaoCadastro.js"></script>
+    <script src="../js/controllers/contribuirCadastro.js"></script>
 
 </body>
 
