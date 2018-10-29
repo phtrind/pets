@@ -11,7 +11,7 @@
     <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/logos/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/logos/favicon_sombra.ico">
     <title>Pet Saver</title>
 
     <link href="../css/lib/chartist/chartist.min.css" rel="stylesheet">
@@ -667,17 +667,18 @@
 #frame .content .message-input .wrap {
   position: relative;
 }
-#frame .content .message-input .wrap input {
+#frame .content .message-input .wrap textarea {
   float: left;
   border: none;
   width: calc(100% - 50px);
   height: 50px !important;
-  padding: 11px 0px 10px 0px;
-  font-size: 0.8em;
+  padding-top: 5px !important;
+  padding-left: 20px !important;
+  font-size: 18px;
   color: #32465a;
 }
 @media screen and (max-width: 735px) {
-  #frame .content .message-input .wrap input {
+  #frame .content .message-input .wrap textarea {
     padding: 15px 32px 16px 8px;
   }
 }
@@ -1234,7 +1235,8 @@
                                 <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
                                     alt="" />
                                 <span class="color-primary" style="font-size: 25px;">Thor</span>
-                                <span style="font-size: 17px; font-style: italic; float: right; padding-right: 15px"> conversando com Bruno Lima</span>
+                                <span style="font-size: 17px; font-style: italic; float: right; padding-right: 15px">
+                                    conversando com Bruno Lima</span>
                             </div>
                             <div class="messages">
                                 <ul>
@@ -1269,7 +1271,7 @@
                             </div>
                             <div class="message-input">
                                 <div class="wrap">
-                                    <input type="text" placeholder="Escreva sua mensagem..." />
+                                    <textarea type="text" placeholder="Escreva sua mensagem..."></textarea>
                                     <button class="btn btn-primary submit" style="height: 50px !important; border-radius: 0px !important;"><i
                                             class="fa fa-paper-plane" aria-hidden="true"></i></button>
                                 </div>
@@ -1369,13 +1371,13 @@
 //# sourceURL=pen.js
     </script>
 
-    <!-- <script>
-        $(window).load(function() {
-            //run code that MUST be after initialize
-            // $(".left-sidebar").addClass("mini-sidebar");
+    <script>
+        $(document).resize(function () {
             $("body").addClass("mini-sidebar");
+            $(".header .navbar .navbar-header .navbar-brand span").css("display", "none");
+            $(".header .navbar .navbar-header .navbar-brand b").css("display", "inline-block");
         });
-    </script> -->
+    </script>
 
 </body>
 
