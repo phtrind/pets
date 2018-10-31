@@ -11,7 +11,7 @@
     <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../images/logos/favicon.gif">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/logos/favicon_pata.ico">
     <title>PetSaver</title>
 
     <link href="../css/lib/chartist/chartist.min.css" rel="stylesheet">
@@ -229,7 +229,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);">
+                                        <a class="nav-link text-center" href="chats.html">
                                             <strong>ver todas</strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>
@@ -411,6 +411,43 @@
                         </div>
                     </div>
 
+                    <!-- Quantidade -->
+                    <div ng-show="quantidade">
+                        <div class="row" style="margin-top:20px; margin-bottom:40px;">
+                            <div class="col-md-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" style="width: 20%;" role="progressbar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Quantos são?</p>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center; margin-top: 20px;">
+                            <div class="col-md-12" style="vertical-align: middle; align-items: center; display: flex;">
+                                <div class="col-md-1 offset-md-4">
+                                    <img ng-click="alterarQuantidadePets(-1)" class="link" src="../icons/minus.png" width="60px">
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="color-primary" style="font-size:150px">{{quantidadePets}}</span>
+                                </div>
+                                <div class="col-md-1">
+                                    <img ng-click="alterarQuantidadePets(1)" class="link" src="../icons/plus.png" width="60px">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                                <div class="col-6" style="text-align: left;">
+                                    <button class="btn btn-primary" ng-click="GoTo(1)">Voltar</button>
+                                </div>
+                                <div class="col-6" style="text-align: right;">
+                                    <button class="btn btn-primary" ng-click="GoTo(3)">Próximo</button>
+                                </div>
+                            </div>
+                    </div>
+
                     <!-- Informações básicas -->
 
                     <div ng-show="petInfos1">
@@ -539,10 +576,10 @@
                             </div>
                             <div class="row" style="margin-top:20px;">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="GoTo(1)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="GoTo(2)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="GoTo(3)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="GoTo(4)">Próximo</button>
                                 </div>
                             </div>
                         </div>
@@ -590,10 +627,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="GoTo(2)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="GoTo(3)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="GoTo(4)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="GoTo(5)">Próximo</button>
                                 </div>
                             </div>
                         </div>
@@ -623,10 +660,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="GoTo(3)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="GoTo(4)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="GoTo(5)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="GoTo(6)">Próximo</button>
                                 </div>
                             </div>
                         </div>
@@ -651,7 +688,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="GoTo(4)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="GoTo(5)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
                                     <button class="btn btn-primary" ng-click="FinalizarCadastro()">Finalizar</button>
