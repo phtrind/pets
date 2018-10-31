@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="unidos podemos salvar a vida de milhões de pets">
+    <meta property="og:url" content="https://www.petsaver.com.br" />
+    <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/logos/favicon_pata.ico">
+    <title>PetSaver</title>
+
+    <link href="../css/lib/chartist/chartist.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../css/lib/owl.theme.default.min.css" rel="stylesheet" />
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/helper.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/myStyle.css" rel="stylesheet">
+    <link href="../css/toggle.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+    <style>
+        p {
+            color: #500B89 !important;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
+    <!--[if lt IE 9]>
+    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="contribuirController">
+    <!-- Preloader - style you can find in spinners.css -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
+
+        <!-- header header  -->
+        <div class="header">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light bg-light">
+                <!-- Logo -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../index.html">
+                        <!-- Logo text -->
+                        <span>
+                            <img src="../images/logos/logo_fundo_branco_fina.gif" height="40px" alt="homepage" class="dark-logo" />
+                        </span>
+                        <!-- Logo icon -->
+                        <b>
+                            <img src="../images/logos/logo_ps_fundo_branco.gif" width="40px" alt="homepage" class="dark-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                    </a>
+                </div>
+                <!-- End Logo -->
+                <div class="navbar-collapse">
+                    <!-- toggle and nav items -->
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <!-- This is  -->
+                        <li class="nav-item">
+                            <a class="nav-link nav-toggler hidden-md-up text-muted" href="javascript:void(0)">
+                                <img src="../icons/menu.png" width="30px">
+                            </a>
+                        </li>
+                        <li class="nav-item m-l-10">
+                            <a class="nav-link sidebartoggler hidden-sm-down text-muted" href="javascript:void(0)">
+                                <img src="../icons/menu.png" width="30px">
+                            </a>
+                        </li>
+                        <!-- End Messages -->
+                    </ul>
+                    <!-- User profile and search -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- Comment -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <!-- <i class="fa fa-bell"></i> -->
+                                <img src="../icons/notification.png" width="30">
+                                <div class="notify">
+                                    <span class="heartbit"></span>
+                                    <span class="point"></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">notificações</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-danger btn-circle m-r-10">
+                                                    <i class="fa fa-link"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is title</h5>
+                                                    <span class="mail-desc">Just see the my new admin!</span>
+                                                    <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-success btn-circle m-r-10">
+                                                    <i class="ti-calendar"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is another title</h5>
+                                                    <span class="mail-desc">Just a reminder that you have event</span>
+                                                    <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-info btn-circle m-r-10">
+                                                    <i class="ti-settings"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is title</h5>
+                                                    <span class="mail-desc">You can customize this template as you want</span>
+                                                    <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-primary btn-circle m-r-10">
+                                                    <i class="ti-user"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is another title</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                    <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="javascript:void(0);">
+                                            <strong>ver todas</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- End Comment -->
+                        <!-- Messages -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted" href="#" id="2" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="../icons/chat.png" width="30">
+                                <div class="notify">
+                                    <span class="heartbit"></span>
+                                    <span class="point"></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn" aria-labelledby="2">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">você tem 4 novas mensagens</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/5.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status online pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Michael Qin</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                    <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/2.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status busy pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>John Doe</h5>
+                                                    <span class="mail-desc">I've sung a song! See you at</span>
+                                                    <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/3.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status away pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Mr. John</h5>
+                                                    <span class="mail-desc">I am a singer!</span>
+                                                    <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/4.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status offline pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Michael Qin</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                    <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="chats.html">
+                                            <strong>ver todas</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- End Messages -->
+                        <!-- Profile -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="../icons/profile.png" width="30px" alt="user">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right animated zoomIn">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <a style="color: #500B89 !important;" href="meus_dados.html">
+                                            <img src="../icons/profile_edit.png" width="30px" alt="meus dados"></i>
+                                            meus
+                                            dados</a>
+                                    </li>
+                                    <li>
+                                        <a style="color: #500B89 !important;" href="#">
+                                            <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
+                                            sair</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- End header header -->
+        <!-- Left Sidebar  -->
+        <div class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav" id="sidebar-intern">
+                    <ul id="sidebarnav" style="margin-top:20px;">
+                        <li>
+                            <a style="color: #500B89 !important;" href="dashboard.html">
+                                <img src="../icons/dashboard.png" width="30px">
+                                <span class="hide-menu">Visão Geral</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../homepage/icons/donation.png" width="30px">
+                                <span class="hide-menu">Doações
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="doacoes_cadastro.html" aria-expanded="false">
+                                        <img src="../icons/new.png" width="30px">
+                                        <span class="show-menu">Cadastrar</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="doacoes_relatorio.html" aria-expanded="false">
+                                        <img src="../icons/list.png" width="30px">
+                                        <span class="show-menu">Visualizar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../icons/house.png" width="30px">
+                                <span class="hide-menu">Adoções
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="adocoes_interesses.html" aria-expanded="false">
+                                        <img src="../icons/heart.png" width="30px">
+                                        <span class="show-menu">Meus interesses</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="adocoes_relatorio.html" aria-expanded="false">
+                                        <img src="../icons/list.png" width="30px">
+                                        <span class="show-menu">Visualizar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../icons/binoculars.png" width="30px">
+                                <span class="hide-menu">Pet perdido
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="petperdido_cadastro.html" aria-expanded="false">
+                                        <img src="../icons/find.png" width="30px">
+                                        <span class="show-menu">Perdi meu pet</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="petencontrado_cadastrar.html" aria-expanded="false">
+                                        <img src="../icons/location.png" width="30px">
+                                        <span class="show-menu">Encontrei um pet</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="position: absolute; bottom: 15px;">
+                            <a href="contribuir.html" aria-expanded="false">
+                                <img src="../icons/donate_money.png" width="30px">
+                                <span class="hide-menu">Quero contribuir</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </div>
+        <!-- End Left Sidebar  -->
+        <!-- Page wrapper  -->
+        <div class="page-wrapper" style="background-color: white;">
+            <!-- Bread crumb -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">Realizar Contribuição</h3>
+                </div>
+            </div>
+            <!-- End Bread crumb -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div>
+                    <!-- Escolha do tipo de pet -->
+                    <div ng-show="petSelection">
+                        <div class="row" style="margin-top:20px; margin-bottom:40px;">
+                            <div class="col-md-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" style="width: 10%;" role="progressbar"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Olá Saver, a sua atitude de contribuir é importantíssima para manter a PetSaver.</p>
+                        <p>Saiba que sua contribuição é o que possibilita continuarmos salvando os pets.</p>
+                                <p>Vamos lá, primeiramente escolha um valor que esteja ao seu alcance:</p>
+                            </div>
+                        </div>
+                        <div class="row" style="text-align: center; margin-top: 20px;">
+                            <div class="col-md-3" ng-class="{'boxSelecaoPetSelecionado': dogSelected, 'boxSelecaoPet': !dogSelected}"
+                                ng-click="SelectPet(1);">
+                                <img src="../icons/onedol.png">
+                                <h3>R$ 1,00</h3>
+                            </div>
+                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': catSelected, 'boxSelecaoPet': !catSelected}"
+                                ng-click="SelectPet(2);">
+                            <img src="../icons/fivedol.png">
+                                <h3>R$ 5,00</h3>
+                            </div>
+                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': fishSelected, 'boxSelecaoPet': !fishSelected}"
+                                ng-click="SelectPet(3);">
+                                <img src="../icons/tendol.png">
+                                <h3>R$ 10,00</h3>
+                            </div>
+                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': birdSelected, 'boxSelecaoPet': !birdSelected}"
+                                ng-click="SelectPet(4);">
+                                <img src="../icons/anydol.png">
+                                <h3>Outro valor</h3>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-md-12" style="text-align: right;">
+                                <button class="btn btn-primary" ng-disabled="!petSelected" ng-click="GoTo(2)">Próximo</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informações básicas -->
+
+                    <div ng-show="petInfos1">
+                        <div class="row" style="margin-top:20px; margin-bottom:40px;">
+                            <div class="col-md-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" style="width: 30%;" role="progressbar"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Então o valor que você deseja contribuir é R$ 5,00.</p>
+
+                        <div class="form-body" style="margin-top:50px;">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp"
+                                        placeholder="Nome" autocomplete="off">
+                                    <small id="nomeHelp" class="form-text text-muted">Caso ainda não tenha um nome,
+                                        pode
+                                        deixar
+                                        esse campo em branco, sem problemas.</small>
+                                </div>
+                                <div class="form-group col-md-6" ng-class="{'has-error':sexoError}">
+                                    <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp">
+                                        <option value="" disabled selected>Sexo</option>
+                                        <option value="1">Macho</option>
+                                        <option value="2">Fêmea</option>
+                                    </select>
+                                    <small id="sexoHelp" class="form-text text-muted">Selecione o sexo do pet.</small>
+                                    <small id="sexoError" class="form-control-feedback" ng-show="sexoError">Esse é um
+                                        campo
+                                        obrigatório.</small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6" ng-class="{'has-error':racaError}">
+                                    <select class="form-control custom-select" aria-describedby="racaHelp">
+                                        <option value="" disabled selected>Raça</option>
+                                        <option value="0">Desconhecida</option>
+                                    </select>
+                                    <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da raça,
+                                        selecione a opção "Desconhecida".</small>
+                                    <small id="racaError" class="form-control-feedback" ng-show="racaError">Esse é um
+                                        campo
+                                        obrigatório.</small>
+                                </div>
+                                <div class="form-group col-md-6" ng-class="{'has-error':idadeError}">
+                                    <select class="form-control custom-select" id="idade" aria-describedby="idadeHelp">
+                                        <option value="" disabled selected>Idade</option>
+                                        <option value="1">Filhote</option>
+                                        <option value="2">Adulto</option>
+                                        <option value="3">Senior</option>
+                                        <option value="0">Desconhecida</option>
+                                    </select>
+                                    <small id="idadeHelp" class="form-text text-muted">Caso não tenha certeza da idade
+                                        do
+                                        pet, selecione a opção "Desconhecida".</small>
+                                    <small id="idadeError" class="form-control-feedback" ng-show="idadeError">Esse é um
+                                        campo
+                                        obrigatório.</small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6" ng-class="{'has-error':tamanhoError}">
+                                    <select class="form-control custom-select" id="tamanho" aria-describedby="tamanhoHelp">
+                                        <option value="" disabled selected>Porte</option>
+                                        <option value="1">Pequeno</option>
+                                        <option value="2">Médio</option>
+                                        <option value="3">Grande</option>
+                                    </select>
+                                    <small id="tamanhoHelp" class="form-text text-muted">Selecione o tamanho do pet.</small>
+                                    <small id="tamanhoError" class="form-control-feedback" ng-show="tamanhoError">Esse
+                                        é um
+                                        campo
+                                        obrigatório.</small>
+                                </div>
+                                <div class="form-group col-md-6" ng-class="{'has-error':pesoError}">
+                                    <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
+                                        placeholder="Peso" autocomplete="off">
+                                    <small id="pesoHelp" class="form-text text-muted">Nos diga qual o peso do pet, pode
+                                        ser aproximado.</small>
+                                    <small id="pesoError" class="form-control-feedback" ng-show="pesoError">Esse é um
+                                        campo
+                                        obrigatório.</small>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6" ng-class="{'has-error':tamanhoError}">
+                                    <select class="form-control custom-select" id="tamanho" aria-describedby="tamanhoHelp">
+                                        <option value="" disabled selected>Pelo</option>
+                                        <option value="1">Curto</option>
+                                        <option value="2">Médio</option>
+                                        <option value="3">Longo</option>
+                                    </select>
+                                    <small id="tamanhoHelp" class="form-text text-muted">Selecione o tamanho do pelo do
+                                        pet.</small>
+                                    <small id="tamanhoError" class="form-control-feedback" ng-show="tamanhoError">Esse
+                                        é um
+                                        campo
+                                        obrigatório.</small>
+                                </div>
+                                <div class="form-group col-md-3" ng-class="{'has-error':cor1error}">
+                                    <select class="form-control custom-select" id="cor1" aria-describedby="cor1Help">
+                                        <option value="" disabled selected>Cor principal</option>
+                                        <option value="1">Branco</option>
+                                        <option value="2">Preto</option>
+                                        <option value="3">Cinza</option>
+                                    </select>
+                                    <small id="cor1Help" class="form-text text-muted">Nos conte qual a cor do pet.</small>
+                                    <small id="cor1error" class="form-control-feedback" ng-show="cor1error">Esse é um
+                                        campo
+                                        obrigatório.</small>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <select class="form-control custom-select" id="cor1" aria-describedby="cor1Help">
+                                        <option value="" disabled selected>Cor secundária</option>
+                                        <option value="1">Branco</option>
+                                        <option value="2">Preto</option>
+                                        <option value="3">Cinza</option>
+                                    </select>
+                                    <small id="corHelp" class="form-text text-muted">Essa é uma cor secundária, caso
+                                        não
+                                        tenha pode deixar em branco sem problemas.</small>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:20px;">
+                                <div class="col-6" style="text-align: left;">
+                                    <button class="btn btn-primary" ng-click="GoTo(1)">Voltar</button>
+                                </div>
+                                <div class="col-6" style="text-align: right;">
+                                    <button class="btn btn-primary" ng-click="GoTo(3)">Próximo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informações de saúde -->
+
+                    <div ng-show="petInfosSaude">
+                        <div class="row" style="margin-top:20px; margin-bottom:40px;">
+                            <div class="col-md-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" style="width: 50%;" role="progressbar"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Vamos falar um pouco sobre a saúde do pet</p>
+
+                        <div class="form-body" style="margin-top:50px;">
+                            <div class="row" style="text-align: center">
+                                <div class="col-md-4" style="margin-bottom:50px;">
+                                    <label>Está vacinado?</label>
+                                    <br>
+                                    <label class="switch">
+                                        <input type="checkbox" id="vacinado">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="col-md-4" style="margin-bottom:50px;">
+                                    <label>E vermifugado?</label>
+                                    <br>
+                                    <label class="switch">
+                                        <input type="checkbox" id="vermifugado">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="col-md-4" style="margin-bottom:50px;">
+                                    <label>É castrado?</label>
+                                    <br>
+                                    <label class="switch">
+                                        <input type="checkbox" id="castrado">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6" style="text-align: left;">
+                                    <button class="btn btn-primary" ng-click="GoTo(2)">Voltar</button>
+                                </div>
+                                <div class="col-6" style="text-align: right;">
+                                    <button class="btn btn-primary" ng-click="GoTo(4)">Próximo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Observações -->
+
+                    <div ng-show="petObservacoes">
+                        <div class="row" style="margin-top:20px; margin-bottom:40px;">
+                            <div class="col-md-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" style="width: 70%;" role="progressbar"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Que tal nos contar um pouco mais sobre o pet, essas informações são muito importantes pra
+                            gente</p>
+
+                        <div class="form-body" style="margin-top:50px;">
+                            <div class="row" style="text-align: center">
+                                <div class="col-md-12" style="margin-bottom:50px;">
+                                    <div class="input-group">
+                                        <textarea class="form-control" aria-label="With textarea" style="height: 150px; border-radius: 5px;" placeholder="Nos conte sobre a história, comportamento e relacionamento do seu pet ;)"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6" style="text-align: left;">
+                                    <button class="btn btn-primary" ng-click="GoTo(3)">Voltar</button>
+                                </div>
+                                <div class="col-6" style="text-align: right;">
+                                    <button class="btn btn-primary" ng-click="GoTo(5)">Próximo</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fotos -->
+
+                    <div ng-show="petFotos">
+                        <div class="row" style="margin-top:20px; margin-bottom:40px;">
+                            <div class="col-md-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" style="width: 90%;" role="progressbar"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Chegou a hora de nos enviar as fotos</p>
+
+                        <div class="form-body" style="margin-top:50px;">
+                            <div class="row" style="text-align: center">
+
+                            </div>
+                            <div class="row">
+                                <div class="col-6" style="text-align: left;">
+                                    <button class="btn btn-primary" ng-click="GoTo(4)">Voltar</button>
+                                </div>
+                                <div class="col-6" style="text-align: right;">
+                                    <button class="btn btn-primary" ng-click="FinalizarCadastro()">Finalizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Confirmacao -->
+
+                    <div ng-show="confirmacao" style="text-align: center;">
+                        <div class="row" style="margin-top:20px; margin-bottom:40px;">
+                            <div class="col-md-12">
+                                <div class="progress">
+                                    <div class="progress-bar bg-dark" style="width: 100%;" role="progressbar"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <img src="../icons/ok.png" width="200px">
+                        <p>Seu pet foi cadastrado com sucesso ;)</p>
+                        <p>Precisamos de apenas 24h para colocarmos seu anúncio no ar.</p>
+                        <p>Mas não se preocupe, vamos lhe avisar assim que estiver tudo finalizado.</p>
+                        <p>Obrigado por contribuir com a nossa missão de salvar milhões de pets!</p>
+
+
+                        <div class="form-body" style="margin-top:50px;">
+                            <div class="row" style="text-align: center">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End PAge Content -->
+            </div>
+            <!-- End Container fluid  -->
+            <!-- footer -->
+            <footer class="footer"> <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+            </footer>
+            <!-- End footer -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="../js/lib/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="../js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../js/jquery.slimscroll.js"></script>
+    <!--Menu sidebar -->
+    <script src="../js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../js/custom.min.js"></script>
+    <!--stickey kit -->
+    <script src="../js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+    <script src="../js/lib/datamap/d3.min.js"></script>
+    <script src="../js/lib/datamap/topojson.js"></script>
+    <script src="../js/lib/datamap/datamaps.world.min.js"></script>
+    <script src="../js/lib/datamap/datamap-init.js"></script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/contribuirCadastro.js"></script>
+
+</body>
+
+</html>

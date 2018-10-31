@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="unidos podemos salvar a vida de milhões de pets">
+    <meta property="og:url" content="https://www.petsaver.com.br" />
+    <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/logos/favicon_pata.ico">
+    <title>PetSaver</title>
+
+    <link href="../css/lib/chartist/chartist.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../css/lib/owl.theme.default.min.css" rel="stylesheet" />
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/helper.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/myStyle.css" rel="stylesheet">
+    <link href="../css/toggle.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+    <style>
+        #nenhumaDoacao p {
+            color: #500B89 !important;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
+    <!--[if lt IE 9]>
+    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="doacoesRelatorioController">
+    <!-- Preloader - style you can find in spinners.css -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
+
+        <!-- header header  -->
+        <div class="header">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light bg-light">
+                <!-- Logo -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../index.html">
+                        <!-- Logo text -->
+                        <span>
+                            <img src="../images/logos/logo_fundo_branco_fina.gif" height="40px" alt="homepage" class="dark-logo" />
+                        </span>
+                        <!-- Logo icon -->
+                        <b>
+                            <img src="../images/logos/logo_ps_fundo_branco.gif" width="40px" alt="homepage" class="dark-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                    </a>
+                </div>
+                <!-- End Logo -->
+                <div class="navbar-collapse">
+                    <!-- toggle and nav items -->
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <!-- This is  -->
+                        <li class="nav-item">
+                            <a class="nav-link nav-toggler hidden-md-up text-muted" href="javascript:void(0)">
+                                <img src="../icons/menu.png" width="30px">
+                            </a>
+                        </li>
+                        <li class="nav-item m-l-10">
+                            <a class="nav-link sidebartoggler hidden-sm-down text-muted" href="javascript:void(0)">
+                                <img src="../icons/menu.png" width="30px">
+                            </a>
+                        </li>
+                        <!-- End Messages -->
+                    </ul>
+                    <!-- User profile and search -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- Comment -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <!-- <i class="fa fa-bell"></i> -->
+                                <img src="../icons/notification.png" width="30">
+                                <div class="notify">
+                                    <span class="heartbit"></span>
+                                    <span class="point"></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">notificações</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-danger btn-circle m-r-10">
+                                                    <i class="fa fa-link"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is title</h5>
+                                                    <span class="mail-desc">Just see the my new admin!</span>
+                                                    <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-success btn-circle m-r-10">
+                                                    <i class="ti-calendar"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is another title</h5>
+                                                    <span class="mail-desc">Just a reminder that you have event</span>
+                                                    <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-info btn-circle m-r-10">
+                                                    <i class="ti-settings"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is title</h5>
+                                                    <span class="mail-desc">You can customize this template as you want</span>
+                                                    <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-primary btn-circle m-r-10">
+                                                    <i class="ti-user"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is another title</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                    <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="chats.html">
+                                            <strong>ver todas</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- End Comment -->
+                        <!-- Messages -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted" href="#" id="2" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="../icons/chat.png" width="30">
+                                <div class="notify">
+                                    <span class="heartbit"></span>
+                                    <span class="point"></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn" aria-labelledby="2">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">você tem 4 novas mensagens</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/5.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status online pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Michael Qin</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                    <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/2.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status busy pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>John Doe</h5>
+                                                    <span class="mail-desc">I've sung a song! See you at</span>
+                                                    <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/3.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status away pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Mr. John</h5>
+                                                    <span class="mail-desc">I am a singer!</span>
+                                                    <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/4.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status offline pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Michael Qin</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                    <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="javascript:void(0);">
+                                            <strong>ver todas</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- End Messages -->
+                        <!-- Profile -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="../icons/profile.png" width="30px" alt="user">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right animated zoomIn">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <a style="color: #500B89 !important;" href="meus_dados.html">
+                                            <img src="../icons/profile_edit.png" width="30px" alt="meus dados"></i>
+                                            meus
+                                            dados</a>
+                                    </li>
+                                    <li>
+                                        <a style="color: #500B89 !important;" href="#">
+                                            <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
+                                            sair</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- End header header -->
+        <!-- Left Sidebar  -->
+        <div class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav" id="sidebar-intern">
+                    <ul id="sidebarnav" style="margin-top:20px;">
+                        <li>
+                            <a style="color: #500B89 !important;" href="dashboard.html">
+                                <img src="../icons/dashboard.png" width="30px">
+                                <span class="hide-menu">Visão Geral</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../homepage/icons/donation.png" width="30px">
+                                <span class="hide-menu">Doações
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="doacoes_cadastro.html" aria-expanded="false">
+                                        <img src="../icons/new.png" width="30px">
+                                        <span class="show-menu">Cadastrar</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="doacoes_relatorio.html" aria-expanded="false">
+                                        <img src="../icons/list.png" width="30px">
+                                        <span class="show-menu">Visualizar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../icons/house.png" width="30px">
+                                <span class="hide-menu">Adoções
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="adocoes_interesses.html" aria-expanded="false">
+                                        <img src="../icons/heart.png" width="30px">
+                                        <span class="show-menu">Meus interesses</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="adocoes_relatorio.html" aria-expanded="false">
+                                        <img src="../icons/list.png" width="30px">
+                                        <span class="show-menu">Visualizar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../icons/binoculars.png" width="30px">
+                                <span class="hide-menu">Pet perdido
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="petperdido_cadastro.html" aria-expanded="false">
+                                        <img src="../icons/find.png" width="30px">
+                                        <span class="show-menu">Perdi meu pet</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="petencontrado_cadastrar.html" aria-expanded="false">
+                                        <img src="../icons/location.png" width="30px">
+                                        <span class="show-menu">Encontrei um pet</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="position: absolute; bottom: 15px;">
+                            <a href="contribuir.html" aria-expanded="false">
+                                <img src="../icons/donate_money.png" width="30px">
+                                <span class="hide-menu">Quero contribuir</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </div>
+        <!-- End Left Sidebar  -->
+        <!-- Page wrapper  -->
+        <div class="page-wrapper" style="background-color: white;">
+            <!-- Bread crumb -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">Minhas doações</h3>
+                </div>
+            </div>
+            <!-- End Bread crumb -->
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div>
+                    <div ng-show="nenhumaDoacao">
+                        <div class="row">
+                            <div class="col-md-12" id="nenhumaDoacao">
+                                <p>Olá Saver, por enquanto você não tem nenhuma doação cadastrada.</p>
+                                <p>Mas que tal começarmos agora?</p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-md-12" style="text-align: center;">
+                                <button class="btn btn-primary" onclick="document.location.href='doacoes_cadastro.html'">Quero
+                                    doar um pet!</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-hide="nenhumaDoacao">
+                        <div class="row">
+                            <div>
+                                <p>Saver, aqui estão todos os pets que você cadastrou</p>
+                                <p>Clique no nome para visualizar</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h2 class="color-primary">Filtros
+                                <img ng-show="closedFilter" src="../icons/minus.png" width="35px" style="cursor: pointer;"
+                                    data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                    aria-controls="formFiltro" ng-click="closedFilter = false;">
+                                <img ng-show="!closedFilter" src="../icons/plus.png" width="35px" style="cursor: pointer;"
+                                    data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                    aria-controls="formFiltro" ng-click="closedFilter = true;">
+                            </h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 collapse" id="formFiltro">
+                                <form>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class="color-primary">Nome</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="color-primary">Tipo</label>
+                                            <select class="form-control custom-select">
+                                                <option>Todos</option>
+                                                <option>Cachorro</option>
+                                                <option>Gato</option>
+                                                <option>Ave</option>
+                                                <option>Peixe</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Cadastrado de</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Cadastrado até</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Status</label>
+                                            <select class="form-control custom-select">
+                                                <option>Todos</option>
+                                                <option>Ativo</option>
+                                                <option>Adotado</option>
+                                                <option>Em análise</option>
+                                                <option>Finalizado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="columnFitCenter">#</th>
+                                        <th>Pet</th>
+                                        <th>Tipo</th>
+                                        <th>Cadastro</th>
+                                        <th>Status
+                                            <!-- <div class="dropdown">
+                                                <button id="dropdownButton" class="btn btn-primary dropdown-toggle"
+                                                    type="button" data-toggle="dropdown" aria-expanded="false">Status
+                                                    <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#">Adotado</a></li>
+                                                    <li><a href="#">Ativo</a></li>
+                                                    <li><a href="#">Em análise</a></li>
+                                                    <li><a href="#">Finalizado</a></li>
+                                                </ul>
+                                            </div> -->
+                                        </th>
+                                        <th class="columnFitCenter">Visualizações</th>
+                                        <th class="columnFitCenter">Interessados</th>
+                                        <th class="columnFitCenter">Chats</th>
+                                        <th class="columnFitCenter">Editar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">1</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
+                                        <td>Cachorro</span></td>
+                                        <td>15/12/2018</td>
+                                        <td><span class="badge badge-primary">Adotado</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">120</td>
+                                        <td class="columnFitCenter columnBoldPrimary">10</td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/edit.png"
+                                                width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">2</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
+                                        <td>Gato</span></td>
+                                        <td>02/01/2019</td>
+                                        <td><span class="badge badge-success">Ativo</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">30</td>
+                                        <td class="columnFitCenter columnBoldPrimary">5</td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/edit.png" width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">3</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
+                                        <td>Ave</span></td>
+                                        <td>28/01/2019</td>
+                                        <td><span class="badge badge-danger">Em análise</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">2</td>
+                                        <td class="columnFitCenter columnBoldPrimary">0</td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/edit.png" width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">4</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
+                                        <td>Cachorro</span></td>
+                                        <td>15/12/2018</td>
+                                        <td><span class="badge badge-primary">Adotado</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">120</td>
+                                        <td class="columnFitCenter columnBoldPrimary">10</td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/edit.png"
+                                                width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">5</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
+                                        <td>Gato</span></td>
+                                        <td>02/01/2019</td>
+                                        <td><span class="badge badge-success">Ativo</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">30</td>
+                                        <td class="columnFitCenter columnBoldPrimary">5</td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link" src="../icons/edit.png" width="30px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="columnFitCenter" scope="row">6</th>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
+                                        <td>Ave</span></td>
+                                        <td>28/01/2019</td>
+                                        <td><span class="badge badge-info">Finalizado</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary">2</td>
+                                        <td class="columnFitCenter columnBoldPrimary">0</td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
+                                                width="30px"></td>
+                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/edit.png"
+                                                width="30px"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" style="margin-top:20px;">
+                            <div class="col-6" style="text-align: left;">
+                                <button class="btn btn-primary">Anterior</button>
+                            </div>
+                            <div class="col-6" style="text-align: right;">
+                                <button class="btn btn-primary">Próxima</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End PAge Content -->
+    </div>
+    <!-- End Container fluid  -->
+    <!-- footer -->
+    <footer class="footer"> <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+    </footer>
+    <!-- End footer -->
+    </div>
+    <!-- End Page wrapper  -->
+    </div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="../js/lib/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="../js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../js/jquery.slimscroll.js"></script>
+    <!--Menu sidebar -->
+    <script src="../js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../js/custom.min.js"></script>
+    <!--stickey kit -->
+    <script src="../js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+    <script src="../js/lib/datamap/d3.min.js"></script>
+    <script src="../js/lib/datamap/topojson.js"></script>
+    <script src="../js/lib/datamap/datamaps.world.min.js"></script>
+    <script src="../js/lib/datamap/datamap-init.js"></script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/doacoesRelatorio.js"></script>
+
+</body>
+
+</html>

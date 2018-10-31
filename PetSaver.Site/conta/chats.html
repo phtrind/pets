@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="unidos podemos salvar a vida de milhões de pets">
+    <meta property="og:url" content="https://www.petsaver.com.br" />
+    <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/logos/favicon_pata.ico">
+    <title>PetSaver</title>
+
+    <link href="../css/lib/chartist/chartist.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../css/lib/owl.theme.default.min.css" rel="stylesheet" />
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/helper.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/myStyle.css" rel="stylesheet">
+    <link href="../css/toggle.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+    <!-- Chats -->
+    <link rel='stylesheet' href='../css/chats.css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
+    <!--[if lt IE 9]>
+    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="chatsController">
+    <!-- Preloader - style you can find in spinners.css -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
+
+        <!-- header header  -->
+        <div class="header">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light bg-light">
+                <!-- Logo -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="../index.html">
+                        <!-- Logo text -->
+                        <span>
+                            <img src="../images/logos/logo_fundo_branco_fina.gif" height="40px" alt="homepage" class="dark-logo" />
+                        </span>
+                        <!-- Logo icon -->
+                        <b>
+                            <img src="../images/logos/logo_ps_fundo_branco.gif" width="40px" alt="homepage" class="dark-logo" />
+                        </b>
+                        <!--End Logo icon -->
+                    </a>
+                </div>
+                <!-- End Logo -->
+                <div class="navbar-collapse">
+                    <!-- toggle and nav items -->
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <!-- This is  -->
+                        <li class="nav-item">
+                            <a id="teste" class="nav-link nav-toggler hidden-md-up text-muted" href="javascript:void(0)">
+                                <img src="../icons/menu.png" width="30px">
+                            </a>
+                        </li>
+                        <li class="nav-item m-l-10">
+                            <a class="nav-link sidebartoggler hidden-sm-down text-muted" href="javascript:void(0)">
+                                <img src="../icons/menu.png" width="30px">
+                            </a>
+                        </li>
+                        <!-- End Messages -->
+                    </ul>
+                    <!-- User profile and search -->
+                    <ul class="navbar-nav my-lg-0">
+                        <!-- Comment -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <!-- <i class="fa fa-bell"></i> -->
+                                <img src="../icons/notification.png" width="30">
+                                <div class="notify">
+                                    <span class="heartbit"></span>
+                                    <span class="point"></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">notificações</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-danger btn-circle m-r-10">
+                                                    <i class="fa fa-link"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is title</h5>
+                                                    <span class="mail-desc">Just see the my new admin!</span>
+                                                    <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-success btn-circle m-r-10">
+                                                    <i class="ti-calendar"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is another title</h5>
+                                                    <span class="mail-desc">Just a reminder that you have event</span>
+                                                    <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-info btn-circle m-r-10">
+                                                    <i class="ti-settings"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is title</h5>
+                                                    <span class="mail-desc">You can customize this template as you want</span>
+                                                    <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-primary btn-circle m-r-10">
+                                                    <i class="ti-user"></i>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is another title</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                    <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="javascript:void(0);">
+                                            <strong>ver todas</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- End Comment -->
+                        <!-- Messages -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted" href="#" id="2" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="../icons/chat.png" width="30">
+                                <div class="notify">
+                                    <span class="heartbit"></span>
+                                    <span class="point"></span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn" aria-labelledby="2">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">você tem 4 novas mensagens</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/5.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status online pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Michael Qin</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                    <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/2.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status busy pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>John Doe</h5>
+                                                    <span class="mail-desc">I've sung a song! See you at</span>
+                                                    <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/3.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status away pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Mr. John</h5>
+                                                    <span class="mail-desc">I am a singer!</span>
+                                                    <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img">
+                                                    <img src="../images/users/4.jpg" alt="user" class="img-circle">
+                                                    <span class="profile-status offline pull-right"></span>
+                                                </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Michael Qin</h5>
+                                                    <span class="mail-desc">Just see the my admin!</span>
+                                                    <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="chats.html">
+                                            <strong>ver todas</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- End Messages -->
+                        <!-- Profile -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <img src="../icons/profile.png" width="30px" alt="user">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right animated zoomIn">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <a style="color: #500B89 !important;" href="meus_dados.html">
+                                            <img src="../icons/profile_edit.png" width="30px" alt="meus dados"></i>
+                                            meus
+                                            dados</a>
+                                    </li>
+                                    <li>
+                                        <a style="color: #500B89 !important;" href="#">
+                                            <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
+                                            sair</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- End header header -->
+        <!-- Left Sidebar  -->
+        <div class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav" id="sidebar-intern">
+                    <ul id="sidebarnav" style="margin-top:20px;">
+                        <li>
+                            <a style="color: #500B89 !important;" href="dashboard.html">
+                                <img src="../icons/dashboard.png" width="30px">
+                                <span class="hide-menu">Visão Geral</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../homepage/icons/donation.png" width="30px">
+                                <span class="hide-menu">Doações
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="doacoes_cadastro.html" aria-expanded="false">
+                                        <img src="../icons/new.png" width="30px">
+                                        <span class="show-menu">Cadastrar</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="doacoes_relatorio.html" aria-expanded="false">
+                                        <img src="../icons/list.png" width="30px">
+                                        <span class="show-menu">Visualizar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../icons/house.png" width="30px">
+                                <span class="hide-menu">Adoções
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="adocoes_interesses.html" aria-expanded="false">
+                                        <img src="../icons/heart.png" width="30px">
+                                        <span class="show-menu">Meus interesses</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="adocoes_relatorio.html" aria-expanded="false">
+                                        <img src="../icons/list.png" width="30px">
+                                        <span class="show-menu">Visualizar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../icons/binoculars.png" width="30px">
+                                <span class="hide-menu">Pet perdido
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="petperdido_cadastro.html" aria-expanded="false">
+                                        <img src="../icons/find.png" width="30px">
+                                        <span class="show-menu">Perdi meu pet</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="petencontrado_cadastrar.html" aria-expanded="false">
+                                        <img src="../icons/location.png" width="30px">
+                                        <span class="show-menu">Encontrei um pet</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li style="position: absolute; bottom: 15px;">
+                            <a href="contribuir.html" aria-expanded="false">
+                                <img src="../icons/donate_money.png" width="30px">
+                                <span class="hide-menu">Quero contribuir</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </div>
+        <!-- End Left Sidebar  -->
+        <!-- Page wrapper  -->
+        <div class="page-wrapper" style="padding-bottom: 0 !important;">
+            <!-- End Bread crumb -->
+            <!-- Container fluid  -->
+            <div class="container-fluid" style="padding: 0 !important; height: 100% !important;">
+                <!-- Start Page Content -->
+                <div>
+                    <!-- Chats -->
+                    <div id="frame">
+                        <div id="sidepanel">
+                            <div id="contacts">
+                                <ul>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Louis Litt</p>
+                                                <p class="preview">You just got LITT up, Mike.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact active">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Harvey Specter</p>
+                                                <p class="preview">Wrong. You take the gun, or you pull out a
+                                                    bigger one. Or, you call their bluff. Or, you do any one of a
+                                                    hundred and forty six other things.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Rachel Zane</p>
+                                                <p class="preview">I was thinking that we could have chicken
+                                                    tonight, sounds good?</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Donna Paulsen</p>
+                                                <p class="preview">Mike, I know everything! I'm Donna..</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" class="imgContact" class="imgContact" class="imgContact"
+                                                class="imgContact" class="imgContact" class="imgContact" class="imgContact"
+                                                src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Jessica Pearson</p>
+                                                <p class="preview">Have you finished the draft on the Hinsenburg
+                                                    deal?</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Harold Gunderson</p>
+                                                <p class="preview">Thanks Mike! :)</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Daniel Hardman</p>
+                                                <p class="preview">We'll meet again, Mike. Tell Jessica I said
+                                                    'Hi'.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Katrina Bennett</p>
+                                                <p class="preview">I've sent you the files for the Garrett trial.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Charles Forstman</p>
+                                                <p class="preview">Mike, this isn't over.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Jonathan Sidwell</p>
+                                                <p class="preview"><span>You:</span> That's bullshit. This deal is
+                                                    solid.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Katrina Bennett</p>
+                                                <p class="preview">I've sent you the files for the Garrett trial.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Charles Forstman</p>
+                                                <p class="preview">Mike, this isn't over.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Jonathan Sidwell</p>
+                                                <p class="preview"><span>You:</span> That's bullshit. This deal is
+                                                    solid.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Katrina Bennett</p>
+                                                <p class="preview">I've sent you the files for the Garrett trial.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Charles Forstman</p>
+                                                <p class="preview">Mike, this isn't over.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="contact">
+                                        <div class="wrap">
+                                            <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                                alt="" />
+                                            <div class="meta">
+                                                <p class="name">Jonathan Sidwell</p>
+                                                <p class="preview"><span>You:</span> That's bullshit. This deal is
+                                                    solid.</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="content" style="height: 100% !important;">
+                            <div class="contact-profile">
+                                <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
+                                    alt="" />
+                                <span class="color-primary" style="font-size: 25px;">Thor</span>
+                                <span style="font-size: 17px; font-style: italic; float: right; padding-right: 15px">
+                                    conversando com Bruno Lima</span>
+                            </div>
+                            <div class="messages">
+                                <ul>
+                                    <li class="sent">
+                                        <p>How the hell am I supposed to get a jury to believe you when I am not
+                                            even sure that I do?!
+                                            <br><br>
+                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
+                                        </p>
+                                    </li>
+                                    <li class="replies">
+                                        <p>When you're backed against the wall, break the god damn thing down.
+                                            <br><br>
+                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
+                                        </p>
+                                    </li>
+                                    <li class="replies">
+                                        <p>Excuses don't win championships.
+                                            <br><br>
+                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
+                                        </p>
+                                    </li>
+                                    <li class="sent">
+                                        <p>Oh yeah, did Michael Jordan tell you that?
+                                            <br><br>
+                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
+                                        </p>
+                                    </li>
+                                    <li class="replies">
+                                        <p>No, I told him that.
+                                            <br><br>
+                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
+                                        </p>
+                                    </li>
+                                    <li class="replies">
+                                        <p>What are your choices when someone puts a gun to your head?
+                                            <br><br>
+                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
+                                        </p>
+                                    </li>
+                                    <li class="sent">
+                                        <p>What are you talking about? You do what they say or they shoot you.
+                                            <br><br>
+                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
+                                        </p>
+                                    </li>
+                                    <li class="replies">
+                                        <p>Wrong. You take the gun, or you pull out a bigger one. Or, you call
+                                            their bluff. Or, you do any one of a hundred and forty six other
+                                            things.
+                                            <br><br>
+                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="message-input">
+                                <div class="wrap">
+                                    <textarea type="text" placeholder="Digite aqui..."></textarea>
+                                    <button class="btn btn-primary submit" style="height: 50px !important; border-radius: 0px !important;"><i
+                                            class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End PAge Content -->
+            </div>
+            <!-- End Container fluid  -->
+        </div>
+        <!-- End Page wrapper  -->
+    </div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="../js/lib/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="../js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../js/jquery.slimscroll.js"></script>
+    <!--Menu sidebar -->
+    <script src="../js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../js/custom.min.js"></script>
+    <!--stickey kit -->
+    <script src="../js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+    <script src="../js/lib/datamap/d3.min.js"></script>
+    <script src="../js/lib/datamap/topojson.js"></script>
+    <script src="../js/lib/datamap/datamaps.world.min.js"></script>
+    <script src="../js/lib/datamap/datamap-init.js"></script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/chats.js"></script>
+
+    <!-- #################################### Chats ################################# -->
+
+    <script src="../js/chats.js"></script>
+
+</body>
+
+</html>

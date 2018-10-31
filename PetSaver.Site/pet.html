@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="unidos podemos salvar a vida de milhões de pets">
+    <meta property="og:url" content="https://www.petsaver.com.br" />
+    <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
+    <meta name="author" content="">
+
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon_pata.ico">
+
+    <title>PetSaver</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/helper.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/myStyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+    <style>
+        #buttonGostei {
+            width: 50px;
+            height: 50px;
+            position:fixed; 
+            z-index: 999; 
+            right: 35px;
+            bottom: 35px;
+            border-radius: 100%;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
+    <!--[if lt IE 9]>
+    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="petController" ng-init="verificarSession()">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="home.html"><img src="images/logos/logo_fundo_roxo_fina.gif"
+                    height="40px"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#buscar">quero adotar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#buscar">quero doar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#buscar">perdi meu pet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#buscar">encontrei um pet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#buscar" ng-show="isLogged">minha conta</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="submit" class="btn btn-secondary" onclick="document.location.href='login.html'"
+                            ng-hide="isLogged">entrar</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Preloader - style you can find in spinners.css -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
+
+    <!-- Main wrapper  -->
+    <div id="main-wrapper" style="margin-top: 85px">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="col-md-12 bigImage">
+                            <img class="imgPetOpened" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+                        </div>
+                        <div class="col-md-12 smallImages">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-4">
+                                    <img class="imgPetClosed" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <img class="imgPetClosed" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <img class="imgPetClosed" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 20px; padding: 0px; text-align: center;">
+                            <span>Bruno Lima</span> <br>
+                            <img src="icons/star.png" width="20px">
+                            <img src="icons/star.png" width="20px">
+                            <img src="icons/star.png" width="20px">
+                            <img src="icons/star.png" width="20px">
+                            <img src="icons/star.png" width="20px">
+                        </div>
+                        <div class="col-md-12" style="margin-top: 20px; padding: 0px;">
+                            <button class="btn btn-primary" style="width: 100%; height: 50px;" data-toggle="modal"
+                                data-target="#modalQueroAdotar">quero adotar</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="modalQueroAdotar" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            Ficamos muito felizes em saber que você quer oferecer um lar ao nosso amigo
+                                            Thor!
+                                            <br><br>
+                                            Ao confirmar seu interesse, será aberto um chat para que você combine todos
+                                            os detalhes com o doador.
+                                            <br><br>
+                                            Esperamos que dê tudo certo, e estamos aqui para o que precisar ;)
+                                            <br><br>
+                                            #SouPetSaver
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
+                                            <button type="button" class="btn btn-primary">confirmar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12" style="margin-top: 20px; padding: 0px;">
+                            <button class="btn btn-secondary" style="width: 100%; height: 50px;" data-toggle="modal"
+                                data-target="#modalFazerPergunta">fazer uma pergunta</button>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="modalFazerPergunta" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        Escreva sua pergunta abaixo.
+                                        <br><br>
+                                        Ela pode ajudar outros Savers.
+                                        <br><br>
+                                        <div class="input-group">
+                                            <textarea class="form-control" aria-label="With textarea" style="height: 150px; border-radius: 5px;"></textarea>
+                                        </div>
+                                        <br>
+                                        #SouPetSaver
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
+                                        <button type="button" class="btn btn-primary">perguntar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-12 petInformacoesPrincipais">
+                            <h1 style="font-size: 50px; color: #500B89">Thor</h1>
+                            <p>vira lata</p>
+                            <div class="row">
+                                <div class="col-md-4 col-xs-12">
+                                    <span><img src="icons/location.png" width="30px">belo horizonte</span>
+                                </div>
+                                <div class="col-md-4 col-xs-12">
+                                    <span><img src="icons/gender.png" width="30px">macho</span>
+                                </div>
+                                <div class="col-md-4 col-xs-12">
+                                    <span><img src="icons/size.png" width="30px">filhote</span>
+                                </div>
+                            </div>
+                            <!-- <hr> -->
+                        </div>
+                        <div class="col-md-12 petInformacoesSecundarias">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <span style="font-weight: bold">porte: </span><span>médio</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-weight: bold">peso: </span><span>20kg</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-weight: bold">cor: </span><span>preto / branco</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <span style="font-weight: bold">pelo: </span><span>curto</span>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="col-md-12 petInformacoesSecundarias">
+                            <div class="row">
+                                <div class="col-md-12" style="margin-bottom: 20px">
+                                    <h3 style="color: #500B89">saúde</h3>
+                                </div>
+                                <div class="col-md-4">
+                                    <span style="font-weight: bold">vacinado: </span><span>sim</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span style="font-weight: bold">vermifugado: </span><span>não sabe</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <span style="font-weight: bold">castrado: </span><span>não</span>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="col-md-12 petInformacoesSecundarias">
+                            <div class="row">
+                                <div class="col-md-12" style="margin-bottom: 20px">
+                                    <h3 style="color: #500B89">sobre</h3>
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="sobreOPet">Lorem Ipsum is simply dummy text of the printing and
+                                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text
+                                        ever since the 1500s, when an unknown printer took a galley of type and
+                                        scrambled it to make a type specimen book. It has survived not only five
+                                        centuries, but also the leap into electronic typesetting, remaining essentially
+                                        unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                                        containing Lorem Ipsum passages, and more recently with desktop publishing
+                                        software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="col-md-12 petInformacoesSecundarias">
+                            <div class="row">
+                                <div class="col-md-12" style="margin-bottom: 20px">
+                                    <h3 style="color: #500B89">ajude a encontrar um lar para o Thor</h3>
+                                </div>
+                            </div>
+                            <div class="row col-md-8 offset-md-2" style="text-align: center;">
+                                <div class="col-3">
+                                    <img class="imgIconShare" src="icons/copy.png">
+                                </div>
+                                <div class="col-3">
+                                    <img class="imgIconShare" src="icons/whatsapp.png">
+                                </div>
+                                <div class="col-3">
+                                    <img class="imgIconShare" src="icons/facebook.png">
+                                </div>
+                                <div class="col-3">
+                                    <img class="imgIconShare" src="icons/instagram.png">
+                                </div>
+                            </div>
+                        </div>
+                        <button id="buttonGostei" class="btn btn-secondary"><img src="icons/heart.png" width="30px"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <footer ng-include="'footer.html'" class="footer"></div> -->
+    </div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="js/lib/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/controllers/pet.js"></script>
+
+</body>
+
+</html>
