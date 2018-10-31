@@ -3,11 +3,7 @@ var app = angular.module('pets', [])
 app.controller('daocaoCadastroController', function ($scope, $http, $compile, $sce) {
 
     $scope.petSelection = true;
-    // $scope.petInfos1 = true;
-    // $scope.petInfosSaude = true;
-    // $scope.petObservacoes = true;
-    // $scope.petFotos = true;
-    // $scope.confirmacao = true;
+    $scope.quantidadePets = 1;
 
     $scope.SelectPet = function (pet) {
         if (pet == 1) {
@@ -43,6 +39,7 @@ app.controller('daocaoCadastroController', function ($scope, $http, $compile, $s
     $scope.GoTo = function (number) {
         if (number == 1) {
             $scope.petSelection = true;
+            $scope.quantidade = false;
             $scope.petInfos1 = false;
             $scope.petInfosSaude = false;
             $scope.petObservacoes = false;
@@ -50,27 +47,39 @@ app.controller('daocaoCadastroController', function ($scope, $http, $compile, $s
         }
         else if (number == 2) {
             $scope.petSelection = false;
-            $scope.petInfos1 = true;
+            $scope.quantidade = true;
+            $scope.petInfos1 = false;
             $scope.petInfosSaude = false;
             $scope.petObservacoes = false;
             $scope.petFotos = false;
         }
         else if (number == 3) {
             $scope.petSelection = false;
-            $scope.petInfos1 = false;
-            $scope.petInfosSaude = true;
+            $scope.quantidade = false;
+            $scope.petInfos1 = true;
+            $scope.petInfosSaude = false;
             $scope.petObservacoes = false;
             $scope.petFotos = false;
         }
         else if (number == 4) {
             $scope.petSelection = false;
+            $scope.quantidade = false;
+            $scope.petInfos1 = false;
+            $scope.petInfosSaude = true;
+            $scope.petObservacoes = false;
+            $scope.petFotos = false;
+        }
+        else if (number == 5) {
+            $scope.petSelection = false;
+            $scope.quantidade = false;
             $scope.petInfos1 = false;
             $scope.petInfosSaude = false;
             $scope.petObservacoes = true;
             $scope.petFotos = false;
         }
-        else if (number == 5) {
+        else if (number == 6) {
             $scope.petSelection = false;
+            $scope.quantidade = false;
             $scope.petInfos1 = false;
             $scope.petInfosSaude = false;
             $scope.petObservacoes = false;
@@ -78,6 +87,15 @@ app.controller('daocaoCadastroController', function ($scope, $http, $compile, $s
         }
 
         window.scrollTo(0, 0);
+    }
+
+    $scope.alterarQuantidadePets = function (number) {
+
+        var resultado = $scope.quantidadePets + number;
+
+        if (resultado > 0 && resultado < 9){
+            $scope.quantidadePets = $scope.quantidadePets + number;
+        }
     }
 
     $scope.FinalizarCadastro = function () {
