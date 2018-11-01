@@ -43,11 +43,15 @@
   <ItemGroup>
     <Compile Include="Anuncios\Anuncio.cs" />
     <Compile Include="Anuncios\AnuncioVisita.cs" />
+    <Compile Include="Anuncios\Avaliacao.cs" />
     <Compile Include="Anuncios\Duvida.cs" />
-    <Compile Include="Base\Acesso.cs" />
-    <Compile Include="Base\Cidade.cs" />
-    <Compile Include="Base\Estado.cs" />
-    <Compile Include="Base\Localizacao.cs" />
+    <Compile Include="Anuncios\Interesse.cs" />
+    <Compile Include="Anuncios\Inbox.cs" />
+    <Compile Include="Localizacao\Cidade.cs" />
+    <Compile Include="Usuarios\Contribuicoes.cs" />
+    <Compile Include="Localizacao\Endereco.cs" />
+    <Compile Include="Localizacao\Estado.cs" />
+    <Compile Include="Localizacao\Localizacao.cs" />
     <Compile Include="Base\HistoricoStatus.cs" />
     <Compile Include="Base\Status.cs" />
     <Compile Include="Base\Tipo.cs" />
@@ -59,9 +63,14 @@
     <Compile Include="Pets\Raca.cs" />
     <Compile Include="Pets\Sexo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuarios\Funcionario.cs" />
+    <Compile Include="Usuarios\HistoricoLogin.cs" />
+    <Compile Include="Usuarios\HistoricoNotificacao.cs" />
+    <Compile Include="Usuarios\Login.cs" />
+    <Compile Include="Usuarios\Notificacao.cs" />
+    <Compile Include="Usuarios\Pessoa.cs" />
+    <Compile Include="Usuarios\Usuario.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Usuarios\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

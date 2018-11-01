@@ -1,4 +1,4 @@
-﻿namespace Entities
+﻿namespace Entities.Localizacao
 {
     public class Localizacao : BaseEntity
     {
