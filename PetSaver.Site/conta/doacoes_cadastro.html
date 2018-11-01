@@ -384,28 +384,46 @@
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
                             <div class="col-md-3" ng-class="{'boxSelecaoPetSelecionado': dogSelected, 'boxSelecaoPet': !dogSelected}"
-                                ng-click="SelectPet(1);">
-                                <img src="../icons/dog.png">
-                                <h3>Cachorro</h3>
-                            </div>
-                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': catSelected, 'boxSelecaoPet': !catSelected}"
-                                ng-click="SelectPet(2);">
-                                <img src="../icons/cat.png">
-                                <h3>Gato</h3>
-                            </div>
-                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': fishSelected, 'boxSelecaoPet': !fishSelected}"
-                                ng-click="SelectPet(3);">
-                                <img src="../icons/fish.png">
-                                <h3>Peixe</h3>
-                            </div>
-                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': birdSelected, 'boxSelecaoPet': !birdSelected}"
-                                ng-click="SelectPet(4);">
-                                <img src="../icons/bird.png">
-                                <h3>Ave</h3>
-                            </div>
+                            ng-click="SelectPet(1);">
+                            <img src="../icons/dog.png">
+                            <h3>Cachorro</h3>
+                        </div>
+                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': catSelected, 'boxSelecaoPet': !catSelected}"
+                            ng-click="SelectPet(2);">
+                            <img src="../icons/cat.png">
+                            <h3>Gato</h3>
+                        </div>
+                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': birdSelected, 'boxSelecaoPet': !birdSelected}"
+                            ng-click="SelectPet(3);">
+                            <img src="../icons/bird.png">
+                            <h3>Ave</h3>
+                        </div>
+                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': othersSelected, 'boxSelecaoPet': !othersSelected}"
+                            ng-click="SelectPet(4);">
+                            <img src="../icons/others.png">
+                            <h3>Outros</h3>
+                        </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: right;">
+                                <select class="btn btn-primary" ng-show="comboOutrosMostrar" ng-model="outrosSelecionado" ng-change="ValidarComboOutros()">
+                                    <option value="">Selecione</option>
+                                    <option value="tartaruga">Tartaruga</option>
+                                    <option value="cagado">Cagado</option>
+                                    <option value="jabuti">Jabuti</option>
+                                    <option value="tartaruga">Tartaruga</option>
+                                    <option value="cagado">Cagado</option>
+                                    <option value="jabuti">Jabuti</option>
+                                    <option value="tartaruga">Tartaruga</option>
+                                    <option value="cagado">Cagado</option>
+                                    <option value="jabuti">Jabuti</option>
+                                    <option value="tartaruga">Tartaruga</option>
+                                    <option value="cagado">Cagado</option>
+                                    <option value="jabuti">Jabuti</option>
+                                    <option value="tartaruga">Tartaruga</option>
+                                    <option value="cagado">Cagado</option>
+                                    <option value="jabuti">Jabuti</option>
+                                </select>
                                 <button class="btn btn-primary" ng-disabled="!petSelected" ng-click="GoTo(2)">Próximo</button>
                             </div>
                         </div>
@@ -607,6 +625,11 @@
                                         <input type="checkbox" id="vacinado">
                                         <span class="slider round"></span>
                                     </label>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Não se aplica
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-md-4" style="margin-bottom:50px;">
                                     <label>E vermifugado?</label>
@@ -615,6 +638,11 @@
                                         <input type="checkbox" id="vermifugado">
                                         <span class="slider round"></span>
                                     </label>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Não se aplica
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-md-4" style="margin-bottom:50px;">
                                     <label>É castrado?</label>
@@ -623,6 +651,11 @@
                                         <input type="checkbox" id="castrado">
                                         <span class="slider round"></span>
                                     </label>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Não se aplica
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

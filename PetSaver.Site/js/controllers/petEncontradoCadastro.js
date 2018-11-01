@@ -13,29 +13,42 @@ app.controller('petEncontradoCadastroController', function ($scope, $http, $comp
         if (pet == 1) {
             $scope.dogSelected = true;
             $scope.catSelected = false;
-            $scope.fishSelected = false;
             $scope.birdSelected = false;
+            $scope.othersSelected = false;
             $scope.petSelected = true;
+            $scope.comboOutrosMostrar = false;
         }
         else if (pet == 2) {
             $scope.dogSelected = false;
             $scope.catSelected = true;
-            $scope.fishSelected = false;
             $scope.birdSelected = false;
+            $scope.othersSelected = false;
             $scope.petSelected = true;
+            $scope.comboOutrosMostrar = false;
         }
         else if (pet == 3) {
             $scope.dogSelected = false;
             $scope.catSelected = false;
-            $scope.fishSelected = true;
-            $scope.birdSelected = false;
+            $scope.birdSelected = true;
+            $scope.othersSelected = false;
             $scope.petSelected = true;
+            $scope.comboOutrosMostrar = false;
         }
         else if (pet == 4) {
+            $scope.ValidarComboOutros();
+            $scope.comboOutrosMostrar = true;
+            $scope.othersSelected = true;
             $scope.dogSelected = false;
             $scope.catSelected = false;
-            $scope.fishSelected = false;
-            $scope.birdSelected = true;
+            $scope.birdSelected = false;
+        }
+    }
+
+    $scope.ValidarComboOutros = function () {
+        if ($scope.outrosSelecionado == "" || $scope.outrosSelecionado == undefined) {
+            $scope.petSelected = false;
+            }
+            else {
             $scope.petSelected = true;
         }
     }
