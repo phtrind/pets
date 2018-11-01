@@ -8,3 +8,4 @@
 *.ide
 *.ide-shm
 *.ide-wal
+/Entities/obj/Debug

@@ -42,7 +42,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="daocaoCadastroController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="daocaoCadastroController as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -368,7 +368,7 @@
                 <!-- Start Page Content -->
                 <div>
                     <!-- Escolha do tipo de pet -->
-                    <div ng-show="petSelection">
+                    <div ng-show="ctrl.petSelection">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -383,30 +383,30 @@
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
-                            <div class="col-md-3" ng-class="{'boxSelecaoPetSelecionado': dogSelected, 'boxSelecaoPet': !dogSelected}"
-                            ng-click="SelectPet(1);">
+                            <div class="col-md-3" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
+                            ng-click="ctrl.SelectPet(1);">
                             <img src="../icons/dog.png">
                             <h3>Cachorro</h3>
                         </div>
-                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': catSelected, 'boxSelecaoPet': !catSelected}"
-                            ng-click="SelectPet(2);">
+                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
+                            ng-click="ctrl.SelectPet(2);">
                             <img src="../icons/cat.png">
                             <h3>Gato</h3>
                         </div>
-                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': birdSelected, 'boxSelecaoPet': !birdSelected}"
-                            ng-click="SelectPet(3);">
+                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
+                            ng-click="ctrl.SelectPet(3);">
                             <img src="../icons/bird.png">
                             <h3>Ave</h3>
                         </div>
-                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': othersSelected, 'boxSelecaoPet': !othersSelected}"
-                            ng-click="SelectPet(4);">
+                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
+                            ng-click="ctrl.SelectPet(4);">
                             <img src="../icons/others.png">
                             <h3>Outros</h3>
                         </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: right;">
-                                <select class="btn btn-primary" ng-show="comboOutrosMostrar" ng-model="outrosSelecionado" ng-change="ValidarComboOutros()">
+                                <select class="btn btn-primary" ng-show="ctrl.comboOutrosMostrar" ng-model="ctrl.outrosSelecionado" ng-change="ctrl.ValidarComboOutros()">
                                     <option value="">Selecione</option>
                                     <option value="tartaruga">Tartaruga</option>
                                     <option value="cagado">Cagado</option>
@@ -424,13 +424,13 @@
                                     <option value="cagado">Cagado</option>
                                     <option value="jabuti">Jabuti</option>
                                 </select>
-                                <button class="btn btn-primary" ng-disabled="!petSelected" ng-click="GoTo(2)">Próximo</button>
+                                <button class="btn btn-primary" ng-disabled="!ctrl.petSelected" ng-click="ctrl.GoTo(2)">Próximo</button>
                             </div>
                         </div>
                     </div>
 
                     <!-- Quantidade -->
-                    <div ng-show="quantidade">
+                    <div ng-show="ctrl.quantidade">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -446,29 +446,29 @@
                         <div class="row" style="text-align: center; margin-top: 20px;">
                             <div class="col-md-12" style="vertical-align: middle; align-items: center; display: flex;">
                                 <div class="col-md-1 offset-md-4">
-                                    <img ng-click="alterarQuantidadePets(-1)" class="link" src="../icons/minus.png" width="60px">
+                                    <img ng-click="ctrl.alterarQuantidadePets(-1)" class="link" src="../icons/minus.png" width="60px">
                                 </div>
                                 <div class="col-md-2">
-                                    <span class="color-primary" style="font-size:150px">{{quantidadePets}}</span>
+                                    <span class="color-primary" style="font-size:150px">{{ctrl.quantidadePets}}</span>
                                 </div>
                                 <div class="col-md-1">
-                                    <img ng-click="alterarQuantidadePets(1)" class="link" src="../icons/plus.png" width="60px">
+                                    <img ng-click="ctrl.alterarQuantidadePets(1)" class="link" src="../icons/plus.png" width="60px">
                                 </div>
                             </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="GoTo(1)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(1)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="GoTo(3)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(3)">Próximo</button>
                                 </div>
                             </div>
                     </div>
 
                     <!-- Informações básicas -->
 
-                    <div ng-show="petInfos1">
+                    <div ng-show="ctrl.petInfos1">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -489,31 +489,31 @@
                                         deixar
                                         esse campo em branco, sem problemas.</small>
                                 </div>
-                                <div class="form-group col-md-6" ng-class="{'has-error':sexoError}">
+                                <div class="form-group col-md-6" ng-class="{'has-error':ctrl.sexoError}">
                                     <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp">
                                         <option value="" disabled selected>Sexo</option>
                                         <option value="1">Macho</option>
                                         <option value="2">Fêmea</option>
                                     </select>
                                     <small id="sexoHelp" class="form-text text-muted">Selecione o sexo do pet.</small>
-                                    <small id="sexoError" class="form-control-feedback" ng-show="sexoError">Esse é um
+                                    <small id="sexoError" class="form-control-feedback" ng-show="ctrl.sexoError">Esse é um
                                         campo
                                         obrigatório.</small>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-md-6" ng-class="{'has-error':racaError}">
+                                <div class="form-group col-md-6" ng-class="{'has-error':ctrl.racaError}">
                                     <select class="form-control custom-select" aria-describedby="racaHelp">
                                         <option value="" disabled selected>Raça</option>
                                         <option value="0">Desconhecida</option>
                                     </select>
                                     <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da raça,
                                         selecione a opção "Desconhecida".</small>
-                                    <small id="racaError" class="form-control-feedback" ng-show="racaError">Esse é um
+                                    <small id="racaError" class="form-control-feedback" ng-show="ctrl.racaError">Esse é um
                                         campo
                                         obrigatório.</small>
                                 </div>
-                                <div class="form-group col-md-6" ng-class="{'has-error':idadeError}">
+                                <div class="form-group col-md-6" ng-class="{'has-error':ctrl.idadeError}">
                                     <select class="form-control custom-select" id="idade" aria-describedby="idadeHelp">
                                         <option value="" disabled selected>Idade</option>
                                         <option value="1">Filhote</option>
@@ -524,13 +524,13 @@
                                     <small id="idadeHelp" class="form-text text-muted">Caso não tenha certeza da idade
                                         do
                                         pet, selecione a opção "Desconhecida".</small>
-                                    <small id="idadeError" class="form-control-feedback" ng-show="idadeError">Esse é um
+                                    <small id="idadeError" class="form-control-feedback" ng-show="ctrl.idadeError">Esse é um
                                         campo
                                         obrigatório.</small>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-md-6" ng-class="{'has-error':tamanhoError}">
+                                <div class="form-group col-md-6" ng-class="{'has-error':ctrl.tamanhoError}">
                                     <select class="form-control custom-select" id="tamanho" aria-describedby="tamanhoHelp">
                                         <option value="" disabled selected>Porte</option>
                                         <option value="1">Pequeno</option>
@@ -538,23 +538,23 @@
                                         <option value="3">Grande</option>
                                     </select>
                                     <small id="tamanhoHelp" class="form-text text-muted">Selecione o tamanho do pet.</small>
-                                    <small id="tamanhoError" class="form-control-feedback" ng-show="tamanhoError">Esse
+                                    <small id="tamanhoError" class="form-control-feedback" ng-show="ctrl.tamanhoError">Esse
                                         é um
                                         campo
                                         obrigatório.</small>
                                 </div>
-                                <div class="form-group col-md-6" ng-class="{'has-error':pesoError}">
+                                <div class="form-group col-md-6" ng-class="{'has-error':ctrl.pesoError}">
                                     <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
                                         placeholder="Peso" autocomplete="off">
                                     <small id="pesoHelp" class="form-text text-muted">Nos diga qual o peso do pet, pode
                                         ser aproximado.</small>
-                                    <small id="pesoError" class="form-control-feedback" ng-show="pesoError">Esse é um
+                                    <small id="pesoError" class="form-control-feedback" ng-show="ctrl.pesoError">Esse é um
                                         campo
                                         obrigatório.</small>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-md-6" ng-class="{'has-error':tamanhoError}">
+                                <div class="form-group col-md-6" ng-class="{'has-error':ctrl.tamanhoError}">
                                     <select class="form-control custom-select" id="tamanho" aria-describedby="tamanhoHelp">
                                         <option value="" disabled selected>Pelo</option>
                                         <option value="1">Curto</option>
@@ -563,12 +563,12 @@
                                     </select>
                                     <small id="tamanhoHelp" class="form-text text-muted">Selecione o tamanho do pelo do
                                         pet.</small>
-                                    <small id="tamanhoError" class="form-control-feedback" ng-show="tamanhoError">Esse
+                                    <small id="tamanhoError" class="form-control-feedback" ng-show="ctrl.tamanhoError">Esse
                                         é um
                                         campo
                                         obrigatório.</small>
                                 </div>
-                                <div class="form-group col-md-3" ng-class="{'has-error':cor1error}">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.cor1error}">
                                     <select class="form-control custom-select" id="cor1" aria-describedby="cor1Help">
                                         <option value="" disabled selected>Cor principal</option>
                                         <option value="1">Branco</option>
@@ -576,7 +576,7 @@
                                         <option value="3">Cinza</option>
                                     </select>
                                     <small id="cor1Help" class="form-text text-muted">Nos conte qual a cor do pet.</small>
-                                    <small id="cor1error" class="form-control-feedback" ng-show="cor1error">Esse é um
+                                    <small id="cor1error" class="form-control-feedback" ng-show="ctrl.cor1error">Esse é um
                                         campo
                                         obrigatório.</small>
                                 </div>
@@ -594,10 +594,10 @@
                             </div>
                             <div class="row" style="margin-top:20px;">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="GoTo(2)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(2)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="GoTo(4)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(4)">Próximo</button>
                                 </div>
                             </div>
                         </div>
@@ -605,7 +605,7 @@
 
                     <!-- Informações de saúde -->
 
-                    <div ng-show="petInfosSaude">
+                    <div ng-show="ctrl.petInfosSaude">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -660,10 +660,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="GoTo(3)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(3)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="GoTo(5)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(5)">Próximo</button>
                                 </div>
                             </div>
                         </div>
@@ -671,7 +671,7 @@
 
                     <!-- Observações -->
 
-                    <div ng-show="petObservacoes">
+                    <div ng-show="ctrl.petObservacoes">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -693,10 +693,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="GoTo(4)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(4)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="GoTo(6)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(6)">Próximo</button>
                                 </div>
                             </div>
                         </div>
@@ -704,7 +704,7 @@
 
                     <!-- Fotos -->
 
-                    <div ng-show="petFotos">
+                    <div ng-show="ctrl.petFotos">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -721,10 +721,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="GoTo(5)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(5)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="FinalizarCadastro()">Finalizar</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.FinalizarCadastro()">Finalizar</button>
                                 </div>
                             </div>
                         </div>
@@ -732,7 +732,7 @@
 
                     <!-- Confirmacao -->
 
-                    <div ng-show="confirmacao" style="text-align: center;">
+                    <div ng-show="ctrl.confirmacao" style="text-align: center;">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -788,6 +788,8 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/base.js"></script>
     <script src="../js/controllers/doacaoCadastro.js"></script>
 
 </body>

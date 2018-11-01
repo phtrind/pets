@@ -33,7 +33,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="dashboardController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="dashboardController as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -473,6 +473,8 @@
                                         <a href="https://www.facebook.com/soupetsaver/" target="_blank">
                                             <img src="../icons/facebook.png" style="width: 100%; max-width: 85%;">
                                         </a>
+                                        <input type="text" ng-model="ctrl.teste">
+                                        <button class="btn btn-success" ng-click="ctrl.Testar()"></button>
                                     </div>
                                 </div>
                             </div>
@@ -522,6 +524,8 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/base.js"></script>
     <script src="../js/controllers/dashboard.js"></script>
 
 </body>
