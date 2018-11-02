@@ -43,7 +43,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="doacoesRelatorioController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="doacoesRelatorioController as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -368,7 +368,7 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div>
-                    <div ng-show="nenhumaDoacao">
+                    <div ng-show="ctrl.nenhumaDoacao">
                         <div class="row">
                             <div class="col-md-12" id="nenhumaDoacao">
                                 <p>Olá Saver, por enquanto você não tem nenhuma doação cadastrada.</p>
@@ -382,7 +382,7 @@
                             </div>
                         </div>
                     </div>
-                    <div ng-hide="nenhumaDoacao">
+                    <div ng-hide="ctrl.nenhumaDoacao">
                         <div class="row">
                             <div>
                                 <p>Saver, aqui estão todos os pets que você cadastrou</p>
@@ -391,12 +391,12 @@
                         </div>
                         <div class="row">
                             <h2 class="color-primary">Filtros
-                                <img ng-show="closedFilter" src="../icons/minus.png" width="35px" style="cursor: pointer;"
+                                <img ng-show="ctrl.closedFilter" src="../icons/minus.png" width="35px" style="cursor: pointer;"
                                     data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
-                                    aria-controls="formFiltro" ng-click="closedFilter = false;">
-                                <img ng-show="!closedFilter" src="../icons/plus.png" width="35px" style="cursor: pointer;"
+                                    aria-controls="formFiltro" ng-click="ctrl.closedFilter = false;">
+                                <img ng-show="!ctrl.closedFilter" src="../icons/plus.png" width="35px" style="cursor: pointer;"
                                     data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
-                                    aria-controls="formFiltro" ng-click="closedFilter = true;">
+                                    aria-controls="formFiltro" ng-click="ctrl.closedFilter = true;">
                             </h2>
                         </div>
                         <div class="row">
@@ -591,6 +591,8 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/base.js"></script>
     <script src="../js/controllers/doacoesRelatorio.js"></script>
 
 </body>

@@ -1,6 +1,8 @@
-var app = angular.module('pets', [])
+app.controller('adocoesInteressesController', function ($controller) {
 
-app.controller('adocoesInteressesController', function ($scope, $http, $compile, $sce) {
+        var ctrl = this;
+    
+        ctrl.base = $controller('baseController', {});
 
     // $scope.nenhumInteresse = true;
 

@@ -43,7 +43,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="doacoesRelatorioController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="meusDadosController as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -368,20 +368,6 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div>
-                    <div ng-show="nenhumaDoacao">
-                        <div class="row">
-                            <div class="col-md-12" id="nenhumaDoacao">
-                                <p>Olá Saver, por enquanto você não tem nenhuma doação cadastrada.</p>
-                                <p>Mas que tal começarmos agora?</p>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top:20px;">
-                            <div class="col-md-12" style="text-align: center;">
-                                <button class="btn btn-primary" onclick="document.location.href='doacoes_cadastro.html'">Quero
-                                    doar um pet!</button>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div>
                             <p>Saver, aqui estão todos os seus dados pessoais</p>

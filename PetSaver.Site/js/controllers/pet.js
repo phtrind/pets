@@ -1,6 +1,8 @@
-var app = angular.module('pets', [])
+app.controller('indexController', function ($controller) {
 
-app.controller('indexController', function ($scope, $http, $compile, $sce) {
+        var ctrl = this;
+    
+        ctrl.base = $controller('baseController', {});
 
     
 

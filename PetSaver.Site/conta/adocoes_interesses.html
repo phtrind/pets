@@ -43,7 +43,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="adocoesInteressesController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="adocoesInteressesController as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -368,7 +368,7 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div>
-                    <div ng-show="nenhumInteresse">
+                    <div ng-show="ctrl.nenhumInteresse">
                         <div class="row">
                             <div class="col-md-12" id="nenhumInteresse">
                                 <p>Olá Saver, por enquanto você não tem nenhum interesse cadastrado</p>
@@ -381,7 +381,7 @@
                             </div>
                         </div>
                     </div>
-                    <div ng-hide="nenhumInteresse">
+                    <div ng-hide="ctrl.nenhumInteresse">
                         <div class="row">
                             <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in [].constructor(4) track by $index"
                                 ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;"
@@ -429,6 +429,8 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/base.js"></script>
     <script src="../js/controllers/adocoesInteresses.js"></script>
 
 </body>
