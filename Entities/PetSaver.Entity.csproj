@@ -47,6 +47,7 @@
     <Compile Include="Anuncios\DuvidaEntity.cs" />
     <Compile Include="Anuncios\InteresseEntity.cs" />
     <Compile Include="Anuncios\InboxEntity.cs" />
+    <Compile Include="Enums\Tipos\TiposLogin.cs" />
     <Compile Include="Localizacao\CidadeEntity.cs" />
     <Compile Include="Usuarios\ContribuicoesEntity.cs" />
     <Compile Include="Localizacao\EnderecoEntity.cs" />
@@ -71,6 +72,8 @@
     <Compile Include="Usuarios\PessoaEntity.cs" />
     <Compile Include="Usuarios\UsuarioEntity.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Enums\Status\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

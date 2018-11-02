@@ -4,12 +4,12 @@ namespace PetSaver.Entity
 {
     public abstract class BaseEntity
     {
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
-        public DateTime DataCadastro { get; set; }
-        public int IdUsuarioCadastro { get; set; }
+        public virtual DateTime DataCadastro { get; set; }
+        public virtual int IdLoginCadastro { get; set; }
 
-        public DateTime? DataAlteracao { get; set; }
-        public int IdUsuarioAlteracao { get; set; }
+        public virtual DateTime? DataAlteracao { get; set; }
+        public virtual int? IdLoginAlteracao { get; set; }
     }
 }

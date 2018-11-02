@@ -24,8 +24,8 @@ namespace PetSaver.Repository
 
             Map(x => x.DataCadastro).ToColumn("LOG_DTHCADASTRO");
             Map(x => x.DataAlteracao).ToColumn("LOG_DTHALTERACAO");
-            Map(x => x.IdUsuarioCadastro).ToColumn("LOG_CADASTRO");
-            Map(x => x.IdUsuarioAlteracao).ToColumn("USU_ALTERACAO");
+            Map(x => x.IdLoginCadastro).ToColumn("LOG_CADASTRO");
+            Map(x => x.IdLoginAlteracao).ToColumn("LOG_ALTERACAO");
 
             #endregion
         }

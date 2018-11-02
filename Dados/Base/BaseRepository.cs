@@ -1,6 +1,8 @@
 ﻿using Dommel;
 using PetSaver.Entity;
+using PetSaver.Exceptions;
 using PetSaver.Repository.Interface;
+using PetSaver.Repository.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,9 +10,11 @@ using System.Data.SqlClient;
 
 namespace PetSaver.Repository
 {
-    public class BaseRepository<T> : IRepository<T> where T : BaseEntity
+    public abstract class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
         public string StringConnection { get; } = ConfigurationManager.ConnectionStrings["petsaver"].ConnectionString;
+
+        #region .: Base de Dados :.
 
         public virtual IEnumerable<T> ListarTodos()
         {
@@ -32,6 +36,10 @@ namespace PetSaver.Repository
         {
             using (var db = new SqlConnection(StringConnection))
             {
+                aObjeto.DataCadastro = DateTime.Now;
+
+                ValidarCadastro(aObjeto);
+
                 return Convert.ToInt32(db.Insert(aObjeto));
             }
         }
@@ -40,6 +48,10 @@ namespace PetSaver.Repository
         {
             using (var db = new SqlConnection(StringConnection))
             {
+                aObjeto.DataAlteracao = DateTime.Now;
+
+                ValidarAtualizacao(aObjeto);
+
                 db.Update<T>(aObjeto);
             }
         }
@@ -51,5 +63,83 @@ namespace PetSaver.Repository
                 db.Delete<T>(aObjeto);
             }
         }
+
+        #endregion
+
+        #region .: Validações :.
+
+        protected abstract void ValidarAtributos(T aObjeto);
+
+        protected virtual void ValidarCadastro(T aObjeto)
+        {
+            if (aObjeto.Id != default(int))
+            {
+                throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Id definido");
+            }
+
+            if (aObjeto.DataCadastro == default(DateTime))
+            {
+                throw new DbValidationException("Data de cadastro inválida.");
+            }
+
+            if (aObjeto.IdLoginCadastro == default(int) || !LoginExiste(aObjeto.IdLoginCadastro))
+            {
+                throw new DbValidationException("O usuário responsável pelo cadastro é inválido.");
+            }
+
+            if (aObjeto.DataAlteracao.HasValue)
+            {
+                throw new DbValidationException("Não é possível cadastrar um objeto que já tenha uma Data de Alteração definida.");
+            }
+
+            if (aObjeto.IdLoginAlteracao.HasValue)
+            {
+                throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Login de Alteração definido.");
+            }
+
+            this.ValidarAtributos(aObjeto);
+        }
+
+        protected virtual void ValidarAtualizacao(T aObjeto)
+        {
+            if (aObjeto.Id == default(int))
+            {
+                throw new DbValidationException("Não é possível editar um objeto que não tenha um Id definido");
+            }
+
+            if (aObjeto.DataCadastro == default(DateTime))
+            {
+                throw new DbValidationException("Data de cadastro inválida.");
+            }
+
+            if (aObjeto.IdLoginCadastro == default(int) || !LoginExiste(aObjeto.IdLoginCadastro))
+            {
+                throw new DbValidationException("O usuário responsável pelo cadastro é inválido.");
+            }
+
+            if (aObjeto.IdLoginCadastro != this.Listar(aObjeto.Id).IdLoginCadastro)
+            {
+                throw new DbValidationException("Não é possível editar o usuário responsável pelo cadastro.");
+            }
+
+            if (!aObjeto.DataAlteracao.HasValue)
+            {
+                throw new DbValidationException("Data de alteração inválida.");
+            }
+
+            if (!aObjeto.IdLoginAlteracao.HasValue || !LoginExiste(aObjeto.IdLoginAlteracao.Value))
+            {
+                throw new DbValidationException("O usuário responsável pela edição é inválido.");
+            }
+
+            this.ValidarAtributos(aObjeto);
+        }
+
+        private bool LoginExiste(int idLoginCadastro)
+        {
+            return !(idLoginCadastro == default(int) || new LoginRepository().Listar(idLoginCadastro) == null);
+        }
+
+        #endregion
     }
 }

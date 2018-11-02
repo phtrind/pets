@@ -18,3 +18,7 @@
 /PetSaver.Repository.Tests/bin/Debug
 /PetSaver.WebApi/bin
 /PetSaver.WebApi.Tests/bin/Debug
+/PetSaver.Exceptions/bin/Debug
+/PetSaver.Exceptions/obj/Debug
+/PetSaver.Utilities/bin/Debug
+/PetSaver.Utilities/obj/Debug

@@ -39,6 +39,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EBC73A7B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Site", "Site", "{186AEBCB-9394-4B88-AFD9-65E18E50806C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Utilities", "PetSaver.Utilities\PetSaver.Utilities.csproj", "{5B8C2769-C69A-4982-930B-074BAC116299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Exceptions", "PetSaver.Exceptions\PetSaver.Exceptions.csproj", "{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{3B86B409-F332-44AD-BD6C-DA51412CE7C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B86B409-F332-44AD-BD6C-DA51412CE7C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B86B409-F332-44AD-BD6C-DA51412CE7C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B8C2769-C69A-4982-930B-074BAC116299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B8C2769-C69A-4982-930B-074BAC116299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B8C2769-C69A-4982-930B-074BAC116299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B8C2769-C69A-4982-930B-074BAC116299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
