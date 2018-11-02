@@ -1,6 +1,8 @@
-var app = angular.module('pets', [])
+app.controller('loginController', function ($controller) {
 
-app.controller('loginController', function ($scope, $http, $compile, $sce) {
+        var ctrl = this;
+    
+        ctrl.base = $controller('baseController', {});
 
     //  $scope.isRegister = true;
 

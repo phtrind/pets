@@ -1,9 +1,9 @@
-app.controller('indexController', function ($controller) {
+app.controller('petController', function ($controller) {
 
         var ctrl = this;
-    
+
         ctrl.base = $controller('baseController', {});
 
-    
+        ctrl.isRegister = false;
 
 });
