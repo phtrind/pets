@@ -1,92 +1,96 @@
-var app = angular.module('pets', [])
+app.controller('contribuirController', function ($controller) {
 
-app.controller('contribuirController', function ($scope, $http, $compile, $sce) {
+        var ctrl = this;
+    
+        ctrl.base = $controller('baseController', {});
+    
+        ctrl.petSelection = true;
 
-    $scope.petSelection = true;
-    // $scope.petInfos1 = true;
-    // $scope.petInfosSaude = true;
-    // $scope.petObservacoes = true;
-    // $scope.petFotos = true;
-    // $scope.confirmacao = true;
+    ctrl.petSelection = true;
+    // ctrl.petInfos1 = true;
+    // ctrl.petInfosSaude = true;
+    // ctrl.petObservacoes = true;
+    // ctrl.petFotos = true;
+    // ctrl.confirmacao = true;
 
-    $scope.SelectPet = function (pet) {
+    ctrl.SelectPet = function (pet) {
         if (pet == 1) {
-            $scope.dogSelected = true;
-            $scope.catSelected = false;
-            $scope.fishSelected = false;
-            $scope.birdSelected = false;
-            $scope.petSelected = true;
+            ctrl.dogSelected = true;
+            ctrl.catSelected = false;
+            ctrl.fishSelected = false;
+            ctrl.birdSelected = false;
+            ctrl.petSelected = true;
         }
         else if (pet == 2) {
-            $scope.dogSelected = false;
-            $scope.catSelected = true;
-            $scope.fishSelected = false;
-            $scope.birdSelected = false;
-            $scope.petSelected = true;
+            ctrl.dogSelected = false;
+            ctrl.catSelected = true;
+            ctrl.fishSelected = false;
+            ctrl.birdSelected = false;
+            ctrl.petSelected = true;
         }
         else if (pet == 3) {
-            $scope.dogSelected = false;
-            $scope.catSelected = false;
-            $scope.fishSelected = true;
-            $scope.birdSelected = false;
-            $scope.petSelected = true;
+            ctrl.dogSelected = false;
+            ctrl.catSelected = false;
+            ctrl.fishSelected = true;
+            ctrl.birdSelected = false;
+            ctrl.petSelected = true;
         }
         else if (pet == 4) {
-            $scope.dogSelected = false;
-            $scope.catSelected = false;
-            $scope.fishSelected = false;
-            $scope.birdSelected = true;
-            $scope.petSelected = true;
+            ctrl.dogSelected = false;
+            ctrl.catSelected = false;
+            ctrl.fishSelected = false;
+            ctrl.birdSelected = true;
+            ctrl.petSelected = true;
         }
     }
 
-    $scope.GoTo = function (number) {
+    ctrl.GoTo = function (number) {
         if (number == 1) {
-            $scope.petSelection = true;
-            $scope.petInfos1 = false;
-            $scope.petInfosSaude = false;
-            $scope.petObservacoes = false;
-            $scope.petFotos = false;
+            ctrl.petSelection = true;
+            ctrl.petInfos1 = false;
+            ctrl.petInfosSaude = false;
+            ctrl.petObservacoes = false;
+            ctrl.petFotos = false;
         }
         else if (number == 2) {
-            $scope.petSelection = false;
-            $scope.petInfos1 = true;
-            $scope.petInfosSaude = false;
-            $scope.petObservacoes = false;
-            $scope.petFotos = false;
+            ctrl.petSelection = false;
+            ctrl.petInfos1 = true;
+            ctrl.petInfosSaude = false;
+            ctrl.petObservacoes = false;
+            ctrl.petFotos = false;
         }
         else if (number == 3) {
-            $scope.petSelection = false;
-            $scope.petInfos1 = false;
-            $scope.petInfosSaude = true;
-            $scope.petObservacoes = false;
-            $scope.petFotos = false;
+            ctrl.petSelection = false;
+            ctrl.petInfos1 = false;
+            ctrl.petInfosSaude = true;
+            ctrl.petObservacoes = false;
+            ctrl.petFotos = false;
         }
         else if (number == 4) {
-            $scope.petSelection = false;
-            $scope.petInfos1 = false;
-            $scope.petInfosSaude = false;
-            $scope.petObservacoes = true;
-            $scope.petFotos = false;
+            ctrl.petSelection = false;
+            ctrl.petInfos1 = false;
+            ctrl.petInfosSaude = false;
+            ctrl.petObservacoes = true;
+            ctrl.petFotos = false;
         }
         else if (number == 5) {
-            $scope.petSelection = false;
-            $scope.petInfos1 = false;
-            $scope.petInfosSaude = false;
-            $scope.petObservacoes = false;
-            $scope.petFotos = true;
+            ctrl.petSelection = false;
+            ctrl.petInfos1 = false;
+            ctrl.petInfosSaude = false;
+            ctrl.petObservacoes = false;
+            ctrl.petFotos = true;
         }
 
         window.scrollTo(0, 0);
     }
 
-    $scope.FinalizarCadastro = function () {
-        $scope.petSelection = false;
-        $scope.petInfos1 = false;
-        $scope.petInfosSaude = false;
-        $scope.petObservacoes = false;
-        $scope.petFotos = false;
-        $scope.confirmacao = true;
+    ctrl.FinalizarCadastro = function () {
+        ctrl.petSelection = false;
+        ctrl.petInfos1 = false;
+        ctrl.petInfosSaude = false;
+        ctrl.petObservacoes = false;
+        ctrl.petFotos = false;
+        ctrl.confirmacao = true;
     }
 
 });

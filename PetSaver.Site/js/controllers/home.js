@@ -1,6 +1,8 @@
-var app = angular.module('pets', [])
+app.controller('homeController', function ($controller) {
 
-app.controller('homeController', function ($scope, $http, $compile, $sce) {
+        var ctrl = this;
+    
+        ctrl.base = $controller('baseController', {});
 
     // $scope.changeCollapseImage = function () {
 
