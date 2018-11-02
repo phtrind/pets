@@ -11,3 +11,10 @@
 /Entities/obj/Debug
 /PetSaver.WebApi/obj/Debug
 /PetSaver.WebApi.Tests/obj/Debug
+/Dados/bin/Debug
+/Dados/obj/Debug
+/Entities/bin/Debug
+/PetSaver.Repository.Tests/obj/Debug
+/PetSaver.Repository.Tests/bin/Debug
+/PetSaver.WebApi/bin
+/PetSaver.WebApi.Tests/bin/Debug

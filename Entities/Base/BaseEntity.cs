@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Entities
+namespace PetSaver.Entity
 {
     public abstract class BaseEntity
     {
