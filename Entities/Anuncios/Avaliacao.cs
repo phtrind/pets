@@ -2,7 +2,14 @@
 {
     public class Avaliacao : BaseEntity
     {
+        /// <summary>
+        /// Nota da avaliação
+        /// </summary>
         public int Nota { get; set; }
+
+        /// <summary>
+        /// Comentário referente à avaliação
+        /// </summary>
         public string Descricao { get; set; }
 
         /// <summary>

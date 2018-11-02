@@ -4,6 +4,9 @@ namespace Entities.Usuarios
 {
     public class Funcionario : Pessoa
     {
+        /// <summary>
+        /// Data em que o funcionário foi admitido
+        /// </summary>
         public DateTime DataAdmissao { get; set; }
 
         /// <summary>

@@ -9,3 +9,5 @@
 *.ide-shm
 *.ide-wal
 /Entities/obj/Debug
+/PetSaver.WebApi/obj/Debug
+/PetSaver.WebApi.Tests/obj/Debug
