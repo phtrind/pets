@@ -2,6 +2,9 @@
 {
     public class Inbox : BaseEntity
     {
+        /// <summary>
+        /// Descrição da mensagem enviada
+        /// </summary>
         public string Mensagem { get; set; }
 
         /// <summary>
