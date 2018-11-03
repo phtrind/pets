@@ -1,10 +1,10 @@
 var map;
  
 function initialize() {
-    var latlng = new google.maps.LatLng(-18.8800397, -47.05878999999999);
+    var latlng = new google.maps.LatLng(-19.8800397, -44.05878999999999);
  
     var options = {
-        zoom: 5,
+        zoom: 7,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -14,6 +14,8 @@ function initialize() {
     google.maps.event.addListener(map, 'click', function(event) {
         placeMarker(event.latLng);
       });
+
+      
 }
  
 function placeMarker(location) {
@@ -23,6 +25,7 @@ function placeMarker(location) {
     });
   
     map.setCenter(location);
+    // marker.setMap(null);
   }
 
 initialize();

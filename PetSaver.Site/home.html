@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
 
@@ -9,7 +9,7 @@
   <meta property="og:url" content="https://www.petsaver.com.br" />
   <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
   <meta name="author" content="">
-  
+
   <!-- Favicon icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon_pata.ico">
 
@@ -25,7 +25,8 @@
     crossorigin="anonymous">
 
   <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
-
+  <link href="css/helper.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
   <link href="css/myStyle.css" rel="stylesheet">
 
   <style>
@@ -42,7 +43,8 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="images/logos/logo_fundo_roxo_fina.gif" height="40px"></a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="images/logos/logo_fundo_roxo_fina.gif"
+          height="40px"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -62,7 +64,7 @@
             <a class="nav-link js-scroll-trigger" href="#buscar">buscar</a>
           </li>
           <li class="nav-item">
-            <button type="submit" class="btn btn-secondary" onclick="document.location.href='login.html'">entrar</button>
+            <button type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal" data-target="#modalLogarCadastrar">entrar</button>
           </li>
         </ul>
       </div>
@@ -72,7 +74,7 @@
   <header class="text-white" style="background-image: url('images/header1.jpg'); height: 844px; display: flex; align-items: center; background-position: center;">
     <div class="container">
       <div class="col-md-6">
-        <h1>unidos podemos salvar a vida de milhões de pets</h1>
+        <h1 style="color: white">unidos podemos salvar a vida de milhões de pets</h1>
         <br><br><br>
         <button type="submit" class="btn btn-primary btn-lg" style="border: none" id="btnSaibaMais">saiba mais</button>
       </div>
@@ -167,7 +169,8 @@
           </div>
           <!-- end pets -->
           <div class="col-md-12" style="text-align: center; margin-top: 40px">
-            <button type="submit" class="btn btn-primary" style="width: 160px; height: 50px; outline: none;" id="btnBuscar">perfeito pra você</button>
+            <button type="submit" class="btn btn-primary" style="width: 160px; height: 50px; outline: none;" id="btnBuscar">perfeito
+              pra você</button>
           </div>
         </div>
       </div>
@@ -222,7 +225,10 @@
         </div>
       </div>
     </div>
-  </section> 
+  </section>
+
+
+  <div ng-include="'login.html'"></div>
 
   <!-- Footer -->
   <footer class="bg-dark p-3">

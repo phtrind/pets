@@ -64,8 +64,7 @@
                         <a class="nav-link js-scroll-trigger" href="#buscar" ng-show="ctrl.isLogged">minha conta</a>
                     </li>
                     <li class="nav-item">
-                        <button type="submit" class="btn btn-secondary" onclick="document.location.href='login.html'"
-                            ng-hide="ctrl.isLogged">entrar</button>
+                        <button type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal" data-target="#modalLogarCadastrar">entrar</button>
                     </li>
                 </ul>
             </div>
@@ -196,6 +195,7 @@
                     </div>
                 </div>
                 <!-- end pets -->
+                <div ng-include="'login.html'"></div>
             </div>
         </div>
         <!-- <footer ng-include="'footer.html'" class="footer"></div> -->

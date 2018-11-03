@@ -378,35 +378,37 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Olá Saver, que bom que encontrou um pet e está o ajudando. Essas atitudes fazem a diferença!</p>
+                                <p>Olá Saver, que bom que encontrou um pet e está o ajudando. Essas atitudes fazem a
+                                    diferença!</p>
                                 <p>Para começarmos, escolha qual dos Pets abaixo é o que você encontrou:</p>
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
                             <div class="col-md-3" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
-                            ng-click="ctrl.SelectPet(1);">
-                            <img src="../icons/dog.png">
-                            <h3>Cachorro</h3>
-                        </div>
-                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
-                            ng-click="ctrl.SelectPet(2);">
-                            <img src="../icons/cat.png">
-                            <h3>Gato</h3>
-                        </div>
-                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
-                            ng-click="ctrl.SelectPet(3);">
-                            <img src="../icons/bird.png">
-                            <h3>Ave</h3>
-                        </div>
-                        <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
-                            ng-click="ctrl.SelectPet(4);">
-                            <img src="../icons/others.png">
-                            <h3>Outros</h3>
-                        </div>
+                                ng-click="ctrl.SelectPet(1);">
+                                <img src="../icons/dog.png">
+                                <h3>Cachorro</h3>
+                            </div>
+                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
+                                ng-click="ctrl.SelectPet(2);">
+                                <img src="../icons/cat.png">
+                                <h3>Gato</h3>
+                            </div>
+                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
+                                ng-click="ctrl.SelectPet(3);">
+                                <img src="../icons/bird.png">
+                                <h3>Ave</h3>
+                            </div>
+                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
+                                ng-click="ctrl.SelectPet(4);">
+                                <img src="../icons/others.png" style="width: 70%; padding: 25px; margin-bottom: 10px;">
+                                <h3>Outros</h3>
+                            </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: right;">
-                                <select class="btn btn-primary" ng-show="ctrl.comboOutrosMostrar" ng-model="ctrl.outrosSelecionado" ng-change="ctrl.ValidarComboOutros()">
+                                <select class="btn btn-primary" ng-show="ctrl.comboOutrosMostrar" ng-model="ctrl.outrosSelecionado"
+                                    ng-change="ctrl.ValidarComboOutros()">
                                     <option value="">Selecione</option>
                                     <option value="tartaruga">Tartaruga</option>
                                     <option value="cagado">Cagado</option>
@@ -441,7 +443,8 @@
                             </div>
                         </div>
 
-                        <p>Marque no mapa o local aproximado em que você encontrou o pet. Isso é muito importante, pois seu Saver pode encontrá-lo com mais facilidade.</p>
+                        <p>Marque no mapa o local aproximado em que você encontrou o pet. Isso é muito importante, pois
+                            seu Saver pode encontrá-lo com mais facilidade.</p>
 
                         <div class="form-body" style="margin-top:50px;">
                             <div class="row" style="text-align: center">
@@ -474,14 +477,14 @@
 
                         <div class="form-body" style="margin-top:50px;">
                             <div class="row">
-                                    <div class="form-group col-md-6" ng-class="{'has-error':ctrl.nomeError}">
-                                        <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp"
-                                            placeholder="Nome" autocomplete="off">
-                                            <small id="nomeHelp" class="form-text text-muted">Caso não saiba o nome,
-                                                pode
-                                                deixar
-                                                esse campo em branco, sem problemas.</small>
-                                    </div>
+                                <div class="form-group col-md-6" ng-class="{'has-error':ctrl.nomeError}">
+                                    <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp"
+                                        placeholder="Nome" autocomplete="off">
+                                    <small id="nomeHelp" class="form-text text-muted">Caso não saiba o nome,
+                                        pode
+                                        deixar
+                                        esse campo em branco, sem problemas.</small>
+                                </div>
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.sexoError}">
                                     <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp">
                                         <option value="" disabled selected>Sexo</option>
@@ -489,7 +492,8 @@
                                         <option value="2">Fêmea</option>
                                     </select>
                                     <small id="sexoHelp" class="form-text text-muted">Selecione o sexo do pet.</small>
-                                    <small id="sexoError" class="form-control-feedback" ng-show="ctrl.sexoError">Esse é um
+                                    <small id="sexoError" class="form-control-feedback" ng-show="ctrl.sexoError">Esse é
+                                        um
                                         campo
                                         obrigatório.</small>
                                 </div>
@@ -502,7 +506,8 @@
                                     </select>
                                     <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da raça,
                                         selecione a opção "Desconhecida".</small>
-                                    <small id="racaError" class="form-control-feedback" ng-show="ctrl.racaError">Esse é um
+                                    <small id="racaError" class="form-control-feedback" ng-show="ctrl.racaError">Esse é
+                                        um
                                         campo
                                         obrigatório.</small>
                                 </div>
@@ -517,7 +522,8 @@
                                     <small id="idadeHelp" class="form-text text-muted">Caso não tenha certeza da idade
                                         do
                                         pet, selecione a opção "Desconhecida".</small>
-                                    <small id="idadeError" class="form-control-feedback" ng-show="ctrl.idadeError">Esse é um
+                                    <small id="idadeError" class="form-control-feedback" ng-show="ctrl.idadeError">Esse
+                                        é um
                                         campo
                                         obrigatório.</small>
                                 </div>
@@ -541,7 +547,8 @@
                                         placeholder="Peso" autocomplete="off">
                                     <small id="pesoHelp" class="form-text text-muted">Nos diga qual o peso do pet, pode
                                         ser aproximado.</small>
-                                    <small id="pesoError" class="form-control-feedback" ng-show="ctrl.pesoError">Esse é um
+                                    <small id="pesoError" class="form-control-feedback" ng-show="ctrl.pesoError">Esse é
+                                        um
                                         campo
                                         obrigatório.</small>
                                 </div>
@@ -569,7 +576,8 @@
                                         <option value="3">Cinza</option>
                                     </select>
                                     <small id="cor1Help" class="form-text text-muted">Nos conte qual a cor do pet.</small>
-                                    <small id="cor1error" class="form-control-feedback" ng-show="ctrl.cor1error">Esse é um
+                                    <small id="cor1error" class="form-control-feedback" ng-show="ctrl.cor1error">Esse é
+                                        um
                                         campo
                                         obrigatório.</small>
                                 </div>
@@ -607,7 +615,8 @@
                             </div>
                         </div>
 
-                        <p>Que tal nos contar um pouco mais sobre o pet, essas informações ajudarão algum saver encontrá-lo</p>
+                        <p>Que tal nos contar um pouco mais sobre o pet, essas informações ajudarão algum saver
+                            encontrá-lo</p>
 
                         <div class="form-body" style="margin-top:50px;">
                             <div class="row" style="text-align: center">
