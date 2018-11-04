@@ -2,6 +2,7 @@
 using PetSaver.Business.Usuarios;
 using PetSaver.Exceptions;
 using System;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -29,13 +30,13 @@ namespace PetSaver.WebApi.Authentication
             }
             catch (BusinessException ex)
             {
-                context.SetError("Unauthorized", ex.Message);
+                context.SetError(Convert.ToInt32(HttpStatusCode.BadRequest).ToString(), ex.Message);
             }
             catch (Exception ex)
             {
-                Util.TratarExcecao(ex);
+                Exceptions.Util.TratarExcecao(ex);
 
-                context.SetError("UnexpectedError", Util.MensagemErroNaoTratado);
+                context.SetError(Convert.ToInt32(HttpStatusCode.InternalServerError).ToString(), Exceptions.Util.MensagemErroNaoTratado);
             }
         }
     }

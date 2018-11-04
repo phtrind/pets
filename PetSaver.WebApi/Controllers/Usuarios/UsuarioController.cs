@@ -6,14 +6,15 @@ using System.Web.Http;
 
 namespace PetSaver.WebApi.Controllers.Usuarios
 {
-    public class LoginController : ApiController
+    [Authorize]
+    public class UsuarioController : ApiController
     {
-        // GET: api/Login
-        public IEnumerable<LoginEntity> Get()
+        // GET: api/Usuario
+        public IEnumerable<UsuarioEntity> Get()
         {
             try
             {
-                return new LoginBusiness().ListarTodos();
+                return new UsuarioBusiness().ListarTodos();
             }
             catch (Exception ex)
             {
@@ -21,12 +22,12 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
         }
 
-        // GET: api/Login/5
-        public LoginEntity Get(int id)
+        // GET: api/Usuario/5
+        public UsuarioEntity Get(int id)
         {
             try
             {
-                return new LoginBusiness().Listar(id);
+                return new UsuarioBusiness().Listar(id);
             }
             catch (Exception ex)
             {
@@ -34,12 +35,12 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
         }
 
-        // POST: api/Login
-        public void Post([FromBody]LoginEntity value)
+        // POST: api/Usuario
+        public int Post([FromBody]UsuarioEntity value)
         {
             try
             {
-                new LoginBusiness().Inserir(value);
+                return new UsuarioBusiness().Inserir(value);
             }
             catch (Exception ex)
             {
@@ -47,12 +48,12 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
         }
 
-        // PUT: api/Login/5
-        public void Put([FromBody]LoginEntity value)
+        // PUT: api/Usuario/5
+        public void Put([FromBody]UsuarioEntity value)
         {
             try
             {
-                new LoginBusiness().Atualizar(value);
+                new UsuarioBusiness().Atualizar(value);
             }
             catch (Exception ex)
             {
@@ -60,12 +61,12 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
         }
 
-        // DELETE: api/Login/5
+        // DELETE: api/Usuario/5
         public void Delete(int id)
         {
             try
             {
-                new LoginBusiness().Excluir(id);
+                new UsuarioBusiness().Excluir(id);
             }
             catch (Exception ex)
             {

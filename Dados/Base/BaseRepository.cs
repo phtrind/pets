@@ -69,15 +69,24 @@ namespace PetSaver.Repository
             }
         }
 
-        public virtual void Excluir(T aObjeto)
+        public virtual void Excluir(int aId)
         {
             using (var db = new SqlConnection(StringConnection))
             {
-                using (var transation = new TransactionScope())
-                {
-                    db.Delete(aObjeto);
+                var entity = Listar(aId);
 
-                    transation.Complete();
+                if (entity != null)
+                {
+                    using (var transation = new TransactionScope())
+                    {
+                        db.Delete(entity);
+
+                        transation.Complete();
+                    }
+                }
+                else
+                {
+                    throw new DbValidationException("O registro a ser excluído não foi encontrado");
                 }
             }
         }

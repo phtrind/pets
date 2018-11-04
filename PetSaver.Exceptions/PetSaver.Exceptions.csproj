@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\HandledException.cs" />
     <Compile Include="BusinessException.cs" />
     <Compile Include="DbValidationException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

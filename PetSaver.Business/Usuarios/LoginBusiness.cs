@@ -1,9 +1,10 @@
-﻿using PetSaver.Exceptions;
+﻿using PetSaver.Entity.Usuarios;
+using PetSaver.Exceptions;
 using PetSaver.Repository.Usuarios;
 
 namespace PetSaver.Business.Usuarios
 {
-    public class LoginBusiness
+    public class LoginBusiness : BaseBusiness<LoginEntity, LoginRepository>
     {
         /// <summary>
         /// Método para autenticar as credenciais informadas

@@ -2,7 +2,7 @@
 
 namespace PetSaver.Exceptions
 {
-    public class DbValidationException : Exception
+    public class DbValidationException : HandledException
     {
         public DbValidationException()
         {

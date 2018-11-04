@@ -13,6 +13,6 @@ namespace PetSaver.Repository.Interface
 
         void Atualizar(T aObjeto);
 
-        void Excluir(T aObjeto);
+        void Excluir(int aId);
     }
 }

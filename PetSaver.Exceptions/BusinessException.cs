@@ -2,7 +2,7 @@
 
 namespace PetSaver.Exceptions
 {
-    public class BusinessException : Exception
+    public class BusinessException : HandledException
     {
         public BusinessException()
         {
