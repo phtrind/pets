@@ -1,7 +1,5 @@
 ﻿using PetSaver.Entity;
-using PetSaver.Exceptions;
 using PetSaver.Repository;
-using System;
 using System.Collections.Generic;
 
 namespace PetSaver.Business
@@ -14,20 +12,7 @@ namespace PetSaver.Business
         /// <returns></returns>
         public virtual IEnumerable<E> ListarTodos()
         {
-            try
-            {
-                return new R().ListarTodos();
-            }
-            catch (HandledException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                Exceptions.Util.TratarExcecao(ex);
-
-                return new List<E>();
-            }
+            return new R().ListarTodos();
         }
 
         /// <summary>
@@ -36,20 +21,7 @@ namespace PetSaver.Business
         /// <returns></returns>
         public virtual E Listar(int aId)
         {
-            try
-            {
-                return new R().Listar(aId);
-            }
-            catch (HandledException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                Exceptions.Util.TratarExcecao(ex);
-
-                return null;
-            }
+            return new R().Listar(aId);
         }
 
         /// <summary>
@@ -58,20 +30,7 @@ namespace PetSaver.Business
         /// <returns></returns>
         public virtual int Inserir(E aObjeto)
         {
-            try
-            {
-                return new R().Inserir(aObjeto);
-            }
-            catch (HandledException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                Exceptions.Util.TratarExcecao(ex);
-
-                return default;
-            }
+            return new R().Inserir(aObjeto);
         }
 
         /// <summary>
@@ -80,18 +39,7 @@ namespace PetSaver.Business
         /// <returns></returns>
         public virtual void Atualizar(E aObjeto)
         {
-            try
-            {
-                new R().Atualizar(aObjeto);
-            }
-            catch (HandledException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                Exceptions.Util.TratarExcecao(ex);
-            }
+            new R().Atualizar(aObjeto);
         }
 
         /// <summary>
@@ -100,18 +48,7 @@ namespace PetSaver.Business
         /// <returns></returns>
         public virtual void Excluir(int aId)
         {
-            try
-            {
-                new R().Excluir(aId);
-            }
-            catch (HandledException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                Exceptions.Util.TratarExcecao(ex);
-            }
+            new R().Excluir(aId);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace PetSaver.WebApi.Authentication
         {
             try
             {
-                new LoginBusiness().ValidarLogin(context.UserName, context.Password);
+                new LoginBusiness().EfetuarLogin(context.UserName, context.Password);
 
                 var identyUser = new ClaimsIdentity(context.Options.AuthenticationType);
 

@@ -42,7 +42,32 @@ namespace PetSaver.Repository.Usuarios
 
         protected override void ValidarCadastro(LoginEntity aObjeto)
         {
-            base.ValidarCadastro(aObjeto);
+            if (aObjeto.Id != default)
+            {
+                throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Id definido");
+            }
+
+            if (aObjeto.DataCadastro == default)
+            {
+                throw new DbValidationException("Data de cadastro inválida.");
+            }
+
+            if (aObjeto.IdLoginCadastro != default && !LoginExiste(aObjeto.IdLoginCadastro))
+            {
+                throw new DbValidationException("O Id do usuário responsável pelo cadastro é inválido.");
+            }
+
+            if (aObjeto.DataAlteracao.HasValue)
+            {
+                throw new DbValidationException("Não é possível cadastrar um objeto que já tenha uma Data de Alteração definida.");
+            }
+
+            if (aObjeto.IdLoginAlteracao.HasValue)
+            {
+                throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Login de Alteração definido.");
+            }
+
+            ValidarAtributos(aObjeto);
 
             if (BuscarPorEmail(aObjeto.Email) != null)
             {

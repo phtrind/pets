@@ -1,9 +1,12 @@
-﻿using System;
+﻿using PetSaver.Entity.Localizacao;
+using System;
 
 namespace PetSaver.Entity.Usuarios
 {
     public abstract class PessoaEntity : BaseEntity
     {
+        #region .: Atributos :.
+
         /// <summary>
         /// Nome da pessoa
         /// </summary>
@@ -24,6 +27,10 @@ namespace PetSaver.Entity.Usuarios
         /// </summary>
         public virtual string Documento { get; set; }
 
+        #endregion
+
+        #region .: Foreign Key :.
+
         /// <summary>
         /// Id do endereço da pessoa
         /// </summary>
@@ -38,5 +45,21 @@ namespace PetSaver.Entity.Usuarios
         /// Tipo da pessoa, aplica-se de uma forma para Usuario e de outra forma para Funcionario
         /// </summary>
         public virtual int IdTipo { get; set; }
+
+        #endregion
+
+        #region .: Objetos :.
+
+        /// <summary>
+        /// Endereco da pessooa
+        /// </summary>
+        public EnderecoEntity Endereco { get; set; }
+
+        /// <summary>
+        /// Login da pessoa
+        /// </summary>
+        public LoginEntity Login { get; set; }
+
+        #endregion
     }
 }

@@ -25,6 +25,8 @@ namespace PetSaver.WebApi
                 {
                     Content = new StringContent(Exceptions.Util.MensagemErroNaoTratado)
                 };
+
+                //Mandar erro pro bugsnag
             }
 
             return new HttpResponseException(erro);

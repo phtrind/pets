@@ -32,6 +32,14 @@ namespace PetSaver.Repository
             Map(x => x.IdLoginAlteracao).ToColumn("LOG_ALTERACAO");
 
             #endregion
+
+            #region .: Objetos :.
+
+            Map(x => x.Endereco).Ignore();
+            Map(x => x.Login).Ignore();
+            Map(x => x.Tipo).Ignore();
+
+            #endregion
         }
     }
 }

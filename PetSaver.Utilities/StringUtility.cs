@@ -9,6 +9,11 @@
         /// <returns></returns>
         public static string RemoverNaoNumericos(string aString)
         {
+            if (string.IsNullOrEmpty(aString))
+            {
+                return aString;
+            }
+
             return RegexUtility.rgNonDigits.Replace(aString, "");
         }
     }

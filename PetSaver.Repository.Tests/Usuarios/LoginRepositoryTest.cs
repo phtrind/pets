@@ -107,6 +107,22 @@ namespace PetSaver.Repository.Tests
             Assert.IsNull(entity);
         }
 
+        [TestMethod]
+        public void BuscarPorEmailSenha_ExistingEmail_ReturnsEntity()
+        {
+            var entity = new LoginRepository().BuscarPorEmailSenha("phtrind@hotmail.com", "123");
+
+            Assert.IsNotNull(entity);
+        }
+
+        [TestMethod]
+        public void BuscarPorEmailSenha_NonexistentEmail_ReturnsEntity()
+        {
+            var entity = new LoginRepository().BuscarPorEmailSenha("phtrind@hotmail.com", "12334");
+
+            Assert.IsNull(entity);
+        }
+
         #endregion
     }
 }

@@ -7,12 +7,12 @@ namespace PetSaver.Business.Usuarios
     public class LoginBusiness : BaseBusiness<LoginEntity, LoginRepository>
     {
         /// <summary>
-        /// Método para autenticar as credenciais informadas
+        /// Método para efetuar login no sistema
         /// </summary>
         /// <param name="aUsername">Nome de usuário</param>
         /// <param name="aPassword">Senha</param>
         /// <returns></returns>
-        public void ValidarLogin(string aUsername, string aPassword)
+        public void EfetuarLogin(string aUsername, string aPassword)
         {
             if (string.IsNullOrEmpty(aUsername))
             {
@@ -24,10 +24,19 @@ namespace PetSaver.Business.Usuarios
                 throw new BusinessException("O campo de senha não pode estar vazio.");
             }
 
-            if (new LoginRepository().BuscarPorEmailSenha(aUsername, aPassword) == null)
+            var login = new LoginRepository().BuscarPorEmailSenha(aUsername, aPassword);
+
+            if (login == null)
             {
                 throw new BusinessException("O login não foi encontrado em nossa base de dados.");
             }
+
+            var historicoLogin = new HistoricoLoginEntity()
+            {
+                IdLogin = login.Id,
+            };
+
+            new HistoricoLoginBusiness().Inserir(historicoLogin);
         }
     }
 }

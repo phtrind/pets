@@ -70,6 +70,8 @@
     <Compile Include="Mapeamento\Localizacao\CidadeMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EnderecoMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EstadoMap.cs" />
+    <Compile Include="Mapeamento\Usuario\HistoricoLoginMap.cs" />
+    <Compile Include="Usuarios\HistoricoLoginRepository.cs" />
     <Compile Include="Mapeamento\Usuario\LoginMap.cs" />
     <Compile Include="Mapeamento\RegisterMappings.cs" />
     <Compile Include="Mapeamento\Usuario\TipoLoginMap.cs" />

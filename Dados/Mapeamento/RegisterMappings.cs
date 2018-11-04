@@ -11,6 +11,7 @@ namespace PetSaver.Repository
             {
                 config.AddMap(new LoginMap());
                 config.AddMap(new TipoLoginMap());
+                config.AddMap(new HistoricoLoginMap());
                 config.AddMap(new TipoUsuarioMap());
                 config.AddMap(new UsuarioMap());
                 config.AddMap(new EnderecoMap());

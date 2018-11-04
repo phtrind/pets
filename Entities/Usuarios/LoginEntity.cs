@@ -4,7 +4,7 @@ namespace PetSaver.Entity.Usuarios
 {
     public class LoginEntity : BaseEntity
     {
-        #region .: Propriedades Herdadas :.
+        #region .: Base Entity :.
 
         public override int Id { get; set; }
 
@@ -16,7 +16,7 @@ namespace PetSaver.Entity.Usuarios
 
         #endregion
 
-        #region .: Propriedades próprias :.
+        #region .: Atributos :.
 
         /// <summary>
         /// Email do login
@@ -29,9 +29,18 @@ namespace PetSaver.Entity.Usuarios
         public string Senha { get; set; }
 
         /// <summary>
-        /// Tipo do login. Ex.: Usuário, Funcionário, etc
+        /// Id do tipo do login. Ex.: Usuário, Funcionário, etc
         /// </summary>
-        public int IdTipo { get; set; } 
+        public int IdTipo { get; set; }
+
+        #endregion
+
+        #region .: Objetos :.
+
+        /// <summary>
+        /// Tipo do login
+        /// </summary>
+        public TipoLoginEntity Tipo { get; set; }
 
         #endregion
     }

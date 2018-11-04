@@ -20,7 +20,7 @@ namespace PetSaver.Repository.Usuarios
                 throw new DbValidationException("O Id do tipo de Usuário é inválido.");
             }
 
-            if (!DocumentoIsValid(Utilities.Conversor.IntParaEnum<TiposUsuario>(aObjeto.IdTipo), aObjeto.Documento))
+            if (!string.IsNullOrEmpty(aObjeto.Documento) && !DocumentoIsValid(Utilities.Conversor.IntParaEnum<TiposUsuario>(aObjeto.IdTipo), aObjeto.Documento))
             {
                 throw new BusinessException("O documento do Usuário é inválido.");
             }

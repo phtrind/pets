@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Transactions;
 
 namespace PetSaver.Repository
 {
@@ -37,18 +36,11 @@ namespace PetSaver.Repository
         {
             using (var db = new SqlConnection(StringConnection))
             {
-                using (var transation = new TransactionScope())
-                {
-                    aObjeto.DataCadastro = DateTime.Now;
+                aObjeto.DataCadastro = DateTime.Now;
 
-                    ValidarCadastro(aObjeto);
+                ValidarCadastro(aObjeto);
 
-                    var codigo = Convert.ToInt32(db.Insert(aObjeto));
-
-                    transation.Complete();
-
-                    return codigo;
-                }
+                return Convert.ToInt32(db.Insert(aObjeto));
             }
         }
 
@@ -56,16 +48,11 @@ namespace PetSaver.Repository
         {
             using (var db = new SqlConnection(StringConnection))
             {
-                using (var transation = new TransactionScope())
-                {
-                    aObjeto.DataAlteracao = DateTime.Now;
+                aObjeto.DataAlteracao = DateTime.Now;
 
-                    ValidarAtualizacao(aObjeto);
+                ValidarAtualizacao(aObjeto);
 
-                    db.Update(aObjeto);
-
-                    transation.Complete();
-                }
+                db.Update(aObjeto);
             }
         }
 
@@ -77,12 +64,7 @@ namespace PetSaver.Repository
 
                 if (entity != null)
                 {
-                    using (var transation = new TransactionScope())
-                    {
-                        db.Delete(entity);
-
-                        transation.Complete();
-                    }
+                    db.Delete(entity);
                 }
                 else
                 {

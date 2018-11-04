@@ -73,5 +73,20 @@ namespace PetSaver.WebApi.Controllers.Usuarios
                 throw Util.TratarErro(ex);
             }
         }
+
+        [Authorize]
+        [Route("api/Usuario/Cadastrar")]
+        [HttpPost]
+        public void InformacoesLogin([FromBody]UsuarioEntity value)
+        {
+            try
+            {
+                new UsuarioBusiness().Cadastrar(value);
+            }
+            catch (Exception ex)
+            {
+                throw Util.TratarErro(ex);
+            }
+        }
     }
 }
