@@ -70,5 +70,27 @@ namespace PetSaver.Repository {
                 return ResourceManager.GetString("BuscarLoginPorEmail", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT *
+        ///FROM USU_USUARIOS
+        ///WHERE USU_DOCUMENTO = @Documento.
+        /// </summary>
+        internal static string BuscarUsuarioPorDocumento {
+            get {
+                return ResourceManager.GetString("BuscarUsuarioPorDocumento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT *
+        ///FROM USU_USUARIOS
+        ///WHERE LOG_CODIGO = @IdLogin.
+        /// </summary>
+        internal static string BuscarUsuarioPorLogin {
+            get {
+                return ResourceManager.GetString("BuscarUsuarioPorLogin", resourceCulture);
+            }
+        }
     }
 }

@@ -8,6 +8,71 @@ namespace PetSaver.Repository.Tests
     [TestClass]
     public class LoginRepositoryTest : BaseRepositoryTest
     {
+        #region .: Cadastro :.
+
+        [TestMethod]
+        public void Inserir_ValidLogin_DoesntThrowException()
+        {
+            var login = new Entity.Usuarios.LoginEntity()
+            {
+                Email = "teste_usuario@hotmail.com",
+                Senha = "12345678",
+                IdLoginCadastro = 1,
+                IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Usuario)
+            };
+
+            var codigo = new LoginRepository().Inserir(login);
+
+            Assert.IsTrue(codigo > 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessException), "O e-mail do Login já está cadastrado no sistema.")]
+        public void Inserir_ExistingEmail_ThrowsBusinessException()
+        {
+            var login = new Entity.Usuarios.LoginEntity()
+            {
+                Email = "phtrind@hotmail.com",
+                Senha = "123",
+                IdLoginCadastro = 1,
+                IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Funcionario)
+            };
+
+            new LoginRepository().Inserir(login);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessException), "E-mail do Login inválido.")]
+        public void Inserir_InvalidEmail_ThrowsBusinessException()
+        {
+            var login = new Entity.Usuarios.LoginEntity()
+            {
+                Email = "teste",
+                Senha = "123",
+                IdLoginCadastro = 1,
+                IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Funcionario)
+            };
+
+            new LoginRepository().Inserir(login);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessException), "Senha do Login inválida.")]
+        public void Inserir_InvalidPassword_ThrowsBusinessException()
+        {
+            var login = new Entity.Usuarios.LoginEntity()
+            {
+                Email = "teste@teste.com",
+                Senha = "123",
+                IdLoginCadastro = 1,
+                IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Funcionario)
+            };
+
+            new LoginRepository().Inserir(login);
+        }
+
+        #endregion
+
         #region .: Buscas :.
 
         [TestMethod]
@@ -41,43 +106,6 @@ namespace PetSaver.Repository.Tests
 
             Assert.IsNull(entity);
         }
-
-        #endregion
-
-        #region .: Vaidações :.
-
-        [TestMethod]
-        public void Inserir_ValidLogin_DoesntThrowException()
-        {
-            var login = new Entity.Usuarios.LoginEntity()
-            {
-                Email = "phtrind@hotmail.com",
-                Senha = "123",
-                IdLoginCadastro = 1,
-                IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Funcionario)
-            };
-
-            var dados = new LoginRepository();
-
-            int codigo = dados.Inserir(login);
-
-            Assert.IsTrue(codigo > 0);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(BusinessException), "O e-mail já está cadastrado no sistema.")]
-        public void Inserir_ExistingEmail_ThrowsBusinessException()
-        {
-            var login = new Entity.Usuarios.LoginEntity()
-            {
-                Email = "phtrind@hotmail.com",
-                Senha = "123",
-                IdLoginCadastro = 1,
-                IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Funcionario)
-            };
-
-            new LoginRepository().Inserir(login);
-        } 
 
         #endregion
     }

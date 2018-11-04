@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Transactions;
 
 namespace PetSaver.Repository
 {
@@ -36,11 +37,18 @@ namespace PetSaver.Repository
         {
             using (var db = new SqlConnection(StringConnection))
             {
-                aObjeto.DataCadastro = DateTime.Now;
+                using (var transation = new TransactionScope())
+                {
+                    aObjeto.DataCadastro = DateTime.Now;
 
-                ValidarCadastro(aObjeto);
+                    ValidarCadastro(aObjeto);
 
-                return Convert.ToInt32(db.Insert(aObjeto));
+                    var codigo = Convert.ToInt32(db.Insert(aObjeto));
+
+                    transation.Complete();
+
+                    return codigo;
+                }
             }
         }
 
@@ -48,11 +56,16 @@ namespace PetSaver.Repository
         {
             using (var db = new SqlConnection(StringConnection))
             {
-                aObjeto.DataAlteracao = DateTime.Now;
+                using (var transation = new TransactionScope())
+                {
+                    aObjeto.DataAlteracao = DateTime.Now;
 
-                ValidarAtualizacao(aObjeto);
+                    ValidarAtualizacao(aObjeto);
 
-                db.Update<T>(aObjeto);
+                    db.Update(aObjeto);
+
+                    transation.Complete();
+                }
             }
         }
 
@@ -60,7 +73,12 @@ namespace PetSaver.Repository
         {
             using (var db = new SqlConnection(StringConnection))
             {
-                db.Delete<T>(aObjeto);
+                using (var transation = new TransactionScope())
+                {
+                    db.Delete(aObjeto);
+
+                    transation.Complete();
+                }
             }
         }
 
@@ -72,19 +90,19 @@ namespace PetSaver.Repository
 
         protected virtual void ValidarCadastro(T aObjeto)
         {
-            if (aObjeto.Id != default(int))
+            if (aObjeto.Id != default)
             {
                 throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Id definido");
             }
 
-            if (aObjeto.DataCadastro == default(DateTime))
+            if (aObjeto.DataCadastro == default)
             {
                 throw new DbValidationException("Data de cadastro inválida.");
             }
 
-            if (aObjeto.IdLoginCadastro == default(int) || !LoginExiste(aObjeto.IdLoginCadastro))
+            if (aObjeto.IdLoginCadastro == default || !LoginExiste(aObjeto.IdLoginCadastro))
             {
-                throw new DbValidationException("O usuário responsável pelo cadastro é inválido.");
+                throw new DbValidationException("O Id do usuário responsável pelo cadastro é inválido.");
             }
 
             if (aObjeto.DataAlteracao.HasValue)
@@ -97,27 +115,27 @@ namespace PetSaver.Repository
                 throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Login de Alteração definido.");
             }
 
-            this.ValidarAtributos(aObjeto);
+            ValidarAtributos(aObjeto);
         }
 
         protected virtual void ValidarAtualizacao(T aObjeto)
         {
-            if (aObjeto.Id == default(int))
+            if (aObjeto.Id == default)
             {
                 throw new DbValidationException("Não é possível editar um objeto que não tenha um Id definido");
             }
 
-            if (aObjeto.DataCadastro == default(DateTime))
+            if (aObjeto.DataCadastro == default)
             {
                 throw new DbValidationException("Data de cadastro inválida.");
             }
 
-            if (aObjeto.IdLoginCadastro == default(int) || !LoginExiste(aObjeto.IdLoginCadastro))
+            if (aObjeto.IdLoginCadastro == default || !LoginExiste(aObjeto.IdLoginCadastro))
             {
-                throw new DbValidationException("O usuário responsável pelo cadastro é inválido.");
+                throw new DbValidationException("O Id do usuário responsável pelo cadastro é inválido.");
             }
 
-            if (aObjeto.IdLoginCadastro != this.Listar(aObjeto.Id).IdLoginCadastro)
+            if (aObjeto.IdLoginCadastro != Listar(aObjeto.Id).IdLoginCadastro)
             {
                 throw new DbValidationException("Não é possível editar o usuário responsável pelo cadastro.");
             }
@@ -129,15 +147,15 @@ namespace PetSaver.Repository
 
             if (!aObjeto.IdLoginAlteracao.HasValue || !LoginExiste(aObjeto.IdLoginAlteracao.Value))
             {
-                throw new DbValidationException("O usuário responsável pela edição é inválido.");
+                throw new DbValidationException("O Id do usuário responsável pela edição é inválido.");
             }
 
-            this.ValidarAtributos(aObjeto);
+            ValidarAtributos(aObjeto);
         }
 
-        private bool LoginExiste(int idLoginCadastro)
+        protected bool LoginExiste(int idLoginCadastro)
         {
-            return !(idLoginCadastro == default(int) || new LoginRepository().Listar(idLoginCadastro) == null);
+            return !(idLoginCadastro == default || new LoginRepository().Listar(idLoginCadastro) == null);
         }
 
         #endregion

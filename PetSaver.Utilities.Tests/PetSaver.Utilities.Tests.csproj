@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3B86B409-F332-44AD-BD6C-DA51412CE7C3}</ProjectGuid>
+    <ProjectGuid>{4B19BACD-E400-419D-9492-FE73CFB409CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PetSaver.Repository.Tests</RootNamespace>
-    <AssemblyName>PetSaver.Repository.Tests</AssemblyName>
+    <RootNamespace>PetSaver.Utilities.Tests</RootNamespace>
+    <AssemblyName>PetSaver.Utilities.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -41,19 +41,6 @@
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Dapper.FluentMap, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.FluentMap.1.6.0\lib\net451\Dapper.FluentMap.dll</HintPath>
-    </Reference>
-    <Reference Include="Dapper.FluentMap.Dommel, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dapper.FluentMap.Dommel.1.5.0\lib\net451\Dapper.FluentMap.Dommel.dll</HintPath>
-    </Reference>
-    <Reference Include="Dommel, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Dommel.1.9.0\lib\net451\Dommel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -61,43 +48,23 @@
       <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ComponentModel.Annotations.4.4.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\BaseRepositoryTest.cs" />
+    <Compile Include="ConversorTest.cs" />
+    <Compile Include="StringUtilityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usuarios\LoginRepositoryTest.cs" />
-    <Compile Include="Usuarios\TipoLoginRepositoryTest.cs" />
-    <Compile Include="Usuarios\TipoUsuarioRepositoryTest.cs" />
-    <Compile Include="Usuarios\UsuarioRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dados\PetSaver.Repository.csproj">
-      <Project>{1f4cd9a3-501a-4eeb-b0b2-d92f6a47f91c}</Project>
-      <Name>PetSaver.Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Entities\PetSaver.Entity.csproj">
       <Project>{13840294-d42c-4437-a6af-a1b58156eda7}</Project>
       <Name>PetSaver.Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PetSaver.Exceptions\PetSaver.Exceptions.csproj">
-      <Project>{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}</Project>
-      <Name>PetSaver.Exceptions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PetSaver.Utilities\PetSaver.Utilities.csproj">
-      <Project>{5b8c2769-c69a-4982-930b-074bac116299}</Project>
+      <Project>{5B8C2769-C69A-4982-930B-074BAC116299}</Project>
       <Name>PetSaver.Utilities</Name>
     </ProjectReference>
   </ItemGroup>

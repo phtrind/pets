@@ -1,12 +1,7 @@
 ﻿using Dapper;
 using PetSaver.Entity.Usuarios;
 using PetSaver.Exceptions;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PetSaver.Repository.Usuarios
 {
@@ -30,9 +25,9 @@ namespace PetSaver.Repository.Usuarios
         {
             base.ValidarCadastro(aObjeto);
 
-            if (this.BuscarPorEmail(aObjeto.Email) != null)
+            if (BuscarPorEmail(aObjeto.Email) != null)
             {
-                throw new BusinessException("O e-mail já está cadastrado no sistema.");
+                throw new BusinessException("O e-mail do Login já está cadastrado no sistema.");
             }
         }
 
@@ -40,14 +35,19 @@ namespace PetSaver.Repository.Usuarios
         {
             if (!Utilities.Validador.EmailIsValid(aObjeto.Email))
             {
-                throw new BusinessException("E-mail inválido.");
+                throw new BusinessException("E-mail do Login inválido.");
             }
 
-            if (Utilities.Validador.PasswordIsValid(aObjeto.Senha))
+            if (!Utilities.Validador.PasswordIsValid(aObjeto.Senha))
             {
-                throw new BusinessException("Senha inválida.");
+                throw new BusinessException("Senha do Login inválida.");
             }
-        } 
+
+            if (aObjeto.IdTipo == default || new TipoLoginRepository().Listar(aObjeto.IdTipo) == null)
+            {
+                throw new DbValidationException("Id do tipo de login inválido.");
+            }
+        }
 
         #endregion
     }

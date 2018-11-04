@@ -10,6 +10,9 @@ namespace PetSaver.Repository
             FluentMapper.Initialize(config =>
             {
                 config.AddMap(new LoginMap());
+                config.AddMap(new TipoLoginMap());
+                config.AddMap(new TipoUsuarioMap());
+                config.AddMap(new UsuarioMap());
                 config.ForDommel();
             });
         }
