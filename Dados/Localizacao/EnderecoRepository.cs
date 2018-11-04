@@ -1,9 +1,5 @@
 ﻿using PetSaver.Entity.Localizacao;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PetSaver.Exceptions;
 
 namespace PetSaver.Repository.Localizacao
 {
@@ -11,7 +7,27 @@ namespace PetSaver.Repository.Localizacao
     {
         protected override void ValidarAtributos(EnderecoEntity aObjeto)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(aObjeto.Logradouro))
+            {
+                throw new BusinessException("O logradouro do endereço é inválido.");
+            }
+
+            if (string.IsNullOrEmpty(aObjeto.Bairro))
+            {
+                throw new BusinessException("O bairro do endereço é inválido.");
+            }
+
+            aObjeto.Cep = Utilities.StringUtility.RemoverNaoNumericos(aObjeto.Cep);
+
+            if (string.IsNullOrEmpty(aObjeto.Cep))
+            {
+                throw new BusinessException("O cep do endereço é inválido.");
+            }
+
+            if (aObjeto.IdCidade == default || new CidadeRepository().Listar(aObjeto.IdCidade) == null)
+            {
+                throw new BusinessException("O Id da cidade do endereço é inválida.");
+            }
         }
     }
 }

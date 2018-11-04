@@ -13,6 +13,9 @@ namespace PetSaver.Repository
                 config.AddMap(new TipoLoginMap());
                 config.AddMap(new TipoUsuarioMap());
                 config.AddMap(new UsuarioMap());
+                config.AddMap(new EnderecoMap());
+                config.AddMap(new CidadeMap());
+                config.AddMap(new EstadoMap());
                 config.ForDommel();
             });
         }

@@ -147,7 +147,7 @@ namespace PetSaver.Repository.Tests.Usuarios
 
             var entity = dados.Listar(2);
 
-            entity.Nome = "Pedro";
+            entity.IdEndereco = 1;
             entity.IdLoginAlteracao = 1;
 
             dados.Atualizar(entity);

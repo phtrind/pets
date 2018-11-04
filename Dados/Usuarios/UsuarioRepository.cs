@@ -25,12 +25,16 @@ namespace PetSaver.Repository.Usuarios
                 throw new BusinessException("O documento do Usuário é inválido.");
             }
 
-            if (BuscarPorDocumento(aObjeto.Documento) != null)
+            var entidadePorDocumento = BuscarPorDocumento(aObjeto.Documento);
+
+            if (entidadePorDocumento != null && entidadePorDocumento.Id != aObjeto.Id)
             {
                 throw new BusinessException("Já existe um usuário relacionado ao Documento informado.");
             }
 
-            if (BuscarPorLogin(aObjeto.IdLogin) != null)
+            var entidadePorLogin = BuscarPorLogin(aObjeto.IdLogin);
+
+            if (entidadePorLogin != null && entidadePorLogin.Id != aObjeto.Id)
             {
                 throw new BusinessException("Já existe um usuário relacionado ao Id Login informado.");
             }

@@ -64,12 +64,17 @@
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Base\TipoRepository.cs" />
     <Compile Include="Interface\IRepository.cs" />
+    <Compile Include="Localizacao\CidadeRepository.cs" />
     <Compile Include="Localizacao\EnderecoRepository.cs" />
-    <Compile Include="Mapeamento\LoginMap.cs" />
+    <Compile Include="Localizacao\EstadoRepository.cs" />
+    <Compile Include="Mapeamento\Localizacao\CidadeMap.cs" />
+    <Compile Include="Mapeamento\Localizacao\EnderecoMap.cs" />
+    <Compile Include="Mapeamento\Localizacao\EstadoMap.cs" />
+    <Compile Include="Mapeamento\Usuario\LoginMap.cs" />
     <Compile Include="Mapeamento\RegisterMappings.cs" />
-    <Compile Include="Mapeamento\TipoLoginMap.cs" />
-    <Compile Include="Mapeamento\TipoUsuarioMap.cs" />
-    <Compile Include="Mapeamento\UsuarioMap.cs" />
+    <Compile Include="Mapeamento\Usuario\TipoLoginMap.cs" />
+    <Compile Include="Mapeamento\Usuario\TipoUsuarioMap.cs" />
+    <Compile Include="Mapeamento\Usuario\UsuarioMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
