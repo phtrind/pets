@@ -25,10 +25,11 @@ namespace PetSaver.Repository.Usuarios
                 throw new BusinessException("Data de nascimento inválida.");
             }
 
-            if (string.IsNullOrEmpty(aObjeto.Documento))
-            {
-                throw new BusinessException("Documento inválido.");
-            }
+            //TAG: Essa validação deve ficar na classe de Funcionario, pois o Usuário pode ser cadastrado sem documento
+            //if (string.IsNullOrEmpty(aObjeto.Documento))
+            //{
+            //    throw new BusinessException("Documento inválido.");
+            //}
 
             if (aObjeto.IdEndereco.HasValue &&
                 (aObjeto.IdEndereco.Value == default || new EnderecoRepository().Listar(aObjeto.IdEndereco.Value) == null))

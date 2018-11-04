@@ -24,10 +24,14 @@ namespace PetSaver.Repository.Localizacao
                 throw new BusinessException("O cep do endereço é inválido.");
             }
 
-            if (aObjeto.IdCidade == default || new CidadeRepository().Listar(aObjeto.IdCidade) == null)
+            var cidade = new CidadeRepository().Listar(aObjeto.IdCidade);
+
+            if (aObjeto.IdCidade == default || cidade == null)
             {
-                throw new BusinessException("O Id da cidade do endereço é inválida.");
+                throw new BusinessException("O Id da cidade do endereço é inválido.");
             }
+
+            aObjeto.IdEstado = cidade.IdEstado;
         }
     }
 }

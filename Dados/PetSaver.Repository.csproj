@@ -112,6 +112,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\Queries\Login\BuscarLoginPorEmailSenha.sql" />
     <Content Include="Resources\Queries\Login\BuscarLoginPorEmail.sql" />
     <Content Include="Resources\Queries\Usuario\BuscarUsuarioPorDocumento.sql" />
     <Content Include="Resources\Queries\Usuario\BuscarUsuarioPorLogin.sql" />

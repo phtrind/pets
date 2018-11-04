@@ -73,6 +73,18 @@ namespace PetSaver.Repository {
         
         /// <summary>
         ///   Looks up a localized string similar to SELECT *
+        ///FROM LOG_LOGINS
+        ///WHERE LOG_EMAIL = @Email
+        ///      AND LOG_SENHA = @Senha.
+        /// </summary>
+        internal static string BuscarLoginPorEmailSenha {
+            get {
+                return ResourceManager.GetString("BuscarLoginPorEmailSenha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT *
         ///FROM USU_USUARIOS
         ///WHERE USU_DOCUMENTO = @Documento.
         /// </summary>

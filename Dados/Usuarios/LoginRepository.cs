@@ -9,11 +9,30 @@ namespace PetSaver.Repository.Usuarios
     {
         #region .: Buscas :.
 
+        /// <summary>
+        /// Retorna a entidade de login referente ao e-mail informado
+        /// </summary>
+        /// <param name="aEmail">E-mail a ser buscado na base</param>
+        /// <returns></returns>
         public LoginEntity BuscarPorEmail(string aEmail)
         {
             using (var db = new SqlConnection(StringConnection))
             {
                 return db.QueryFirstOrDefault<LoginEntity>(Resource.BuscarLoginPorEmail, new { @Email = aEmail });
+            }
+        }
+
+        /// <summary>
+        /// Retorna a entidade de login referente ao e-mail e senha informados
+        /// </summary>
+        /// <param name="aEmail">E-mail a ser buscado na base</param>
+        /// <param name="aSenha">Senha a ser buscada na base</param>
+        /// <returns></returns>
+        public LoginEntity BuscarPorEmailSenha(string aEmail, string aSenha)
+        {
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.QueryFirstOrDefault<LoginEntity>(Resource.BuscarLoginPorEmailSenha, new { @Email = aEmail, @Senha = aSenha });
             }
         }
 
