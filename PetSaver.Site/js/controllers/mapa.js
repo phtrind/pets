@@ -15,17 +15,19 @@ function initialize() {
         placeMarker(event.latLng);
       });
 
-      
 }
  
 function placeMarker(location) {
+
     var marker = new google.maps.Marker({
         position: location, 
         map: map
+        
     });
-  
+   
     map.setCenter(location);
     // marker.setMap(null);
+
   }
 
 initialize();
