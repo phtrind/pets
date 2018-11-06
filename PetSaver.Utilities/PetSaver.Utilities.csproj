@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BugsnagHelper.cs" />
     <Compile Include="Conversor.cs" />
     <Compile Include="StringUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

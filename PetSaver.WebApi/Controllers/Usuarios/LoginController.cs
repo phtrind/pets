@@ -6,7 +6,7 @@ using System.Web.Http;
 
 namespace PetSaver.WebApi.Controllers.Usuarios
 {
-    public class LoginController : ApiController
+    public class LoginController : BaseController
     {
         // GET: api/Login
         public IEnumerable<LoginEntity> Get()
@@ -17,7 +17,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
 
@@ -30,7 +30,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
 
@@ -43,7 +43,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
 
@@ -56,7 +56,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
 
@@ -69,7 +69,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
     }

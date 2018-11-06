@@ -7,7 +7,7 @@ using System.Web.Http;
 namespace PetSaver.WebApi.Controllers.Usuarios
 {
     [Authorize]
-    public class UsuarioController : ApiController
+    public class UsuarioController : BaseController
     {
         // GET: api/Usuario
         public IEnumerable<UsuarioEntity> Get()
@@ -18,7 +18,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
 
@@ -31,7 +31,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
 
@@ -44,7 +44,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
 
@@ -57,7 +57,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
 
@@ -70,7 +70,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
 
@@ -85,7 +85,7 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
             catch (Exception ex)
             {
-                throw Util.TratarErro(ex);
+                throw TratarErro(ex);
             }
         }
     }

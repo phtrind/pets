@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using Bugsnag.AspNet.WebApi;
+using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using PetSaver.WebApi.Authentication;
@@ -16,6 +17,8 @@ namespace PetSaver.WebApi
             var config = new HttpConfiguration();
 
             Business.Util.MapearBaseDados();
+
+            config.UseBugsnag(Bugsnag.ConfigurationSection.Configuration.Settings);
 
             config.MapHttpAttributeRoutes();
 
