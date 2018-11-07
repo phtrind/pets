@@ -61,12 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anuncios\AnuncioRepository.cs" />
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Base\TipoRepository.cs" />
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Localizacao\CidadeRepository.cs" />
     <Compile Include="Localizacao\EnderecoRepository.cs" />
     <Compile Include="Localizacao\EstadoRepository.cs" />
+    <Compile Include="Localizacao\LocalizacaoRepository.cs" />
     <Compile Include="Mapeamento\Localizacao\CidadeMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EnderecoMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EstadoMap.cs" />

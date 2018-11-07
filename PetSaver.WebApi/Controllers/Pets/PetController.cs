@@ -1,19 +1,23 @@
-﻿using PetSaver.Business.Usuarios;
-using PetSaver.Entity.Usuarios;
+﻿using PetSaver.Entity.Pets;
+using PetSaver.Repository.Pets;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
-namespace PetSaver.WebApi.Controllers.Usuarios
+namespace PetSaver.WebApi.Controllers.Pets
 {
-    public class LoginController : BaseController
+    [Authorize]
+    public class PetController : BaseController
     {
-        // GET: api/Login
-        public IEnumerable<LoginEntity> Get()
+        // GET: api/Pet
+        public IEnumerable<PetEntity> Get()
         {
             try
             {
-                return new LoginBusiness().ListarTodos();
+                return new PetRepository().ListarTodos();
             }
             catch (Exception ex)
             {
@@ -21,12 +25,12 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
         }
 
-        // GET: api/Login/5
-        public LoginEntity Get(int id)
+        // GET: api/Pet/5
+        public PetEntity Get(int id)
         {
             try
             {
-                return new LoginBusiness().Listar(id);
+                return new PetRepository().Listar(id);
             }
             catch (Exception ex)
             {
@@ -34,12 +38,12 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
         }
 
-        // POST: api/Login
-        public int Post([FromBody]LoginEntity value)
+        // POST: api/Pet
+        public int Post([FromBody]PetEntity value)
         {
             try
             {
-                return new LoginBusiness().Inserir(value);
+                return new PetRepository().Inserir(value);
             }
             catch (Exception ex)
             {
@@ -47,12 +51,12 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
         }
 
-        // PUT: api/Login/5
-        public void Put([FromBody]LoginEntity value)
+        // PUT: api/Pet/5
+        public void Put([FromBody]PetEntity value)
         {
             try
             {
-                new LoginBusiness().Atualizar(value);
+                new PetRepository().Atualizar(value);
             }
             catch (Exception ex)
             {
@@ -60,12 +64,12 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             }
         }
 
-        // DELETE: api/Login/5
+        // DELETE: api/Pet/5
         public void Delete(int id)
         {
             try
             {
-                new LoginBusiness().Excluir(id);
+                new PetRepository().Excluir(id);
             }
             catch (Exception ex)
             {

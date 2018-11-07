@@ -1,7 +1,23 @@
-﻿namespace PetSaver.Entity.Anuncios
+﻿using System;
+
+namespace PetSaver.Entity.Anuncios
 {
     public class AnuncioEntity : BaseEntity
     {
+        #region .: Base Entity :.
+
+        public override int Id { get; set; }
+
+        public override DateTime DataCadastro { get; set; }
+        public override int IdLoginCadastro { get; set; }
+
+        public override DateTime? DataAlteracao { get; set; }
+        public override int? IdLoginAlteracao { get; set; }
+
+        #endregion
+
+        #region .: Foreign Keys :.
+
         /// <summary>
         /// Id do status em que o anúncio se encontra. Ex.: Em análise, Pendente, Ativo, Finalizado.
         /// </summary>
@@ -36,5 +52,7 @@
         /// Id do usuário que é dono do anúncio
         /// </summary>
         public int IdUsuario { get; set; }
+
+        #endregion
     }
 }

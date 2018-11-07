@@ -53,6 +53,9 @@
     <Compile Include="Enums\Pets\Pelos.cs" />
     <Compile Include="Enums\Pets\Portes.cs" />
     <Compile Include="Enums\Pets\Sexos.cs" />
+    <Compile Include="Enums\Status\StatusAnuncio.cs" />
+    <Compile Include="Enums\Status\StatusInteresse.cs" />
+    <Compile Include="Enums\Tipos\TiposAnuncio.cs" />
     <Compile Include="Enums\Tipos\TiposLogin.cs" />
     <Compile Include="Enums\Tipos\TiposUsuario.cs" />
     <Compile Include="Localizacao\CidadeEntity.cs" />
@@ -81,8 +84,6 @@
     <Compile Include="Usuarios\TipoUsuarioEntity.cs" />
     <Compile Include="Usuarios\UsuarioEntity.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enums\Status\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

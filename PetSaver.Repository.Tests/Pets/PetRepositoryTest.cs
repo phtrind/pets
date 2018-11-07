@@ -33,7 +33,23 @@ namespace PetSaver.Repository.Tests.Pets
             };
 
             new PetRepository().Inserir(pet);
-        } 
+        }
+
+        #endregion
+
+        #region .: Busca :.
+
+        [TestMethod]
+        public void Listar_ExistingId_ReturnsEntity()
+        {
+            Assert.IsNotNull(new PetRepository().Listar(1));
+        }
+
+        [TestMethod]
+        public void Listar_UnexistentId_ReturnsNull()
+        {
+            Assert.IsNull(new PetRepository().Listar(10000));
+        }
 
         #endregion
     }

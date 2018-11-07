@@ -120,6 +120,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Authentication\ProviderTokenAccess.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\Pets\PetController.cs" />
     <Compile Include="Controllers\Usuarios\LoginController.cs" />
     <Compile Include="Controllers\Usuarios\UsuarioController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
