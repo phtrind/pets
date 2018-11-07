@@ -497,6 +497,7 @@
                                         <option value="" disabled selected>Sexo</option>
                                         <option value="1">Macho</option>
                                         <option value="2">Fêmea</option>
+                                        <option value="0">Não sei</option>
                                     </select>
                                     <small id="sexoHelp" class="form-text text-muted">Selecione o sexo do pet.</small>
                                     <small id="sexoError" class="form-control-feedback" ng-show="ctrl.sexoError">Esse é
@@ -508,10 +509,10 @@
                             <div class="row">
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.racaError}">
                                     <select class="form-control custom-select" aria-describedby="racaHelp">
-                                        <option value="" disabled selected>Raça</option>
+                                        <option value="" disabled selected>Raça/Espécie</option>
                                         <option value="0">Desconhecida</option>
                                     </select>
-                                    <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da raça,
+                                    <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da raça/espécie,
                                         selecione a opção "Desconhecida".</small>
                                     <small id="racaError" class="form-control-feedback" ng-show="ctrl.racaError">Esse é
                                         um
@@ -521,10 +522,10 @@
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.idadeError}">
                                     <select class="form-control custom-select" id="idade" aria-describedby="idadeHelp">
                                         <option value="" disabled selected>Idade</option>
-                                        <option value="1">Filhote</option>
-                                        <option value="2">Adulto</option>
-                                        <option value="3">Senior</option>
-                                        <option value="0">Desconhecida</option>
+                                        <option value="1">Recém nascido</option>
+                                        <option value="2">Filhote</option>
+                                        <option value="3">Adulto</option>
+                                        <option value="0">Não sei</option>
                                     </select>
                                     <small id="idadeHelp" class="form-text text-muted">Caso não tenha certeza da idade
                                         do
@@ -542,6 +543,7 @@
                                         <option value="1">Pequeno</option>
                                         <option value="2">Médio</option>
                                         <option value="3">Grande</option>
+                                        <option value="0">Não se aplica</option>
                                     </select>
                                     <small id="tamanhoHelp" class="form-text text-muted">Selecione o tamanho do pet.</small>
                                     <small id="tamanhoError" class="form-control-feedback" ng-show="ctrl.tamanhoError">Esse
@@ -567,6 +569,7 @@
                                         <option value="1">Curto</option>
                                         <option value="2">Médio</option>
                                         <option value="3">Longo</option>
+                                        <option value="0">Não sei</option>
                                     </select>
                                     <small id="tamanhoHelp" class="form-text text-muted">Selecione o tamanho do pelo do
                                         pet.</small>
@@ -594,6 +597,7 @@
                                         <option value="1">Branco</option>
                                         <option value="2">Preto</option>
                                         <option value="3">Cinza</option>
+                                        <option value="4">Não se aplica</option>
                                     </select>
                                     <small id="corHelp" class="form-text text-muted">Essa é uma cor secundária, caso
                                         não
