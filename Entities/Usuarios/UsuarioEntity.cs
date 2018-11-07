@@ -26,7 +26,7 @@ namespace PetSaver.Entity.Usuarios
 
         #endregion
 
-        #region .: Foreign Key :.
+        #region .: Foreign Keys :.
 
         /// <summary>
         /// Id do endereço da pessoa

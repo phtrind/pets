@@ -11,10 +11,14 @@ namespace PetSaver.Repository
 
             Map(x => x.Id).ToColumn("USU_CODIGO").IsKey().IsIdentity();
 
+            #region .: Atributos :.
+
             Map(x => x.Nome).ToColumn("USU_NOME");
             Map(x => x.Sobrenome).ToColumn("USU_SOBRENOME");
             Map(x => x.DataNascimento).ToColumn("USU_DTHNASCIMENTO");
-            Map(x => x.Documento).ToColumn("USU_DOCUMENTO");
+            Map(x => x.Documento).ToColumn("USU_DOCUMENTO"); 
+
+            #endregion
 
             #region .: Foreign Keys :.
 

@@ -70,7 +70,15 @@
     <Compile Include="Mapeamento\Localizacao\CidadeMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EnderecoMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EstadoMap.cs" />
+    <Compile Include="Mapeamento\Pets\AnimalMap.cs" />
+    <Compile Include="Mapeamento\Pets\CorMap.cs" />
+    <Compile Include="Mapeamento\Pets\PetMap.cs" />
+    <Compile Include="Mapeamento\Pets\RacaEspecieMap.cs" />
     <Compile Include="Mapeamento\Usuario\HistoricoLoginMap.cs" />
+    <Compile Include="Pets\AnimalRepository.cs" />
+    <Compile Include="Pets\CorRepository.cs" />
+    <Compile Include="Pets\PetRepository.cs" />
+    <Compile Include="Pets\RacaEspecieRepository.cs" />
     <Compile Include="Usuarios\HistoricoLoginRepository.cs" />
     <Compile Include="Mapeamento\Usuario\LoginMap.cs" />
     <Compile Include="Mapeamento\RegisterMappings.cs" />

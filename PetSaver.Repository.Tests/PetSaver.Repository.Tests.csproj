@@ -76,6 +76,7 @@
     <Compile Include="Localizacao\CidadeEntityTest.cs" />
     <Compile Include="Localizacao\EnderecoRepositoryTest.cs" />
     <Compile Include="Localizacao\EstadoRepositoryTest.cs" />
+    <Compile Include="Pets\PetRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios\LoginRepositoryTest.cs" />
     <Compile Include="Usuarios\TipoLoginRepositoryTest.cs" />

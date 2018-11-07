@@ -1,7 +1,23 @@
-﻿namespace PetSaver.Entity.Pets
+﻿using System;
+
+namespace PetSaver.Entity.Pets
 {
     public class PetEntity : BaseEntity
     {
+        #region .: Base Entity :.
+
+        public override int Id { get; set; }
+
+        public override DateTime DataCadastro { get; set; }
+        public override int IdLoginCadastro { get; set; }
+
+        public override DateTime? DataAlteracao { get; set; }
+        public override int? IdLoginAlteracao { get; set; }
+
+        #endregion
+
+        #region .: Atributos :.
+
         /// <summary>
         /// Nome do Pet
         /// </summary>
@@ -10,7 +26,7 @@
         /// <summary>
         /// Peso do Pet
         /// </summary>
-        public decimal Peso { get; set; }
+        public decimal? Peso { get; set; }
 
         /// <summary>
         /// Se o Pet é vacinado ou não
@@ -31,6 +47,10 @@
         /// Descrição do Pet
         /// </summary>
         public string Descricao { get; set; }
+
+        #endregion
+
+        #region .: Foreign Keys :.
 
         /// <summary>
         /// Id do tipo de animal. Ex.: Cachorro, Gato, etc
@@ -70,6 +90,8 @@
         /// <summary>
         /// Id da cor secundária do Pet. Ex.: Amarelo, Branco, Preto
         /// </summary>
-        public int? IdCorSecundaria { get; set; }
+        public int? IdCorSecundaria { get; set; } 
+
+        #endregion
     }
 }

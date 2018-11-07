@@ -1,6 +1,8 @@
 ﻿using Dapper;
+using PetSaver.Entity.Enums;
 using PetSaver.Entity.Usuarios;
 using PetSaver.Exceptions;
+using System;
 using System.Data.SqlClient;
 
 namespace PetSaver.Repository.Usuarios
@@ -40,41 +42,6 @@ namespace PetSaver.Repository.Usuarios
 
         #region .: Validações :
 
-        protected override void ValidarCadastro(LoginEntity aObjeto)
-        {
-            if (aObjeto.Id != default)
-            {
-                throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Id definido");
-            }
-
-            if (aObjeto.DataCadastro == default)
-            {
-                throw new DbValidationException("Data de cadastro inválida.");
-            }
-
-            if (aObjeto.IdLoginCadastro != default && !LoginExiste(aObjeto.IdLoginCadastro))
-            {
-                throw new DbValidationException("O Id do usuário responsável pelo cadastro é inválido.");
-            }
-
-            if (aObjeto.DataAlteracao.HasValue)
-            {
-                throw new DbValidationException("Não é possível cadastrar um objeto que já tenha uma Data de Alteração definida.");
-            }
-
-            if (aObjeto.IdLoginAlteracao.HasValue)
-            {
-                throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Login de Alteração definido.");
-            }
-
-            ValidarAtributos(aObjeto);
-
-            if (BuscarPorEmail(aObjeto.Email) != null)
-            {
-                throw new BusinessException("O e-mail do Login já está cadastrado no sistema.");
-            }
-        }
-
         protected override void ValidarAtributos(LoginEntity aObjeto)
         {
             if (!Utilities.Validador.EmailIsValid(aObjeto.Email))
@@ -87,9 +54,14 @@ namespace PetSaver.Repository.Usuarios
                 throw new BusinessException("Senha do Login inválida.");
             }
 
-            if (aObjeto.IdTipo == default || new TipoLoginRepository().Listar(aObjeto.IdTipo) == null)
+            if (aObjeto.IdTipo == default || !Enum.IsDefined(typeof(TiposLogin), aObjeto.IdTipo))
             {
                 throw new DbValidationException("Id do tipo de login inválido.");
+            }
+
+            if (BuscarPorEmail(aObjeto.Email) != null)
+            {
+                throw new BusinessException("O e-mail do Login já está cadastrado no sistema.");
             }
         }
 

@@ -2,7 +2,7 @@
 
 namespace PetSaver.Entity.Pets
 {
-    public class CorEntity : BaseEntity
+    public class RacaEspecieEntity : BaseEntity
     {
         #region .: Base Entity :.
 
@@ -19,9 +19,18 @@ namespace PetSaver.Entity.Pets
         #region .: Atributos :.
 
         /// <summary>
-        /// Nome da cor. Ex.: Amarelo, Verde, etc
+        /// Nome da raça. Ex.: Viralata, Pug, etc
         /// </summary>
-        public string Nome { get; set; } 
+        public string Nome { get; set; }
+
+        #endregion
+
+        #region .: Foreign Keys :.
+
+        /// <summary>
+        /// Id do animal. Ex.: Cachorro, Gato, etc
+        /// </summary>
+        public int IdAnimal { get; set; } 
 
         #endregion
     }

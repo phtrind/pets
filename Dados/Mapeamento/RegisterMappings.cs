@@ -17,6 +17,10 @@ namespace PetSaver.Repository
                 config.AddMap(new EnderecoMap());
                 config.AddMap(new CidadeMap());
                 config.AddMap(new EstadoMap());
+                config.AddMap(new AnimalMap());
+                config.AddMap(new RacaEspecieMap());
+                config.AddMap(new CorMap());
+                config.AddMap(new PetMap());
                 config.ForDommel();
             });
         }
