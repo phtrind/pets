@@ -1,0 +1,5 @@
+D:\Documents\Git\pets\Entities\bin\Debug\PetSaver.Entity.dll
+D:\Documents\Git\pets\Entities\bin\Debug\PetSaver.Entity.pdb
+D:\Documents\Git\pets\Entities\obj\Debug\PetSaver.Entity.csproj.CoreCompileInputs.cache
+D:\Documents\Git\pets\Entities\obj\Debug\PetSaver.Entity.dll
+D:\Documents\Git\pets\Entities\obj\Debug\PetSaver.Entity.pdb

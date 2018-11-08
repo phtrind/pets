@@ -1,0 +1,9 @@
+D:\Documents\Git\pets\PetSaver.Utilities\bin\Debug\PetSaver.Utilities.dll
+D:\Documents\Git\pets\PetSaver.Utilities\bin\Debug\PetSaver.Utilities.pdb
+D:\Documents\Git\pets\PetSaver.Utilities\obj\Debug\PetSaver.Utilities.csproj.CoreCompileInputs.cache
+D:\Documents\Git\pets\PetSaver.Utilities\obj\Debug\PetSaver.Utilities.dll
+D:\Documents\Git\pets\PetSaver.Utilities\obj\Debug\PetSaver.Utilities.pdb
+D:\Documents\Git\pets\PetSaver.Utilities\obj\Debug\PetSaver.Utilities.csprojAssemblyReference.cache
+D:\Documents\Git\pets\PetSaver.Utilities\bin\Debug\PetSaver.Entity.dll
+D:\Documents\Git\pets\PetSaver.Utilities\bin\Debug\PetSaver.Entity.pdb
+D:\Documents\Git\pets\PetSaver.Utilities\obj\Debug\PetSaver.Utilities.csproj.CopyComplete

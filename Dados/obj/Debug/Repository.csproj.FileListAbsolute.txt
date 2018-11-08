@@ -1,0 +1,11 @@
+D:\Documents\Git\pets\Dados\bin\Debug\Repository.dll
+D:\Documents\Git\pets\Dados\bin\Debug\Repository.pdb
+D:\Documents\Git\pets\Dados\bin\Debug\Dapper.dll
+D:\Documents\Git\pets\Dados\bin\Debug\Entities.dll
+D:\Documents\Git\pets\Dados\bin\Debug\Entities.pdb
+D:\Documents\Git\pets\Dados\bin\Debug\Dapper.xml
+D:\Documents\Git\pets\Dados\obj\Debug\Repository.csprojAssemblyReference.cache
+D:\Documents\Git\pets\Dados\obj\Debug\Repository.csproj.CoreCompileInputs.cache
+D:\Documents\Git\pets\Dados\obj\Debug\Repository.csproj.CopyComplete
+D:\Documents\Git\pets\Dados\obj\Debug\Repository.dll
+D:\Documents\Git\pets\Dados\obj\Debug\Repository.pdb

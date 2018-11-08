@@ -1,0 +1,6 @@
+D:\Documents\Git\pets\PetSaver.Exceptions\bin\Debug\PetSaver.Exceptions.dll
+D:\Documents\Git\pets\PetSaver.Exceptions\bin\Debug\PetSaver.Exceptions.pdb
+D:\Documents\Git\pets\PetSaver.Exceptions\obj\Debug\PetSaver.Exceptions.csproj.CoreCompileInputs.cache
+D:\Documents\Git\pets\PetSaver.Exceptions\obj\Debug\PetSaver.Exceptions.dll
+D:\Documents\Git\pets\PetSaver.Exceptions\obj\Debug\PetSaver.Exceptions.pdb
+D:\Documents\Git\pets\PetSaver.Exceptions\obj\Debug\PetSaver.Exceptions.csprojAssemblyReference.cache

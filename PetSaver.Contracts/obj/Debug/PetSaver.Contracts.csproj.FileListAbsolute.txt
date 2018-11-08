@@ -1,0 +1,6 @@
+D:\Documents\Git\pets\PetSaver.Contracts\bin\Debug\PetSaver.Contracts.dll
+D:\Documents\Git\pets\PetSaver.Contracts\bin\Debug\PetSaver.Contracts.pdb
+D:\Documents\Git\pets\PetSaver.Contracts\obj\Debug\PetSaver.Contracts.csproj.CoreCompileInputs.cache
+D:\Documents\Git\pets\PetSaver.Contracts\obj\Debug\PetSaver.Contracts.dll
+D:\Documents\Git\pets\PetSaver.Contracts\obj\Debug\PetSaver.Contracts.pdb
+D:\Documents\Git\pets\PetSaver.Contracts\obj\Debug\PetSaver.Contracts.csprojAssemblyReference.cache
