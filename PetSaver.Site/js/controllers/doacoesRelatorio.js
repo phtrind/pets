@@ -1,6 +1,8 @@
-var app = angular.module('pets', [])
+    app.controller('doacoesRelatorioController', function ($controller) {
 
-app.controller('doacoesRelatorioController', function ($scope, $http, $compile, $sce) {
+        var ctrl = this;
+    
+        ctrl.base = $controller('baseController', {});
 
     // $scope.nenhumaDoacao = true;
 

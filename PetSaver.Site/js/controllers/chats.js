@@ -1,13 +1,11 @@
-var app = angular.module('pets', [])
+ app.controller('chatsController', function ($controller) {
 
-app.controller('chatsController', function ($scope, $http, $compile, $sce) {
+        var ctrl = this;
+    
+        ctrl.base = $controller('baseController', {});
+        
 
-    //this method runs after page load
-    angular.element(document).ready(function () {
-        $scope.minimizarMenu();
-    });
-
-    $scope.minimizarMenu = function () {
+    ctrl.minimizarMenu = function () {
         $("body").addClass("mini-sidebar");
         $(".header .navbar .navbar-header .navbar-brand span").css("display", "none");
         $(".header .navbar .navbar-header .navbar-brand b").css("display", "inline-block");

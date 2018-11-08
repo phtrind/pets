@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bugsnag.AspNet.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:Bugsnag.AspNet.WebApi.DelegatingHandler.HttpContextGetter(System.Object)">
+            <summary>
+            Build a property getter delegate for faster access to this property
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

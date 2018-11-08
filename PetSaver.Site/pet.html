@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="utf-8">
@@ -40,7 +40,6 @@
             margin: 0;
         }
     </style>
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -49,7 +48,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="petController" ng-init="verificarSession()">
+<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="petController as ctrl" ng-init="ctrl.verificarSession()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -63,23 +62,23 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar">quero adotar</a>
+                        <a class="nav-link js-scroll-trigger" href="#buscar">Quero adotar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar">quero doar</a>
+                        <a class="nav-link js-scroll-trigger" href="#buscar">Quero doar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar">perdi meu pet</a>
+                        <a class="nav-link js-scroll-trigger" href="#buscar">Perdi meu pet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar">encontrei um pet</a>
+                        <a class="nav-link js-scroll-trigger" href="#buscar">Encontrei um pet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar" ng-show="isLogged">minha conta</a>
+                        <a class="nav-link js-scroll-trigger" href="#buscar" ng-show="ctrl.isLogged">Minha conta</a>
                     </li>
                     <li class="nav-item">
-                        <button type="submit" class="btn btn-secondary" onclick="document.location.href='login.html'"
-                            ng-hide="isLogged">entrar</button>
+                        <button type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal"
+                            data-target="#modalLogarCadastrar">Entrar</button>
                     </li>
                 </ul>
             </div>
@@ -195,16 +194,16 @@
                         <div class="col-md-12 petInformacoesSecundarias">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <span style="font-weight: bold">porte: </span><span>médio</span>
+                                    <span style="font-weight: bold">Porte: </span><span>médio</span>
                                 </div>
                                 <div class="col-md-3">
-                                    <span style="font-weight: bold">peso: </span><span>20kg</span>
+                                    <span style="font-weight: bold">Peso: </span><span>20kg</span>
                                 </div>
                                 <div class="col-md-3">
-                                    <span style="font-weight: bold">cor: </span><span>preto / branco</span>
+                                    <span style="font-weight: bold">Cor: </span><span>preto / branco</span>
                                 </div>
                                 <div class="col-md-3">
-                                    <span style="font-weight: bold">pelo: </span><span>curto</span>
+                                    <span style="font-weight: bold">Pelo: </span><span>curto</span>
                                 </div>
                             </div>
                             <hr>
@@ -212,16 +211,16 @@
                         <div class="col-md-12 petInformacoesSecundarias">
                             <div class="row">
                                 <div class="col-md-12" style="margin-bottom: 20px">
-                                    <h3 style="color: #500B89">saúde</h3>
+                                    <h3 style="color: #500B89">Saúde</h3>
                                 </div>
                                 <div class="col-md-4">
-                                    <span style="font-weight: bold">vacinado: </span><span>sim</span>
+                                    <span style="font-weight: bold">Vacinado: </span><span>sim</span>
                                 </div>
                                 <div class="col-md-4">
-                                    <span style="font-weight: bold">vermifugado: </span><span>não sabe</span>
+                                    <span style="font-weight: bold">Vermifugado: </span><span>não sabe</span>
                                 </div>
                                 <div class="col-md-4">
-                                    <span style="font-weight: bold">castrado: </span><span>não</span>
+                                    <span style="font-weight: bold">Castrado: </span><span>não</span>
                                 </div>
                             </div>
                             <hr>
@@ -229,7 +228,7 @@
                         <div class="col-md-12 petInformacoesSecundarias">
                             <div class="row">
                                 <div class="col-md-12" style="margin-bottom: 20px">
-                                    <h3 style="color: #500B89">sobre</h3>
+                                    <h3 style="color: #500B89">Sobre</h3>
                                 </div>
                                 <div class="col-md-12">
                                     <p class="sobreOPet">Lorem Ipsum is simply dummy text of the printing and
@@ -268,9 +267,11 @@
                         <button id="buttonGostei" class="btn btn-secondary"><img src="icons/heart.png" width="30px"></button>
                     </div>
                 </div>
+                
+                <div ng-include="'login.html'"></div>
+
             </div>
         </div>
-        <!-- <footer ng-include="'footer.html'" class="footer"></div> -->
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
@@ -282,6 +283,8 @@
     <script src="js/custom.min.js"></script>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/controllers/app.js"></script>
+    <script src="js/controllers/base.js"></script>
     <script src="js/controllers/pet.js"></script>
 
 </body>

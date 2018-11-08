@@ -1,7 +1,9 @@
-var app = angular.module('pets', [])
+app.controller('petController', function ($controller) {
 
-app.controller('indexController', function ($scope, $http, $compile, $sce) {
+        var ctrl = this;
 
-    
+        ctrl.base = $controller('baseController', {});
+
+        ctrl.isRegister = false;
 
 });

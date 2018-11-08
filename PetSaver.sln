@@ -29,6 +29,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.WebApi", "PetSaver
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.WebApi.Tests", "PetSaver.WebApi.Tests\PetSaver.WebApi.Tests.csproj", "{B8545296-DED4-4E65-B382-B301BBAA6D4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Entity", "Entities\PetSaver.Entity.csproj", "{13840294-D42C-4437-A6AF-A1B58156EDA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Repository", "Dados\PetSaver.Repository.csproj", "{1F4CD9A3-501A-4EEB-B0B2-D92F6A47F91C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Repository.Tests", "PetSaver.Repository.Tests\PetSaver.Repository.Tests.csproj", "{3B86B409-F332-44AD-BD6C-DA51412CE7C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EBC73A7B-9782-4E6B-9EC5-115B582BF6B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Site", "Site", "{186AEBCB-9394-4B88-AFD9-65E18E50806C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Utilities", "PetSaver.Utilities\PetSaver.Utilities.csproj", "{5B8C2769-C69A-4982-930B-074BAC116299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Exceptions", "PetSaver.Exceptions\PetSaver.Exceptions.csproj", "{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Utilities.Tests", "PetSaver.Utilities.Tests\PetSaver.Utilities.Tests.csproj", "{4B19BACD-E400-419D-9492-FE73CFB409CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Business", "PetSaver.Business\PetSaver.Business.csproj", "{97F722D0-8D5C-48D6-984D-B4EAAAEC1D58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Business.Tests", "PetSaver.Business.Tests\PetSaver.Business.Tests.csproj", "{7AD967E0-1C65-47DC-8E7B-3B48EBE97EAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSaver.Contracts", "PetSaver.Contracts\PetSaver.Contracts.csproj", "{EE029B1B-912B-47E2-B6A5-7E91244EF45B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,9 +69,52 @@ Global
 		{B8545296-DED4-4E65-B382-B301BBAA6D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8545296-DED4-4E65-B382-B301BBAA6D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8545296-DED4-4E65-B382-B301BBAA6D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13840294-D42C-4437-A6AF-A1B58156EDA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13840294-D42C-4437-A6AF-A1B58156EDA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13840294-D42C-4437-A6AF-A1B58156EDA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13840294-D42C-4437-A6AF-A1B58156EDA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F4CD9A3-501A-4EEB-B0B2-D92F6A47F91C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F4CD9A3-501A-4EEB-B0B2-D92F6A47F91C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F4CD9A3-501A-4EEB-B0B2-D92F6A47F91C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F4CD9A3-501A-4EEB-B0B2-D92F6A47F91C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B86B409-F332-44AD-BD6C-DA51412CE7C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B86B409-F332-44AD-BD6C-DA51412CE7C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B86B409-F332-44AD-BD6C-DA51412CE7C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B86B409-F332-44AD-BD6C-DA51412CE7C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B8C2769-C69A-4982-930B-074BAC116299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B8C2769-C69A-4982-930B-074BAC116299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B8C2769-C69A-4982-930B-074BAC116299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B8C2769-C69A-4982-930B-074BAC116299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B19BACD-E400-419D-9492-FE73CFB409CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B19BACD-E400-419D-9492-FE73CFB409CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B19BACD-E400-419D-9492-FE73CFB409CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B19BACD-E400-419D-9492-FE73CFB409CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F722D0-8D5C-48D6-984D-B4EAAAEC1D58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F722D0-8D5C-48D6-984D-B4EAAAEC1D58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F722D0-8D5C-48D6-984D-B4EAAAEC1D58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F722D0-8D5C-48D6-984D-B4EAAAEC1D58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD967E0-1C65-47DC-8E7B-3B48EBE97EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD967E0-1C65-47DC-8E7B-3B48EBE97EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD967E0-1C65-47DC-8E7B-3B48EBE97EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD967E0-1C65-47DC-8E7B-3B48EBE97EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE029B1B-912B-47E2-B6A5-7E91244EF45B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE029B1B-912B-47E2-B6A5-7E91244EF45B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE029B1B-912B-47E2-B6A5-7E91244EF45B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE029B1B-912B-47E2-B6A5-7E91244EF45B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{413CF01D-DD5A-4717-87C0-2365DFEFDF53} = {186AEBCB-9394-4B88-AFD9-65E18E50806C}
+		{B8545296-DED4-4E65-B382-B301BBAA6D4A} = {EBC73A7B-9782-4E6B-9EC5-115B582BF6B8}
+		{3B86B409-F332-44AD-BD6C-DA51412CE7C3} = {EBC73A7B-9782-4E6B-9EC5-115B582BF6B8}
+		{4B19BACD-E400-419D-9492-FE73CFB409CD} = {EBC73A7B-9782-4E6B-9EC5-115B582BF6B8}
+		{7AD967E0-1C65-47DC-8E7B-3B48EBE97EAD} = {EBC73A7B-9782-4E6B-9EC5-115B582BF6B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3EB89429-49F2-40E4-9BEC-9CBF0B90525E}

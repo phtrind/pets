@@ -38,7 +38,7 @@
 <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="chatsController">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="chatsController as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -598,7 +598,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="message-input">
+                            <div class="message-input" style="margin-left: 10px">
                                 <div class="wrap">
                                     <textarea type="text" placeholder="Digite aqui..."></textarea>
                                     <button class="btn btn-primary submit" style="height: 50px !important; border-radius: 0px !important;"><i
@@ -636,6 +636,8 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/base.js"></script>
     <script src="../js/controllers/chats.js"></script>
 
     <!-- #################################### Chats ################################# -->

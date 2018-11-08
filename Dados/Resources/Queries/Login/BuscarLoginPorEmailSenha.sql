@@ -1,0 +1,4 @@
+SELECT *
+FROM LOG_LOGINS
+WHERE LOG_EMAIL = @Email
+      AND LOG_SENHA = @Senha
