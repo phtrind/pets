@@ -385,30 +385,36 @@
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
-                            <div class="col-md-3" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
+                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
                                 ng-click="ctrl.SelectPet(1);">
-                                <img src="../icons/dog.png">
+                                <img src="../icons/dog.png" style="width: 110%">
                                 <h3>Cachorro</h3>
                             </div>
-                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
+                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
                                 ng-click="ctrl.SelectPet(2);">
-                                <img src="../icons/cat.png">
+                                <img src="../icons/cat.png" style="width: 110%;">
                                 <h3>Gato</h3>
                             </div>
-                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
                                 ng-click="ctrl.SelectPet(3);">
-                                <img src="../icons/bird.png">
+                                <img src="../icons/hamster.png" style="width:105%; padding: 10px; margin-bottom: 9px;">
+                                <h3>Roedor</h3>
+                            </div>
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
+                                ng-click="ctrl.SelectPet(4);">
+                                <img src="../icons/bird.png" style="width: 110%">
                                 <h3>Ave</h3>
                             </div>
-                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
-                                ng-click="ctrl.SelectPet(4);">
-                                <img src="../icons/others.png" style="width: 70%; padding: 25px; margin-bottom: 10px;">
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
+                                ng-click="ctrl.SelectPet(5);">
+                                <img src="../icons/others.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Outros</h3>
                             </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: right;">
-                                <select class="btn btn-primary" ng-show="ctrl.comboOutrosMostrar" ng-model="ctrl.outrosSelecionado" ng-change="ctrl.ValidarComboOutros()">
+                                <select class="btn btn-primary" ng-show="ctrl.comboOutrosMostrar" ng-model="ctrl.outrosSelecionado"
+                                    ng-change="ctrl.ValidarComboOutros()">
                                     <option value="">Selecione</option>
                                     <option value="tartaruga">Tartaruga</option>
                                     <option value="cagado">Cagado</option>
@@ -443,18 +449,19 @@
                             </div>
                         </div>
 
-                        <p>Marque no mapa o local aproximado em que você perdeu seu pet. Isso é muito importante, pois quem estiver por perto ficará atento.</p>
+                        <p>Marque no mapa o local aproximado em que você perdeu seu pet. Isso é muito importante, pois
+                            quem estiver por perto ficará atento.</p>
 
 
                         <div id="mapa" style="height: 380px; width: 100%;">
-                            
-                     
+
+
                             <!-- Maps API Javascript -->
                             <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAdhTL8ySDP7Mu_ZFJWPCQKiranggDwxYs"></script>
-                     
+
                             <!-- Arquivo de inicialização do mapa -->
                             <script src="../js/controllers/mapa.js"></script>
-                            
+
                         </div>
 
                         <div class="form-body" style="margin-top:50px;">
@@ -488,14 +495,15 @@
 
                         <div class="form-body" style="margin-top:50px;">
                             <div class="row">
-                                    <div class="form-group col-md-6" ng-class="{'has-error':ctrl.nomeError}">
-                                        <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp"
-                                            placeholder="Nome" autocomplete="off">
-                                        <small id="nomeHelp" class="form-text text-muted">Nos conte qual o nome do seu pet.</small>
-                                        <small id="nomeError" class="form-control-feedback" ng-show="ctrl.nomeError">Esse é um
-                                                campo
-                                                obrigatório.</small>
-                                    </div>
+                                <div class="form-group col-md-6" ng-class="{'has-error':ctrl.nomeError}">
+                                    <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp"
+                                        placeholder="Nome" autocomplete="off">
+                                    <small id="nomeHelp" class="form-text text-muted">Nos conte qual o nome do seu pet.</small>
+                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.nomeError">Esse é
+                                        um
+                                        campo
+                                        obrigatório.</small>
+                                </div>
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.sexoError}">
                                     <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp">
                                         <option value="" disabled selected>Sexo</option>
@@ -503,7 +511,8 @@
                                         <option value="2">Fêmea</option>
                                     </select>
                                     <small id="sexoHelp" class="form-text text-muted">Selecione o sexo do pet.</small>
-                                    <small id="sexoError" class="form-control-feedback" ng-show="ctrl.sexoError">Esse é um
+                                    <small id="sexoError" class="form-control-feedback" ng-show="ctrl.sexoError">Esse é
+                                        um
                                         campo
                                         obrigatório.</small>
                                 </div>
@@ -514,9 +523,11 @@
                                         <option value="" disabled selected>Raça/Espécie</option>
                                         <option value="0">Desconhecida</option>
                                     </select>
-                                    <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da raça/espécie,
+                                    <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da
+                                        raça/espécie,
                                         selecione a opção "Desconhecida".</small>
-                                    <small id="racaError" class="form-control-feedback" ng-show="ctrl.racaError">Esse é um
+                                    <small id="racaError" class="form-control-feedback" ng-show="ctrl.racaError">Esse é
+                                        um
                                         campo
                                         obrigatório.</small>
                                 </div>
@@ -531,7 +542,8 @@
                                     <small id="idadeHelp" class="form-text text-muted">Caso não tenha certeza da idade
                                         do
                                         pet, selecione a opção "Desconhecida".</small>
-                                    <small id="idadeError" class="form-control-feedback" ng-show="ctrl.idadeError">Esse é um
+                                    <small id="idadeError" class="form-control-feedback" ng-show="ctrl.idadeError">Esse
+                                        é um
                                         campo
                                         obrigatório.</small>
                                 </div>
@@ -554,11 +566,8 @@
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.pesoError}">
                                     <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
                                         placeholder="Peso" autocomplete="off">
-                                    <small id="pesoHelp" class="form-text text-muted">Nos diga qual o peso do pet, pode
-                                        ser aproximado.</small>
-                                    <small id="pesoError" class="form-control-feedback" ng-show="ctrl.pesoError">Esse é um
-                                        campo
-                                        obrigatório.</small>
+                                        <small id="pesoHelp" class="form-text text-muted">Caso não saiba o peso, pode deixar 
+                                            este campo em branco.</small>
                                 </div>
                             </div>
                             <div class="row">
@@ -585,7 +594,8 @@
                                         <option value="3">Cinza</option>
                                     </select>
                                     <small id="cor1Help" class="form-text text-muted">Nos conte qual a cor do pet.</small>
-                                    <small id="cor1error" class="form-control-feedback" ng-show="ctrl.cor1error">Esse é um
+                                    <small id="cor1error" class="form-control-feedback" ng-show="ctrl.cor1error">Esse é
+                                        um
                                         campo
                                         obrigatório.</small>
                                 </div>

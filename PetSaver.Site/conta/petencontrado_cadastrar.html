@@ -384,24 +384,29 @@
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
-                            <div class="col-md-3" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
+                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
                                 ng-click="ctrl.SelectPet(1);">
-                                <img src="../icons/dog.png">
+                                <img src="../icons/dog.png" style="width: 110%">
                                 <h3>Cachorro</h3>
                             </div>
-                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
+                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
                                 ng-click="ctrl.SelectPet(2);">
-                                <img src="../icons/cat.png">
+                                <img src="../icons/cat.png" style="width: 110%;">
                                 <h3>Gato</h3>
                             </div>
-                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
                                 ng-click="ctrl.SelectPet(3);">
-                                <img src="../icons/bird.png">
+                                <img src="../icons/hamster.png" style="width:105%; padding: 10px; margin-bottom: 9px;">
+                                <h3>Roedor</h3>
+                            </div>
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
+                                ng-click="ctrl.SelectPet(4);">
+                                <img src="../icons/bird.png" style="width: 110%">
                                 <h3>Ave</h3>
                             </div>
-                            <div class="col-md-3 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
-                                ng-click="ctrl.SelectPet(4);">
-                                <img src="../icons/others.png" style="width: 70%; padding: 25px; margin-bottom: 10px;">
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
+                                ng-click="ctrl.SelectPet(5);">
+                                <img src="../icons/others.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Outros</h3>
                             </div>
                         </div>
@@ -545,15 +550,11 @@
                                         obrigatório.</small>
                                 </div>
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.pesoError}">
-                                    <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
-                                        placeholder="Peso" autocomplete="off">
-                                    <small id="pesoHelp" class="form-text text-muted">Nos diga qual o peso do pet, pode
-                                        ser aproximado.</small>
-                                    <small id="pesoError" class="form-control-feedback" ng-show="ctrl.pesoError">Esse é
-                                        um
-                                        campo
-                                        obrigatório.</small>
-                                </div>
+                                        <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
+                                            placeholder="Peso" autocomplete="off">
+                                            <small id="pesoHelp" class="form-text text-muted">Caso não saiba o peso, pode deixar 
+                                                este campo em branco.</small>
+                                    </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.tamanhoError}">

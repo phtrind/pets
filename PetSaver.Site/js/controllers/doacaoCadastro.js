@@ -11,6 +11,7 @@ app.controller('daocaoCadastroController', function ($controller) {
         if (pet == 1) {
             ctrl.dogSelected = true;
             ctrl.catSelected = false;
+            ctrl.hamsterSelected = false;
             ctrl.birdSelected = false;
             ctrl.othersSelected = false;
             ctrl.petSelected = true;
@@ -19,6 +20,7 @@ app.controller('daocaoCadastroController', function ($controller) {
         else if (pet == 2) {
             ctrl.dogSelected = false;
             ctrl.catSelected = true;
+            ctrl.hamsterSelected = false;
             ctrl.birdSelected = false;
             ctrl.othersSelected = false;
             ctrl.petSelected = true;
@@ -27,18 +29,29 @@ app.controller('daocaoCadastroController', function ($controller) {
         else if (pet == 3) {
             ctrl.dogSelected = false;
             ctrl.catSelected = false;
-            ctrl.birdSelected = true;
+            ctrl.hamsterSelected = true;
+            ctrl.birdSelected = false;
             ctrl.othersSelected = false;
             ctrl.petSelected = true;
             ctrl.comboOutrosMostrar = false;
         }
         else if (pet == 4) {
+            ctrl.dogSelected = false;
+            ctrl.catSelected = false;
+            ctrl.hamsterSelected = false;
+            ctrl.birdSelected = true;
+            ctrl.othersSelected = false;
+            ctrl.petSelected = true;
+            ctrl.comboOutrosMostrar = false;
+        }
+        else if (pet == 5) {
             ctrl.ValidarComboOutros();
             ctrl.comboOutrosMostrar = true;
             ctrl.othersSelected = true;
             ctrl.dogSelected = false;
             ctrl.catSelected = false;
             ctrl.birdSelected = false;
+            ctrl.hamsterSelected = false;
         }
     }
 

@@ -3,12 +3,7 @@
         var ctrl = this;
     
         ctrl.base = $controller('baseController', {});
-
-
-    //this method runs after page load
-    angular.element(document).ready(function () {
-        ctrl.minimizarMenu();
-    });
+        
 
     ctrl.minimizarMenu = function () {
         $("body").addClass("mini-sidebar");
