@@ -1,4 +1,5 @@
-﻿using PetSaver.Entity.Anuncios;
+﻿using Dapper;
+using PetSaver.Entity.Anuncios;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
@@ -6,6 +7,8 @@ using PetSaver.Repository.Localizacao;
 using PetSaver.Repository.Pets;
 using PetSaver.Repository.Usuarios;
 using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace PetSaver.Repository.Anuncios
 {
@@ -64,6 +67,14 @@ namespace PetSaver.Repository.Anuncios
             if (aObjeto.IdUsuario == default || new UsuarioRepository().Listar(aObjeto.IdUsuario) == null)
             {
                 throw new DbValidationException("O Id do usuário do anúncio é inválido.");
+            }
+        }
+
+        public IEnumerable<dynamic> BuscarAnunciosDestaques()
+        {
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.Query(Resource.BuscarAnunciosDestaques);
             }
         }
     }

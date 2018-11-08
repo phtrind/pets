@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioRepository.cs" />
+    <Compile Include="Anuncios\InteresseRepository.cs" />
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Base\TipoRepository.cs" />
     <Compile Include="Interface\IRepository.cs" />
@@ -72,8 +73,11 @@
     <Compile Include="Mapeamento\Localizacao\CidadeMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EnderecoMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EstadoMap.cs" />
+    <Compile Include="Mapeamento\Localizacao\LocalizacaoMap.cs" />
     <Compile Include="Mapeamento\Pets\AnimalMap.cs" />
+    <Compile Include="Mapeamento\Pets\AnuncioMap.cs" />
     <Compile Include="Mapeamento\Pets\CorMap.cs" />
+    <Compile Include="Mapeamento\Pets\InteresseMap.cs" />
     <Compile Include="Mapeamento\Pets\PetMap.cs" />
     <Compile Include="Mapeamento\Pets\RacaEspecieMap.cs" />
     <Compile Include="Mapeamento\Usuario\HistoricoLoginMap.cs" />
@@ -115,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Resources\Json\estados_cidades.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource.resx">
@@ -124,6 +129,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\Queries\Anuncios\BuscarAnunciosDestaques.sql" />
+    <Content Include="Resources\Queries\Interesse\BuscarInteressePorUsuarioAnuncio.sql" />
     <Content Include="Resources\Queries\Login\BuscarLoginPorEmailSenha.sql" />
     <Content Include="Resources\Queries\Login\BuscarLoginPorEmail.sql" />
     <Content Include="Resources\Queries\Usuario\BuscarUsuarioPorDocumento.sql" />

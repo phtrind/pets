@@ -1,9 +1,5 @@
 ﻿using PetSaver.Entity.Localizacao;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PetSaver.Exceptions;
 
 namespace PetSaver.Repository.Localizacao
 {
@@ -11,7 +7,15 @@ namespace PetSaver.Repository.Localizacao
     {
         protected override void ValidarAtributos(LocalizacaoEntity aObjeto)
         {
-            throw new NotImplementedException();
+            if (aObjeto.Latitude == default)
+            {
+                throw new BusinessException("Latitude inválida");
+            }
+
+            if (aObjeto.Longitude == default)
+            {
+                throw new BusinessException("Longitude inválida");
+            }
         }
     }
 }

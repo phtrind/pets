@@ -45,14 +45,19 @@
   <ItemGroup>
     <Compile Include="BugsnagHelper.cs" />
     <Compile Include="Conversor.cs" />
+    <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="StringUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexUtility.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Validador.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <ProjectReference Include="..\Entities\PetSaver.Entity.csproj">
+      <Project>{13840294-D42C-4437-A6AF-A1B58156EDA7}</Project>
+      <Name>PetSaver.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

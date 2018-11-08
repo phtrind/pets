@@ -120,6 +120,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Authentication\ProviderTokenAccess.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\Pets\PetController.cs" />
     <Compile Include="Controllers\Usuarios\LoginController.cs" />
     <Compile Include="Controllers\Usuarios\UsuarioController.cs" />
@@ -150,6 +151,10 @@
     <ProjectReference Include="..\PetSaver.Business\PetSaver.Business.csproj">
       <Project>{97F722D0-8D5C-48D6-984D-B4EAAAEC1D58}</Project>
       <Name>PetSaver.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PetSaver.Contracts\PetSaver.Contracts.csproj">
+      <Project>{EE029B1B-912B-47E2-B6A5-7E91244EF45B}</Project>
+      <Name>PetSaver.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\PetSaver.Exceptions\PetSaver.Exceptions.csproj">
       <Project>{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}</Project>

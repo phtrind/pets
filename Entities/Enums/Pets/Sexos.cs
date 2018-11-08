@@ -1,4 +1,6 @@
-﻿namespace PetSaver.Entity.Enums.Pets
+﻿using System.ComponentModel;
+
+namespace PetSaver.Entity.Enums.Pets
 {
     public enum Sexos
     {

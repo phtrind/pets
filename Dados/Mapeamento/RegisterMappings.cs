@@ -17,10 +17,13 @@ namespace PetSaver.Repository
                 config.AddMap(new EnderecoMap());
                 config.AddMap(new CidadeMap());
                 config.AddMap(new EstadoMap());
+                config.AddMap(new LocalizacaoMap());
                 config.AddMap(new AnimalMap());
                 config.AddMap(new RacaEspecieMap());
                 config.AddMap(new CorMap());
                 config.AddMap(new PetMap());
+                config.AddMap(new AnuncioMap());
+                config.AddMap(new InteresseMap());
                 config.ForDommel();
             });
         }

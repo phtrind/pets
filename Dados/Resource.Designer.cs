@@ -61,6 +61,37 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT TOP 4 P.PET_NOME, 
+        ///             P.PTS_CODIGO, 
+        ///             P.PID_CODIGO, 
+        ///             A.CID_CODIGO, 
+        ///             A.EST_CODIGO, 
+        ///             F.ANF_LINK
+        ///FROM ANU_ANUNCIOS A
+        ///     INNER JOIN PET_PETS P ON A.PET_CODIGO = P.PET_CODIGO
+        ///     LEFT JOIN ANF_ANUNCIOFOTOS F ON F.ANU_CODIGO = A.ANU_CODIGO
+        ///                                     AND F.ANF_DESTAQUE = 1
+        ///ORDER BY A.ANU_DTHCADASTRO.
+        /// </summary>
+        internal static string BuscarAnunciosDestaques {
+            get {
+                return ResourceManager.GetString("BuscarAnunciosDestaques", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT *
+        ///FROM INT_INTERESSES
+        ///WHERE USU_CODIGO = @IdUsuario
+        ///      AND ANU_CODIGO = @IdAnuncio.
+        /// </summary>
+        internal static string BuscarInteressePorUsuarioAnuncio {
+            get {
+                return ResourceManager.GetString("BuscarInteressePorUsuarioAnuncio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT *
         ///FROM LOG_LOGINS
         ///WHERE LOG_EMAIL = @Email.
@@ -102,6 +133,16 @@ namespace PetSaver.Repository {
         internal static string BuscarUsuarioPorLogin {
             get {
                 return ResourceManager.GetString("BuscarUsuarioPorLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] estados_cidades {
+            get {
+                object obj = ResourceManager.GetObject("estados_cidades", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

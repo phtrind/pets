@@ -41,6 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anuncios\AnuncioMiniaturaContract.cs" />
+    <Compile Include="Base\BasePageContract.cs" />
+    <Compile Include="Base\ChaveValorContract.cs" />
+    <Compile Include="Paginas\AnuncioContract.cs" />
+    <Compile Include="Paginas\BuscaContract.cs" />
+    <Compile Include="Paginas\CadastroDoacaoContract.cs" />
+    <Compile Include="Paginas\CadastroPetEncontradoContract.cs" />
+    <Compile Include="Paginas\CadastroPetPerdidoContract.cs" />
+    <Compile Include="Paginas\DashboardContract.cs" />
+    <Compile Include="Paginas\FavoritosContract.cs" />
+    <Compile Include="Paginas\HomeContract.cs" />
+    <Compile Include="Paginas\Paginas.cs" />
+    <Compile Include="Paginas\RelatorioAdocoesContract.cs" />
+    <Compile Include="Paginas\RelatorioDoacoesContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\CadastroBasicoRequest.cs" />
   </ItemGroup>
