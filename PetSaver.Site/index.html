@@ -10,10 +10,10 @@
     <meta property="og:url" content="https://www.petsaver.com.br" />
     <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
     <meta name="author" content="">
-  
+
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon_pata.ico">
-    
+
     <title>PetSaver</title>
     <!-- Bootstrap Core CSS -->
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -64,7 +64,8 @@
                         <a class="nav-link js-scroll-trigger" href="#buscar" ng-show="ctrl.isLogged">Minha conta</a>
                     </li>
                     <li class="nav-item">
-                        <button type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal" data-target="#modalLogarCadastrar">Entrar</button>
+                        <button type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal"
+                            data-target="#modalLogarCadastrar">Entrar</button>
                     </li>
                 </ul>
             </div>
@@ -113,72 +114,78 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Animal</label>
-                                    <select class="form-control custom-select">
-                                        <option>Todos</option>
-                                        <option>cachorro</option>
-                                        <option>gato</option>
+                                    <select class="form-control custom-select" data-toggle="collapse" data-target="#secondLineFiltro"
+                                    aria-expanded="false" aria-controls="secondLineFiltro">
+                                        <option >Todos</option>
+                                        <option>Cachorro</option>
+                                        <option>Gato</option>
+                                        <option>Ave</option>
+                                        <option>Roedor</option>
+                                        <option>Peixe</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label>Sexo</label>
-                                    <select class="form-control custom-select">
-                                        <option>Todos</option>
-                                        <option>Macho</option>
-                                        <option>Fêmea</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-2">
-                                    <label>Porte</label>
-                                    <select class="form-control custom-select">
-                                        <option>Todos</option>
-                                        <option>Pequeno</option>
-                                        <option>Médio</option>
-                                        <option>Grande</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label>Raça</label>
-                                    <select class="form-control custom-select">
-                                        <option>Todos</option>
-                                        <option>indefinida</option>
-                                        <option>labrador</option>
-                                        <option>golden retrivier</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label>Pelo</label>
-                                    <select class="form-control custom-select">
-                                        <option value="1">Todos</option>
-                                        <option value="2">Curto</option>
-                                        <option value="3">Médio</option>
-                                        <option value="4">Longo</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label>Idade</label>
-                                    <select class="form-control custom-select">
-                                        <option value="1">Todas</option>
-                                        <option value="2">Recém nascido</option>
-                                        <option value="3">Filhote</option>
-                                        <option value="4">Adulto</option>
-                                        <option value="0">Não sei</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label>Cor</label>
-                                    <select class="form-control custom-select">
-                                        <option value="1">Todas</option>
-                                        <option value="2">branco</option>
-                                        <option value="3">preto</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-2">
                                     <label>Nome</label>
                                     <input type="text" maxlength="30" class="form-control">
                                 </div>
                             </div>
+                            <div class="collapse" id="secondLineFiltro">
+                                <div class="row">
+                                    <div class="form-group col-md-2">
+                                        <label>Sexo</label>
+                                        <select class="form-control custom-select">
+                                            <option>Todos</option>
+                                            <option>Macho</option>
+                                            <option>Fêmea</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Raça</label>
+                                        <select class="form-control custom-select">
+                                            <option>Todos</option>
+                                            <option>indefinida</option>
+                                            <option>labrador</option>
+                                            <option>golden retrivier</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Pelo</label>
+                                        <select class="form-control custom-select">
+                                            <option value="1">Todos</option>
+                                            <option value="2">Curto</option>
+                                            <option value="3">Médio</option>
+                                            <option value="4">Longo</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Idade</label>
+                                        <select class="form-control custom-select">
+                                            <option value="1">Todas</option>
+                                            <option value="2">Recém nascido</option>
+                                            <option value="3">Filhote</option>
+                                            <option value="4">Adulto</option>
+                                            <option value="0">Não sei</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Cor</label>
+                                        <select class="form-control custom-select">
+                                            <option value="1">Todas</option>
+                                            <option value="2">branco</option>
+                                            <option value="3">preto</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label>Porte</label>
+                                        <select class="form-control custom-select">
+                                            <option>Todos</option>
+                                            <option>Pequeno</option>
+                                            <option>Médio</option>
+                                            <option>Grande</option>
+                                        </select>
+                                    </div>
+                                </div>
                         </form>
                     </div>
                 </div>
