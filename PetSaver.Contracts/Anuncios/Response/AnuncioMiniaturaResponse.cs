@@ -1,6 +1,6 @@
 ﻿namespace PetSaver.Contracts.Anuncios
 {
-    public class AnuncioMiniaturaContract
+    public class AnuncioMiniaturaResponse
     {
         public string Nome { get; set; }
         public string Sexo { get; set; }

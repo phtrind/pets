@@ -46,8 +46,12 @@
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioBusiness.cs" />
     <Compile Include="Base\BaseBusiness.cs" />
+    <Compile Include="Localizacao\CidadeBusiness.cs" />
     <Compile Include="Localizacao\EnderecoBusiness.cs" />
+    <Compile Include="Localizacao\EstadoBusiness.cs" />
     <Compile Include="PageBusiness.cs" />
+    <Compile Include="Pets\AnimalBusiness.cs" />
+    <Compile Include="Pets\SexoBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios\HistoricoLoginBusiness.cs" />
     <Compile Include="Usuarios\LoginBusiness.cs" />

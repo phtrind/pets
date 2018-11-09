@@ -80,11 +80,13 @@
     <Compile Include="Mapeamento\Pets\InteresseMap.cs" />
     <Compile Include="Mapeamento\Pets\PetMap.cs" />
     <Compile Include="Mapeamento\Pets\RacaEspecieMap.cs" />
+    <Compile Include="Mapeamento\Pets\SexoMap.cs" />
     <Compile Include="Mapeamento\Usuario\HistoricoLoginMap.cs" />
     <Compile Include="Pets\AnimalRepository.cs" />
     <Compile Include="Pets\CorRepository.cs" />
     <Compile Include="Pets\PetRepository.cs" />
     <Compile Include="Pets\RacaEspecieRepository.cs" />
+    <Compile Include="Pets\SexoRepository.cs" />
     <Compile Include="Usuarios\HistoricoLoginRepository.cs" />
     <Compile Include="Mapeamento\Usuario\LoginMap.cs" />
     <Compile Include="Mapeamento\RegisterMappings.cs" />
@@ -108,6 +110,10 @@
       <Project>{13840294-D42C-4437-A6AF-A1B58156EDA7}</Project>
       <Name>PetSaver.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PetSaver.Contracts\PetSaver.Contracts.csproj">
+      <Project>{EE029B1B-912B-47E2-B6A5-7E91244EF45B}</Project>
+      <Name>PetSaver.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PetSaver.Exceptions\PetSaver.Exceptions.csproj">
       <Project>{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}</Project>
       <Name>PetSaver.Exceptions</Name>
@@ -129,8 +135,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\Queries\Anuncios\BuscarAnuncios.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarAnunciosDestaques.sql" />
     <Content Include="Resources\Queries\Interesse\BuscarInteressePorUsuarioAnuncio.sql" />
+    <Content Include="Resources\Queries\Localizacao\BuscarCidadePorEstado.sql" />
     <Content Include="Resources\Queries\Login\BuscarLoginPorEmailSenha.sql" />
     <Content Include="Resources\Queries\Login\BuscarLoginPorEmail.sql" />
     <Content Include="Resources\Queries\Usuario\BuscarUsuarioPorDocumento.sql" />

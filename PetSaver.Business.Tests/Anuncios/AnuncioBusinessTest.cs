@@ -1,10 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PetSaver.Business.Anuncios;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PetSaver.Business.Tests.Anuncios
 {
@@ -12,11 +8,30 @@ namespace PetSaver.Business.Tests.Anuncios
     public class AnuncioBusinessTest : BaseBusinessTest
     {
         [TestMethod]
-        public void ListarDestaquesMiniatura_WithResults_ReturnsList()
+        public void ListarDestaquesMiniaturas_WithResults_ReturnsList()
         {
-            var listaMiniaturas = new AnuncioBusiness().ListarDestaquesMiniatura();
+            var listaMiniaturasDestaque = new AnuncioBusiness().ListarDestaquesMiniaturas();
+
+            Assert.IsTrue(listaMiniaturasDestaque.Any());
+        }
+
+        [TestMethod]
+        public void ListarMiniaturas_WithoutFilter_ReturnsList()
+        {
+            var listaMiniaturas = new AnuncioBusiness().ListarMiniaturas(null);
 
             Assert.IsTrue(listaMiniaturas.Any());
+        }
+
+        [TestMethod]
+        public void ListarMiniaturas_WithFilter_ReturnsEmptyList()
+        {
+            var listaMiniaturas = new AnuncioBusiness().ListarMiniaturas(new Contracts.Anuncios.FiltroAnuncioRequest()
+            {
+                Pagina = 2
+            });
+
+            Assert.IsFalse(listaMiniaturas.Any());
         }
     }
 }

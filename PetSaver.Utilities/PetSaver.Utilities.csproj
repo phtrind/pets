@@ -58,6 +58,10 @@
       <Project>{13840294-D42C-4437-A6AF-A1B58156EDA7}</Project>
       <Name>PetSaver.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PetSaver.Contracts\PetSaver.Contracts.csproj">
+      <Project>{EE029B1B-912B-47E2-B6A5-7E91244EF45B}</Project>
+      <Name>PetSaver.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

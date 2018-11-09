@@ -1,4 +1,7 @@
-﻿using PetSaver.Entity.Enums.Pets;
+﻿using PetSaver.Contracts.Base;
+using PetSaver.Entity.Enums.Pets;
+using System;
+using System.Collections.Generic;
 
 namespace PetSaver.Utilities.Extensions
 {

@@ -64,6 +64,10 @@
       <Project>{13840294-d42c-4437-a6af-a1b58156eda7}</Project>
       <Name>PetSaver.Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PetSaver.Contracts\PetSaver.Contracts.csproj">
+      <Project>{EE029B1B-912B-47E2-B6A5-7E91244EF45B}</Project>
+      <Name>PetSaver.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PetSaver.Utilities\PetSaver.Utilities.csproj">
       <Project>{5B8C2769-C69A-4982-930B-074BAC116299}</Project>
       <Name>PetSaver.Utilities</Name>

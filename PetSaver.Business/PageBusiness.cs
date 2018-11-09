@@ -1,105 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PetSaver.Business.Anuncios;
+﻿using PetSaver.Business.Anuncios;
+using PetSaver.Business.Localizacao;
+using PetSaver.Business.Pets;
 using PetSaver.Contracts.Anuncios;
-using PetSaver.Contracts.Base;
 using PetSaver.Contracts.Paginas;
-using PetSaver.Exceptions;
 
 namespace PetSaver.Business
 {
     public class PageBusiness
     {
-        public BasePageContract Inicializar(string aNomePagina)
+        public HomePageResponse InicializarHomePage()
         {
-            if (Enum.TryParse(aNomePagina, true, out Paginas pagina))
+            return new HomePageResponse()
             {
-                switch (pagina)
-                {
-                    case Paginas.Home:
-                        return Home();
-                    case Paginas.Busca:
-                        return Busca();
-                    case Paginas.Anuncio:
-                        return Anuncio();
-                    case Paginas.Dashboard:
-                        return Dashboard();
-                    case Paginas.CadastroDoacao:
-                        return CadastroDoacao();
-                    case Paginas.RelatorioDoacoes:
-                        return RelatorioDoacoes();
-                    case Paginas.Favoritos:
-                        return Favoritos();
-                    case Paginas.RelatorioAdocoes:
-                        return RelatorioAdocoes();
-                    case Paginas.CadastroPetPerdido:
-                        return CadastroPetPerdido();
-                    case Paginas.CadastroPetEncontrado:
-                        return CadastroPetEncontrado();
-                    default:
-                        throw new BusinessException("Página não encontrada");
-                }
-            }
-            else
-            {
-                throw new BusinessException("Página não encontrada");
-            }
-        }
-
-        private HomeContract Home()
-        {
-            return new HomeContract() // Pendente de finalizar
-            {
-                Anuncios = new AnuncioBusiness().ListarDestaquesMiniatura()
+                Anuncios = new AnuncioBusiness().ListarDestaquesMiniaturas(),
+                Filtros = InicializarFiltros()
             };
         }
 
-        private BuscaContract Busca()
+        public AnunciosPageResponse InicializarAnuncios(int aQuantidade)
         {
-            throw new NotImplementedException();
+            var filtro = new FiltroAnuncioRequest()
+            {
+                Quantidade = aQuantidade,
+                Pagina = 1
+            };
+
+            return new AnunciosPageResponse()
+            {
+                Anuncios = new AnuncioBusiness().ListarMiniaturas(filtro),
+                Filtros = InicializarFiltros()
+            };
         }
 
-        private AnuncioContract Anuncio()
+        private FiltroAnuncioResponse InicializarFiltros()
         {
-            throw new NotImplementedException();
-        }
-
-        private DashboardContract Dashboard()
-        {
-            throw new NotImplementedException();
-        }
-
-        private CadastroDoacaoContract CadastroDoacao()
-        {
-            throw new NotImplementedException();
-        }
-
-        private RelatorioDoacoesContract RelatorioDoacoes()
-        {
-            throw new NotImplementedException();
-        }
-
-        private FavoritosContract Favoritos()
-        {
-            throw new NotImplementedException();
-        }
-
-        private RelatorioAdocoesContract RelatorioAdocoes()
-        {
-            throw new NotImplementedException();
-        }
-
-        private CadastroPetPerdidoContract CadastroPetPerdido()
-        {
-            throw new NotImplementedException();
-        }
-
-        private CadastroPetEncontradoContract CadastroPetEncontrado()
-        {
-            throw new NotImplementedException();
+            return new FiltroAnuncioResponse()
+            {
+                Estados = new EstadoBusiness().Combo(),
+                Sexos = new SexoBusiness().Combo(),
+                Animais = new AnimalBusiness().Combo()
+            };
         }
     }
 }

@@ -151,5 +151,15 @@
 
             return aDocumento.EndsWith(digito);
         }
+
+        public static bool FiltroIsValid(int? aValor)
+        {
+            return aValor.HasValue && aValor.Value != default;
+        }
+
+        public static bool FiltroIsValid(string aValor)
+        {
+            return !string.IsNullOrEmpty(aValor);
+        }
     }
 }

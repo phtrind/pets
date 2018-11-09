@@ -22,6 +22,7 @@ namespace PetSaver.Repository
                 config.AddMap(new RacaEspecieMap());
                 config.AddMap(new CorMap());
                 config.AddMap(new PetMap());
+                config.AddMap(new SexoMap());
                 config.AddMap(new AnuncioMap());
                 config.AddMap(new InteresseMap());
                 config.ForDommel();
