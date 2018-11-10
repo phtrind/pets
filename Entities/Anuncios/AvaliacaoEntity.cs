@@ -1,7 +1,23 @@
-﻿namespace PetSaver.Entity.Anuncios
+﻿using System;
+
+namespace PetSaver.Entity.Anuncios
 {
     public class AvaliacaoEntity : BaseEntity
     {
+        #region .: Base Entity :.
+
+        public override int Id { get; set; }
+
+        public override DateTime DataCadastro { get; set; }
+        public override int IdLoginCadastro { get; set; }
+
+        public override DateTime? DataAlteracao { get; set; }
+        public override int? IdLoginAlteracao { get; set; }
+
+        #endregion
+
+        #region .: Atributos :.
+
         /// <summary>
         /// Nota da avaliação
         /// </summary>
@@ -11,6 +27,10 @@
         /// Comentário referente à avaliação
         /// </summary>
         public string Descricao { get; set; }
+
+        #endregion
+
+        #region .: Foreign Keys :.
 
         /// <summary>
         /// Id do interesse que originou essa avaliação
@@ -26,5 +46,7 @@
         /// Id do usuário que foi avaliado
         /// </summary>
         public int IdAvaliado { get; set; }
+
+        #endregion
     }
 }

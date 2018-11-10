@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioBusiness.cs" />
     <Compile Include="Anuncios\AnuncioVisitaBusiness.cs" />
+    <Compile Include="Anuncios\AvaliacaoBusiness.cs" />
     <Compile Include="Anuncios\DuvidaBusiness.cs" />
     <Compile Include="Anuncios\InteresseBusiness.cs" />
     <Compile Include="Base\BaseBusiness.cs" />

@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioRepository.cs" />
     <Compile Include="Anuncios\AnuncioVisitaRepository.cs" />
+    <Compile Include="Anuncios\AvaliacaoRepository.cs" />
     <Compile Include="Anuncios\DuvidaRepository.cs" />
     <Compile Include="Anuncios\InteresseRepository.cs" />
     <Compile Include="Base\BaseRepository.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Localizacao\EstadoRepository.cs" />
     <Compile Include="Localizacao\LocalizacaoRepository.cs" />
     <Compile Include="Mapeamento\Anuncios\AnuncioVisitaMap.cs" />
+    <Compile Include="Mapeamento\Anuncios\AvaliacaoMap.cs" />
     <Compile Include="Mapeamento\Anuncios\DuvidaMap.cs" />
     <Compile Include="Mapeamento\Localizacao\CidadeMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EnderecoMap.cs" />
@@ -143,6 +145,7 @@
     <Content Include="Resources\Queries\Anuncios\AbrirAnuncio.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarAnuncios.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarAnunciosDestaques.sql" />
+    <Content Include="Resources\Queries\Avaliacoes\BuscarAvaliacaoPorUsuario.sql" />
     <Content Include="Resources\Queries\Interesse\BuscarInteressePorUsuarioAnuncio.sql" />
     <Content Include="Resources\Queries\Localizacao\BuscarCidadePorEstado.sql" />
     <Content Include="Resources\Queries\Login\BuscarLoginPorEmailSenha.sql" />

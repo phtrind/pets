@@ -131,8 +131,20 @@ namespace PetSaver.Repository {
         
         /// <summary>
         ///   Looks up a localized string similar to SELECT *
+        ///FROM AVA_AVALIACOES
+        ///WHERE USU_AVALIADO = @IdUsuario.
+        /// </summary>
+        internal static string BuscarAvaliacaoPorUsuario {
+            get {
+                return ResourceManager.GetString("BuscarAvaliacaoPorUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT *
         ///FROM CID_CIDADES
-        ///WHERE EST_CODIGO = @IdEstado.
+        ///WHERE EST_CODIGO = @IdEstado
+        ///ORDER BY CID_NOME.
         /// </summary>
         internal static string BuscarCidadePorEstado {
             get {

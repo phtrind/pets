@@ -1,13 +1,9 @@
-﻿using PetSaver.Contracts.Anuncios;
+﻿using PetSaver.Business.Usuarios;
+using PetSaver.Contracts.Anuncios;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PetSaver.Business.Anuncios
 {
@@ -29,7 +25,8 @@ namespace PetSaver.Business.Anuncios
             {
                 IdAnuncio = aRequest.IdAnuncio,
                 IdUsuario = aRequest.IdUsuario,
-                IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.EmAndamento)
+                IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.EmAndamento),
+                IdLoginCadastro = new LoginBusiness().Listar(aRequest.IdUsuario)?.Id ?? default
             });
         }
     }

@@ -27,6 +27,7 @@ namespace PetSaver.Repository
                 config.AddMap(new InteresseMap());
                 config.AddMap(new AnuncioVisitaMap());
                 config.AddMap(new DuvidaMap());
+                config.AddMap(new AvaliacaoMap());
                 config.ForDommel();
             });
         }

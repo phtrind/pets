@@ -3,6 +3,6 @@
     public class AnuncianteContract
     {
         public string Nome { get; set; }
-        public int? Avaliacao { get; set; }
+        public double? Avaliacao { get; set; }
     }
 }

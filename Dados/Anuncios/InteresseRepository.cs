@@ -12,14 +12,10 @@ namespace PetSaver.Repository.Anuncios
     {
         protected override void ValidarAtributos(InteresseEntity aObjeto)
         {
-            var usuario = new UsuarioRepository().Listar(aObjeto.IdUsuario);
-
-            if (aObjeto.IdUsuario == default || usuario == null)
+            if (aObjeto.IdUsuario == default || new UsuarioRepository().Listar(aObjeto.IdUsuario) == null)
             {
                 throw new DbValidationException("O Id do usuário do interesse é inválido.");
             }
-
-            aObjeto.IdLoginCadastro = usuario.IdLogin;
 
             var anuncio = new AnuncioRepository().Listar(aObjeto.IdAnuncio);
 

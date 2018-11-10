@@ -71,8 +71,8 @@ namespace PetSaver.Business.Anuncios
 
             response.Anunciante = new AnuncianteContract()
             {
-                Nome = Convert.ToString(retornoDb.USU_NOME)
-                //Avaliacao = new AvaliacaoBusiness().BuscarAvaliacaoUsuario(Convert.ToInt32(retornoDb.USU_CODIGO))
+                Nome = Convert.ToString(retornoDb.USU_NOME),
+                Avaliacao = new AvaliacaoBusiness().MediaAvaliacaoPorUsuario(Convert.ToInt32(retornoDb.USU_CODIGO))
             };
 
             response.Pet = new PetContract()
