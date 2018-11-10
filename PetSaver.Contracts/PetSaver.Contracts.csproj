@@ -46,8 +46,14 @@
     <Compile Include="Base\BasePageContract.cs" />
     <Compile Include="Base\ChaveValorContract.cs" />
     <Compile Include="Anuncios\Response\FiltroAnuncioResponse.cs" />
+    <Compile Include="Paginas\Response\PetPage\AnuncianteContract.cs" />
+    <Compile Include="Paginas\Response\PetPage\DuvidaContract.cs" />
+    <Compile Include="Paginas\Response\PetPage\LocalizacaoContract.cs" />
+    <Compile Include="Paginas\Request\PetPageRequest.cs" />
     <Compile Include="Paginas\Response\AnunciosPageResponse.cs" />
     <Compile Include="Paginas\Response\HomePageResponse.cs" />
+    <Compile Include="Paginas\Response\PetPageResponse.cs" />
+    <Compile Include="Paginas\Response\PetPage\PetContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\Request\CadastroBasicoRequest.cs" />
   </ItemGroup>

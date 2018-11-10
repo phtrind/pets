@@ -77,12 +77,13 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anuncios\DuvidaRepositoryTest.cs" />
     <Compile Include="Base\BaseRepositoryTest.cs" />
     <Compile Include="Localizacao\CidadeEntityTest.cs" />
     <Compile Include="Localizacao\EnderecoRepositoryTest.cs" />
     <Compile Include="Localizacao\EstadoRepositoryTest.cs" />
     <Compile Include="Localizacao\LocalizacaoRepositoryTest.cs" />
-    <Compile Include="Pets\AnuncioRepositoryTest.cs" />
+    <Compile Include="Anuncios\AnuncioRepositoryTest.cs" />
     <Compile Include="Pets\InteresseRepositoryTest.cs" />
     <Compile Include="Pets\PetRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

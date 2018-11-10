@@ -162,5 +162,13 @@ namespace PetSaver.Repository.Anuncios
                 return db.Query(Resource.BuscarAnunciosDestaques);
             }
         }
+
+        public dynamic AbrirAnuncio(int aIdAnuncio)
+        {
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.QueryFirstOrDefault(Resource.AbrirAnuncio, new { @IdAnuncio = aIdAnuncio });
+            }
+        }
     }
 }

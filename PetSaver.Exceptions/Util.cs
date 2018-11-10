@@ -10,7 +10,7 @@ namespace PetSaver.Exceptions
         {
             if (!(ex is HandledException))
             {
-                //Mandar erro pro bugsnag
+                Bugsnag.AspNet.Client.Current.Notify(ex);
             }
         }
     }

@@ -2,7 +2,11 @@
 using PetSaver.Business.Localizacao;
 using PetSaver.Business.Pets;
 using PetSaver.Contracts.Anuncios;
+using PetSaver.Contracts.Base;
 using PetSaver.Contracts.Paginas;
+using PetSaver.Entity.Anuncios;
+using PetSaver.Exceptions;
+using System;
 
 namespace PetSaver.Business
 {
@@ -40,6 +44,16 @@ namespace PetSaver.Business
                 Sexos = new SexoBusiness().Combo(),
                 Animais = new AnimalBusiness().Combo()
             };
+        }
+
+        public PetPageResponse InicializarPet(PetPageRequest aRequest)
+        {
+            if (aRequest == null)
+            {
+                throw new BusinessException("O objeto de request está nulo.");
+            }
+
+            return new AnuncioBusiness().AbrirAnuncio(aRequest.IdAnuncio, aRequest.IdUsuario);
         }
     }
 }

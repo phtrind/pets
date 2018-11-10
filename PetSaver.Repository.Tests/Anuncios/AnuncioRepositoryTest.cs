@@ -4,7 +4,7 @@ using PetSaver.Entity.Enums.Status;
 using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Repository.Anuncios;
 
-namespace PetSaver.Repository.Tests.Pets
+namespace PetSaver.Repository.Tests.Anuncios
 {
     [TestClass]
     public class AnuncioRepositoryTest : BaseRepositoryTest

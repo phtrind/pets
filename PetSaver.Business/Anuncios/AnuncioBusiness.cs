@@ -1,6 +1,9 @@
 ﻿using PetSaver.Contracts.Anuncios;
+using PetSaver.Contracts.Paginas;
+using PetSaver.Contracts.Paginas.Response.PetPage;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Entity.Enums.Pets;
+using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
 using PetSaver.Utilities.Extensions;
 using System;
@@ -46,6 +49,69 @@ namespace PetSaver.Business.Anuncios
                 Localizacao = $"{Convert.ToString(x.CID_NOME)} / {Convert.ToString(x.EST_SIGLA)}",
                 Foto = Convert.ToString(x.ANF_LINK)
             });
+        }
+
+        public PetPageResponse AbrirAnuncio(int aIdAnuncio, int? aIdUsuario)
+        {
+            if (aIdAnuncio == default || Listar(aIdAnuncio) == null)
+            {
+                throw new BusinessException("O Id do anúncio é invalido.");
+            }
+
+            new AnuncioVisitaBusiness().GravarLog(aIdAnuncio, aIdUsuario);
+
+            dynamic retornoDb = new AnuncioRepository().AbrirAnuncio(aIdAnuncio);
+
+            if (retornoDb == null)
+            {
+                throw new BusinessException("O anúncio não foi encontrado.");
+            }
+
+            var response = new PetPageResponse();
+
+            response.Anunciante = new AnuncianteContract()
+            {
+                Nome = Convert.ToString(retornoDb.USU_NOME)
+                //Avaliacao = new AvaliacaoBusiness().BuscarAvaliacaoUsuario(Convert.ToInt32(retornoDb.USU_CODIGO))
+            };
+
+            response.Pet = new PetContract()
+            {
+                Nome = Convert.ToString(retornoDb.PET_NOME),
+                RacaEspecie = retornoDb.RAC_NOME != null ? Convert.ToString(retornoDb.RAC_NOME) : null,
+                Cidade = Convert.ToString(retornoDb.CID_NOME),
+                Estado = Convert.ToString(retornoDb.EST_SIGLA),
+                Sexo = retornoDb.SEXO != null ? Convert.ToString(retornoDb.SEXO) : null,
+                Idade = retornoDb.IDADE != null ? Convert.ToString(retornoDb.IDADE) : null,
+                Porte = retornoDb.PORTE != null ? Convert.ToString(retornoDb.PORTE) : null,
+                Cores = new List<string>()
+                {
+                    Convert.ToString(retornoDb.COR_PRIMARIA),
+                    retornoDb.COR_SECUNDARIA != null ? Convert.ToString(retornoDb.COR_SECUNDARIA) : null
+                },
+                Pelo = retornoDb.PELO != null ? Convert.ToString(retornoDb.PELO) : null,
+                Vacinado = retornoDb.PET_VACINADO != null ? Convert.ToBoolean(retornoDb.PET_VACINADO) : null,
+                Vermifugado = retornoDb.PET_VERMIFUGADO != null ? Convert.ToBoolean(retornoDb.PET_VERMIFUGADO) : null,
+                Castrado = retornoDb.PET_CASTRADO != null ? Convert.ToBoolean(retornoDb.PET_CASTRADO) : null,
+                Descricao = Convert.ToString(retornoDb.PET_DESCRICAO),
+            };
+
+            if (retornoDb.LOC_LATITUDE != null && retornoDb.LOC_LONGITUDE != null)
+            {
+                response.Localizacao = new LocalizacaoContract()
+                {
+                    Latitude = Convert.ToDouble(retornoDb.LOC_LATITUDE),
+                    Longitude = Convert.ToDouble(retornoDb.LOC_LONGITUDE)
+                };
+            }
+
+            response.Duvidas = new DuvidaBusiness().BuscarPorAnuncio(aIdAnuncio).Select(x => new DuvidaContract()
+            {
+                Pergunta = x.Pergunta,
+                Resposta = x.Resposta
+            });
+
+            return response;
         }
     }
 }

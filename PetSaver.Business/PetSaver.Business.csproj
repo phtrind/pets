@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioBusiness.cs" />
+    <Compile Include="Anuncios\AnuncioVisitaBusiness.cs" />
+    <Compile Include="Anuncios\DuvidaBusiness.cs" />
     <Compile Include="Base\BaseBusiness.cs" />
     <Compile Include="Localizacao\CidadeBusiness.cs" />
     <Compile Include="Localizacao\EnderecoBusiness.cs" />

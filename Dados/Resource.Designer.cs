@@ -61,6 +61,33 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT U.USU_CODIGO, 
+        ///       U.USU_NOME, 
+        ///       P.PET_NOME, 
+        ///       RE.RAC_NOME, 
+        ///       C.CID_NOME, 
+        ///       E.EST_SIGLA, 
+        ///       PTS.PTS_DESCRICAO AS SEXO, 
+        ///       PID.PID_DESCRICAO AS IDADE, 
+        ///       PPR.PPR_DESCRICAO AS PORTE, 
+        ///       P.PET_PESO, 
+        ///       COR1.COR_NOME AS COR_PRIMARIA, 
+        ///       COR2.COR_NOME AS COR_SECUNDARIA, 
+        ///       PPL.PPL_DESCRICAO AS PELO, 
+        ///       P.PET_VACINADO, 
+        ///       P.PET_VERMIFUGADO, 
+        ///       P.PET_CASTRADO, 
+        ///       P.PET_DESCRICAO, 
+        ///       L.LOC_LATITUDE, 
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string AbrirAnuncio {
+            get {
+                return ResourceManager.GetString("AbrirAnuncio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT P.PET_NOME, 
         ///       P.PTS_CODIGO, 
         ///       P.PID_CODIGO, 
@@ -72,7 +99,8 @@ namespace PetSaver.Repository {
         ///     INNER JOIN EST_ESTADOS E ON A.EST_CODIGO = E.EST_CODIGO
         ///     INNER JOIN CID_CIDADES C ON C.CID_CODIGO = A.CID_CODIGO
         ///     LEFT JOIN ANF_ANUNCIOFOTOS F ON F.ANU_CODIGO = A.ANU_CODIGO
-        ///                                     AND F.ANF_DESTAQUE = 1.
+        ///                                     AND F.ANF_DESTAQUE = 1
+        ///WHERE 1 = 1.
         /// </summary>
         internal static string BuscarAnuncios {
             get {
@@ -109,6 +137,17 @@ namespace PetSaver.Repository {
         internal static string BuscarCidadePorEstado {
             get {
                 return ResourceManager.GetString("BuscarCidadePorEstado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT *
+        ///FROM DUV_DUVIDAS
+        ///WHERE ANU_CODIGO = @IdAnuncio.
+        /// </summary>
+        internal static string BuscarDuvidasPorAnuncio {
+            get {
+                return ResourceManager.GetString("BuscarDuvidasPorAnuncio", resourceCulture);
             }
         }
         

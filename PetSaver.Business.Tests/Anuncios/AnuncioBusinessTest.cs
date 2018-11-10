@@ -7,6 +7,8 @@ namespace PetSaver.Business.Tests.Anuncios
     [TestClass]
     public class AnuncioBusinessTest : BaseBusinessTest
     {
+        #region .: Buscas :.
+
         [TestMethod]
         public void ListarDestaquesMiniaturas_WithResults_ReturnsList()
         {
@@ -33,5 +35,15 @@ namespace PetSaver.Business.Tests.Anuncios
 
             Assert.IsFalse(listaMiniaturas.Any());
         }
+
+        [TestMethod]
+        public void AbrirAnuncio_ExistingAnuncio_ReturnsObject()
+        {
+            var obj = new AnuncioBusiness().AbrirAnuncio(2, 3);
+
+            Assert.IsNotNull(obj);
+        }
+
+        #endregion
     }
 }

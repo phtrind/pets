@@ -1,6 +1,7 @@
 ﻿using PetSaver.Business;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Base;
+using PetSaver.Contracts.Paginas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace PetSaver.WebApi.Controllers
     {
         [Route("api/Page/Home")]
         [HttpGet]
-        public BasePageContract Home()
+        public HomePageResponse Home()
         {
             try
             {
@@ -28,11 +29,25 @@ namespace PetSaver.WebApi.Controllers
 
         [Route("api/Page/Anuncios/{aQuantidade}")]
         [HttpGet]
-        public BasePageContract Anuncios(int aQuantidade)
+        public AnunciosPageResponse Anuncios(int aQuantidade)
         {
             try
             {
                 return new PageBusiness().InicializarAnuncios(aQuantidade);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Route("api/Page/Pet")]
+        [HttpPost]
+        public PetPageResponse Pet([FromBody]PetPageRequest aRequest)
+        {
+            try
+            {
+                return new PageBusiness().InicializarPet(aRequest);
             }
             catch (Exception ex)
             {
