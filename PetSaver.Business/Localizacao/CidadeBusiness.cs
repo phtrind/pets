@@ -11,7 +11,7 @@ namespace PetSaver.Business.Localizacao
     {
         public IEnumerable<ChaveValorContract> Combo(int aIdEstado)
         {
-            return ListarTodos().OrderBy(x => x.Nome).Select(x => new ChaveValorContract()
+            return new CidadeRepository().BuscarPorEstado(aIdEstado).Select(x => new ChaveValorContract()
             {
                 Chave = Convert.ToString(x.Id),
                 Valor = x.Nome

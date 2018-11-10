@@ -19,7 +19,7 @@ namespace PetSaver.Repository.Tests.Anuncios
                 IdLoginCadastro = 1,
                 IdStatus = Utilities.Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
                 IdTipo = Utilities.Conversor.EnumParaInt(TiposAnuncio.Doacao),
-                IdPet = 1,
+                IdPet = 3,
                 IdLocalizacao = 1,
                 IdEstado = 91,
                 IdCidade = 6972,

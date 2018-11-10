@@ -15,18 +15,18 @@ namespace PetSaver.Repository.Tests.Pets
         {
             var pet = new PetEntity()
             {
-                Nome = "Hulk",
-                Peso = 58.6M,
+                Nome = "Nina",
+                Peso = 15M,
                 Vacinado = true,
                 Vermifugado = false,
                 Castrado = null,
-                Descricao = "Cachorro teste, pastor alemão",
+                Descricao = "Cadela muito dócil e sensual.",
                 IdAnimal = 1,
                 IdRaca = 9,
-                IdSexo = Utilities.Conversor.EnumParaInt(Sexos.Macho),
-                IdIdade = Utilities.Conversor.EnumParaInt(Idades.Jovem),
-                IdPorte = Utilities.Conversor.EnumParaInt(Portes.Grande),
-                IdPelo = Utilities.Conversor.EnumParaInt(Pelos.Medio),
+                IdSexo = Utilities.Conversor.EnumParaInt(Sexos.Femea),
+                IdIdade = Utilities.Conversor.EnumParaInt(Idades.Adulto),
+                IdPorte = Utilities.Conversor.EnumParaInt(Portes.Pequeno),
+                IdPelo = Utilities.Conversor.EnumParaInt(Pelos.Longo),
                 IdCorPrimaria = 3,
                 IdCorSecundaria = 9,
                 IdLoginCadastro = 1
