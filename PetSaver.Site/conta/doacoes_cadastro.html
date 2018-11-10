@@ -383,14 +383,14 @@
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
-                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
+                            <div style="margin-left: 75px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
                                 ng-click="ctrl.SelectPet(1);">
-                                <img src="../icons/dog.png" style="width: 110%">
+                                <img src="../icons/dog.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Cachorro</h3>
                             </div>
                             <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
                                 ng-click="ctrl.SelectPet(2);">
-                                <img src="../icons/cat.png" style="width: 110%;">
+                                <img src="../icons/cat.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Gato</h3>
                             </div>
                             <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
@@ -400,7 +400,7 @@
                             </div>
                             <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
                                 ng-click="ctrl.SelectPet(4);">
-                                <img src="../icons/bird.png" style="width: 110%">
+                                <img src="../icons/bird.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Ave</h3>
                             </div>
                             <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
@@ -516,11 +516,12 @@
                             <div class="form-group col-md-6" ng-class="{'has-error':ctrl.racaError}">
                                 <select class="form-control custom-select" aria-describedby="racaHelp">
                                     <option value="" disabled selected>Raça/Espécie</option>
-                                    <option value="0">Desconhecida</option>
+                                    <option value="0">Não sei</option>
+                                    <option value="1">Outros</option>
                                 </select>
                                 <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da
                                     raça/espécie,
-                                    selecione a opção "Desconhecida".</small>
+                                    selecione a opção "Não sei".</small>
                                 <small id="racaError" class="form-control-feedback" ng-show="ctrl.racaError">Esse é
                                     um
                                     campo
