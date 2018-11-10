@@ -81,6 +81,8 @@ namespace PetSaver.Repository
 
         protected virtual void ValidarCadastro(T aObjeto)
         {
+            ValidarAtributos(aObjeto);
+
             if (aObjeto.Id != default)
             {
                 throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Id definido");
@@ -105,12 +107,12 @@ namespace PetSaver.Repository
             {
                 throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Login de Alteração definido.");
             }
-
-            ValidarAtributos(aObjeto);
         }
 
         protected virtual void ValidarAtualizacao(T aObjeto)
         {
+            ValidarAtributos(aObjeto);
+
             if (aObjeto.Id == default)
             {
                 throw new DbValidationException("Não é possível editar um objeto que não tenha um Id definido");
@@ -140,8 +142,6 @@ namespace PetSaver.Repository
             {
                 throw new DbValidationException("O Id do usuário responsável pela edição é inválido.");
             }
-
-            ValidarAtributos(aObjeto);
         }
 
         protected bool LoginExiste(int idLoginCadastro)

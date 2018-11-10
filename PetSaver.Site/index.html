@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="pt">
 
 <head>
     <meta charset="utf-8">
@@ -22,16 +22,16 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/myStyle.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-        crossorigin="anonymous">
+          crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+        <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 
@@ -40,10 +40,12 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="images/logos/logo_fundo_roxo_fina.gif"
-                    height="40px"></a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <img src="images/logos/logo_fundo_roxo_fina.gif"
+                     height="40px">
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -64,8 +66,10 @@
                         <a class="nav-link js-scroll-trigger" href="#buscar" ng-show="ctrl.isLogged">Minha conta</a>
                     </li>
                     <li class="nav-item">
-                        <button type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal"
-                            data-target="#modalLogarCadastrar">Entrar</button>
+                        <button ng-click="ctrl.base.AbrirModalLogin()" type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal"
+                                data-target="#modalLogarCadastrar">
+                            Entrar
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -75,7 +79,8 @@
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
     </div>
 
     <!-- Main wrapper  -->
@@ -84,13 +89,14 @@
             <div class="container">
                 <!-- filter -->
                 <div class="col-md-12" style="text-align: center;">
-                    <h1>Filtros
+                    <h1>
+                        Filtros
                         <img ng-show="ctrl.closedFilter" src="icons/minus.png" width="35px" style="cursor: pointer;"
-                            data-toggle="collapse" data-target="#formFiltro" aria-expanded="false" aria-controls="formFiltro"
-                            ng-click="ctrl.closedFilter = false;">
+                             data-toggle="collapse" data-target="#formFiltro" aria-expanded="false" aria-controls="formFiltro"
+                             ng-click="ctrl.closedFilter = false;">
                         <img ng-show="!ctrl.closedFilter" src="icons/plus.png" width="35px" style="cursor: pointer;"
-                            data-toggle="collapse" data-target="#formFiltro" aria-expanded="false" aria-controls="formFiltro"
-                            ng-click="ctrl.closedFilter = true;">
+                             data-toggle="collapse" data-target="#formFiltro" aria-expanded="false" aria-controls="formFiltro"
+                             ng-click="ctrl.closedFilter = true;">
                     </h1>
                     <div class="collapse" id="formFiltro">
                         <form>
@@ -114,14 +120,13 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Animal</label>
-                                    <select class="form-control custom-select" data-toggle="collapse" data-target="#secondLineFiltro"
-                                    aria-expanded="false" aria-controls="secondLineFiltro">
-                                        <option >Todos</option>
-                                        <option>Cachorro</option>
-                                        <option>Gato</option>
-                                        <option>Ave</option>
-                                        <option>Roedor</option>
-                                        <option>Peixe</option>
+                                    <select class="form-control custom-select" ng-model="ctrl.FiltroAnimal" ng-change="ctrl.AlteracaoFiltroAnimal()">
+                                        <option value="">Todos</option>
+                                        <option value="1">Cachorro</option>
+                                        <option value="2">Gato</option>
+                                        <option value="3">Ave</option>
+                                        <option value="4">Roedor</option>
+                                        <option value="5">Peixe</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
@@ -129,7 +134,7 @@
                                     <input type="text" maxlength="30" class="form-control">
                                 </div>
                             </div>
-                            <div class="collapse" id="secondLineFiltro">
+                            <div ng-show="ctrl.FiltroAnimal != '' && ctrl.FiltroAnimal != null">
                                 <div class="row">
                                     <div class="form-group col-md-2">
                                         <label>Sexo</label>
@@ -141,7 +146,7 @@
 
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label>Raça</label>
+                                        <label>{{ctrl.LabelRacaEspecie}}</label>
                                         <select class="form-control custom-select">
                                             <option>Todos</option>
                                             <option>labrador</option>
@@ -185,6 +190,7 @@
                                         </select>
                                     </div>
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -192,7 +198,7 @@
                 <!-- pets -->
                 <div class="row col-md-12" style="margin: 0; padding: 0">
                     <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in [].constructor(20) track by $index"
-                        ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" onclick="document.location.href='pet.html'">
+                         ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" onclick="document.location.href='pet.html'">
                         <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
                         <div class="col-md-12 text-center" style="margin-top:15px;">
                             <h2 style="color: #500B89">Thor</h2>
@@ -202,33 +208,30 @@
                         </div>
                     </div>
                 </div>
-                <!-- end pets -->
-                <div ng-include="'login.html'"></div>
             </div>
         </div>
-        <!-- <footer ng-include="'footer.html'" class="footer"></div> -->
     </div>
-    
+
+    <!-- end pets -->
+    <div ng-include="'login.html'"></div>
+
     <div ng-include="'rodape.html'"></div>
+
     <!-- End Wrapper -->
     <!-- All Jquery -->
     <script src="js/lib/jquery/jquery.min.js"></script>
+
     <!-- Bootstrap tether Core JavaScript -->
     <script src="js/lib/bootstrap/js/popper.min.js"></script>
     <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="js/jquery.slimscroll.js"></script>
-    <!--Menu sidebar -->
-    <script src="js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="js/controllers/app.js"></script>
     <script src="js/controllers/base.js"></script>
-    <script src="js/controllers/index.js"></script>
+    <script src="js/controllers/index.js" charset="ISO-8859-1"></script>
 
 </body>
 

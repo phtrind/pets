@@ -7,7 +7,7 @@
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
-                                <div class="col-md-12 login-form" ng-hide="ctrl.isRegister">
+                                <div class="col-md-12 login-form" ng-hide="ctrl.base.isRegister">
                                     <div class="col-md-12" style="text-align: center; margin-bottom: 20px; margin-top: 5px;">
                                         <img src="images/logos/logo_fundo_branco_fina.gif" onclick="document.location.href='home.html'"
                                             style="width: 300px; max-width: 85%;" style="cursor: pointer">
@@ -36,12 +36,12 @@
                                             <div class="checkbox col-md-12 text-center">
                                                 <br>
                                                 <label style="color: #500b89 !important; cursor: pointer;"
-                                                    ng-click="ctrl.isRegister = true">Cadastre-se</label>
+                                                    ng-click="ctrl.base.isRegister = true">Cadastre-se</label>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-md-12 login-form" ng-show="ctrl.isRegister">
+                                <div class="col-md-12 login-form" ng-show="ctrl.base.isRegister">
                                     <div class="col-md-12" style="text-align: center; margin-bottom: 20px; margin-top: 5px;">
                                         <img src="images/logos/logo_fundo_branco_fina.gif" style="width: 300px; max-width: 85%;"
                                             onclick="document.location.href='home.html'" style="cursor: pointer">

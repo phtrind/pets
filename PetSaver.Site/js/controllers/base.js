@@ -1,12 +1,7 @@
 app.controller('baseController', function () {
 
-    this.ShowMessage = function (message) {
-        alert(message);
+    this.AbrirModalLogin = function () {
+        this.isRegister = false;
     }
-
-    $('#modalLogarCadastrar').on('hidden.bs.modal', function () {
-        ctrl.isRegister = true;
-        alert('show test');
-    });
 
 });

@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anuncios\Request\CadastrarDuvidaRequest.cs" />
+    <Compile Include="Anuncios\Request\CadastrarInteresseRequest.cs" />
     <Compile Include="Anuncios\Response\AnuncioMiniaturaResponse.cs" />
     <Compile Include="Anuncios\Request\FiltroAnuncioRequest.cs" />
     <Compile Include="Base\BasePageContract.cs" />

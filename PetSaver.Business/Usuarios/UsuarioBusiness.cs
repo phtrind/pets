@@ -9,26 +9,9 @@ namespace PetSaver.Business.Usuarios
 {
     public class UsuarioBusiness : BaseBusiness<UsuarioEntity, UsuarioRepository>
     {
-        public int CadastrarBasico(CadastroBasicoRequest aObjeto)
-        {
-            var usuario = new UsuarioEntity()
-            {
-                Nome = aObjeto.Nome,
-                Sobrenome = aObjeto.Sobrenome,
-                DataNascimento = aObjeto.DataNascimento,
-                IdTipo = Utilities.Conversor.EnumParaInt(TiposUsuario.PessoaFisica),
-                Login = new LoginEntity()
-                {
-                    Email = aObjeto.Email,
-                    Senha = aObjeto.Senha,
-                    IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Usuario)
-                }
-            };
+        #region .: Cadastro :.
 
-            return Cadastrar(usuario);
-        }
-
-        public int Cadastrar(UsuarioEntity aObjeto)
+        public override int Inserir(UsuarioEntity aObjeto)
         {
             using (var transation = new TransactionScope())
             {
@@ -45,12 +28,33 @@ namespace PetSaver.Business.Usuarios
 
                 aObjeto.IdLoginCadastro = aObjeto.IdLogin;
 
-                var usuarioId = Inserir(aObjeto);
+                var usuarioId = base.Inserir(aObjeto);
 
                 transation.Complete();
 
                 return usuarioId;
             }
         }
+
+        public int CadastrarBasico(CadastroBasicoRequest aObjeto)
+        {
+            var usuario = new UsuarioEntity()
+            {
+                Nome = aObjeto.Nome,
+                Sobrenome = aObjeto.Sobrenome,
+                DataNascimento = aObjeto.DataNascimento,
+                IdTipo = Utilities.Conversor.EnumParaInt(TiposUsuario.PessoaFisica),
+                Login = new LoginEntity()
+                {
+                    Email = aObjeto.Email,
+                    Senha = aObjeto.Senha,
+                    IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Usuario)
+                }
+            };
+
+            return Inserir(usuario);
+        } 
+
+        #endregion
     }
 }

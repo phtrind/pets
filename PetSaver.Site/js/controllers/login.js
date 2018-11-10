@@ -4,6 +4,4 @@ app.controller('loginController', function ($controller) {
     
         ctrl.base = $controller('baseController', {});
 
-    //  $scope.isRegister = true;
-
 });

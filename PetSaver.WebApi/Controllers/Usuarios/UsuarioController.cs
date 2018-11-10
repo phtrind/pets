@@ -1,7 +1,6 @@
 ﻿using PetSaver.Business.Usuarios;
-using PetSaver.Entity.Usuarios;
+using PetSaver.Contracts.Usuario;
 using System;
-using System.Collections.Generic;
 using System.Web.Http;
 
 namespace PetSaver.WebApi.Controllers.Usuarios
@@ -9,79 +8,14 @@ namespace PetSaver.WebApi.Controllers.Usuarios
     [Authorize]
     public class UsuarioController : BaseController
     {
-        // GET: api/Usuario
-        public IEnumerable<UsuarioEntity> Get()
-        {
-            try
-            {
-                return new UsuarioBusiness().ListarTodos();
-            }
-            catch (Exception ex)
-            {
-                throw TratarErro(ex);
-            }
-        }
-
-        // GET: api/Usuario/5
-        public UsuarioEntity Get(int id)
-        {
-            try
-            {
-                return new UsuarioBusiness().Listar(id);
-            }
-            catch (Exception ex)
-            {
-                throw TratarErro(ex);
-            }
-        }
-
-        // POST: api/Usuario
-        public int Post([FromBody]UsuarioEntity value)
-        {
-            try
-            {
-                return new UsuarioBusiness().Inserir(value);
-            }
-            catch (Exception ex)
-            {
-                throw TratarErro(ex);
-            }
-        }
-
-        // PUT: api/Usuario/5
-        public void Put([FromBody]UsuarioEntity value)
-        {
-            try
-            {
-                new UsuarioBusiness().Atualizar(value);
-            }
-            catch (Exception ex)
-            {
-                throw TratarErro(ex);
-            }
-        }
-
-        // DELETE: api/Usuario/5
-        public void Delete(int id)
-        {
-            try
-            {
-                new UsuarioBusiness().Excluir(id);
-            }
-            catch (Exception ex)
-            {
-                throw TratarErro(ex);
-            }
-        }
-
         [Authorize]
-        [Route("api/Usuario/Cadastrar")]
+        [Route("api/Usuario/CadastrarBasico")]
         [HttpPost]
-        public void InformacoesLogin([FromBody]UsuarioEntity value)
+        public void CadastrarBasico([FromBody]CadastroBasicoRequest value)
         {
             try
             {
-                new UsuarioBusiness().Cadastrar(value);
+                new UsuarioBusiness().CadastrarBasico(value);
             }
             catch (Exception ex)
             {

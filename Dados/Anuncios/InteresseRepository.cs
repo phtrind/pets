@@ -12,10 +12,14 @@ namespace PetSaver.Repository.Anuncios
     {
         protected override void ValidarAtributos(InteresseEntity aObjeto)
         {
-            if (aObjeto.IdUsuario == default || new UsuarioRepository().Listar(aObjeto.IdUsuario) == null)
+            var usuario = new UsuarioRepository().Listar(aObjeto.IdUsuario);
+
+            if (aObjeto.IdUsuario == default || usuario == null)
             {
                 throw new DbValidationException("O Id do usuário do interesse é inválido.");
             }
+
+            aObjeto.IdLoginCadastro = usuario.IdLogin;
 
             var anuncio = new AnuncioRepository().Listar(aObjeto.IdAnuncio);
 
@@ -27,6 +31,11 @@ namespace PetSaver.Repository.Anuncios
             if (anuncio.IdUsuario == aObjeto.IdUsuario)
             {
                 throw new BusinessException("Não é possível cadastrar um interesse que seja do mesmo usuário do anúncio.");
+            }
+
+            if (Utilities.Conversor.IntParaEnum<StatusAnuncio>(anuncio.IdStatus) != StatusAnuncio.Ativo)
+            {
+                throw new BusinessException("Não é possível cadastrar um interesse em um anúncio que não está ativo.");
             }
 
             if (!Enum.IsDefined(typeof(StatusInteresse), aObjeto.IdStatus))

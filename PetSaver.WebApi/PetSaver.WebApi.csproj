@@ -119,6 +119,8 @@
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Authentication\ProviderTokenAccess.cs" />
+    <Compile Include="Controllers\Anuncios\AnuncioController.cs" />
+    <Compile Include="Controllers\Anuncios\DuvidaController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\Localizacao\CidadeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
