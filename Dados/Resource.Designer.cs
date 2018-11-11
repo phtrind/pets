@@ -258,6 +258,33 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT A.ANU_CODIGO, 
+        ///       P.PET_NOME, 
+        ///       ANI.ANI_NOME, 
+        ///       A.ANU_DTHCADASTRO, 
+        ///       ANS.ANS_DESCRICAO, 
+        ///(
+        ///    SELECT COUNT(*)
+        ///    FROM AVI_ANUNCIOSVISITAS
+        ///    WHERE ANU_CODIGO = @IdAnuncio
+        ///) AS VISUALIZACOES, 
+        ///(
+        ///    SELECT COUNT(*)
+        ///    FROM INT_INTERESSES
+        ///    WHERE ANU_CODIGO = @IdAnuncio
+        ///) AS INTERESSADOS
+        ///FROM ANU_ANUNCIOS A
+        ///     INNER JOIN PET_PETS P ON A.PET_CODIGO = P.PET_CODIGO
+        ///     INNER JOIN ANI_ANIMAIS ANI ON P.ANI_CODIGO = ANI.ANI_CODIGO
+        ///     INNER JOIN ANS_ANUNCIOST [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string RelatorioDoacoes {
+            get {
+                return ResourceManager.GetString("RelatorioDoacoes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DELETE FROM ANG_ANUNCIOSGOSTEI
         ///WHERE ANU_CODIGO = @IdAnuncio
         ///      AND USU_CODIGO = @IdUsuario.

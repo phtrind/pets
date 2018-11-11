@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioEntity.cs" />
     <Compile Include="Anuncios\AnuncioGosteiEntity.cs" />
+    <Compile Include="Anuncios\AnuncioStatusEntity.cs" />
     <Compile Include="Anuncios\AnuncioVisitaEntity.cs" />
     <Compile Include="Anuncios\AvaliacaoEntity.cs" />
     <Compile Include="Anuncios\DuvidaEntity.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="Enums\Tipos\TiposLogin.cs" />
     <Compile Include="Enums\Tipos\TiposUsuario.cs" />
     <Compile Include="Localizacao\CidadeEntity.cs" />
+    <Compile Include="Pets\IdadeEntity.cs" />
+    <Compile Include="Pets\PeloEntity.cs" />
     <Compile Include="Usuarios\ContribuicoesEntity.cs" />
     <Compile Include="Localizacao\EnderecoEntity.cs" />
     <Compile Include="Localizacao\EstadoEntity.cs" />

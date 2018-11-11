@@ -23,12 +23,16 @@ namespace PetSaver.Repository
                 config.AddMap(new CorMap());
                 config.AddMap(new PetMap());
                 config.AddMap(new SexoMap());
+                config.AddMap(new IdadeMap());
+                config.AddMap(new PorteMap());
+                config.AddMap(new PeloMap());
                 config.AddMap(new AnuncioMap());
                 config.AddMap(new InteresseMap());
                 config.AddMap(new AnuncioVisitaMap());
                 config.AddMap(new DuvidaMap());
                 config.AddMap(new AvaliacaoMap());
                 config.AddMap(new AnuncioGosteiMap());
+                config.AddMap(new AnuncioStatusMap());
                 config.ForDommel();
             });
         }

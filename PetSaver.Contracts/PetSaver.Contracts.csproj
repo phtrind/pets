@@ -41,14 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anuncios\Request\CadastrarDoacaoRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarDuvidaRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarGosteiRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarInteresseRequest.cs" />
+    <Compile Include="Anuncios\Request\RelatorioDoacoes\FiltroRelatorioDoacoesRequest.cs" />
+    <Compile Include="Anuncios\Request\RelatorioDoacoes\RelatorioDoacoesRequest.cs" />
     <Compile Include="Anuncios\Response\AnuncioMiniaturaResponse.cs" />
     <Compile Include="Anuncios\Request\FiltroAnuncioRequest.cs" />
+    <Compile Include="Anuncios\Response\RelatorioDoacoes\FiltroRelatorioDoacoesResponse.cs" />
+    <Compile Include="Anuncios\Response\RelatorioDoacoes\RelatorioDoacoesContract.cs" />
+    <Compile Include="Anuncios\Response\RelatorioDoacoes\RelatorioDoacoesResponse.cs" />
     <Compile Include="Base\BasePageContract.cs" />
     <Compile Include="Base\ChaveValorContract.cs" />
     <Compile Include="Anuncios\Response\FiltroAnuncioResponse.cs" />
+    <Compile Include="Paginas\Response\CadastroAnuncioPageResponse.cs" />
     <Compile Include="Paginas\Response\PetPage\AnuncianteContract.cs" />
     <Compile Include="Paginas\Response\PetPage\DuvidaContract.cs" />
     <Compile Include="Paginas\Response\PetPage\LocalizacaoContract.cs" />

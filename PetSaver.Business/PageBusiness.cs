@@ -9,6 +9,8 @@ namespace PetSaver.Business
 {
     public class PageBusiness
     {
+        #region .: Comuns :.
+
         public HomePageResponse InicializarHomePage()
         {
             return new HomePageResponse()
@@ -64,5 +66,37 @@ namespace PetSaver.Business
 
             return new AnuncioBusiness().AbrirAnuncio(aRequest.IdAnuncio, aRequest.IdUsuario);
         }
+
+        #endregion
+
+        #region .: Conta :.
+
+        public CadastroAnuncioPageResponse InicializarCadastroAnuncio()
+        {
+            return new CadastroAnuncioPageResponse()
+            {
+                Animais = new AnimalBusiness().Combo(),
+                Sexos = new SexoBusiness().Combo(),
+                Idades = new IdadeBusiness().Combo(),
+                Portes = new PorteBusiness().Combo(),
+                Pelos = new PeloBusiness().Combo(),
+                Cores = new CorBusiness().Combo()
+            };
+        }
+
+        public RelatorioDoacoesResponse InicializarRelatorioDoacoes(RelatorioDoacoesRequest aRequest)
+        {
+            return new RelatorioDoacoesResponse()
+            {
+                Filtros = new FiltroRelatorioDoacoesResponse()
+                {
+                    Animais = new AnimalBusiness().Combo(),
+                    Status = new AnuncioStatusBusiness().Combo()
+                },
+                Anuncios = new AnuncioBusiness().ListarRelatorioDoacoes(aRequest.IdUsuario, aRequest.Filtro)
+            };
+        }
+
+        #endregion
     }
 }

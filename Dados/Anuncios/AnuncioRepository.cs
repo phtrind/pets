@@ -175,5 +175,73 @@ namespace PetSaver.Repository.Anuncios
                 return db.QueryFirstOrDefault(Resource.AbrirAnuncio, new { @IdAnuncio = aIdAnuncio });
             }
         }
+
+        public IEnumerable<dynamic> ListarRelatorioDoacoes(int aIdUsuario, FiltroRelatorioDoacoesRequest aFiltro)
+        {
+            if (aIdUsuario == default)
+            {
+                return new List<dynamic>();
+            }
+
+            StringBuilder stringBuilder = new StringBuilder(Resource.RelatorioDoacoes);
+
+            if (aFiltro != null)
+            {
+                if (Validador.FiltroIsValid(aFiltro.Nome))
+                {
+                    stringBuilder.Append($" AND P.PET_NOME = {aFiltro.Nome}");
+                }
+
+                if (Validador.FiltroIsValid(aFiltro.Animal))
+                {
+                    stringBuilder.Append($" AND P.ANI_CODIGO = {aFiltro.Animal.Value}");
+                }
+
+                if (Validador.FiltroIsValid(aFiltro.DataCadastroInicio))
+                {
+                    stringBuilder.Append($" AND A.ANU_DTHCADASTRO >= {aFiltro.DataCadastroInicio.Value}");
+                }
+
+                if (Validador.FiltroIsValid(aFiltro.DataCadastroFim))
+                {
+                    stringBuilder.Append($" AND A.ANU_DTHCADASTRO <= {aFiltro.DataCadastroInicio.Value}");
+                }
+
+                if (Validador.FiltroIsValid(aFiltro.Status))
+                {
+                    stringBuilder.Append($" AND A.ANS_CODIGO = {aFiltro.Status}");
+                }
+
+                stringBuilder.Append($" ORDER BY A.ANU_DTHCADASTRO ");
+
+                #region .: Paginação :.
+
+                if (Validador.FiltroIsValid(aFiltro.Quantidade) && Validador.FiltroIsValid(aFiltro.Pagina))
+                {
+                    stringBuilder.Append($" OFFSET @PageSize * (@PageNumber - 1) ROWS FETCH NEXT @PageSize ROWS ONLY ");
+                }
+                else
+                {
+                    using (var db = new SqlConnection(StringConnection))
+                    {
+                        return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario, @PageSize = aFiltro.Quantidade, @PageNumber = aFiltro.Pagina });
+                    }
+                }
+
+                #endregion
+
+                using (var db = new SqlConnection(StringConnection))
+                {
+                    return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario});
+                }
+            }
+            else
+            {
+                using (var db = new SqlConnection(StringConnection))
+                {
+                    return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario });
+                }
+            }
+        }
     }
 }

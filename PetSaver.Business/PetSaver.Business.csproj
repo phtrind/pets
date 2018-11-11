@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioBusiness.cs" />
     <Compile Include="Anuncios\AnuncioGosteiBusiness.cs" />
+    <Compile Include="Anuncios\AnuncioStatusBusiness.cs" />
     <Compile Include="Anuncios\AnuncioVisitaBusiness.cs" />
     <Compile Include="Anuncios\AvaliacaoBusiness.cs" />
     <Compile Include="Anuncios\DuvidaBusiness.cs" />
@@ -56,7 +57,11 @@
     <Compile Include="Localizacao\EstadoBusiness.cs" />
     <Compile Include="PageBusiness.cs" />
     <Compile Include="Pets\AnimalBusiness.cs" />
+    <Compile Include="Pets\CorBusiness.cs" />
+    <Compile Include="Pets\IdadeBusiness.cs" />
+    <Compile Include="Pets\PeloBusiness.cs" />
     <Compile Include="Pets\PetBusiness.cs" />
+    <Compile Include="Pets\PorteBusiness.cs" />
     <Compile Include="Pets\SexoBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios\HistoricoLoginBusiness.cs" />

@@ -67,6 +67,22 @@ namespace PetSaver.Business.Tests.Anuncios
             Assert.IsNotNull(obj);
         }
 
+        [TestMethod]
+        public void ListarRelatorioDoacoes_ExistingAnuncios_ReturnsList()
+        {
+            var lista = new AnuncioBusiness().ListarRelatorioDoacoes(2, null);
+
+            Assert.IsTrue(lista.Any());
+        }
+
+        [TestMethod]
+        public void ListarRelatorioDoacoes_UnexistentAnuncios_ReturnsEmptyList()
+        {
+            var lista = new AnuncioBusiness().ListarRelatorioDoacoes(200, null);
+
+            Assert.IsFalse(lista.Any());
+        }
+
         #endregion
     }
 }

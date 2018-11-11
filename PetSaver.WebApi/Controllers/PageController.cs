@@ -13,6 +13,8 @@ namespace PetSaver.WebApi.Controllers
 {
     public class PageController : BaseController
     {
+        #region .: Comuns :.
+
         [Route("api/Page/Home")]
         [HttpGet]
         public HomePageResponse Home()
@@ -54,5 +56,41 @@ namespace PetSaver.WebApi.Controllers
                 throw TratarErro(ex);
             }
         }
+
+        #endregion
+
+        #region .: Conta :.
+
+        [Authorize]
+        [Route("api/Page/CadastroAnuncio")]
+        [HttpGet]
+        public CadastroAnuncioPageResponse CadastroAnuncio()
+        {
+            try
+            {
+                return new PageBusiness().InicializarCadastroAnuncio();
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
+        [Route("api/Page/RelatorioDoacoes")]
+        [HttpPost]
+        public RelatorioDoacoesResponse RelatorioDoacoes(RelatorioDoacoesRequest aRequest)
+        {
+            try
+            {
+                return new PageBusiness().InicializarRelatorioDoacoes(aRequest);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        #endregion
     }
 }

@@ -2,7 +2,7 @@
 
 namespace PetSaver.Entity.Pets
 {
-    public class PorteEntity : BaseEntity
+    public class PeloEntity : BaseEntity
     {
         #region .: Base Entity :.
 
@@ -19,7 +19,7 @@ namespace PetSaver.Entity.Pets
         #region .: Atributos :.
 
         /// <summary>
-        /// Descrição do porte. Ex.: Pequeno, Médio, Grande
+        /// Descrição do sexo. Ex.: Curto, Longo
         /// </summary>
         public string Descricao { get; set; }
 

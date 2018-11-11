@@ -1,4 +1,6 @@
-﻿namespace PetSaver.Utilities
+﻿using System;
+
+namespace PetSaver.Utilities
 {
     public static class Validador
     {
@@ -160,6 +162,11 @@
         public static bool FiltroIsValid(string aValor)
         {
             return !string.IsNullOrEmpty(aValor);
+        }
+
+        public static bool FiltroIsValid(DateTime? aValor)
+        {
+            return aValor.HasValue && aValor.Value != default;
         }
     }
 }

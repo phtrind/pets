@@ -117,5 +117,35 @@ namespace PetSaver.Business.Anuncios
 
             return response;
         }
+
+        public IEnumerable<RelatorioDoacoesContract> ListarRelatorioDoacoes(int aIdUsuario, FiltroRelatorioDoacoesRequest aFiltro)
+        {
+            if (aIdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuário é inválido");
+            }
+
+            FiltroRelatorioDoacoesRequest filtro;
+
+            if (aFiltro == null)
+            {
+                filtro = new FiltroRelatorioDoacoesRequest();
+            }
+            else
+            {
+                filtro = aFiltro;
+            }
+
+            return new AnuncioRepository().ListarRelatorioDoacoes(aIdUsuario, aFiltro).Select(x => new RelatorioDoacoesContract()
+            {
+                IdAnuncio = Convert.ToInt32(x.ANU_CODIGO),
+                Nome = Convert.ToString(x.PET_NOME),
+                Animal = Convert.ToString(x.ANI_NOME),
+                DataCadastro = Convert.ToDateTime(x.ANU_DTHCADASTRO).ToString("dd/MM/yyyy"),
+                Status = Convert.ToString(x.ANS_DESCRICAO),
+                Visualizacoes = Convert.ToInt32(x.VISUALIZACOES),
+                Interessados = Convert.ToInt32(x.INTERESSADOS)
+            });
+        }
     }
 }

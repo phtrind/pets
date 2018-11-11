@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioGosteiRepository.cs" />
     <Compile Include="Anuncios\AnuncioRepository.cs" />
+    <Compile Include="Anuncios\AnuncioStatusRepository.cs" />
     <Compile Include="Anuncios\AnuncioVisitaRepository.cs" />
     <Compile Include="Anuncios\AvaliacaoRepository.cs" />
     <Compile Include="Anuncios\DuvidaRepository.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Localizacao\EstadoRepository.cs" />
     <Compile Include="Localizacao\LocalizacaoRepository.cs" />
     <Compile Include="Mapeamento\Anuncios\AnuncioGosteiMap.cs" />
+    <Compile Include="Mapeamento\Anuncios\AnuncioStatusMap.cs" />
     <Compile Include="Mapeamento\Anuncios\AnuncioVisitaMap.cs" />
     <Compile Include="Mapeamento\Anuncios\AvaliacaoMap.cs" />
     <Compile Include="Mapeamento\Anuncios\DuvidaMap.cs" />
@@ -86,13 +88,19 @@
     <Compile Include="Mapeamento\Anuncios\AnuncioMap.cs" />
     <Compile Include="Mapeamento\Pets\CorMap.cs" />
     <Compile Include="Mapeamento\Anuncios\InteresseMap.cs" />
+    <Compile Include="Mapeamento\Pets\IdadeMap.cs" />
+    <Compile Include="Mapeamento\Pets\PeloMap.cs" />
     <Compile Include="Mapeamento\Pets\PetMap.cs" />
+    <Compile Include="Mapeamento\Pets\PorteMap.cs" />
     <Compile Include="Mapeamento\Pets\RacaEspecieMap.cs" />
     <Compile Include="Mapeamento\Pets\SexoMap.cs" />
     <Compile Include="Mapeamento\Usuario\HistoricoLoginMap.cs" />
     <Compile Include="Pets\AnimalRepository.cs" />
     <Compile Include="Pets\CorRepository.cs" />
+    <Compile Include="Pets\IdadeRepository.cs" />
+    <Compile Include="Pets\PeloRepository.cs" />
     <Compile Include="Pets\PetRepository.cs" />
+    <Compile Include="Pets\PorteRepository.cs" />
     <Compile Include="Pets\RacaEspecieRepository.cs" />
     <Compile Include="Pets\SexoRepository.cs" />
     <Compile Include="Usuarios\HistoricoLoginRepository.cs" />
@@ -143,6 +151,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\Queries\Anuncios\RelatorioDoacoes.sql" />
     <Content Include="Resources\Queries\Anuncios\RemoverGostei.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarAnuncioGosteiPorAnuncioUsuario.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarDuvidasPorAnuncio.sql" />

@@ -3,7 +3,6 @@ using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Paginas.Response.PetPage;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -82,6 +81,23 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        //[Authorize]
+        //[Route("api/Anuncio/CadastrarDoacao")]
+        //[HttpPost]
+        //public HttpResponseMessage CadastrarDoacao([FromBody]CadastrarDoacaoRequest aRequest)
+        //{
+        //    try
+        //    {
+        //        new AnuncioBusiness().CadastrarDoacao(aRequest);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw TratarErro(ex);
+        //    }
+
+        //    return new HttpResponseMessage(HttpStatusCode.OK);
+        //}
+
         #endregion
 
         #region .: Busca :.
@@ -98,7 +114,7 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             {
                 throw TratarErro(ex);
             }
-        } 
+        }
 
         #endregion
     }

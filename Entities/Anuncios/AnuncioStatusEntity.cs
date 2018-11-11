@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace PetSaver.Entity.Pets
+namespace PetSaver.Entity.Anuncios
 {
-    public class PorteEntity : BaseEntity
+    public class AnuncioStatusEntity : BaseEntity
     {
         #region .: Base Entity :.
 
@@ -19,7 +19,7 @@ namespace PetSaver.Entity.Pets
         #region .: Atributos :.
 
         /// <summary>
-        /// Descrição do porte. Ex.: Pequeno, Médio, Grande
+        /// Descrição do status do anúncio
         /// </summary>
         public string Descricao { get; set; }
 
