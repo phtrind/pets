@@ -385,32 +385,32 @@
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
-                            <div style="margin-left: 75px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
-                                ng-click="ctrl.SelectPet(1);">
-                                <img src="../icons/dog.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
-                                <h3>Cachorro</h3>
+                                <div style="margin-left: 55px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
+                                    ng-click="ctrl.SelectPet(1);">
+                                    <img src="../icons/dog.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
+                                    <h3>Cachorro</h3>
+                                </div>
+                                <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
+                                    ng-click="ctrl.SelectPet(2);">
+                                    <img src="../icons/cat.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
+                                    <h3>Gato</h3>
+                                </div>
+                                <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
+                                    ng-click="ctrl.SelectPet(3);">
+                                    <img src="../icons/hamster.png" style="width:95%; padding: 13px; margin-bottom: 20px; margin-top: 7px;">
+                                    <h3>Roedor</h3>
+                                </div>
+                                <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
+                                    ng-click="ctrl.SelectPet(4);">
+                                    <img src="../icons/bird.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
+                                    <h3>Ave</h3>
+                                </div>
+                                <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
+                                    ng-click="ctrl.SelectPet(5);">
+                                    <img src="../icons/others.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
+                                    <h3>Outros</h3>
+                                </div>
                             </div>
-                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
-                                ng-click="ctrl.SelectPet(2);">
-                                <img src="../icons/cat.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
-                                <h3>Gato</h3>
-                            </div>
-                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
-                                ng-click="ctrl.SelectPet(3);">
-                                <img src="../icons/hamster.png" style="width:105%; padding: 10px; margin-bottom: 9px;">
-                                <h3>Roedor</h3>
-                            </div>
-                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
-                                ng-click="ctrl.SelectPet(4);">
-                                <img src="../icons/bird.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
-                                <h3>Ave</h3>
-                            </div>
-                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
-                                ng-click="ctrl.SelectPet(5);">
-                                <img src="../icons/others.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
-                                <h3>Outros</h3>
-                            </div>
-                        </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: right;">
                                 <select class="btn btn-primary" ng-show="ctrl.comboOutrosMostrar" ng-model="ctrl.outrosSelecionado"
