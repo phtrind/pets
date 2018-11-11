@@ -80,6 +80,19 @@ namespace PetSaver.Repository.Usuarios
             }
         }
 
+        public dynamic BuscarInformacoesSession(string aEmail)
+        {
+            if (string.IsNullOrEmpty(aEmail))
+            {
+                throw new BusinessException("É obrigatorio informar o e-mail do usuário");
+            }
+
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.QueryFirstOrDefault(Resource.BuscarInformacoesSession, new { @Email = aEmail });
+            }
+        }
+
         #endregion
     }
 }

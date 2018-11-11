@@ -13,5 +13,9 @@ namespace PetSaver.Contracts.Paginas
         public LocalizacaoContract Localizacao { get; set; }
 
         public IEnumerable<DuvidaContract> Duvidas { get; set; }
+
+        public bool Gostei { get; set; }
+
+        public string StatusAnuncio { get; set; }
     }
 }

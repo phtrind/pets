@@ -2,7 +2,9 @@
 using PetSaver.Contracts.Usuario;
 using PetSaver.Entity.Enums;
 using PetSaver.Entity.Usuarios;
+using PetSaver.Exceptions;
 using PetSaver.Repository.Usuarios;
+using System;
 using System.Transactions;
 
 namespace PetSaver.Business.Usuarios
@@ -53,7 +55,33 @@ namespace PetSaver.Business.Usuarios
             };
 
             return Inserir(usuario);
-        } 
+        }
+
+        #endregion
+
+        #region .: Buscas :.
+
+        public UsuarioSessionContract BuscarInformacoesSession(string aEmail)
+        {
+            if (string.IsNullOrEmpty(aEmail))
+            {
+                throw new BusinessException("É obrigatorio informar o e-mail do usuário.");
+            }
+
+            dynamic teste = new UsuarioRepository().BuscarInformacoesSession(aEmail);
+
+            if (teste == null)
+            {
+                throw new BusinessException("O usuário não foi encontrado.");
+            }
+
+            return new UsuarioSessionContract()
+            {
+                IdLogin = Convert.ToInt32(teste.LOG_CODIGO),
+                IdUsuario = Convert.ToInt32(teste.USU_CODIGO),
+                Nome = Convert.ToString(teste.USU_NOME)
+            };
+        }
 
         #endregion
     }

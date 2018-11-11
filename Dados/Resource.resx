@@ -121,6 +121,9 @@
   <data name="AbrirAnuncio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Queries\Anuncios\AbrirAnuncio.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="BuscarAnuncioGosteiPorAnuncioUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Queries\Anuncios\BuscarAnuncioGosteiPorAnuncioUsuario.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
   <data name="BuscarAnuncios" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Queries\Anuncios\BuscarAnuncios.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -135,6 +138,9 @@
   </data>
   <data name="BuscarDuvidasPorAnuncio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Queries\Anuncios\BuscarDuvidasPorAnuncio.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="BuscarInformacoesSession" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Queries\Login\BuscarInformacoesSession.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="BuscarInteressePorUsuarioAnuncio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Queries\Interesse\BuscarInteressePorUsuarioAnuncio.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -153,5 +159,8 @@
   </data>
   <data name="estados_cidades" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Json\estados_cidades.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="RemoverGostei" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Queries\Anuncios\RemoverGostei.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

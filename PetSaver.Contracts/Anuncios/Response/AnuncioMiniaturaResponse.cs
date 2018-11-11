@@ -7,5 +7,6 @@
         public string Idade { get; set; }
         public string Localizacao { get; set; }
         public byte[] Foto { get; set; }
+        public string Tipo { get; set; }
     }
 }

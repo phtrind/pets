@@ -27,13 +27,13 @@ namespace PetSaver.WebApi.Controllers
             }
         }
 
-        [Route("api/Page/Anuncios/{aQuantidade}")]
-        [HttpGet]
-        public AnunciosPageResponse Anuncios(int aQuantidade)
+        [Route("api/Page/Anuncios")]
+        [HttpPost]
+        public AnunciosPageResponse Anuncios([FromBody]FiltroAnuncioRequest aRequest)
         {
             try
             {
-                return new PageBusiness().InicializarAnuncios(aQuantidade);
+                return new PageBusiness().InicializarAnuncios(aRequest);
             }
             catch (Exception ex)
             {

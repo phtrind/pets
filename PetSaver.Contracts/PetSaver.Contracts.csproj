@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anuncios\Request\CadastrarDuvidaRequest.cs" />
+    <Compile Include="Anuncios\Request\CadastrarGosteiRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarInteresseRequest.cs" />
     <Compile Include="Anuncios\Response\AnuncioMiniaturaResponse.cs" />
     <Compile Include="Anuncios\Request\FiltroAnuncioRequest.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Paginas\Response\PetPage\PetContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\Request\CadastroBasicoRequest.cs" />
+    <Compile Include="Usuario\UsuarioSessionContract.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

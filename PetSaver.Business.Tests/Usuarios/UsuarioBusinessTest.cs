@@ -9,6 +9,8 @@ namespace PetSaver.Business.Tests.Usuarios
     [TestClass]
     public class UsuarioBusinessTest : BaseBusinessTest
     {
+        #region .: Cadastro :.
+
         [TestMethod]
         public void CadastrarBasico_UsuarioValido_DoesntThrowExeption()
         {
@@ -41,5 +43,24 @@ namespace PetSaver.Business.Tests.Usuarios
 
             new UsuarioBusiness().CadastrarBasico(request);
         }
+
+        #endregion
+
+        #region .: Buscas :.
+
+        [TestMethod]
+        public void BuscarInformacoesSession_ExistingEmail_ReturnsEntity()
+        {
+            Assert.IsNotNull(new UsuarioBusiness().BuscarInformacoesSession("usuario@hotmail.com"));
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(BusinessException), "O usuário não foi encontrado.")]
+        public void BuscarInformacoesSession_UnexistentEmail_ThrowsNotFoundException()
+        {
+            new UsuarioBusiness().BuscarInformacoesSession("teste");
+        }
+
+        #endregion
     }
 }

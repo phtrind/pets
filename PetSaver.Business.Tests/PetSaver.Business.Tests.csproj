@@ -55,6 +55,7 @@
     <Compile Include="Anuncios\AvaliacaoBusinessTest.cs" />
     <Compile Include="Anuncios\DuvidaBusinessTest.cs" />
     <Compile Include="Anuncios\InteresseBusinessTest.cs" />
+    <Compile Include="Anuncios\AnuncioGosteiBusinessTest.cs" />
     <Compile Include="Base\BaseBusinessTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios\LoginBusinessTest.cs" />
@@ -84,6 +85,10 @@
     <ProjectReference Include="..\PetSaver.Exceptions\PetSaver.Exceptions.csproj">
       <Project>{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}</Project>
       <Name>PetSaver.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PetSaver.Utilities\PetSaver.Utilities.csproj">
+      <Project>{5b8c2769-c69a-4982-930b-074bac116299}</Project>
+      <Name>PetSaver.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

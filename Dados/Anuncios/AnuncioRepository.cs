@@ -130,6 +130,11 @@ namespace PetSaver.Repository.Anuncios
                 {
                     stringBuilder.Append($" AND P.PET_NOME LIKE %{aFiltro.Nome}%");
                 }
+
+                if (Validador.FiltroIsValid(aFiltro.IdTipo))
+                {
+                    stringBuilder.Append($" AND ANT.ANT_CODIGO = {aFiltro.IdTipo}");
+                }
             }
             else
             {

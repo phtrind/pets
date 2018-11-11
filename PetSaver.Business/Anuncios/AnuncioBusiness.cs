@@ -47,7 +47,8 @@ namespace PetSaver.Business.Anuncios
                 Sexo = ((Sexos)Utilities.Conversor.IntParaEnum<Sexos>(Convert.ToInt32(x.PTS_CODIGO))).Traduzir(),
                 Idade = ((Idades)Utilities.Conversor.IntParaEnum<Idades>(Convert.ToInt32(x.PID_CODIGO))).Traduzir(),
                 Localizacao = $"{Convert.ToString(x.CID_NOME)} / {Convert.ToString(x.EST_SIGLA)}",
-                Foto = Convert.ToString(x.ANF_LINK)
+                Foto = Convert.ToString(x.ANF_LINK),
+                Tipo = Convert.ToString(x.ANT_DESCRICAO)
             });
         }
 
@@ -105,11 +106,14 @@ namespace PetSaver.Business.Anuncios
                 };
             }
 
-            response.Duvidas = new DuvidaBusiness().BuscarPorAnuncio(aIdAnuncio).Select(x => new DuvidaContract()
+            response.StatusAnuncio = Convert.ToString(retornoDb.ANS_DESCRICAO);
+
+            response.Duvidas = new DuvidaBusiness().BuscarPorAnuncio(aIdAnuncio);
+
+            if (aIdUsuario.HasValue && aIdUsuario.Value != default)
             {
-                Pergunta = x.Pergunta,
-                Resposta = x.Resposta
-            });
+                response.Gostei = new AnuncioGosteiBusiness().UsuarioGostouAnuncio(aIdAnuncio, aIdUsuario.Value);
+            }
 
             return response;
         }

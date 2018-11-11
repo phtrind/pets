@@ -88,19 +88,32 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT *
+        ///FROM ANG_ANUNCIOSGOSTEI
+        ///WHERE ANU_CODIGO = @IdAnuncio
+        ///      AND USU_CODIGO = @IdUsuario.
+        /// </summary>
+        internal static string BuscarAnuncioGosteiPorAnuncioUsuario {
+            get {
+                return ResourceManager.GetString("BuscarAnuncioGosteiPorAnuncioUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT P.PET_NOME, 
         ///       P.PTS_CODIGO, 
         ///       P.PID_CODIGO, 
         ///       E.EST_SIGLA, 
         ///       C.CID_NOME, 
-        ///       F.ANF_LINK
+        ///       F.ANF_LINK,
+        ///	   ANT.ANT_DESCRICAO
         ///FROM ANU_ANUNCIOS A
         ///     INNER JOIN PET_PETS P ON A.PET_CODIGO = P.PET_CODIGO
         ///     INNER JOIN EST_ESTADOS E ON A.EST_CODIGO = E.EST_CODIGO
         ///     INNER JOIN CID_CIDADES C ON C.CID_CODIGO = A.CID_CODIGO
         ///     LEFT JOIN ANF_ANUNCIOFOTOS F ON F.ANU_CODIGO = A.ANU_CODIGO
         ///                                     AND F.ANF_DESTAQUE = 1
-        ///WHERE 1 = 1.
+        ///     INNER JOIN ANT_ANUNCIOT [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string BuscarAnuncios {
             get {
@@ -160,6 +173,20 @@ namespace PetSaver.Repository {
         internal static string BuscarDuvidasPorAnuncio {
             get {
                 return ResourceManager.GetString("BuscarDuvidasPorAnuncio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT L.LOG_CODIGO, 
+        ///       U.USU_CODIGO, 
+        ///       U.USU_NOME
+        ///FROM LOG_LOGINS L
+        ///     INNER JOIN USU_USUARIOS U ON L.LOG_CODIGO = U.LOG_CODIGO
+        ///WHERE L.LOG_EMAIL = @Email.
+        /// </summary>
+        internal static string BuscarInformacoesSession {
+            get {
+                return ResourceManager.GetString("BuscarInformacoesSession", resourceCulture);
             }
         }
         
@@ -227,6 +254,17 @@ namespace PetSaver.Repository {
             get {
                 object obj = ResourceManager.GetObject("estados_cidades", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DELETE FROM ANG_ANUNCIOSGOSTEI
+        ///WHERE ANU_CODIGO = @IdAnuncio
+        ///      AND USU_CODIGO = @IdUsuario.
+        /// </summary>
+        internal static string RemoverGostei {
+            get {
+                return ResourceManager.GetString("RemoverGostei", resourceCulture);
             }
         }
     }

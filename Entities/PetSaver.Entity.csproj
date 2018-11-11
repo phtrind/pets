@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioEntity.cs" />
+    <Compile Include="Anuncios\AnuncioGosteiEntity.cs" />
     <Compile Include="Anuncios\AnuncioVisitaEntity.cs" />
     <Compile Include="Anuncios\AvaliacaoEntity.cs" />
     <Compile Include="Anuncios\DuvidaEntity.cs" />

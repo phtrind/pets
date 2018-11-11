@@ -1,17 +1,23 @@
 ﻿using PetSaver.Business.Usuarios;
 using PetSaver.Contracts.Anuncios;
+using PetSaver.Contracts.Paginas.Response.PetPage;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PetSaver.Business.Anuncios
 {
     public class DuvidaBusiness : BaseBusiness<DuvidaEntity, DuvidaRepository>
     {
-        public IEnumerable<DuvidaEntity> BuscarPorAnuncio(int aIdAnuncio)
+        public IEnumerable<DuvidaContract> BuscarPorAnuncio(int aIdAnuncio)
         {
-            return new DuvidaRepository().BuscarPorAnuncio(aIdAnuncio);
+            return new DuvidaRepository().BuscarPorAnuncio(aIdAnuncio).Select(x => new DuvidaContract()
+            {
+                Pergunta = x.Pergunta,
+                Resposta = x.Resposta
+            });
         }
 
         public int Cadastrar(CadastrarDuvidaRequest aRequest)

@@ -13,5 +13,10 @@ namespace PetSaver.Utilities
         {
             return (T)Enum.Parse(typeof(T), Convert.ToString(aInteiro));
         }
+
+        public static int? EnumParaInt(object tiposAnuncios)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

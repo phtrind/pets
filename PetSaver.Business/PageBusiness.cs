@@ -2,11 +2,8 @@
 using PetSaver.Business.Localizacao;
 using PetSaver.Business.Pets;
 using PetSaver.Contracts.Anuncios;
-using PetSaver.Contracts.Base;
 using PetSaver.Contracts.Paginas;
-using PetSaver.Entity.Anuncios;
 using PetSaver.Exceptions;
-using System;
 
 namespace PetSaver.Business
 {
@@ -21,13 +18,25 @@ namespace PetSaver.Business
             };
         }
 
-        public AnunciosPageResponse InicializarAnuncios(int aQuantidade)
+        public AnunciosPageResponse InicializarAnuncios(FiltroAnuncioRequest aFiltro)
         {
-            var filtro = new FiltroAnuncioRequest()
+            FiltroAnuncioRequest filtro;
+
+            if (aFiltro == null)
             {
-                Quantidade = aQuantidade,
-                Pagina = 1
-            };
+                filtro = new FiltroAnuncioRequest();
+            }
+            else
+            {
+                filtro = aFiltro;
+            }
+
+            if (filtro.Quantidade == default)
+            {
+                filtro.Quantidade = 16;
+            }
+
+            filtro.Pagina = 1;
 
             return new AnunciosPageResponse()
             {

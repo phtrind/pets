@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anuncios\AnuncioGosteiRepository.cs" />
     <Compile Include="Anuncios\AnuncioRepository.cs" />
     <Compile Include="Anuncios\AnuncioVisitaRepository.cs" />
     <Compile Include="Anuncios\AvaliacaoRepository.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Localizacao\EnderecoRepository.cs" />
     <Compile Include="Localizacao\EstadoRepository.cs" />
     <Compile Include="Localizacao\LocalizacaoRepository.cs" />
+    <Compile Include="Mapeamento\Anuncios\AnuncioGosteiMap.cs" />
     <Compile Include="Mapeamento\Anuncios\AnuncioVisitaMap.cs" />
     <Compile Include="Mapeamento\Anuncios\AvaliacaoMap.cs" />
     <Compile Include="Mapeamento\Anuncios\DuvidaMap.cs" />
@@ -141,6 +143,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\Queries\Anuncios\RemoverGostei.sql" />
+    <Content Include="Resources\Queries\Anuncios\BuscarAnuncioGosteiPorAnuncioUsuario.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarDuvidasPorAnuncio.sql" />
     <Content Include="Resources\Queries\Anuncios\AbrirAnuncio.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarAnuncios.sql" />
@@ -148,6 +152,7 @@
     <Content Include="Resources\Queries\Avaliacoes\BuscarAvaliacaoPorUsuario.sql" />
     <Content Include="Resources\Queries\Interesse\BuscarInteressePorUsuarioAnuncio.sql" />
     <Content Include="Resources\Queries\Localizacao\BuscarCidadePorEstado.sql" />
+    <Content Include="Resources\Queries\Login\BuscarInformacoesSession.sql" />
     <Content Include="Resources\Queries\Login\BuscarLoginPorEmailSenha.sql" />
     <Content Include="Resources\Queries\Login\BuscarLoginPorEmail.sql" />
     <Content Include="Resources\Queries\Usuario\BuscarUsuarioPorDocumento.sql" />

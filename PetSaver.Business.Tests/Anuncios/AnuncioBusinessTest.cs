@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PetSaver.Business.Anuncios;
+using PetSaver.Entity.Enums.Tipos;
 using System.Linq;
 
 namespace PetSaver.Business.Tests.Anuncios
@@ -31,6 +32,28 @@ namespace PetSaver.Business.Tests.Anuncios
             var listaMiniaturas = new AnuncioBusiness().ListarMiniaturas(new Contracts.Anuncios.FiltroAnuncioRequest()
             {
                 Pagina = 2
+            });
+
+            Assert.IsFalse(listaMiniaturas.Any());
+        }
+
+        [TestMethod]
+        public void ListarMiniaturas_Doacao_ReturnsList()
+        {
+            var listaMiniaturas = new AnuncioBusiness().ListarMiniaturas(new Contracts.Anuncios.FiltroAnuncioRequest()
+            {
+                IdTipo = Utilities.Conversor.EnumParaInt(TiposAnuncio.Doacao)
+            });
+
+            Assert.IsTrue(listaMiniaturas.Any());
+        }
+
+        [TestMethod]
+        public void ListarMiniaturas_PetPerdido_ReturnsEmptyList()
+        {
+            var listaMiniaturas = new AnuncioBusiness().ListarMiniaturas(new Contracts.Anuncios.FiltroAnuncioRequest()
+            {
+                IdTipo = Utilities.Conversor.EnumParaInt(TiposAnuncio.PetPerdido)
             });
 
             Assert.IsFalse(listaMiniaturas.Any());
