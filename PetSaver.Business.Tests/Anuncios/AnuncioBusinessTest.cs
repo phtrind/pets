@@ -1,6 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PetSaver.Business.Anuncios;
+using PetSaver.Contracts.Anuncios;
+using PetSaver.Entity.Enums.Pets;
 using PetSaver.Entity.Enums.Tipos;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PetSaver.Business.Tests.Anuncios
@@ -84,5 +87,111 @@ namespace PetSaver.Business.Tests.Anuncios
         }
 
         #endregion
+
+        #region .: Cadastros :.
+
+        [TestMethod]
+        public void CadastrarDoacao_ValidOneAnuncio_DoesntThrowException()
+        {
+            new AnuncioBusiness().CadastrarDoacao(new CadastrarDoacaoRequest()
+            {
+                IdUsuario = 4,
+                Anuncios = new List<CadastroAnuncioContract>()
+                {
+                    new CadastroAnuncioContract()
+                    {
+                        IdEstado = 91,
+                        IdCidade = 6972,
+                        Pet = new CadastroPetContract()
+                        {
+                            IdAnimal = 2,
+                            Nome = "Gato do Brunão",
+                            IdSexo = Utilities.Conversor.EnumParaInt(Sexos.Macho),
+                            IdRacaEspecie = 20,
+                            IdIdade = Utilities.Conversor.EnumParaInt(Idades.Idoso),
+                            IdPorte = Utilities.Conversor.EnumParaInt(Portes.Medio),
+                            Peso = 26.3M,
+                            IdPelo = Utilities.Conversor.EnumParaInt(Pelos.Longo),
+                            IdCorPrimaria = 5,
+                            IdCorSecundaria = 8,
+                            Vacinado = null,
+                            Vermifugado = true,
+                            Castrado = false,
+                            Descricao = "Gato sexy do Bruno Lima"
+                        }
+                    }
+                }
+            });
+
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
+        public void CadastrarPetPerdido_ValidPetPerdido_DoesntThrowException()
+        {
+            new AnuncioBusiness().CadastrarPetPerdido(new CadastrarPetPerdidoRequest()
+            {
+                IdUsuario = 4,
+                Anuncio = new CadastroAnuncioContract()
+                {
+                    IdEstado = 91,
+                    IdCidade = 6972,
+                    Pet = new CadastroPetContract()
+                    {
+                        IdAnimal = 1,
+                        Nome = "James Bond",
+                        IdSexo = Utilities.Conversor.EnumParaInt(Sexos.Macho),
+                        IdRacaEspecie = 7,
+                        IdIdade = Utilities.Conversor.EnumParaInt(Idades.Jovem),
+                        IdPorte = Utilities.Conversor.EnumParaInt(Portes.Medio),
+                        Peso = 12M,
+                        IdPelo = Utilities.Conversor.EnumParaInt(Pelos.Longo),
+                        IdCorPrimaria = 4,
+                        IdCorSecundaria = 1,
+                        Vacinado = false,
+                        Vermifugado = false,
+                        Castrado = false,
+                        Descricao = "Cachorro sexy do Bruno Lima o cabuloso."
+                    }
+                }
+            }, TiposAnuncio.PetPerdido);
+
+            Assert.IsTrue(true);
+        }
+
+        [TestMethod]
+        public void CadastrarPetPerdido_ValidPetEncontrado_DoesntThrowException()
+        {
+            new AnuncioBusiness().CadastrarPetPerdido(new CadastrarPetPerdidoRequest()
+            {
+                IdUsuario = 4,
+                Anuncio = new CadastroAnuncioContract()
+                {
+                    IdEstado = 82,
+                    IdCidade = 5592,
+                    Pet = new CadastroPetContract()
+                    {
+                        IdAnimal = 1,
+                        IdSexo = Utilities.Conversor.EnumParaInt(Sexos.Macho),
+                        IdRacaEspecie = 4,
+                        IdIdade = Utilities.Conversor.EnumParaInt(Idades.Jovem),
+                        IdPorte = Utilities.Conversor.EnumParaInt(Portes.Medio),
+                        Peso = 12M,
+                        IdPelo = Utilities.Conversor.EnumParaInt(Pelos.Longo),
+                        IdCorPrimaria = 4,
+                        IdCorSecundaria = 1,
+                        Vacinado = false,
+                        Vermifugado = false,
+                        Castrado = false,
+                        Descricao = "Encontrei na rua."
+                    }
+                }
+            }, TiposAnuncio.PetEncontrado);
+
+            Assert.IsTrue(true);
+        }
+
+        #endregion
+
     }
 }

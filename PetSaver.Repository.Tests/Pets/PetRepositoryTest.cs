@@ -22,7 +22,7 @@ namespace PetSaver.Repository.Tests.Pets
                 Castrado = null,
                 Descricao = "Cadela muito dócil e sensual.",
                 IdAnimal = 1,
-                IdRaca = 9,
+                IdRacaEspecie = 9,
                 IdSexo = Utilities.Conversor.EnumParaInt(Sexos.Femea),
                 IdIdade = Utilities.Conversor.EnumParaInt(Idades.Adulto),
                 IdPorte = Utilities.Conversor.EnumParaInt(Portes.Pequeno),

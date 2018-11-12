@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace PetSaver.Contracts.Anuncios.Request
+namespace PetSaver.Contracts.Anuncios
 {
     public class CadastrarDoacaoRequest
     {
+        public int IdUsuario { get; set; }
 
+        public IEnumerable<CadastroAnuncioContract> Anuncios { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using PetSaver.Business.Anuncios;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Paginas.Response.PetPage;
+using PetSaver.Entity.Enums.Tipos;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -81,22 +82,56 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
-        //[Authorize]
-        //[Route("api/Anuncio/CadastrarDoacao")]
-        //[HttpPost]
-        //public HttpResponseMessage CadastrarDoacao([FromBody]CadastrarDoacaoRequest aRequest)
-        //{
-        //    try
-        //    {
-        //        new AnuncioBusiness().CadastrarDoacao(aRequest);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw TratarErro(ex);
-        //    }
+        [Authorize]
+        [Route("api/Anuncio/CadastrarDoacao")]
+        [HttpPost]
+        public HttpResponseMessage CadastrarDoacao([FromBody]CadastrarDoacaoRequest aRequest)
+        {
+            try
+            {
+                new AnuncioBusiness().CadastrarDoacao(aRequest);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
 
-        //    return new HttpResponseMessage(HttpStatusCode.OK);
-        //}
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        [Authorize]
+        [Route("api/Anuncio/CadastrarPetPerdido")]
+        [HttpPost]
+        public HttpResponseMessage CadastrarPetPerdido([FromBody]CadastrarPetPerdidoRequest aRequest)
+        {
+            try
+            {
+                new AnuncioBusiness().CadastrarPetPerdido(aRequest, TiposAnuncio.PetPerdido);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        [Authorize]
+        [Route("api/Anuncio/CadastrarPetEncontrado")]
+        [HttpPost]
+        public HttpResponseMessage CadastrarPetEncontrado([FromBody]CadastrarPetPerdidoRequest aRequest)
+        {
+            try
+            {
+                new AnuncioBusiness().CadastrarPetPerdido(aRequest, TiposAnuncio.PetEncontrado);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
 
         #endregion
 

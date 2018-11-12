@@ -60,7 +60,7 @@ namespace PetSaver.Entity.Pets
         /// <summary>
         /// Id da raça do pet
         /// </summary>
-        public int? IdRaca { get; set; }
+        public int? IdRacaEspecie { get; set; }
 
         /// <summary>
         /// Id do sexo do Pet. Ex.: Macho, Fêmea

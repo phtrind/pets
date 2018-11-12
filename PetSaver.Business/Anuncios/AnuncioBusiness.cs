@@ -1,8 +1,12 @@
-﻿using PetSaver.Contracts.Anuncios;
+﻿using PetSaver.Business.Pets;
+using PetSaver.Business.Usuarios;
+using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Paginas;
 using PetSaver.Contracts.Paginas.Response.PetPage;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Entity.Enums.Pets;
+using PetSaver.Entity.Enums.Status;
+using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
 using PetSaver.Utilities.Extensions;
@@ -14,6 +18,90 @@ namespace PetSaver.Business.Anuncios
 {
     public class AnuncioBusiness : BaseBusiness<AnuncioEntity, AnuncioRepository>
     {
+        #region .: Cadastros :.
+
+        public void CadastrarDoacao(CadastrarDoacaoRequest aRequest)
+        {
+            var usuario = new UsuarioBusiness().Listar(aRequest.IdUsuario);
+
+            if (usuario == null)
+            {
+                throw new BusinessException("O usuário informado é inválido.");
+            }
+
+            if (aRequest.Anuncios == null || !aRequest.Anuncios.Any())
+            {
+                throw new BusinessException("É obrigatório ter pelo menos um anúncio.");
+            }
+
+            foreach (var obj in aRequest.Anuncios)
+            {
+                if (obj.Pet == null)
+                {
+                    throw new BusinessException("O objeto Pet não pode ser nulo.");
+                }
+
+                var idPet = new PetBusiness().Cadastrar(usuario.IdLogin, obj.Pet);
+
+                Inserir(new AnuncioEntity()
+                {
+                    IdLoginCadastro = usuario.IdLogin,
+                    IdStatus = Utilities.Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
+                    IdTipo = Utilities.Conversor.EnumParaInt(TiposAnuncio.Doacao),
+                    IdPet = idPet,
+                    IdEstado = obj.IdEstado,
+                    IdCidade = obj.IdCidade,
+                    IdUsuario = aRequest.IdUsuario
+                });
+
+                //TODO: Implementar cadastro das imagens do anúncio
+            }
+        }
+
+        public void CadastrarPetPerdido(CadastrarPetPerdidoRequest aRequest, TiposAnuncio aTipoAnuncio)
+        {
+            if (aTipoAnuncio == TiposAnuncio.Doacao)
+            {
+                throw new BusinessException("Tipo de anúncio inválido.");
+            }
+
+            var usuario = new UsuarioBusiness().Listar(aRequest.IdUsuario);
+
+            if (usuario == null)
+            {
+                throw new BusinessException("O usuário informado é inválido.");
+            }
+
+            if (aRequest.Anuncio == null)
+            {
+                throw new BusinessException("O objeto anúncio não pode ser nulo.");
+            }
+
+            if (aRequest.Anuncio.Pet == null)
+            {
+                throw new BusinessException("O objeto Pet não pode ser nulo.");
+            }
+
+            var idPet = new PetBusiness().Cadastrar(usuario.IdLogin, aRequest.Anuncio.Pet);
+
+            Inserir(new AnuncioEntity()
+            {
+                IdLoginCadastro = usuario.IdLogin,
+                IdStatus = Utilities.Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
+                IdTipo = Utilities.Conversor.EnumParaInt(aTipoAnuncio),
+                IdPet = idPet,
+                IdEstado = aRequest.Anuncio.IdEstado,
+                IdCidade = aRequest.Anuncio.IdCidade,
+                IdUsuario = aRequest.IdUsuario
+            });
+
+            //TODO: Implementar cadastro das imagens do anúncio
+        }
+
+        #endregion
+
+        #region .: Buscas :.
+
         public IEnumerable<AnuncioMiniaturaResponse> ListarMiniaturas(FiltroAnuncioRequest aFiltro)
         {
             if (aFiltro == null)
@@ -43,7 +131,7 @@ namespace PetSaver.Business.Anuncios
         {
             return aLista.Select(x => new AnuncioMiniaturaResponse()
             {
-                Nome = Convert.ToString(x.PET_NOME),
+                Nome = Convert.ToString(x.PET_NOME) ?? "Desconhecido",
                 Sexo = ((Sexos)Utilities.Conversor.IntParaEnum<Sexos>(Convert.ToInt32(x.PTS_CODIGO))).Traduzir(),
                 Idade = ((Idades)Utilities.Conversor.IntParaEnum<Idades>(Convert.ToInt32(x.PID_CODIGO))).Traduzir(),
                 Localizacao = $"{Convert.ToString(x.CID_NOME)} / {Convert.ToString(x.EST_SIGLA)}",
@@ -147,5 +235,7 @@ namespace PetSaver.Business.Anuncios
                 Interessados = Convert.ToInt32(x.INTERESSADOS)
             });
         }
+
+        #endregion
     }
 }

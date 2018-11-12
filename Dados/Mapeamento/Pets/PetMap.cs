@@ -21,7 +21,7 @@ namespace PetSaver.Repository
             #region .: Foreign Keys :.
 
             Map(x => x.IdAnimal).ToColumn("ANI_CODIGO");
-            Map(x => x.IdRaca).ToColumn("RAC_CODIGO");
+            Map(x => x.IdRacaEspecie).ToColumn("RAC_CODIGO");
             Map(x => x.IdSexo).ToColumn("PTS_CODIGO");
             Map(x => x.IdIdade).ToColumn("PID_CODIGO");
             Map(x => x.IdPorte).ToColumn("PPR_CODIGO");

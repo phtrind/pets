@@ -19,9 +19,9 @@ namespace PetSaver.Repository.Pets
                 throw new DbValidationException("O Id do animal é inválido.");
             }
 
-            if (aObjeto.IdRaca.HasValue)
+            if (aObjeto.IdRacaEspecie.HasValue)
             {
-                var raca = new RacaEspecieRepository().Listar(aObjeto.IdRaca.Value);
+                var raca = new RacaEspecieRepository().Listar(aObjeto.IdRacaEspecie.Value);
 
                 if (raca == null)
                 {
@@ -58,7 +58,7 @@ namespace PetSaver.Repository.Pets
                 }
             }
 
-            if (aObjeto.IdPorte != default && !Enum.IsDefined(typeof(Portes), aObjeto.IdIdade))
+            if (aObjeto.IdPorte != default && !Enum.IsDefined(typeof(Portes), aObjeto.IdPorte))
             {
                 throw new DbValidationException("O Id do porte do pet é inválido.");
             }
