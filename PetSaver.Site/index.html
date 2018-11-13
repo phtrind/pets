@@ -34,8 +34,7 @@
     <![endif]-->
 </head>
 
-
-<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="indexController as ctrl" ng-init="ctrl.verificarSession()">
+<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="indexController as ctrl" ng-init="ctrl.OnInit()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -66,10 +65,8 @@
                         <a class="nav-link js-scroll-trigger" href="#buscar" ng-show="ctrl.isLogged">Minha conta</a>
                     </li>
                     <li class="nav-item">
-                        <button ng-click="ctrl.base.AbrirModalLogin()" type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal"
-                                data-target="#modalLogarCadastrar">
-                            Entrar
-                        </button>
+                        <button ng-hide="ctrl.base.IsLogged()" ng-click="ctrl.base.AbrirModalLogin()" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalLogarCadastrar">Entrar</button>
+                        <button ng-show="ctrl.base.IsLogged()" type="button" class="btn btn-secondary" onclick="location.href = 'conta/dashboard.html';">Minha conta</button>
                     </li>
                 </ul>
             </div>
@@ -103,38 +100,31 @@
                             <div class="row">
                                 <div class="form-group col-md-3">
                                     <label>Estado</label>
-                                    <select class="form-control custom-select">
-                                        <option>Todos</option>
-                                        <option>Minas Gerais</option>
-                                        <option>Florianopolis</option>
-                                        <option>São Paulo</option>
+                                    <select class="form-control custom-select" ng-model="ctrl.Estado" ng-change="ctrl.EstadoSelecionadoChange()">
+                                        <option value="">Todos</option>
+                                        <option ng-repeat="x in ctrl.Estados" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Cidade</label>
-                                    <select class="form-control custom-select">
-                                        <option>Todos</option>
-                                        <option>Belo Horizonte</option>
-                                        <option>Contagem</option>
+                                    <select class="form-control custom-select" ng-model="ctrl.Cidade">
+                                        <option value="">Todas</option>
+                                        <option ng-repeat="x in ctrl.Cidades" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Animal</label>
-                                    <select class="form-control custom-select" ng-model="ctrl.FiltroAnimal" ng-change="ctrl.AlteracaoFiltroAnimal()">
+                                    <select class="form-control custom-select" ng-model="ctrl.Animal" ng-change="ctrl.AnimalSelecionadoChange()">
                                         <option value="">Todos</option>
-                                        <option value="1">Cachorro</option>
-                                        <option value="2">Gato</option>
-                                        <option value="3">Ave</option>
-                                        <option value="4">Roedor</option>
-                                        <option value="5">Peixe</option>
+                                        <option ng-repeat="x in ctrl.Animais" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Nome</label>
-                                    <input type="text" maxlength="30" class="form-control">
+                                    <input type="text" maxlength="30" class="form-control" ng-model="ctrl.Nome">
                                 </div>
                             </div>
-                            <div ng-show="ctrl.FiltroAnimal != '' && ctrl.FiltroAnimal != null">
+                            <div ng-show="ctrl.Animal != '' && ctrl.Animal != null">
                                 <div class="row">
                                     <div class="form-group col-md-2">
                                         <label>Sexo</label>
@@ -197,13 +187,13 @@
                 <!-- end filter -->
                 <!-- pets -->
                 <div class="row col-md-12" style="margin: 0; padding: 0">
-                    <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in [].constructor(20) track by $index"
+                    <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in ctrl.Anuncios"
                          ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" onclick="document.location.href='pet.html'">
                         <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
                         <div class="col-md-12 text-center" style="margin-top:15px;">
-                            <h2 style="color: #500B89">Thor</h2>
-                            <p><img src="icons/gender.png" width="25px">macho <img src="icons/size.png" width="25px">filhote</p>
-                            <p><img src="icons/location.png" width="25px">belo horizonte</p>
+                            <h2 style="color: #500B89">{{x.Nome}}</h2>
+                            <p><img src="icons/gender.png" width="25px">{{x.Sexo}} <img src="icons/size.png" width="25px">{{x.Idade}}</p>
+                            <p><img src="icons/location.png" width="25px">{{x.Localizacao}}</p>
                             <button ng-show="adBoxHover" class="btn btn-primary">Conhecer pet</button>
                         </div>
                     </div>
@@ -212,7 +202,6 @@
             </div>
         </div>
     </div>
-
     
     <div ng-include="'login.html'"></div>
 

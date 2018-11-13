@@ -1,42 +1,55 @@
-<div id="main-wrapper">
+﻿<div id="main-wrapper">
     <div class="unix-login">
         <div class="container-fluid">
             <div class="row">
                 <div class="modal fade" id="modalLogarCadastrar" tabindex="-1" role="dialog"
-                    aria-hidden="true">
+                     aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="col-md-12 login-form" ng-hide="ctrl.base.isRegister">
                                     <div class="col-md-12" style="text-align: center; margin-bottom: 20px; margin-top: 5px;">
                                         <img src="images/logos/logo_fundo_branco_fina.gif" onclick="document.location.href='home.html'"
-                                            style="width: 300px; max-width: 85%;" style="cursor: pointer">
+                                             style="width: 300px; max-width: 85%;" style="cursor: pointer">
                                     </div>
                                     <form>
-                                        <div class="form-group">
+                                        <div class="form-group" ng-class="{'has-error':ctrl.base.ErroEmailLogin}">
                                             <input type="email" class="form-control" placeholder="E-mail"
-                                                style="border-radius: 8px">
+                                                   style="border-radius: 8px" ng-model="ctrl.base.EmailLogin">
+                                            <small class="form-control-feedback" ng-show="ctrl.base.ErroEmailLogin">E-mail inválido</small>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" ng-class="{'has-error':ctrl.base.ErroSenhaLogin}">
                                             <input type="password" class="form-control" placeholder="Senha"
-                                                style="border-radius: 8px">
+                                                   style="border-radius: 8px" ng-model="ctrl.base.SenhaLogin">
+                                            <small class="form-control-feedback" ng-show="ctrl.base.ErroSenhaLogin">Senha inválida</small>
                                         </div>
                                         <button type="button" class="btn btn-primary btn-flat m-b-20 m-t-10"
-                                            style="background-color: #500b89" onclick="document.location.href='conta/dashboard.html'">Entrar</button>
+                                                style="background-color: #500b89" ng-click="ctrl.base.FazerLogin()" ng-hide="ctrl.base.Logando">
+                                            Entrar
+                                        </button>
+                                        <div class="col-12" style="text-align: center">
+                                            <img style="width:40px;" src="images/loading.gif" ng-show="ctrl.base.Logando" />
+                                        </div>
                                         <div class="checkbox">
-                                            <label class="pull-right" style="color: #500b89 !important">Esqueceu
-                                                a senha?</label>
+                                            <label class="pull-right" style="color: #500b89 !important">
+                                                Esqueceu
+                                                a senha?
+                                            </label>
                                         </div>
                                         <hr>
                                         <button type="button" class="btn btn-primary btn-flat m-b-10 m-t-20"
-                                            style="background-color: #3B5998 !important"><i class="fab fa-facebook-f"></i></button>
+                                                style="background-color: #3B5998 !important">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </button>
                                         <button type="button" class="btn btn-primary btn-flat m-b-10 m-t-10"
-                                            style="background-color: #D44C3D !important"><i class="fab fa-google"></i></button>
+                                                style="background-color: #D44C3D !important">
+                                            <i class="fab fa-google"></i>
+                                        </button>
                                         <div class="row">
                                             <div class="checkbox col-md-12 text-center">
                                                 <br>
                                                 <label style="color: #500b89 !important; cursor: pointer;"
-                                                    ng-click="ctrl.base.isRegister = true">Cadastre-se</label>
+                                                       ng-click="ctrl.base.isRegister = true">Cadastre-se</label>
                                             </div>
                                         </div>
                                     </form>
@@ -44,63 +57,67 @@
                                 <div class="col-md-12 login-form" ng-show="ctrl.base.isRegister">
                                     <div class="col-md-12" style="text-align: center; margin-bottom: 20px; margin-top: 5px;">
                                         <img src="images/logos/logo_fundo_branco_fina.gif" style="width: 300px; max-width: 85%;"
-                                            onclick="document.location.href='home.html'" style="cursor: pointer">
+                                             onclick="document.location.href='home.html'" style="cursor: pointer">
                                     </div>
                                     <form>
                                         <div class="row">
                                             <div class="col-md-12 form-group">
                                                 <input type="text" class="form-control" placeholder="Nome"
-                                                    style="border-radius: 8px">
+                                                       style="border-radius: 8px">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <input type="text" class="form-control" placeholder="Sobrenome"
-                                                    style="border-radius: 8px">
+                                                       style="border-radius: 8px">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <input type="text" class="form-control" placeholder="Nascimento"
-                                                    style="border-radius: 8px" onfocus="(this.type='date')"
-                                                    onblur="(this.type='text')">
+                                                       style="border-radius: 8px" onfocus="(this.type='date')"
+                                                       onblur="(this.type='text')">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <input type="text" class="form-control" placeholder="E-mail"
-                                                    style="border-radius: 8px">
+                                                       style="border-radius: 8px">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <input type="text" class="form-control" placeholder="Confirme seu e-mail"
-                                                    style="border-radius: 8px">
+                                                       style="border-radius: 8px">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6 form-group">
                                                 <input type="password" class="form-control" placeholder="Senha"
-                                                    style="border-radius: 8px">
+                                                       style="border-radius: 8px">
                                             </div>
                                             <div class="col-md-6 form-group">
                                                 <input type="password" class="form-control" placeholder="Confirme sua senha"
-                                                    style="border-radius: 8px">
+                                                       style="border-radius: 8px">
                                             </div>
                                         </div>
                                         <div style="text-align: center">
                                             <div class="checkbox col-md-12 text-center" style="margin-top: 40px !important; margin-bottom: 40px !important">
                                                 <input type="checkbox">
-                                                <label style="color: #500b89 !important; cursor: pointer">Aceito
+                                                <label style="color: #500b89 !important; cursor: pointer">
+                                                    Aceito
                                                     os termos de
-                                                    uso</label>
+                                                    uso
+                                                </label>
                                             </div>
                                             <button type="button" class="btn btn-primary" style="background-color: #500b89">Cadastrar</button>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <button type="button" class="btn btn-primary" style="margin-bottom:5px; background-color: #3B5998 !important"><i
-                                                            class="fab fa-facebook-f"></i></button>
+                                                    <button type="button" class="btn btn-primary" style="margin-bottom:5px; background-color: #3B5998 !important">
+                                                        <i class="fab fa-facebook-f"></i>
+                                                    </button>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <button type="button" class="btn btn-primary" style="background-color: #D44C3D !important"><i
-                                                            class="fab fa-google"></i></button>
+                                                    <button type="button" class="btn btn-primary" style="background-color: #D44C3D !important">
+                                                        <i class="fab fa-google"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                     </form>
@@ -109,6 +126,38 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal sucesso -->
+<div class="modal fade" id="modalLoginRealizado" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align:center">
+                <img src="icons/ok.png" style="width:150px">
+                <br /><br />
+                <span style="font-size: 24px">Olá {{ctrl.base.NomeUsuario}}, que bom ter você aqui novamente!</span>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal erro -->
+<div class="modal fade" id="modalErroLogin" tabindex="-1" role="dialog" aria-hidden="true" style="">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align:center">
+                <img src="icons/close.png" style="width:150px">
+                <br /><br />
+                <span style="font-size: 24px">Login não encontrado</span>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>

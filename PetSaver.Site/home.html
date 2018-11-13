@@ -66,7 +66,8 @@
                         <a class="nav-link js-scroll-trigger" href="#buscar">Buscar</a>
                     </li>
                     <li class="nav-item">
-                        <button type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal" data-target="#modalLogarCadastrar">Entrar</button>
+                        <button ng-hide="ctrl.base.IsLogged()" ng-click="ctrl.base.AbrirModalLogin()" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalLogarCadastrar">Entrar</button>
+                        <button ng-show="ctrl.base.IsLogged()" type="button" class="btn btn-secondary" onclick="location.href = 'conta/dashboard.html';">Minha conta</button>
                     </li>
                 </ul>
             </div>
@@ -253,7 +254,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Cidade</label>
-                                <select class="form-control" style="height: 50px;">
+                                <select class="form-control" style="height: 50px;" ng-model="ctrl.Cidade">
                                     <option value="">Todas</option>
                                     <option ng-repeat="x in ctrl.Cidades" value="{{x.Chave}}">{{x.Valor}}</option>
                                 </select>
@@ -262,14 +263,14 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Animal</label>
-                                <select class="form-control" style="height: 50px;">
+                                <select class="form-control" style="height: 50px;" ng-model="ctrl.Animal">
                                     <option value="">Todos</option>
                                     <option ng-repeat="x in ctrl.Animais" value="{{x.Chave}}">{{x.Valor}}</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="exampleInputEmail1">Sexo</label>
-                                <select class="form-control" style="height: 50px;">
+                                <select class="form-control" style="height: 50px;" ng-model="ctrl.Sexo">
                                     <option value="">Todos</option>
                                     <option ng-repeat="x in ctrl.Sexos" value="{{x.Chave}}">{{x.Valor}}</option>
                                 </select>

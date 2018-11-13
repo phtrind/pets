@@ -79,10 +79,8 @@
                         <a class="nav-link js-scroll-trigger" href="#buscar" ng-show="ctrl.isLogged">Minha conta</a>
                     </li>
                     <li class="nav-item">
-                        <button type="submit" class="btn btn-secondary" ng-hide="ctrl.isLogged" data-toggle="modal"
-                                data-target="#modalLogarCadastrar">
-                            Entrar
-                        </button>
+                        <button ng-hide="ctrl.base.IsLogged()" ng-click="ctrl.base.AbrirModalLogin()" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalLogarCadastrar">Entrar</button>
+                        <button ng-show="ctrl.base.IsLogged()" type="button" class="btn btn-secondary" onclick="location.href = 'conta/dashboard.html';">Minha conta</button>
                     </li>
                 </ul>
             </div>

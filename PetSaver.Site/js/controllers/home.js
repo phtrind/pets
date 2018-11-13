@@ -1,4 +1,4 @@
-app.controller('homeController', function ($controller, $http) {
+﻿app.controller('homeController', function ($controller, $http) {
 
     var ctrl = this;
 
