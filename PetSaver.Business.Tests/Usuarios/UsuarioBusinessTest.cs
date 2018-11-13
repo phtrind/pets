@@ -16,11 +16,11 @@ namespace PetSaver.Business.Tests.Usuarios
         {
             var request = new CadastroBasicoRequest()
             {
-                Nome = "Bruno",
-                Sobrenome = "Lima",
-                DataNascimento = Convert.ToDateTime("01/05/1995"),
-                Email = "brunolima@petsaver.com",
-                Senha = "brunao123"
+                Nome = "Carla",
+                Sobrenome = "Almeida",
+                DataNascimento = Convert.ToDateTime("14/07/1975"),
+                Email = "carla.almeidarpa@yahoo.com.br",
+                Senha = "12345678"
             };
 
             var idUsuario = new UsuarioBusiness().CadastrarBasico(request);

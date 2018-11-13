@@ -34,14 +34,5 @@ namespace PetSaver.Entity.Usuarios
         public int IdTipo { get; set; }
 
         #endregion
-
-        #region .: Objetos :.
-
-        /// <summary>
-        /// Tipo do login
-        /// </summary>
-        public TipoLoginEntity Tipo { get; set; }
-
-        #endregion
     }
 }

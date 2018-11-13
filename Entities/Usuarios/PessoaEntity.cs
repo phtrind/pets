@@ -47,19 +47,5 @@ namespace PetSaver.Entity.Usuarios
         public virtual int IdTipo { get; set; }
 
         #endregion
-
-        #region .: Objetos :.
-
-        /// <summary>
-        /// Endereco da pessooa
-        /// </summary>
-        public EnderecoEntity Endereco { get; set; }
-
-        /// <summary>
-        /// Login da pessoa
-        /// </summary>
-        public LoginEntity Login { get; set; }
-
-        #endregion
     }
 }

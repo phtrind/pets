@@ -1,5 +1,4 @@
-﻿using PetSaver.Business.Localizacao;
-using PetSaver.Contracts.Usuario;
+﻿using PetSaver.Contracts.Usuario;
 using PetSaver.Entity.Enums;
 using PetSaver.Entity.Usuarios;
 using PetSaver.Exceptions;
@@ -13,48 +12,31 @@ namespace PetSaver.Business.Usuarios
     {
         #region .: Cadastro :.
 
-        public override int Inserir(UsuarioEntity aObjeto)
-        {
-            using (var transation = new TransactionScope())
-            {
-                if (aObjeto.Endereco != null && aObjeto.Endereco != default)
-                {
-                    aObjeto.IdEndereco = new EnderecoBusiness().Inserir(aObjeto.Endereco);
-                }
-                else
-                {
-                    aObjeto.IdEndereco = null;
-                }
-
-                aObjeto.IdLogin = new LoginRepository().Inserir(aObjeto.Login);
-
-                aObjeto.IdLoginCadastro = aObjeto.IdLogin;
-
-                var usuarioId = base.Inserir(aObjeto);
-
-                transation.Complete();
-
-                return usuarioId;
-            }
-        }
-
         public int CadastrarBasico(CadastroBasicoRequest aObjeto)
         {
-            var usuario = new UsuarioEntity()
+            using (var transaction = new TransactionScope())
             {
-                Nome = aObjeto.Nome,
-                Sobrenome = aObjeto.Sobrenome,
-                DataNascimento = aObjeto.DataNascimento,
-                IdTipo = Utilities.Conversor.EnumParaInt(TiposUsuario.PessoaFisica),
-                Login = new LoginEntity()
+                var idLogin = new LoginBusiness().Inserir(new LoginEntity()
                 {
                     Email = aObjeto.Email,
                     Senha = aObjeto.Senha,
                     IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Usuario)
-                }
-            };
+                });
 
-            return Inserir(usuario);
+                var idUsuario = new UsuarioBusiness().Inserir(new UsuarioEntity()
+                {
+                    Nome = aObjeto.Nome,
+                    Sobrenome = aObjeto.Sobrenome,
+                    DataNascimento = aObjeto.DataNascimento,
+                    IdTipo = Utilities.Conversor.EnumParaInt(TiposUsuario.PessoaFisica),
+                    IdLogin = idLogin,
+                    IdLoginCadastro = idLogin
+                });
+
+                transaction.Complete();
+
+                return idUsuario;
+            }
         }
 
         #endregion
