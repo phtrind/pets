@@ -7,10 +7,8 @@ using System.Web.Http;
 
 namespace PetSaver.WebApi.Controllers.Usuarios
 {
-    [Authorize]
     public class UsuarioController : BaseController
     {
-        [Authorize]
         [Route("api/Usuario/CadastrarBasico")]
         [HttpPost]
         public HttpResponseMessage CadastrarBasico([FromBody]CadastroBasicoRequest value)

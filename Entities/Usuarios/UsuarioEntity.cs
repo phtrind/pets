@@ -44,14 +44,5 @@ namespace PetSaver.Entity.Usuarios
         public override int IdTipo { get; set; }
 
         #endregion
-
-        #region .: Objetos :.
-
-        /// <summary>
-        /// Tipo do usuário
-        /// </summary>
-        public TipoUsuarioEntity Tipo { get; set; }
-
-        #endregion
     }
 }

@@ -5,10 +5,18 @@
     base.servicePath = "http://localhost/PetSaver.WebApi/api/";
     //var servicePath = "http://localhost/PetSaver.WebApi/api/";
 
-    //#region .: Login :.
+    //#region .: Login / Cadastro Básico :.
 
     base.AbrirModalLogin = function () {
+
         base.isRegister = false;
+
+    }
+
+    base.IsLogged = function () {
+
+        return !base.StringIsEmpty(sessionStorage.getItem('Token'));
+
     }
 
     base.FazerLogin = function () {
@@ -100,9 +108,138 @@
 
     }
 
-    base.IsLogged = function () {
+    base.FazerCadastroBasico = function () {
 
-        return !base.StringIsEmpty(sessionStorage.getItem('Token'));
+        //TODO: Implementar loading
+        base.Cadastrando = true;
+
+        var contErro = 0;
+
+        //Nome
+        if (base.StringIsEmpty(base.NomeCadastro)) {
+            base.ErroNomeCadastro = true;
+            contErro++;
+        }
+        else {
+            base.ErroNomeCadastro = false;
+        }
+
+        //Sobrenome
+        if (base.StringIsEmpty(base.SobrenomeCadastro)) {
+            base.ErroSobrenomeCadastro = true;
+            contErro++;
+        }
+        else {
+            base.ErroSobrenomeCadastro = false;
+        }
+
+        //Data nascimento
+        if (base.StringIsEmpty(base.DthNascimentoCadastro)) {
+            base.ErroDthNascimentoCadastro = true;
+            contErro++;
+        }
+        else {
+            base.ErroDthNascimentoCadastro = false;
+        }
+
+        //Email
+        if (base.EmailIsValid(base.EmailCadastro)) {
+            base.ErroEmailCadastro = false;
+        }
+        else {
+            base.ErroEmailCadastro = true;
+            contErro++;
+        }
+
+        //Confirmação e-mail
+        if (base.ConfirmacaoEmailCadastro != base.EmailCadastro) {
+            base.ErroConfirmacaoEmailCadastro = true;
+            contErro++;
+        }
+        else {
+            base.ErroConfirmacaoEmailCadastro = false;
+        }
+
+        //Senha
+        if (base.StringIsEmpty(base.SenhaCadastro)) {
+            base.ErroSenhaCadastro = true;
+            base.ErroSenhaCadastroVazia = true;
+            contErro++;
+        }
+        else if (base.SenhaCadastro.length < 8) {
+            base.ErroSenhaCadastro = true;
+            base.ErroSenhaCadastroPequena = true;
+            contErro++;
+        }
+        else {
+            base.ErroSenhaCadastro = false;
+            base.ErroSenhaCadastroVazia = false;
+            base.ErroSenhaCadastroPequena = false;
+        }
+
+        //Confirmação senha
+        if (base.SenhaCadastro != base.ConfirmacaoSenhaCadastro) {
+            base.ErroConfirmacaoSenhaCadastro = true;
+            contErro++;
+        }
+        else {
+            base.ErroConfirmacaoSenhaCadastro = false;
+        }
+
+        if (contErro == 0) {
+
+            var request = {
+                Nome: base.NomeCadastro,
+                Sobrenome: base.SobrenomeCadastro,
+                DataNascimento: base.DthNascimentoCadastro,
+                Email: base.EmailCadastro,
+                Senha: base.SenhaCadastro
+            };
+
+            $http({
+                method: 'POST',
+                url: base.servicePath + 'Usuario/CadastrarBasico',
+                data: request
+            }).success(function (response) {
+
+                $http({
+                    method: 'POST',
+                    url: base.servicePath + 'token',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    data: "grant_type=password&username=" + request.Email + "&password=" + request.Senha
+                }).success(function (response) {
+
+                    sessionStorage.setItem("Token", response.access_token);
+                    sessionStorage.setItem("DataHoraAutenticacao", new Date().toLocaleString());
+                    sessionStorage.setItem("TokenExpiresIn", response.expires_in);
+
+                    base.BuscarInformacoesSession(base.EmailLogin);
+
+                }).error(function (err, status) {
+
+                    sessionStorage.clear();
+
+                    //TODO: Implementar tratamento de erro na base
+
+                });
+
+                $('#modalLogarCadastrar').modal('hide');
+                $('#modalCadastroRealizado').modal('show');
+
+            }).error(function (err, status) {
+
+                //TODO: Implementar tratamento de erro na base
+
+            }).finally(function () {
+
+                base.Cadastrando = false;
+
+            });
+
+        }
+        else {
+            base.Cadastrando = false;
+        }
 
     }
 
