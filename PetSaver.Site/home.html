@@ -216,7 +216,7 @@
                     <h2 class="text-center">Seu melhor amigo pode estar aqui</h2>
                     <div class="row col-md-12" style="margin: 0; padding: 0">
                         <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in ctrl.Anuncios"
-                             ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" onclick="document.location.href='pet.html'">
+                             ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" ng-click="ctrl.base.AbrirAnuncio(x.IdAnuncio)" onclick="document.location.href='pet.html'">
                             <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
                             <div class="col-md-12 text-center" style="margin-top:15px;">
                                 <h2 style="color: #500B89">{{x.Nome}}</h2>

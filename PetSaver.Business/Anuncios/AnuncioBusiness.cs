@@ -9,6 +9,7 @@ using PetSaver.Entity.Enums.Status;
 using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
+using PetSaver.Utilities;
 using PetSaver.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
@@ -46,8 +47,8 @@ namespace PetSaver.Business.Anuncios
                 Inserir(new AnuncioEntity()
                 {
                     IdLoginCadastro = usuario.IdLogin,
-                    IdStatus = Utilities.Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
-                    IdTipo = Utilities.Conversor.EnumParaInt(TiposAnuncio.Doacao),
+                    IdStatus = Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
+                    IdTipo = Conversor.EnumParaInt(TiposAnuncio.Doacao),
                     IdPet = idPet,
                     IdEstado = obj.IdEstado,
                     IdCidade = obj.IdCidade,
@@ -87,8 +88,8 @@ namespace PetSaver.Business.Anuncios
             Inserir(new AnuncioEntity()
             {
                 IdLoginCadastro = usuario.IdLogin,
-                IdStatus = Utilities.Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
-                IdTipo = Utilities.Conversor.EnumParaInt(aTipoAnuncio),
+                IdStatus = Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
+                IdTipo = Conversor.EnumParaInt(aTipoAnuncio),
                 IdPet = idPet,
                 IdEstado = aRequest.Anuncio.IdEstado,
                 IdCidade = aRequest.Anuncio.IdCidade,
@@ -131,6 +132,7 @@ namespace PetSaver.Business.Anuncios
         {
             return aLista.Select(x => new AnuncioMiniaturaResponse()
             {
+                IdAnuncio = Convert.ToInt32(x.ANU_CODIGO),
                 Nome = Convert.ToString(x.PET_NOME) ?? "Desconhecido",
                 Sexo = ((Sexos)Utilities.Conversor.IntParaEnum<Sexos>(Convert.ToInt32(x.PTS_CODIGO))).Traduzir(),
                 Idade = ((Idades)Utilities.Conversor.IntParaEnum<Idades>(Convert.ToInt32(x.PID_CODIGO))).Traduzir(),
@@ -167,23 +169,26 @@ namespace PetSaver.Business.Anuncios
             response.Pet = new PetContract()
             {
                 Nome = Convert.ToString(retornoDb.PET_NOME),
-                RacaEspecie = retornoDb.RAC_NOME != null ? Convert.ToString(retornoDb.RAC_NOME) : null,
+                RacaEspecie = retornoDb.RAC_NOME != null ? Convert.ToString(retornoDb.RAC_NOME) : Constantes.Desconhecido,
                 Cidade = Convert.ToString(retornoDb.CID_NOME),
                 Estado = Convert.ToString(retornoDb.EST_SIGLA),
-                Sexo = retornoDb.SEXO != null ? Convert.ToString(retornoDb.SEXO) : null,
-                Idade = retornoDb.IDADE != null ? Convert.ToString(retornoDb.IDADE) : null,
-                Porte = retornoDb.PORTE != null ? Convert.ToString(retornoDb.PORTE) : null,
-                Cores = new List<string>()
-                {
-                    Convert.ToString(retornoDb.COR_PRIMARIA),
-                    retornoDb.COR_SECUNDARIA != null ? Convert.ToString(retornoDb.COR_SECUNDARIA) : null
-                },
-                Pelo = retornoDb.PELO != null ? Convert.ToString(retornoDb.PELO) : null,
-                Vacinado = retornoDb.PET_VACINADO != null ? Convert.ToBoolean(retornoDb.PET_VACINADO) : null,
-                Vermifugado = retornoDb.PET_VERMIFUGADO != null ? Convert.ToBoolean(retornoDb.PET_VERMIFUGADO) : null,
-                Castrado = retornoDb.PET_CASTRADO != null ? Convert.ToBoolean(retornoDb.PET_CASTRADO) : null,
+                Sexo = retornoDb.SEXO != null ? Convert.ToString(retornoDb.SEXO) : Constantes.Indefinido,
+                Idade = retornoDb.IDADE != null ? Convert.ToString(retornoDb.IDADE) : Constantes.Indefinido,
+                Porte = retornoDb.PORTE != null ? Convert.ToString(retornoDb.PORTE) : Constantes.Indefinido,
+                Peso = retornoDb.PET_PESO != null ? $"{Convert.ToString(retornoDb.PET_PESO)} kg" : Constantes.Indefinido,
+                Pelo = retornoDb.PELO != null ? Convert.ToString(retornoDb.PELO) : Constantes.Indefinido,
+                Vacinado = retornoDb.PET_VACINADO != null ? Conversor.DbBooleanToString(retornoDb.PET_VACINADO) : Constantes.Indefinido,
+                Vermifugado = retornoDb.PET_VERMIFUGADO != null ? Conversor.DbBooleanToString(retornoDb.PET_VERMIFUGADO) : Constantes.Indefinido,
+                Castrado = retornoDb.PET_CASTRADO != null ? Conversor.DbBooleanToString(retornoDb.PET_CASTRADO) : Constantes.Indefinido,
                 Descricao = Convert.ToString(retornoDb.PET_DESCRICAO),
             };
+
+            response.Pet.Cor = Convert.ToString(retornoDb.COR_PRIMARIA);
+
+            if (retornoDb.COR_SECUNDARIA != null)
+            {
+                response.Pet.Cor += $" / {Convert.ToString(retornoDb.COR_SECUNDARIA)}";
+            }
 
             if (retornoDb.LOC_LATITUDE != null && retornoDb.LOC_LONGITUDE != null)
             {
@@ -196,7 +201,7 @@ namespace PetSaver.Business.Anuncios
 
             response.StatusAnuncio = Convert.ToString(retornoDb.ANS_DESCRICAO);
 
-            response.Duvidas = new DuvidaBusiness().BuscarPorAnuncio(aIdAnuncio);
+            response.Duvidas = new DuvidaBusiness().BuscarPorAnuncio(aIdAnuncio).Where(x => !string.IsNullOrEmpty(x.Resposta));
 
             if (aIdUsuario.HasValue && aIdUsuario.Value != default)
             {

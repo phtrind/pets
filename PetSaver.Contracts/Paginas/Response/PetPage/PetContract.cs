@@ -12,11 +12,11 @@ namespace PetSaver.Contracts.Paginas.Response.PetPage
         public string Idade { get; set; }
         public string Porte { get; set; }
         public string Peso { get; set; }
-        public IEnumerable<string> Cores { get; set; }
+        public string Cor { get; set; }
         public string Pelo { get; set; }
-        public bool? Vacinado { get; set; }
-        public bool? Vermifugado { get; set; }
-        public bool? Castrado { get; set; }
+        public string Vacinado { get; set; }
+        public string Vermifugado { get; set; }
+        public string Castrado { get; set; }
         public string Descricao { get; set; }
         public IEnumerable<string> Fotos { get; set; }
     }

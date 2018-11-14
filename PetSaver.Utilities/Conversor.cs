@@ -18,5 +18,24 @@ namespace PetSaver.Utilities
         {
             throw new NotImplementedException();
         }
+
+        public static string DbBooleanToString(dynamic aDbBoolean)
+        {
+            try
+            {
+                if (Convert.ToBoolean(aDbBoolean))
+                {
+                    return "Sim";
+                }
+                else
+                {
+                    return "Não";
+                }
+            }
+            catch (Exception)
+            {
+                return Constantes.Indefinido;
+            }
+        }
     }
 }

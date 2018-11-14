@@ -22,7 +22,7 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/myStyle.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
-        crossorigin="anonymous">
+          crossorigin="anonymous">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
@@ -30,8 +30,8 @@
         #buttonGostei {
             width: 50px;
             height: 50px;
-            position:fixed; 
-            z-index: 999; 
+            position: fixed;
+            z-index: 999;
             right: 35px;
             bottom: 35px;
             border-radius: 100%;
@@ -43,12 +43,12 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+        <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="petController as ctrl" ng-init="ctrl.verificarSession()">
+<body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="petController as ctrl" ng-init="ctrl.OnInit()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -98,7 +98,7 @@
     <div id="main-wrapper" style="margin-top: 85px">
         <div class="container-fluid">
             <div class="container">
-                <div class="row">
+                <div class="row" style="margin-bottom: 25px">
                     <div class="col-md-4">
                         <div class="col-md-12 bigImage">
                             <img class="imgPetOpened" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
@@ -117,12 +117,8 @@
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-top: 20px; padding: 0px; text-align: center;">
-                            <span>Bruno Lima</span> <br>
-                            <img src="icons/star.png" width="20px">
-                            <img src="icons/star.png" width="20px">
-                            <img src="icons/star.png" width="20px">
-                            <img src="icons/star.png" width="20px">
-                            <img src="icons/star.png" width="20px">
+                            <span>{{ctrl.Anunciante.Nome}}</span> <br>
+                            <img src="icons/star.png" width="20px" ng-repeat="x in [].constructor(ctrl.Anunciante.Avaliacao) track by $index">
                         </div>
                         <div class="col-md-12" style="margin-top: 20px; padding: 0px;">
                             <button class="btn btn-primary" style="width: 100%; height: 50px;" data-toggle="modal"
@@ -135,7 +131,7 @@
                                     <div class="modal-content">
                                         <div class="modal-body">
                                             Ficamos muito felizes em saber que você quer oferecer um lar ao nosso amigo
-                                            Thor!
+                                            {{ctrl.Pet.Nome}}!
                                             <br><br>
                                             Ao confirmar seu interesse, será aberto um chat para que você combine todos
                                             os detalhes com o doador.
@@ -183,17 +179,17 @@
                     </div>
                     <div class="col-md-8">
                         <div class="col-md-12 petInformacoesPrincipais">
-                            <h1 style="font-size: 50px; color: #500B89">Thor</h1>
-                            <p>vira lata</p>
+                            <h1 style="font-size: 50px; color: #500B89">{{ctrl.Pet.Nome}}</h1>
+                            <p>{{ctrl.Pet.RacaEspecie}}</p>
                             <div class="row">
                                 <div class="col-md-4 col-xs-12">
-                                    <span><img src="icons/location.png" width="30px">belo horizonte</span>
+                                    <span><img src="icons/location.png" width="30px">{{ctrl.Pet.Cidade}} / {{ctrl.Pet.Estado}}</span>
                                 </div>
                                 <div class="col-md-4 col-xs-12">
-                                    <span><img src="icons/gender.png" width="30px">macho</span>
+                                    <span><img src="icons/gender.png" width="30px">{{ctrl.Pet.Sexo}}</span>
                                 </div>
                                 <div class="col-md-4 col-xs-12">
-                                    <span><img src="icons/size.png" width="30px">filhote</span>
+                                    <span><img src="icons/size.png" width="30px">{{ctrl.Pet.Idade}}</span>
                                 </div>
                             </div>
                             <!-- <hr> -->
@@ -201,16 +197,16 @@
                         <div class="col-md-12 petInformacoesSecundarias">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <span style="font-weight: bold">Porte: </span><span>médio</span>
+                                    <span style="font-weight: bold">Porte: </span><span>{{ctrl.Pet.Porte}}</span>
                                 </div>
                                 <div class="col-md-3">
-                                    <span style="font-weight: bold">Peso: </span><span>20kg</span>
+                                    <span style="font-weight: bold">Peso: </span><span>{{ctrl.Pet.Peso}}</span>
                                 </div>
                                 <div class="col-md-3">
-                                    <span style="font-weight: bold">Cor: </span><span>preto / branco</span>
+                                    <span style="font-weight: bold">Cor: </span><span>{{ctrl.Pet.Cor}}</span>
                                 </div>
                                 <div class="col-md-3">
-                                    <span style="font-weight: bold">Pelo: </span><span>curto</span>
+                                    <span style="font-weight: bold">Pelo: </span><span>{{ctrl.Pet.Pelo}}</span>
                                 </div>
                             </div>
                             <hr>
@@ -221,13 +217,13 @@
                                     <h3 style="color: #500B89">Saúde</h3>
                                 </div>
                                 <div class="col-md-4">
-                                    <span style="font-weight: bold">Vacinado: </span><span>sim</span>
+                                    <span style="font-weight: bold">Vacinado: </span><span>{{ctrl.Pet.Vacinado}}</span>
                                 </div>
                                 <div class="col-md-4">
-                                    <span style="font-weight: bold">Vermifugado: </span><span>não sabe</span>
+                                    <span style="font-weight: bold">Vermifugado: </span><span>{{ctrl.Pet.Vermifugado}}</span>
                                 </div>
                                 <div class="col-md-4">
-                                    <span style="font-weight: bold">Castrado: </span><span>não</span>
+                                    <span style="font-weight: bold">Castrado: </span><span>{{ctrl.Pet.Castrado}}</span>
                                 </div>
                             </div>
                             <hr>
@@ -239,14 +235,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <p class="sobreOPet">
-                                        Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry. Lorem Ipsum has been the industry's standard dummy text
-                                        ever since the 1500s, when an unknown printer took a galley of type and
-                                        scrambled it to make a type specimen book. It has survived not only five
-                                        centuries, but also the leap into electronic typesetting, remaining essentially
-                                        unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                                        containing Lorem Ipsum passages, and more recently with desktop publishing
-                                        software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        {{ctrl.Pet.Descricao}}
                                     </p>
                                 </div>
                             </div>
@@ -255,7 +244,7 @@
                         <div class="col-md-12 petInformacoesSecundarias">
                             <div class="row">
                                 <div class="col-md-12" style="margin-bottom: 20px">
-                                    <h3 style="color: #500B89">ajude a encontrar um lar para o Thor</h3>
+                                    <h3 style="color: #500B89">ajude a encontrar um lar para o {{ctrl.Pet.Nome}}</h3>
                                 </div>
                             </div>
                             <div class="row col-md-8 offset-md-2" style="text-align: center;">
@@ -276,7 +265,23 @@
                         <button id="buttonGostei" class="btn btn-secondary"><img src="icons/heart.png" width="30px"></button>
                     </div>
                 </div>
+                <!--<hr />-->
+                <div class="row" style="margin-top: 25px; margin-bottom: 25px">
+                    <!--Localizacao-->
 
+                </div>
+                <hr ng-show="ctrl.Duvidas.length > 0" />
+                <div class="row" style="margin-top: 25px" ng-show="ctrl.Duvidas.length > 0">
+                    <!--Duvidas-->
+                    <div class="col-md-12" style="margin-bottom: 25px">
+                        <h1 class="color-primary">Perguntas</h1>
+                    </div>
+                    <div class="col-md-12" style="margin-bottom: 25px" ng-repeat="x in ctrl.Duvidas">
+                        <span style="font-style: italic;">{{x.Pergunta}}</span>
+                        <br />
+                        <span style="font-weight: bold; margin-left: 25px">{{x.Resposta}}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

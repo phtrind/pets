@@ -15,7 +15,7 @@
 
     base.IsLogged = function () {
 
-        return !base.StringIsEmpty(sessionStorage.getItem('Token'));
+        return !base.StringIsEmpty(sessionStorage.getItem('Token')) && !base.StringIsEmpty(sessionStorage.getItem('IdUsuario'));
 
     }
 
@@ -240,6 +240,18 @@
         else {
             base.Cadastrando = false;
         }
+
+    }
+
+    //#endregion
+
+    //#region .: Anúncios :.
+
+    base.AbrirAnuncio = function (aIdAnuncio) {
+
+        sessionStorage.setItem("IdAnuncioAtual", aIdAnuncio);
+
+        window.location.href = "pet.html"
 
     }
 

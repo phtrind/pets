@@ -52,7 +52,8 @@ namespace PetSaver.Business
             return new FiltroAnuncioResponse()
             {
                 Estados = new EstadoBusiness().Combo(),
-                Animais = new AnimalBusiness().Combo()
+                Animais = new AnimalBusiness().Combo(),
+                Sexos = new SexoBusiness().Combo()
             };
         }
 

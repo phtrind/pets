@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetSaver.Utilities
+﻿namespace PetSaver.Utilities
 {
     public static class Constantes
     {
+        public const string Indefinido = "Indefinido";
+        public const string Desconhecido = "Desconhecido";
     }
 }

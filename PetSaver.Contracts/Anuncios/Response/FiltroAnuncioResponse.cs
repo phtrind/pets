@@ -7,5 +7,6 @@ namespace PetSaver.Contracts.Anuncios
     {
         public IEnumerable<ChaveValorContract> Estados { get; set; }
         public IEnumerable<ChaveValorContract> Animais { get; set; }
+        public IEnumerable<ChaveValorContract> Sexos { get; set; }
     }
 }
