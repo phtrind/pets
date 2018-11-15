@@ -14,6 +14,7 @@
         public string Nome { get; set; }
 
         public int? IdTipo { get; set; }
+        public int? IdStatus { get; set; }
 
         public int Quantidade { get; set; }
         public int Pagina { get; set; }

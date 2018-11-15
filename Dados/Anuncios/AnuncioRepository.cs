@@ -73,7 +73,7 @@ namespace PetSaver.Repository.Anuncios
             }
         }
 
-        public IEnumerable<dynamic> BuscarAnuncios(FiltroAnuncioRequest aFiltro)
+        public IEnumerable<dynamic> BuscarAnunciosAtivos(FiltroAnuncioRequest aFiltro)
         {
             StringBuilder stringBuilder = new StringBuilder(Resource.BuscarAnuncios);
 
@@ -134,6 +134,11 @@ namespace PetSaver.Repository.Anuncios
                 if (Validador.FiltroIsValid(aFiltro.IdTipo))
                 {
                     stringBuilder.Append($" AND ANT.ANT_CODIGO = {aFiltro.IdTipo}");
+                }
+
+                if (Validador.FiltroIsValid(aFiltro.IdStatus))
+                {
+                    stringBuilder.Append($" AND A.ANS_CODIGO = {aFiltro.IdStatus}");
                 }
             }
             else

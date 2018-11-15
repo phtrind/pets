@@ -137,10 +137,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Dados\PetSaver.Repository.csproj">
       <Project>{1F4CD9A3-501A-4EEB-B0B2-D92F6A47F91C}</Project>

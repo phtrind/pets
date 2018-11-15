@@ -191,7 +191,7 @@
                          ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" ng-click="ctrl.base.AbrirAnuncio(x.IdAnuncio)" onclick="document.location.href='pet.html'">
                         <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
                         <div class="col-md-12 text-center" style="margin-top:15px;">
-                            <h2 style="color: #500B89">{{x.Nome}}</h2>
+                            <h2 class="color-primary" style="height: 70px">{{x.Nome}}</h2>
                             <p><img src="icons/gender.png" width="25px">{{x.Sexo}} <img src="icons/size.png" width="25px">{{x.Idade}}</p>
                             <p><img src="icons/location.png" width="25px">{{x.Localizacao}}</p>
                             <button ng-show="adBoxHover" class="btn btn-primary">Conhecer pet</button>

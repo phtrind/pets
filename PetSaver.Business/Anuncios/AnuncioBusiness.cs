@@ -120,7 +120,7 @@ namespace PetSaver.Business.Anuncios
                 aFiltro.Pagina = 1;
             }
 
-            return PreencherObjetoMiniatura(new AnuncioRepository().BuscarAnuncios(aFiltro));
+            return PreencherObjetoMiniatura(new AnuncioRepository().BuscarAnunciosAtivos(aFiltro));
         }
 
         public IEnumerable<AnuncioMiniaturaResponse> ListarDestaquesMiniaturas()
@@ -133,9 +133,9 @@ namespace PetSaver.Business.Anuncios
             return aLista.Select(x => new AnuncioMiniaturaResponse()
             {
                 IdAnuncio = Convert.ToInt32(x.ANU_CODIGO),
-                Nome = Convert.ToString(x.PET_NOME) ?? "Desconhecido",
-                Sexo = ((Sexos)Utilities.Conversor.IntParaEnum<Sexos>(Convert.ToInt32(x.PTS_CODIGO))).Traduzir(),
-                Idade = ((Idades)Utilities.Conversor.IntParaEnum<Idades>(Convert.ToInt32(x.PID_CODIGO))).Traduzir(),
+                Nome = Convert.ToString(x.PET_NOME) ?? Utilities.Constantes.Desconhecido,
+                Sexo = Convert.ToString(x.PTS_DESCRICAO),
+                Idade = Convert.ToString(x.PID_DESCRICAO),
                 Localizacao = $"{Convert.ToString(x.CID_NOME)} / {Convert.ToString(x.EST_SIGLA)}",
                 Foto = Convert.ToString(x.ANF_LINK),
                 Tipo = Convert.ToString(x.ANT_DESCRICAO)

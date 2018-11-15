@@ -3,6 +3,7 @@ using PetSaver.Business.Localizacao;
 using PetSaver.Business.Pets;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Paginas;
+using PetSaver.Entity.Enums.Status;
 using PetSaver.Exceptions;
 
 namespace PetSaver.Business
@@ -37,6 +38,8 @@ namespace PetSaver.Business
             {
                 filtro.Quantidade = 16;
             }
+
+            filtro.IdStatus = Utilities.Conversor.EnumParaInt(StatusAnuncio.Ativo);
 
             filtro.Pagina = 1;
 
