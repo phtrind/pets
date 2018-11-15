@@ -1,14 +1,34 @@
-app.controller('petPerdidoCadastroController', function ($controller) {
+app.controller('petPerdidoCadastroController', function ($controller, $http) {
 
     var ctrl = this;
 
     ctrl.base = $controller('baseController', {});
 
-    ctrl.petSelection = true;
+    ctrl.petInfos1 = true;
 
-    ctrl.OnInit = function() {
+    ctrl.OnInit = function () {
 
         InitializeMap();
+
+        $http({
+            method: 'GET',
+            url: ctrl.base.servicePath + 'Page/CadastroAnuncio',
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            ctrl.Animais = response.Animais;
+            ctrl.Sexos = response.Sexos;
+            ctrl.Idades = response.Idades;
+            ctrl.Portes = response.Portes;
+            ctrl.Pelos = response.Pelos;
+            ctrl.Cores = response.Cores;
+            ctrl.Estados = response.Estados;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
 
     }
 
@@ -130,6 +150,112 @@ app.controller('petPerdidoCadastroController', function ($controller) {
             ctrl.Localizacao = null;
 
         }
+
+    }
+
+    ctrl.BtnProximoInfoBasicas = function () {
+
+        if (ctrl.ValidarInfoBasicasPet()) {
+            ctrl.GoTo(4);
+        }
+
+    }
+
+    ctrl.ValidarInfoBasicasPet = function () {
+
+        var contErro = 0;
+
+        //Nome
+        if (ctrl.base.StringIsEmpty(ctrl.TxtNomePet)) {
+            ctrl.nomeError = true;
+            contErro++;
+        }
+        else {
+            ctrl.nomeError = false;
+        }
+
+        //Sexo
+        if (ctrl.base.StringIsEmpty(ctrl.CmbSexoPet)) {
+            ctrl.sexoError = true;
+            contErro++;
+        }
+        else {
+            ctrl.sexoError = false;
+        }
+
+        //Raça / Espécie
+        if (ctrl.base.StringIsEmpty(ctrl.CmbRacaEspeciePet)) {
+            ctrl.racaError = true;
+            contErro++;
+        }
+        else {
+            ctrl.racaError = false;
+        }
+
+        //Idade
+        if (ctrl.base.StringIsEmpty(ctrl.CmbIdadePet)) {
+            ctrl.idadeError = true;
+            contErro++;
+        }
+        else {
+            ctrl.idadeError = false;
+        }
+
+        //Porte
+        if (ctrl.base.StringIsEmpty(ctrl.CmbPortePet)) {
+            ctrl.porteError = true;
+            contErro++;
+        }
+        else {
+            ctrl.porteError = false;
+        }
+
+        //Pelo
+        if (ctrl.base.StringIsEmpty(ctrl.CmbPeloPet)) {
+            ctrl.peloError = true;
+            contErro++;
+        }
+        else {
+            ctrl.peloError = false;
+        }
+
+        //Cor 1
+        if (ctrl.base.StringIsEmpty(ctrl.Cor1Pet)) {
+            ctrl.cor1error = true;
+            contErro++;
+        }
+        else {
+            ctrl.cor1error = false;
+        }
+
+        //Cor 2
+        if (ctrl.base.StringIsEmpty(ctrl.Cor2Pet)) {
+            ctrl.cor2error = true;
+            contErro++;
+        }
+        else {
+            ctrl.cor2error = false;
+        }
+
+        //Estado
+        if (ctrl.base.StringIsEmpty(ctrl.EstadoPet)) {
+            ctrl.estadoErro = true;
+            contErro++;
+        }
+        else {
+            ctrl.estadoErro = false;
+        }
+
+        //Cidade
+        if (ctrl.base.StringIsEmpty(ctrl.CidadePet)) {
+            ctrl.cidadeErro = true;
+            contErro++;
+        }
+        else {
+            ctrl.cidadeErro = false;
+        }
+
+        return contErro == 0;
 
     }
 
