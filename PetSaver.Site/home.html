@@ -54,16 +54,19 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#servicos">O que fazemos</a>
+                        <a class="nav-link js-scroll-trigger" href="index.html">Quero adotar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#porque">Por quê?</a>
+                        <a class="nav-link js-scroll-trigger" href="conta/doacoes_cadastro.html">Quero doar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#pets">Pets</a>
+                        <a class="nav-link js-scroll-trigger" href="index.html">Perdi meu pet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#buscar">Buscar</a>
+                        <a class="nav-link js-scroll-trigger" href="index.html">Encontrei um pet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="" ng-show="ctrl.isLogged">Minha conta</a>
                     </li>
                     <li class="nav-item">
                         <button ng-hide="ctrl.base.IsLogged()" ng-click="ctrl.base.AbrirModalLogin()" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalLogarCadastrar">Entrar</button>
@@ -124,19 +127,19 @@
                                 Saiba mais
                             </h6>
                             <div class="modal fade" id="modalSaibaMaisDoacao" tabindex="-1" role="dialog" aria-hidden="true" style="padding: 0px !important">
-                                    <div class="modal-dialog modal-dialog-centered modal-md" role="document" style="padding: 1%">
-                                        <div class="modal-content">
-                                            <div class="modal-body" style="margin-top: 50%">
-                                                <img style="width: 100%" src="images/como_funciona/doacao/1.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/2.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/3.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/4.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/5.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/6.png" />
-                                            </div>
+                                <div class="modal-dialog modal-dialog-centered modal-md" role="document" style="padding: 1%">
+                                    <div class="modal-content">
+                                        <div class="modal-body" style="margin-top: 50%">
+                                            <img style="width: 100%" src="images/como_funciona/doacao/1.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/2.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/3.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/4.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/5.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/6.png" />
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                         <div class="col-md-4" style="margin-top: 30px">
                             <img src="homepage/icons/lost.png" width="96px">
@@ -147,19 +150,19 @@
                                 Saiba mais
                             </h6>
                             <div class="modal fade" id="modalSaibaMaisDoacao" tabindex="-1" role="dialog" aria-hidden="true" style="padding: 0px !important">
-                                    <div class="modal-dialog modal-dialog-centered modal-md" role="document" style="padding: 1%">
-                                        <div class="modal-content">
-                                            <div class="modal-body" style="margin-top: 50%">
-                                                <img style="width: 100%" src="images/como_funciona/doacao/1.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/2.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/3.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/4.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/5.png" />
-                                                <img style="width: 100%" src="images/como_funciona/doacao/6.png" />
-                                            </div>
+                                <div class="modal-dialog modal-dialog-centered modal-md" role="document" style="padding: 1%">
+                                    <div class="modal-content">
+                                        <div class="modal-body" style="margin-top: 50%">
+                                            <img style="width: 100%" src="images/como_funciona/doacao/1.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/2.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/3.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/4.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/5.png" />
+                                            <img style="width: 100%" src="images/como_funciona/doacao/6.png" />
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>
                         <div class="col-md-12" style="text-align: center; margin-top: 40px">
                             <button type="submit" class="btn btn-primary" style="width: 150px; height: 50px; outline: none;" id="btnPorque">

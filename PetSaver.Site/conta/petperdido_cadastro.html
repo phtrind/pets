@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -38,16 +38,17 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+        <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body class="fix-header fix-sidebar" ng-app="pets" ng-controller="petPerdidoCadastroController  as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
     </div>
     <!-- Main wrapper  -->
     <div id="main-wrapper">
@@ -91,7 +92,7 @@
                         <!-- Comment -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <!-- <i class="fa fa-bell"></i> -->
                                 <img src="../icons/notification.png" width="30">
                                 <div class="notify">
@@ -165,7 +166,7 @@
                         <!-- Messages -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" id="2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/chat.png" width="30">
                                 <div class="notify">
                                     <span class="heartbit"></span>
@@ -242,7 +243,7 @@
                         <!-- Profile -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/profile.png" width="30px" alt="user">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
@@ -251,12 +252,14 @@
                                         <a style="color: #500B89 !important;" href="meus_dados.html">
                                             <img src="../icons/profile_edit.png" width="30px" alt="meus dados"></i>
                                             meus
-                                            dados</a>
+                                            dados
+                                        </a>
                                     </li>
                                     <li>
                                         <a style="color: #500B89 !important;" href="#">
                                             <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
-                                            sair</a>
+                                            sair
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -282,7 +285,8 @@
                         <li>
                             <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../homepage/icons/donation.png" width="30px">
-                                <span class="hide-menu">Doações
+                                <span class="hide-menu">
+                                    Doações
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -303,7 +307,8 @@
                         <li>
                             <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/house.png" width="30px">
-                                <span class="hide-menu">Adoções
+                                <span class="hide-menu">
+                                    Adoções
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -324,7 +329,8 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/binoculars.png" width="30px">
-                                <span class="hide-menu">Pet perdido
+                                <span class="hide-menu">
+                                    Pet perdido
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -379,42 +385,44 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <p>Olá Saver, sentimos muito por ter perdido seu pet... mas fique tranquilo, vamos lhe
-                                    ajudar!</p>
+                                <p>
+                                    Olá Saver, sentimos muito por ter perdido seu pet... mas fique tranquilo, vamos lhe
+                                    ajudar!
+                                </p>
                                 <p>Para começarmos, escolha um dos Pets abaixo:</p>
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
-                                <div style="margin-left: 55px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
-                                    ng-click="ctrl.SelectPet(1);">
-                                    <img src="../icons/dog.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
-                                    <h3>Cachorro</h3>
-                                </div>
-                                <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
-                                    ng-click="ctrl.SelectPet(2);">
-                                    <img src="../icons/cat.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
-                                    <h3>Gato</h3>
-                                </div>
-                                <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
-                                    ng-click="ctrl.SelectPet(3);">
-                                    <img src="../icons/hamster.png" style="width:95%; padding: 13px; margin-bottom: 20px; margin-top: 7px;">
-                                    <h3>Roedor</h3>
-                                </div>
-                                <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
-                                    ng-click="ctrl.SelectPet(4);">
-                                    <img src="../icons/bird.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
-                                    <h3>Ave</h3>
-                                </div>
-                                <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
-                                    ng-click="ctrl.SelectPet(5);">
-                                    <img src="../icons/others.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
-                                    <h3>Outros</h3>
-                                </div>
+                            <div style="margin-left: 55px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
+                                 ng-click="ctrl.SelectPet(1);">
+                                <img src="../icons/dog.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
+                                <h3>Cachorro</h3>
                             </div>
+                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
+                                 ng-click="ctrl.SelectPet(2);">
+                                <img src="../icons/cat.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
+                                <h3>Gato</h3>
+                            </div>
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
+                                 ng-click="ctrl.SelectPet(3);">
+                                <img src="../icons/hamster.png" style="width:95%; padding: 13px; margin-bottom: 20px; margin-top: 7px;">
+                                <h3>Roedor</h3>
+                            </div>
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
+                                 ng-click="ctrl.SelectPet(4);">
+                                <img src="../icons/bird.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
+                                <h3>Ave</h3>
+                            </div>
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
+                                 ng-click="ctrl.SelectPet(5);">
+                                <img src="../icons/others.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
+                                <h3>Outros</h3>
+                            </div>
+                        </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: right;">
                                 <select class="btn btn-primary" ng-show="ctrl.comboOutrosMostrar" ng-model="ctrl.outrosSelecionado"
-                                    ng-change="ctrl.ValidarComboOutros()">
+                                        ng-change="ctrl.ValidarComboOutros()">
                                     <option value="">Selecione</option>
                                     <option value="tartaruga">Tartaruga</option>
                                     <option value="cagado">Cagado</option>
@@ -449,8 +457,10 @@
                             </div>
                         </div>
 
-                        <p>Marque no mapa o local aproximado em que você perdeu seu pet. Isso é muito importante, pois
-                            quem estiver por perto ficará atento.</p>
+                        <p>
+                            Marque no mapa o local aproximado em que você perdeu seu pet. Isso é muito importante, pois
+                            quem estiver por perto ficará atento.
+                        </p>
 
 
                         <div id="mapa" style="height: 380px; width: 100%;">
@@ -497,12 +507,14 @@
                             <div class="row">
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.nomeError}">
                                     <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp"
-                                        placeholder="Nome" autocomplete="off">
+                                           placeholder="Nome" autocomplete="off">
                                     <small id="nomeHelp" class="form-text text-muted">Nos conte qual o nome do seu pet.</small>
-                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.nomeError">Esse é
+                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.nomeError">
+                                        Esse é
                                         um
                                         campo
-                                        obrigatório.</small>
+                                        obrigatório.
+                                    </small>
                                 </div>
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.sexoError}">
                                     <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp">
@@ -512,10 +524,12 @@
                                         <option value="0">Não sei</option>
                                     </select>
                                     <small id="sexoHelp" class="form-text text-muted">Selecione o sexo do pet.</small>
-                                    <small id="sexoError" class="form-control-feedback" ng-show="ctrl.sexoError">Esse é
+                                    <small id="sexoError" class="form-control-feedback" ng-show="ctrl.sexoError">
+                                        Esse é
                                         um
                                         campo
-                                        obrigatório.</small>
+                                        obrigatório.
+                                    </small>
                                 </div>
                             </div>
                             <div class="row">
@@ -525,13 +539,17 @@
                                         <option value="0">Não sei</option>
                                         <option value="1">Outros</option>
                                     </select>
-                                    <small id="racaHelp" class="form-text text-muted">Caso não tenha certeza da
+                                    <small id="racaHelp" class="form-text text-muted">
+                                        Caso não tenha certeza da
                                         raça/espécie,
-                                        selecione a opção "Não sei".</small>
-                                    <small id="racaError" class="form-control-feedback" ng-show="ctrl.racaError">Esse é
+                                        selecione a opção "Não sei".
+                                    </small>
+                                    <small id="racaError" class="form-control-feedback" ng-show="ctrl.racaError">
+                                        Esse é
                                         um
                                         campo
-                                        obrigatório.</small>
+                                        obrigatório.
+                                    </small>
                                 </div>
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.idadeError}">
                                     <select class="form-control custom-select" id="idade" aria-describedby="idadeHelp">
@@ -541,13 +559,17 @@
                                         <option value="3">Adulto</option>
                                         <option value="0">Não sei</option>
                                     </select>
-                                    <small id="idadeHelp" class="form-text text-muted">Caso não tenha certeza da idade
+                                    <small id="idadeHelp" class="form-text text-muted">
+                                        Caso não tenha certeza da idade
                                         do
-                                        pet, selecione a opção "Desconhecida".</small>
-                                    <small id="idadeError" class="form-control-feedback" ng-show="ctrl.idadeError">Esse
+                                        pet, selecione a opção "Desconhecida".
+                                    </small>
+                                    <small id="idadeError" class="form-control-feedback" ng-show="ctrl.idadeError">
+                                        Esse
                                         é um
                                         campo
-                                        obrigatório.</small>
+                                        obrigatório.
+                                    </small>
                                 </div>
                             </div>
                             <div class="row">
@@ -560,16 +582,20 @@
                                         <option value="0">Não se aplica</option>
                                     </select>
                                     <small id="tamanhoHelp" class="form-text text-muted">Selecione o tamanho do pet.</small>
-                                    <small id="tamanhoError" class="form-control-feedback" ng-show="ctrl.tamanhoError">Esse
+                                    <small id="tamanhoError" class="form-control-feedback" ng-show="ctrl.tamanhoError">
+                                        Esse
                                         é um
                                         campo
-                                        obrigatório.</small>
+                                        obrigatório.
+                                    </small>
                                 </div>
                                 <div class="form-group col-md-6" ng-class="{'has-error':ctrl.pesoError}">
                                     <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
-                                        placeholder="Peso" autocomplete="off">
-                                        <small id="pesoHelp" class="form-text text-muted">Caso não saiba o peso, pode deixar 
-                                            este campo em branco.</small>
+                                           placeholder="Peso" autocomplete="off">
+                                    <small id="pesoHelp" class="form-text text-muted">
+                                        Caso não saiba o peso, pode deixar
+                                        este campo em branco.
+                                    </small>
                                 </div>
                             </div>
                             <div class="row">
@@ -581,12 +607,16 @@
                                         <option value="3">Longo</option>
                                         <option value="0">Não se aplica</option>
                                     </select>
-                                    <small id="tamanhoHelp" class="form-text text-muted">Selecione o tamanho do pelo do
-                                        pet.</small>
-                                    <small id="tamanhoError" class="form-control-feedback" ng-show="ctrl.tamanhoError">Esse
+                                    <small id="tamanhoHelp" class="form-text text-muted">
+                                        Selecione o tamanho do pelo do
+                                        pet.
+                                    </small>
+                                    <small id="tamanhoError" class="form-control-feedback" ng-show="ctrl.tamanhoError">
+                                        Esse
                                         é um
                                         campo
-                                        obrigatório.</small>
+                                        obrigatório.
+                                    </small>
                                 </div>
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.cor1error}">
                                     <select class="form-control custom-select" id="cor1" aria-describedby="cor1Help">
@@ -596,10 +626,12 @@
                                         <option value="3">Cinza</option>
                                     </select>
                                     <small id="cor1Help" class="form-text text-muted">Nos conte qual a cor do pet.</small>
-                                    <small id="cor1error" class="form-control-feedback" ng-show="ctrl.cor1error">Esse é
+                                    <small id="cor1error" class="form-control-feedback" ng-show="ctrl.cor1error">
+                                        Esse é
                                         um
                                         campo
-                                        obrigatório.</small>
+                                        obrigatório.
+                                    </small>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <select class="form-control custom-select" id="cor1" aria-describedby="cor1Help">
@@ -609,9 +641,11 @@
                                         <option value="3">Cinza</option>
                                         <option value="4">Não se aplica</option>
                                     </select>
-                                    <small id="corHelp" class="form-text text-muted">Essa é uma cor secundária, caso
+                                    <small id="corHelp" class="form-text text-muted">
+                                        Essa é uma cor secundária, caso
                                         não
-                                        tenha pode deixar em branco sem problemas.</small>
+                                        tenha pode deixar em branco sem problemas.
+                                    </small>
                                 </div>
                             </div>
                             <div class="row" style="margin-top:20px;">
@@ -643,7 +677,7 @@
                                 <div class="col-md-12" style="margin-bottom:50px;">
                                     <div class="input-group">
                                         <textarea class="form-control" aria-label="With textarea" style="height: 150px; border-radius: 5px;"
-                                            placeholder="É muito importante nos dizer se seu pet possui alguma coleira ou algo que facilite a sua identificação ;)"></textarea>
+                                                  placeholder="É muito importante nos dizer se seu pet possui alguma coleira ou algo que facilite a sua identificação ;)"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -716,7 +750,17 @@
             </div>
             <!-- End Container fluid  -->
             <!-- footer -->
-            <footer class="footer"> <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+            <footer class="footer">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a target="_blank" href="https://icons8.com" style="float: right;">App icon by Icons8</a>
+                        </div>
+                    </div>
+                </div>
             </footer>
             <!-- End footer -->
         </div>

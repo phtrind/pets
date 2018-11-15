@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -47,7 +47,8 @@
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
     </div>
     <!-- Main wrapper  -->
     <div id="main-wrapper">
@@ -91,7 +92,7 @@
                         <!-- Comment -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <!-- <i class="fa fa-bell"></i> -->
                                 <img src="../icons/notification.png" width="30">
                                 <div class="notify">
@@ -165,7 +166,7 @@
                         <!-- Messages -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" id="2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/chat.png" width="30">
                                 <div class="notify">
                                     <span class="heartbit"></span>
@@ -242,7 +243,7 @@
                         <!-- Profile -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/profile.png" width="30px" alt="user">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
@@ -251,12 +252,14 @@
                                         <a style="color: #500B89 !important;" href="meus_dados.html">
                                             <img src="../icons/profile_edit.png" width="30px" alt="meus dados"></i>
                                             meus
-                                            dados</a>
+                                            dados
+                                        </a>
                                     </li>
                                     <li>
                                         <a style="color: #500B89 !important;" href="#">
                                             <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
-                                            sair</a>
+                                            sair
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -282,7 +285,8 @@
                         <li>
                             <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../homepage/icons/donation.png" width="30px">
-                                <span class="hide-menu">Doações
+                                <span class="hide-menu">
+                                    Doações
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -303,7 +307,8 @@
                         <li>
                             <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/house.png" width="30px">
-                                <span class="hide-menu">Adoções
+                                <span class="hide-menu">
+                                    Adoções
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -324,7 +329,8 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/binoculars.png" width="30px">
-                                <span class="hide-menu">Pet perdido
+                                <span class="hide-menu">
+                                    Pet perdido
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -389,13 +395,14 @@
                             </div>
                         </div>
                         <div class="row">
-                            <h2 class="color-primary">Filtros
+                            <h2 class="color-primary">
+                                Filtros
                                 <img ng-show="ctrl.closedFilter" src="../icons/minus.png" width="35px" style="cursor: pointer;"
-                                    data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
-                                    aria-controls="formFiltro" ng-click="ctrl.closedFilter = false;">
+                                     data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                     aria-controls="formFiltro" ng-click="ctrl.closedFilter = false;">
                                 <img ng-show="!ctrl.closedFilter" src="../icons/plus.png" width="35px" style="cursor: pointer;"
-                                    data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
-                                    aria-controls="formFiltro" ng-click="ctrl.closedFilter = true;">
+                                     data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                     aria-controls="formFiltro" ng-click="ctrl.closedFilter = true;">
                             </h2>
                         </div>
                         <div class="row">
@@ -440,7 +447,8 @@
                                         <th class="columnFitCenter">#</th>
                                         <th>Pet</th>
                                         <th>Tipo</th>
-                                        <th>Status
+                                        <th>
+                                            Status
                                             <!-- <div class="dropdown">
                                                 <button id="dropdownButton" class="btn btn-primary dropdown-toggle"
                                                     type="button" data-toggle="dropdown" aria-expanded="false">Status
@@ -462,48 +470,60 @@
                                         <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
                                         <td>Cachorro</span></td>
                                         <td><span class="badge badge-primary">Adotado</span></td>
-                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
-                                                width="30px"></td>
+                                        <td class="columnFitCenter">
+                                            <img class="link imgDisabled" src="../icons/chat.png"
+                                                 width="30px">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th class="columnFitCenter" scope="row">2</th>
                                         <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
                                         <td>Gato</span></td>
                                         <td><span class="badge badge-success">Em andamento</span></td>
-                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
-                                                width="30px"></td>
+                                        <td class="columnFitCenter">
+                                            <img class="link" src="../icons/chat.png"
+                                                 width="30px">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th class="columnFitCenter" scope="row">3</th>
                                         <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
                                         <td>Ave</span></td>
                                         <td><span class="badge badge-danger">Finalizado</span></td>
-                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
-                                                width="30px"></td>
+                                        <td class="columnFitCenter">
+                                            <img class="link imgDisabled" src="../icons/chat.png"
+                                                 width="30px">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th class="columnFitCenter" scope="row">4</th>
                                         <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
                                         <td>Cachorro</span></td>
                                         <td><span class="badge badge-primary">Adotado</span></td>
-                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
-                                                width="30px"></td>
+                                        <td class="columnFitCenter">
+                                            <img class="link imgDisabled" src="../icons/chat.png"
+                                                 width="30px">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th class="columnFitCenter" scope="row">5</th>
                                         <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
                                         <td>Gato</span></td>
                                         <td><span class="badge badge-success">Em andamento</span></td>
-                                        <td class="columnFitCenter"><img class="link" src="../icons/chat.png"
-                                                width="30px"></td>
+                                        <td class="columnFitCenter">
+                                            <img class="link" src="../icons/chat.png"
+                                                 width="30px">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th class="columnFitCenter" scope="row">6</th>
                                         <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
                                         <td>Ave</span></td>
                                         <td><span class="badge badge-danger">Finalizado</span></td>
-                                        <td class="columnFitCenter"><img class="link imgDisabled" src="../icons/chat.png"
-                                                width="30px"></td>
+                                        <td class="columnFitCenter">
+                                            <img class="link imgDisabled" src="../icons/chat.png"
+                                                 width="30px">
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -524,7 +544,17 @@
     </div>
     <!-- End Container fluid  -->
     <!-- footer -->
-    <footer class="footer"> <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+    <footer class="footer">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+                </div>
+                <div class="col-md-6">
+                    <a target="_blank" href="https://icons8.com" style="float: right;">App icon by Icons8</a>
+                </div>
+            </div>
+        </div>
     </footer>
     <!-- End footer -->
     </div>

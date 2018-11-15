@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt">
 
 <head>
@@ -38,16 +38,17 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+        <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body class="fix-header fix-sidebar" ng-app="pets" ng-controller="meusDadosController as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
     </div>
     <!-- Main wrapper  -->
     <div id="main-wrapper">
@@ -91,7 +92,7 @@
                         <!-- Comment -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <!-- <i class="fa fa-bell"></i> -->
                                 <img src="../icons/notification.png" width="30">
                                 <div class="notify">
@@ -165,7 +166,7 @@
                         <!-- Messages -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" id="2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/chat.png" width="30">
                                 <div class="notify">
                                     <span class="heartbit"></span>
@@ -242,7 +243,7 @@
                         <!-- Profile -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/profile.png" width="30px" alt="user">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
@@ -251,12 +252,14 @@
                                         <a style="color: #500B89 !important;" href="meus_dados.html">
                                             <img src="../icons/profile_edit.png" width="30px" alt="meus dados"></i>
                                             meus
-                                            dados</a>
+                                            dados
+                                        </a>
                                     </li>
                                     <li>
                                         <a style="color: #500B89 !important;" href="#">
                                             <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
-                                            sair</a>
+                                            sair
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -282,7 +285,8 @@
                         <li>
                             <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../homepage/icons/donation.png" width="30px">
-                                <span class="hide-menu">Doações
+                                <span class="hide-menu">
+                                    Doações
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -303,7 +307,8 @@
                         <li>
                             <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/house.png" width="30px">
-                                <span class="hide-menu">Adoções
+                                <span class="hide-menu">
+                                    Adoções
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -324,7 +329,8 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/binoculars.png" width="30px">
-                                <span class="hide-menu">Pet perdido
+                                <span class="hide-menu">
+                                    Pet perdido
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -377,98 +383,114 @@
                         <h4 class="text-primary">Dados básicos</h4>
                     </div>
                     <div class="row" style="margin-top:20px;"></div>
-                        <div class="row">
-                            <div class="col-md-12" id="formFiltro">
-                                <form>
-                                    <div class="row">
-                                        <div class="form-group col-md-4">
-                                            <label class="color-primary">Nome</label>
-                                            <input type="text" value="José Alberto" class="form-control" style="border-radius: 8px">
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label class="color-primary">Sobrenome</label>
-                                            <input type="text" value="Santos" class="form-control" style="border-radius: 8px">
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="color-primary">Nascimento</label>
-                                            <input type="text" value="26/11/1997" class="form-control" style="border-radius: 8px" onfocus="(this.type='date')" onblur="(this.type='text')">
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="color-primary">Sexo</label>
-                                            <select class="form-control custom-select" style="border-radius: 8px">
-                                                <option>Masculino</option>
-                                                <option>Feminino</option>
-                                            </select>
-                                        </div>
+                    <div class="row">
+                        <div class="col-md-12" id="formFiltro">
+                            <form>
+                                <div class="row">
+                                    <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroNomeMeusDados}">
+                                        <label class="color-primary">Nome</label>
+                                        <input type="text" value="José Alberto" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.NomeMeusDados">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroNomeMeusDados">Nome inválido</small>
                                     </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-2">
-                                            <label class="color-primary">Documento</label>
-                                            <select class="form-control custom-select" style="border-radius: 8px" id="disabled-input" disabled>
-                                                <option>CPF</option>
-                                                <option>CNPJ</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="color-primary">CPF/CNPJ</label>
-                                        <input type="text" value="101.101.101-10" class="form-control" style="border-radius: 8px" id="disabled-input" disabled>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label class="color-primary">E-mail</label>
-                                            <input type="text" value="petsaver@gmail.com" class="form-control" style="border-radius: 8px">
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="color-primary">Senha</label>
-                                            <input type="password" value="&32j2hu24$34" class="form-control" style="border-radius: 8px">
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="color-primary">Confirmar senha</label>
-                                            <input type="password" value="&32j2hu24$34" class="form-control" style="border-radius: 8px">
-                                        </div>
+                                    <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroSobrenomeMeusDados}">
+                                        <label class="color-primary">Sobrenome</label>
+                                        <input type="text" value="Santos" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.SobrenomeMeusDados">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroSobrenomeMeusDados">Sobrenome inválido</small>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroDthNascimentoMeusDados}">
+                                        <label class="color-primary">Nascimento</label>
+                                        <input type="text" value="26/11/1997" class="form-control" style="border-radius: 8px"
+                                               onfocus="(this.type='date')" onblur="(this.type='text')"
+                                               autocomplete="off" ng-model="ctrl.DthNascimentoMeusDados">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroDthNascimentoMeusDados">Data de nascimento inválida</small>
+                                    </div>
+                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroSexoMeusDados}">
+                                        <label class="color-primary">Sexo</label>
+                                        <select class="form-control custom-select" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.SexoMeusDados">
+                                            >
+                                            <option>Masculino</option>
+                                            <option>Feminino</option>
+                                        </select>
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroSexoMeusDados">Sexo inválido</small>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-2">
+                                        <label class="color-primary">Documento</label>
+                                        <select class="form-control custom-select" style="border-radius: 8px" disabled>
+                                            <option>CPF</option>
+                                            <option>CNPJ</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="color-primary">CPF/CNPJ</label>
+                                        <input type="text" value="101.101.101-10" class="form-control" style="border-radius: 8px" disabled>
+                                    </div>
+                                    <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroEmailMeusDados}">
+                                        <label class="color-primary">E-mail</label>
+                                        <input type="text" value="petsaver@gmail.com" autocomplete="off" class="form-control" style="border-radius: 8px" ng-model="ctrl.EmailMeusDados">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroEmailMeusDados">E-mail inválido</small>
+                                    </div>
+                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroSenhaMeusDados}">
+                                        <label class="color-primary">Senha</label>
+                                        <input type="password" value="&32j2hu24$34" class="form-control" autocomplete="off" style="border-radius: 8px" ng-model="ctrl.SenhaMeusDados">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroSenhaMeusDadosPequena">A senha deve ter no mínimo 8 caracteres</small>
+                                    </div>
+                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroConfirmacaoSenhaMeusDados}">
+                                        <label class="color-primary">Confirmar senha</label>
+                                        <input type="password" value="&32j2hu24$34" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.ConfirmacaoSenhaMeusDados">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroConfirmacaoSenhaMeusDados">A senha não é igual à do campo anterior</small>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
 
-                        <div class="row" style="margin-top:20px;"></div>
-                        <div class="row">
-                            <h4 class="text-primary">Dados adicionais</h4>
-                        </div>
-                        <div class="row" style="margin-top:10px;"></div>
-                        <div class="row">
-                            <div class="col-md-12" id="formFiltro">
-                                <form>
-                                    <div class="row">
-                                        <div class="form-group col-md-3">
-                                            <label class="color-primary">Logradouro</label>
-                                            <input type="text" value="Conselheiro Lafaiete" class="form-control" style="border-radius: 8px">
-                                        </div>
-                                        <div class="form-group col-md-3">
-                                            <label class="color-primary">Bairro</label>
-                                            <input type="text" value="Sagrada Família" class="form-control" style="border-radius: 8px">
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="color-primary">Número</label>
-                                            <input type="text" value="754" class="form-control" style="border-radius: 8px">
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="color-primary">Complemento</label>
-                                            <input type="text" value="sala 04" class="form-control" style="border-radius: 8px">
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <label class="color-primary">CEP</label>
-                                            <input type="text" value="31-030-010" class="form-control" style="border-radius: 8px">
-                                        </div>
+                    <div class="row" style="margin-top:20px;"></div>
+                    <div class="row">
+                        <h4 class="text-primary">Dados adicionais</h4>
+                    </div>
+                    <div class="row" style="margin-top:10px;"></div>
+                    <div class="row">
+                        <div class="col-md-12" id="formFiltro">
+                            <form>
+                                <div class="row">
+                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroCepMeusDados}">
+                                        <label class="color-primary">CEP</label>
+                                        <input type="text" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.CepMeusDados">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroCepMeusDados">CEP inválido</small>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="form-group col-md-3" ng-class="{'has-error':ctrl.ErroLogradouroMeusDados}">
+                                        <label class="color-primary">Logradouro</label>
+                                        <input type="text" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.LogradouroMeusDados">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroLogradouroMeusDados">Logradouro inválido</small>
+                                    </div>
+                                    <div class="form-group col-md-3" ng-class="{'has-error':ctrl.ErroBairroMeusDados}">
+                                        <label class="color-primary">Bairro</label>
+                                        <input type="text" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.BairroMeusDados">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroBairroMeusDados">Bairro inválido</small>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="color-primary">Número</label>
+                                        <input type="text" class="form-control" style="border-radius: 8px" ng-model="ctrl.NumeroMeusDados">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label class="color-primary">Complemento</label>
+                                        <input type="text" class="form-control" style="border-radius: 8px" ng-model="ctrl.ComplementoMeusDados">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
 
-                        <div class="row" style="margin-top:20px;">
-                            <div class="col-12" style="text-align: center;">
-                                <button class="btn btn-primary">Atualizar</button>
-                            </div>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-12" style="text-align: center;">
+                            <button class="btn btn-primary" ng-click="ctrl.AtualizarMeusDados()" ng-show="!ctrl.Atualizar">Atualizar</button>
                         </div>
+                        <div class="col-12" style="text-align: center">
+                            <img style="width:40px;" src="images/loading.gif" ng-show="ctrl.Atualizando" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -476,7 +498,17 @@
     </div>
     <!-- End Container fluid  -->
     <!-- footer -->
-    <footer class="footer"> <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+    <footer class="footer">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <a target="_blank" href="http://impulsesistemas.com.br">© Impulse Sistemas</a>
+                </div>
+                <div class="col-md-6">
+                    <a target="_blank" href="https://icons8.com" style="float: right;">App icon by Icons8</a>
+                </div>
+            </div>
+        </div>
     </footer>
     <!-- End footer -->
     </div>
@@ -504,7 +536,9 @@
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="../js/controllers/doacoesRelatorio.js"></script>
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/base.js"></script>
+    <script src="../js/controllers/meus_dados.js"></script>
 
 </body>
 
