@@ -15,7 +15,53 @@
 
     base.IsLogged = function () {
 
-        return !base.StringIsEmpty(sessionStorage.getItem('Token')) && !base.StringIsEmpty(sessionStorage.getItem('IdUsuario'));
+        if (!base.StringIsEmpty(sessionStorage.getItem('Token')) &&
+            !base.StringIsEmpty(sessionStorage.getItem('IdUsuario')) &&
+            !base.StringIsEmpty(sessionStorage.getItem('DthValidadeToken')) &&
+            base.ValidarToken()) {
+
+            //TODO: Mostrar modal informando que o login expirou
+
+            return true;
+
+        }
+        else {
+
+            base.LimparSessionAuth();
+
+            return false;
+        }
+
+    }
+
+    base.ValidarToken = function () {
+
+        try {
+            var authDateTime = new Date(sessionStorage.getItem('DthValidadeToken'));
+
+            var dateTimeNow = new Date();
+
+            return authDateTime > dateTimeNow;
+
+        } catch (e) {
+            return false;
+        }
+
+    }
+
+    base.LimparSessionAuth = function () {
+
+        sessionStorage.removeItem('DthValidadeToken');
+        sessionStorage.removeItem('IdLogin');
+        sessionStorage.removeItem('IdUsuario');
+        sessionStorage.removeItem('Nome');
+        sessionStorage.removeItem('Token');
+
+    }
+
+    base.FazerLogoff = function () {
+
+        base.LimparSessionAuth();
 
     }
 
@@ -52,8 +98,6 @@
             }).success(function (response) {
 
                 sessionStorage.setItem("Token", response.access_token);
-                sessionStorage.setItem("DataHoraAutenticacao", new Date().toLocaleString());
-                sessionStorage.setItem("TokenExpiresIn", response.expires_in);
 
                 base.BuscarInformacoesSession(base.EmailLogin);
 
@@ -97,6 +141,7 @@
             sessionStorage.setItem("IdLogin", response.IdLogin);
             sessionStorage.setItem("IdUsuario", response.IdUsuario);
             sessionStorage.setItem("Nome", response.Nome);
+            sessionStorage.setItem("DthValidadeToken", response.DthValidadeToken);
 
             base.NomeUsuario = response.Nome;
 

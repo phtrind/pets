@@ -61,7 +61,8 @@ namespace PetSaver.Business.Usuarios
             {
                 IdLogin = Convert.ToInt32(teste.LOG_CODIGO),
                 IdUsuario = Convert.ToInt32(teste.USU_CODIGO),
-                Nome = Convert.ToString(teste.USU_NOME)
+                Nome = Convert.ToString(teste.USU_NOME),    
+                DthValidadeToken = DateTime.Now.AddHours(Utilities.Constantes.HorasValidadeToken - 0.5)
             };
         }
 

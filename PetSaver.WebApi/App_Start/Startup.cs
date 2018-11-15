@@ -49,7 +49,7 @@ namespace PetSaver.WebApi
                 TokenEndpointPath = new PathString("/api/token"),
 
                 //Configurando por quanto tempo um token de acesso já forncedido valerá (AccessTokenExpireTimeSpan).
-                AccessTokenExpireTimeSpan = TimeSpan.FromHours(5),
+                AccessTokenExpireTimeSpan = TimeSpan.FromHours(Utilities.Constantes.HorasValidadeToken),
 
                 //Como verificar usuário e senha para fornecer tokens de acesso? Precisamos configurar o Provider dos tokens
                 Provider = new ProviderTokenAccess()

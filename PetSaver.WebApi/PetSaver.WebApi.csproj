@@ -121,6 +121,7 @@
     <Compile Include="Authentication\ProviderTokenAccess.cs" />
     <Compile Include="Controllers\Anuncios\AnuncioController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\Localizacao\CidadeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\Pets\PetController.cs" />
@@ -137,7 +138,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\Fotos\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dados\PetSaver.Repository.csproj">
       <Project>{1F4CD9A3-501A-4EEB-B0B2-D92F6A47F91C}</Project>
@@ -158,6 +161,10 @@
     <ProjectReference Include="..\PetSaver.Exceptions\PetSaver.Exceptions.csproj">
       <Project>{EF37D1A5-7908-4B98-86A2-C05A6D9DAC9E}</Project>
       <Name>PetSaver.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PetSaver.Utilities\PetSaver.Utilities.csproj">
+      <Project>{5b8c2769-c69a-4982-930b-074bac116299}</Project>
+      <Name>PetSaver.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
