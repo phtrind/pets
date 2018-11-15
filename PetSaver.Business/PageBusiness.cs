@@ -83,7 +83,8 @@ namespace PetSaver.Business
                 Idades = new IdadeBusiness().Combo(),
                 Portes = new PorteBusiness().Combo(),
                 Pelos = new PeloBusiness().Combo(),
-                Cores = new CorBusiness().Combo()
+                Cores = new CorBusiness().Combo(),
+                Estados = new EstadoBusiness().Combo()
             };
         }
 
