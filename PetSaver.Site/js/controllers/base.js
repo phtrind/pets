@@ -17,18 +17,14 @@
 
         if (!base.StringIsEmpty(sessionStorage.getItem('Token')) &&
             !base.StringIsEmpty(sessionStorage.getItem('IdUsuario')) &&
-            !base.StringIsEmpty(sessionStorage.getItem('DthValidadeToken')) &&
-            base.ValidarToken()) {
+            !base.StringIsEmpty(sessionStorage.getItem('DthValidadeToken'))) {
 
             //TODO: Mostrar modal informando que o login expirou
 
-            return true;
+            return base.ValidarToken();
 
         }
         else {
-
-            base.LimparSessionAuth();
-
             return false;
         }
 

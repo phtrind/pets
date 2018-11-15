@@ -1,10 +1,16 @@
 app.controller('petPerdidoCadastroController', function ($controller) {
 
-        var ctrl = this;
-    
-        ctrl.base = $controller('baseController', {});
-    
-        ctrl.petSelection = true;
+    var ctrl = this;
+
+    ctrl.base = $controller('baseController', {});
+
+    ctrl.petSelection = true;
+
+    ctrl.OnInit = function() {
+
+        InitializeMap();
+
+    }
 
     ctrl.SelectPet = function (pet) {
         if (pet == 1) {
@@ -57,8 +63,8 @@ app.controller('petPerdidoCadastroController', function ($controller) {
     ctrl.ValidarComboOutros = function () {
         if (ctrl.outrosSelecionado == "" || ctrl.outrosSelecionado == undefined) {
             ctrl.petSelected = false;
-            }
-            else {
+        }
+        else {
             ctrl.petSelected = true;
         }
     }
@@ -66,7 +72,7 @@ app.controller('petPerdidoCadastroController', function ($controller) {
     ctrl.GoTo = function (number) {
         if (number == 1) {
             ctrl.petSelection = true;
-            ctrl.petLocalizacao = false;            
+            ctrl.petLocalizacao = false;
             ctrl.petInfos1 = false;
             ctrl.petObservacoes = false;
             ctrl.petFotos = false;
@@ -79,6 +85,9 @@ app.controller('petPerdidoCadastroController', function ($controller) {
             ctrl.petFotos = false;
         }
         else if (number == 3) {
+
+            ctrl.SetLocalizacao();
+
             ctrl.petSelection = false;
             ctrl.petLocalizacao = false;
             ctrl.petInfos1 = true;
@@ -102,6 +111,26 @@ app.controller('petPerdidoCadastroController', function ($controller) {
         }
 
         window.scrollTo(0, 0);
+
+        ctrl.Teste = longitude;
+    }
+
+    ctrl.SetLocalizacao = function () {
+
+        if (!ctrl.base.StringIsEmpty(latitude) && !ctrl.base.StringIsEmpty(longitude)) {
+
+            ctrl.Localizacao = {
+                Latitude: latitude,
+                Longitude: longitude
+            }
+
+        }
+        else {
+
+            ctrl.Localizacao = null;
+
+        }
+
     }
 
     ctrl.FinalizarCadastro = function () {
@@ -111,5 +140,7 @@ app.controller('petPerdidoCadastroController', function ($controller) {
         ctrl.petFotos = false;
         ctrl.confirmacao = true;
     }
+
+
 
 });

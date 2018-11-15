@@ -27,7 +27,6 @@
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
-
     <style>
         p {
             color: #500B89 !important;
@@ -43,7 +42,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="petPerdidoCadastroController  as ctrl">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="petPerdidoCadastroController  as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -462,12 +461,14 @@
                             quem estiver por perto ficará atento.
                         </p>
 
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control col-md-4" id="buscaEndereco" placeholder="Digite o endereço" style="margin-left: 15px; margin-top: 15px" />
+                        </div>
 
                         <div id="mapa" style="height: 380px; width: 100%;">
 
-
                             <!-- Maps API Javascript -->
-                            <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAdhTL8ySDP7Mu_ZFJWPCQKiranggDwxYs"></script>
+                            <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCXj4oZ3YtFg7rxU4xGJ1V0EaH2YDjlFCg&libraries=places"></script>
 
                             <!-- Arquivo de inicialização do mapa -->
                             <script src="../js/controllers/mapa.js"></script>

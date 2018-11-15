@@ -72,6 +72,9 @@
                         <button ng-hide="ctrl.base.IsLogged()" ng-click="ctrl.base.AbrirModalLogin()" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalLogarCadastrar">Entrar</button>
                         <button ng-show="ctrl.base.IsLogged()" type="button" class="btn btn-secondary" onclick="location.href = 'conta/dashboard.html';">Minha conta</button>
                     </li>
+                    <li class="nav-item" ng-show="ctrl.base.IsLogged()">
+                        <a class="nav-link js-scroll-trigger link" ng-click="ctrl.base.FazerLogoff()">Sair</a>
+                    </li>
                 </ul>
             </div>
         </div>

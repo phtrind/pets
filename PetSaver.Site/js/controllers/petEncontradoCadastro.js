@@ -4,6 +4,12 @@ app.controller('petEncontradoCadastroController', function ($controller) {
 
     ctrl.base = $controller('baseController', {});
 
+    ctrl.OnInit = function () {
+
+        InitializeMap();
+
+    }
+
     ctrl.petSelection = true;
 
     ctrl.SelectPet = function (pet) {
