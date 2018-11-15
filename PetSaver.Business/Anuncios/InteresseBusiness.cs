@@ -9,11 +9,13 @@ namespace PetSaver.Business.Anuncios
 {
     public class InteresseBusiness : BaseBusiness<InteresseEntity, InteresseRepository>
     {
+        #region .: Cadastro :.
+
         public int Cadastrar(CadastrarInteresseRequest aRequest)
         {
             if (aRequest.IdUsuario == default)
             {
-                throw new BusinessException("Não é possívle cadastrar um interesse sem usuário.");
+                throw new BusinessException("Não é possível cadastrar um interesse sem usuário.");
             }
 
             if (aRequest.IdAnuncio == default)
@@ -26,8 +28,24 @@ namespace PetSaver.Business.Anuncios
                 IdAnuncio = aRequest.IdAnuncio,
                 IdUsuario = aRequest.IdUsuario,
                 IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.EmAndamento),
-                IdLoginCadastro = new LoginBusiness().Listar(aRequest.IdUsuario)?.Id ?? default
+                IdLoginCadastro = new UsuarioBusiness().Listar(aRequest.IdUsuario)?.IdLogin ?? default
             });
         }
+
+        #endregion
+
+        #region .: Buscas :.
+
+        public InteresseEntity BuscarPorUsuarioAnuncio(int aIdUsuario, int aIdAnuncio)
+        {
+            if (aIdUsuario == default || aIdAnuncio == default)
+            {
+                return null;
+            }
+
+            return new InteresseRepository().BuscarPorUsuarioAnuncio(aIdUsuario, aIdAnuncio);
+        }
+
+        #endregion
     }
 }

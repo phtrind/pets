@@ -1,10 +1,7 @@
 ﻿using PetSaver.Entity.Anuncios;
 using PetSaver.Repository.Anuncios;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PetSaver.Business.Anuncios
 {
@@ -21,7 +18,7 @@ namespace PetSaver.Business.Anuncios
 
             if (!lista.Any())
             {
-                return null;
+                return 5;
             }
 
             return lista.Select(x => x.Nota).Average();

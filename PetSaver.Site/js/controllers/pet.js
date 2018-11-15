@@ -1,4 +1,4 @@
-app.controller('petController', function ($controller, $http) {
+﻿app.controller('petController', function ($controller, $http) {
 
     var ctrl = this;
 
@@ -30,11 +30,57 @@ app.controller('petController', function ($controller, $http) {
                 ctrl.Duvidas = response.Duvidas;
                 ctrl.Gostei = response.Gostei;
                 ctrl.StatusAnuncio = response.StatusAnuncio;
+                ctrl.TipoAnuncio = response.TipoAnuncio;
+
+                if (ctrl.StatusAnuncio != "Ativo") {
+                    ctrl.HabilitarAcoes = false;
+                }
+                else {
+                    ctrl.HabilitarAcoes = response.HabilitarAcoes;
+                }
+
+                if (ctrl.TipoAnuncio != "Doação") {
+                    ctrl.MostarGostei = false;
+                }
+                else {
+                    ctrl.MostarGostei = true;
+                }
+
+
+                if (ctrl.Pet.Sexo == "Fêmea") {
+                    ctrl.preGenero = "a";
+                }
+                else {
+                    ctrl.preGenero = "o";
+                }
+
+                if (ctrl.Pet.Nome == "Desconhecido") {
+                    if (ctrl.TipoAnuncio == "Doação") {
+                        ctrl.btnInteresseText = "Quero adotar";
+                    }
+                    else if (ctrl.TipoAnuncio == "Pet perdido") {
+                        ctrl.btnInteresseText = "Encontrei esse pet!";
+                    }
+                    else if (ctrl.TipoAnuncio == "Pet encontrado") {
+                        ctrl.btnInteresseText = "Esse pet é meu!";
+                    }
+                }
+                else {
+                    if (ctrl.TipoAnuncio == "Doação") {
+                        ctrl.btnInteresseText = "Quero adotar " + ctrl.preGenero + " " + ctrl.Pet.Nome;
+                    }
+                    else if (ctrl.TipoAnuncio == "Pet perdido") {
+                        ctrl.btnInteresseText = "Encontrei " + ctrl.preGenero + " " + ctrl.Pet.Nome;
+                    }
+                    else if (ctrl.TipoAnuncio == "Pet encontrado") {
+                        ctrl.btnInteresseText = "Estou procurando " + ctrl.preGenero + " " + ctrl.Pet.Nome;
+                    }
+                }
 
             }).error(function (err, status) {
 
                 if (status == 400) {
-                    //TODO: Mostrar mensagem que o an�ncio n�o foi encontrado
+                    //TODO: Mostrar mensagem que o anúncio não foi encontrado
                 }
                 else {
                     //TODO: Implementar tratamento de erro na base
@@ -44,9 +90,171 @@ app.controller('petController', function ($controller, $http) {
 
         }
         else {
-            //TODO: Mostrar mensagem que o an�ncio n�o foi encontrado
+            //TODO: Mostrar mensagem que o anúncio não foi encontrado
         }
 
     }
+
+    //#region .: Gostar :.
+
+    ctrl.BtnGostarClick = function () {
+
+        if (!ctrl.base.IsLogged()) {
+            $('#modalLogarCadastrar').modal('show');
+        }
+        else {
+            if (ctrl.Gostei) {
+                ctrl.RemoverGostei();
+            }
+            else {
+                ctrl.CadastrarGostei();
+            }
+        }
+
+    }
+
+    ctrl.RemoverGostei = function () {
+
+        var request = {
+            IdAnuncio: sessionStorage.getItem('IdAnuncioAtual'),
+            IdUsuario: sessionStorage.getItem('IdUsuario')
+        };
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Anuncio/RemoverGostei',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            ctrl.Gostei = false;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
+
+    ctrl.CadastrarGostei = function () {
+
+        var request = {
+            IdAnuncio: sessionStorage.getItem('IdAnuncioAtual'),
+            IdUsuario: sessionStorage.getItem('IdUsuario')
+        };
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Anuncio/CadastrarGostei',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            ctrl.Gostei = true;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
+
+    //#endregion
+
+    //#region .: Perguntar :.
+
+    ctrl.BtnFazerPergunta = function () {
+
+        if (ctrl.base.IsLogged()) {
+            $('#modalFazerPergunta').modal('show');
+        }
+        else {
+            $('#modalLogarCadastrar').modal('show');
+        }
+
+    }
+
+    ctrl.BtnConfirmarPergunta = function () {
+
+        //validar campos
+
+        if (ctrl.base.StringIsEmpty(ctrl.TxtPergunta) || ctrl.TxtPergunta.length < 5) {
+            ctrl.ErroTxtPergunta = true;
+        }
+        else {
+
+            ctrl.ErroTxtPergunta = false;
+
+            var request = {
+                IdAnuncio: sessionStorage.getItem('IdAnuncioAtual'),
+                IdUsuario: sessionStorage.getItem('IdUsuario'),
+                Pergunta: ctrl.TxtPergunta
+            };
+
+            $http({
+                method: 'POST',
+                url: ctrl.base.servicePath + 'Anuncio/CadastrarDuvida',
+                data: request,
+                headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+            }).success(function (response) {
+
+                ctrl.TxtPergunta = "";
+
+                $('#modalFazerPergunta').modal('hide');
+                $('#modalPerguntaRealizada').modal('show');
+
+            }).error(function (err, status) {
+
+                //TODO: Implementar tratamento de erro na base
+
+            });
+        }
+    }
+
+    //#endregion
+
+    //#region .: Demonstrar Interesse :.
+
+    ctrl.BtnInteresse = function () {
+
+        if (ctrl.base.IsLogged()) {
+            $('#modalQueroAdotar').modal('show');
+        }
+        else {
+            $('#modalLogarCadastrar').modal('show');
+        }
+
+    }
+
+    ctrl.BtnConfirmarInteresse = function () {
+
+        var request = {
+            IdAnuncio: sessionStorage.getItem('IdAnuncioAtual'),
+            IdUsuario: sessionStorage.getItem('IdUsuario')
+        };
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Anuncio/CadastrarInteresse',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            ctrl.HabilitarAcoes = false;
+
+            $('#modalQueroAdotar').modal('hide');
+            $('#modalInteresseRealizado').modal('show');
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
+
+    //#endregion
 
 });

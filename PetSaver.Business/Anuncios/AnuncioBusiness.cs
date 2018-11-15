@@ -168,7 +168,7 @@ namespace PetSaver.Business.Anuncios
 
             response.Pet = new PetContract()
             {
-                Nome = Convert.ToString(retornoDb.PET_NOME),
+                Nome = string.IsNullOrEmpty(Convert.ToString(retornoDb.PET_NOME)) ? Constantes.Desconhecido : Convert.ToString(retornoDb.PET_NOME),
                 RacaEspecie = retornoDb.RAC_NOME != null ? Convert.ToString(retornoDb.RAC_NOME) : Constantes.Desconhecido,
                 Cidade = Convert.ToString(retornoDb.CID_NOME),
                 Estado = Convert.ToString(retornoDb.EST_SIGLA),
@@ -201,11 +201,27 @@ namespace PetSaver.Business.Anuncios
 
             response.StatusAnuncio = Convert.ToString(retornoDb.ANS_DESCRICAO);
 
+            response.TipoAnuncio = Convert.ToString(retornoDb.ANT_DESCRICAO);
+
             response.Duvidas = new DuvidaBusiness().BuscarPorAnuncio(aIdAnuncio).Where(x => !string.IsNullOrEmpty(x.Resposta));
 
             if (aIdUsuario.HasValue && aIdUsuario.Value != default)
             {
                 response.Gostei = new AnuncioGosteiBusiness().UsuarioGostouAnuncio(aIdAnuncio, aIdUsuario.Value);
+
+                if (Convert.ToInt32(retornoDb.USU_CODIGO) != aIdUsuario.Value &&
+                    new InteresseBusiness().BuscarPorUsuarioAnuncio(aIdUsuario.Value, aIdAnuncio) == null)
+                {
+                    response.HabilitarAcoes = true;
+                }
+                else
+                {
+                    response.HabilitarAcoes = false;
+                }
+            }
+            else
+            {
+                response.HabilitarAcoes = true;
             }
 
             return response;

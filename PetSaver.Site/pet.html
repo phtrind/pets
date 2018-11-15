@@ -116,45 +116,63 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12" style="margin-top: 20px; padding: 0px; text-align: center;">
-                            <span>{{ctrl.Anunciante.Nome}}</span> <br>
-                            <img src="icons/star.png" width="20px" ng-repeat="x in [].constructor(ctrl.Anunciante.Avaliacao) track by $index">
+                        <div class="col-md-12" style="text-align: center; margin-bottom: 25px; padding-top: 20px">
+                            <h2 class="color-primary" style="font-style:italic">{{ctrl.TipoAnuncio}}</h2>
                         </div>
                         <div class="col-md-12" style="margin-top: 20px; padding: 0px;">
-                            <button class="btn btn-primary" style="width: 100%; height: 50px;" data-toggle="modal"
-                                    data-target="#modalQueroAdotar">
-                                quero adotar
+                            <button class="btn btn-primary" style="width: 100%; height: 50px;" ng-click="ctrl.BtnInteresse()" ng-disabled="!ctrl.HabilitarAcoes">
+                                {{ctrl.btnInteresseText}}
                             </button>
                             <!-- Modal -->
                             <div class="modal fade" id="modalQueroAdotar" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            Ficamos muito felizes em saber que você quer oferecer um lar ao nosso amigo
-                                            {{ctrl.Pet.Nome}}!
-                                            <br><br>
+                                            <div ng-show="ctrl.TipoAnuncio == 'Doação'">
+                                                Ficamos muito felizes em saber que você quer oferecer um lar ao nosso amigo!
+                                            </div>
+                                            <div ng-show="ctrl.TipoAnuncio == 'Pet perdido' || ctrl.TipoAnuncio == 'Pet encontrado'">
+                                                Ficamos muito felizes em saber que você encontrou nosso amigo!
+                                            </div>
+                                            <br>
                                             Ao confirmar seu interesse, será aberto um chat para que você combine todos
-                                            os detalhes com o doador.
+                                            os detalhes com o Saver.
                                             <br><br>
                                             Esperamos que dê tudo certo, e estamos aqui para o que precisar ;)
                                             <br><br>
                                             #SouPetSaver
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
-                                            <button type="button" class="btn btn-primary">confirmar</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="button" class="btn btn-primary" ng-click="ctrl.BtnConfirmarInteresse()">Confirmar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Modal interesse sucesso -->
+                        <div class="modal fade" id="modalInteresseRealizado" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body" style="text-align:center">
+                                        <img src="icons/ok.png" style="width:150px">
+                                        <br /><br />
+                                        <span style="font-size: 24px">Seu interesse foi confirmado com sucesso!</span>
+                                        <br /><br />
+                                        <span style="font-size: 24px" class="link">Clique aqui para abrir o chat</span>
+                                    </div>
+                                    <div class="modal-footer" style="text-align: center">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-12" style="margin-top: 20px; padding: 0px;">
-                            <button class="btn btn-secondary" style="width: 100%; height: 50px;" data-toggle="modal"
-                                    data-target="#modalFazerPergunta">
-                                fazer uma pergunta
+                            <button class="btn btn-secondary" style="width: 100%; height: 50px;" ng-click="ctrl.BtnFazerPergunta()" ng-disabled="!ctrl.HabilitarAcoes">
+                                Fazer uma pergunta
                             </button>
                         </div>
-                        <!-- Modal -->
+                        <!-- Modal Pergunta -->
                         <div class="modal fade" id="modalFazerPergunta" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
@@ -163,23 +181,39 @@
                                         <br><br>
                                         Ela pode ajudar outros Savers.
                                         <br><br>
-                                        <div class="input-group">
-                                            <textarea class="form-control" aria-label="With textarea" style="height: 150px; border-radius: 5px;"></textarea>
+                                        <div class="form-group" ng-class="{'has-error':ctrl.ErroTxtPergunta}">
+                                            <textarea class="form-control" style="height: 150px; border-radius: 5px;" ng-model="ctrl.TxtPergunta"></textarea>
+                                            <small class="form-control-feedback" ng-show="ctrl.ErroTxtPergunta">Pergunta inválida</small>
                                         </div>
                                         <br>
                                         #SouPetSaver
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancelar</button>
-                                        <button type="button" class="btn btn-primary">perguntar</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn btn-primary" ng-click="ctrl.BtnConfirmarPergunta()">Perguntar</button>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal pergunta sucesso -->
+                    <div class="modal fade" id="modalPerguntaRealizada" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body" style="text-align:center">
+                                    <img src="icons/ok.png" style="width:150px">
+                                    <br /><br />
+                                    <span style="font-size: 24px">Sua pergunta foi enviada com sucesso!</span>
+                                </div>
+                                <div class="modal-footer" style="text-align: center">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="col-md-12 petInformacoesPrincipais">
-                            <h1 style="font-size: 50px; color: #500B89">{{ctrl.Pet.Nome}}</h1>
+                            <h2 style="font-size: 40px; color: #500B89">{{ctrl.Pet.Nome}}</h2>
                             <p>{{ctrl.Pet.RacaEspecie}}</p>
                             <div class="row">
                                 <div class="col-md-4 col-xs-12">
@@ -244,25 +278,34 @@
                         <div class="col-md-12 petInformacoesSecundarias">
                             <div class="row">
                                 <div class="col-md-12" style="margin-bottom: 20px">
-                                    <h3 style="color: #500B89">ajude a encontrar um lar para o {{ctrl.Pet.Nome}}</h3>
+                                    <h3 class="color-primary">Saver</h3>
+                                    <span>{{ctrl.Anunciante.Nome}}</span> <br>
+                                    <img src="icons/star.png" width="20px" ng-repeat="x in [].constructor(ctrl.Anunciante.Avaliacao) track by $index">
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+                        <div class="col-md-12 petInformacoesSecundarias">
+                            <div class="row">
+                                <div class="col-md-12" style="margin-bottom: 20px">
+                                    <h3 style="color: #500B89">Ajude a encontrar um lar para {{ctrl.preGenero}} {{ctrl.Pet.Nome}}</h3>
                                 </div>
                             </div>
                             <div class="row col-md-8 offset-md-2" style="text-align: center;">
-                                <div class="col-3">
+                                <div class="col-4">
                                     <img class="imgIconShare" src="icons/copy.png">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <img class="imgIconShare" src="icons/whatsapp.png">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <img class="imgIconShare" src="icons/facebook.png">
-                                </div>
-                                <div class="col-3">
-                                    <img class="imgIconShare" src="icons/instagram.png">
                                 </div>
                             </div>
                         </div>
-                        <button id="buttonGostei" class="btn btn-secondary"><img src="icons/heart.png" width="30px"></button>
+                        <button id="buttonGostei" class="btn" ng-show="ctrl.MostarGostei" ng-click="ctrl.BtnGostarClick()" ng-disabled="!ctrl.HabilitarAcoes" ng-class="{'btn-primary': ctrl.Gostei, 'btn-secondary': !ctrl.Gostei}">
+                            <img src="icons/heart.png" width="30px">
+                        </button>
                     </div>
                 </div>
                 <!--<hr />-->
@@ -274,7 +317,7 @@
                 <div class="row" style="margin-top: 25px" ng-show="ctrl.Duvidas.length > 0">
                     <!--Duvidas-->
                     <div class="col-md-12" style="margin-bottom: 25px">
-                        <h1 class="color-primary">Perguntas</h1>
+                        <h1 class="color-primary" style="text-align:center">Perguntas</h1>
                     </div>
                     <div class="col-md-12" style="margin-bottom: 25px" ng-repeat="x in ctrl.Duvidas">
                         <span style="font-style: italic;">{{x.Pergunta}}</span>

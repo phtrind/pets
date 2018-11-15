@@ -17,5 +17,9 @@ namespace PetSaver.Contracts.Paginas
         public bool Gostei { get; set; }
 
         public string StatusAnuncio { get; set; }
+
+        public string TipoAnuncio { get; set; }
+
+        public bool HabilitarAcoes { get; set; }
     }
 }

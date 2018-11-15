@@ -23,7 +23,11 @@ namespace PetSaver.Utilities
         {
             try
             {
-                if (Convert.ToBoolean(aDbBoolean))
+                if (aDbBoolean == null)
+                {
+                    return Constantes.Indefinido;
+                }
+                else if (Convert.ToBoolean(aDbBoolean))
                 {
                     return "Sim";
                 }

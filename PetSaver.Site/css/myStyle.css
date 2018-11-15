@@ -28,6 +28,12 @@ body{
 	border-color: #500B89 !important;
 }
 
+.btn-secondary:disabled {
+    cursor: not-allowed !important;
+    border: none !important;
+    opacity: 0.3;
+}
+
 .btn-secondary:hover {
 	color: white !important;
 	background-color: #500B89 !important;
@@ -107,7 +113,7 @@ body{
 }
 
 .sobreOPet {
-    text-align: justify;
+    text-align: center;
 }
 
 .imgIconShare {
