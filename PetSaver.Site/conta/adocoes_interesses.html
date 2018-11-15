@@ -282,7 +282,8 @@
                         <li>
                             <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../homepage/icons/donation.png" width="30px">
-                                <span class="hide-menu">Doações
+                                <span class="hide-menu">
+                                    Doações
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -303,7 +304,8 @@
                         <li>
                             <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/house.png" width="30px">
-                                <span class="hide-menu">Adoções
+                                <span class="hide-menu">
+                                    Adoções
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -324,7 +326,8 @@
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/binoculars.png" width="30px">
-                                <span class="hide-menu">Pet perdido
+                                <span class="hide-menu">
+                                    Pet perdido
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
@@ -335,9 +338,31 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="petencontrado_cadastrar.html" aria-expanded="false">
+                                    <a href="petperdido_relatorio.html" aria-expanded="false">
                                         <img src="../icons/location.png" width="30px">
-                                        <span class="show-menu">Encontrei um pet</span>
+                                        <span class="show-menu">Visualizar</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../icons/binoculars.png" width="30px">
+                                <span class="hide-menu">
+                                    Pet encontrado
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="petencontrado_cadastrar.html" aria-expanded="false">
+                                        <img src="../icons/find.png" width="30px">
+                                        <span class="show-menu">Perdi meu pet</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="petencontrado_relatorio.html" aria-expanded="false">
+                                        <img src="../icons/location.png" width="30px">
+                                        <span class="show-menu">Visualizar</span>
                                     </a>
                                 </li>
                             </ul>
@@ -388,9 +413,9 @@
                                  onclick="document.location.href='../pet.html'">
                                 <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
                                 <div class="col-md-12 text-center" style="margin-top:15px;">
-                                    <h2 style="color: #500B89">Thor</h2>
-                                    <p><img src="../icons/gender.png" width="25px">macho <img src="../icons/size.png" width="25px">filhote</p>
-                                    <p><img src="../icons/location.png" width="25px">belo horizonte</p>
+                                    <span><h2 style="color: #500B89">{{ctrl.Pet.Nome}}</h2></span>
+                                    <p><span><img src="../icons/gender.png" width="25px">{{ctrl.Pet.Sexo}}</span><span><img src="../icons/size.png" width="25px">{{ctrl.Pet.Sexo}}</span></p>
+                                    <p><span><img src="../icons/location.png" width="25px">{{ctrl.Pet.Cidade}} / {{ctrl.Pet.Estado}}</span></p>
                                     <button ng-show="adBoxHover" class="btn btn-primary">ver pet</button>
                                 </div>
                             </div>

@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
     <style>
-        #nenhumaDoacao p {
+        #nenhumPetEncontrado p {
             color: #500B89 !important;
             font-size: 20px;
             text-align: center;
@@ -38,12 +38,12 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+        <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="doacoesRelatorioController as ctrl">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="petencontradoRelatorioController as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -388,7 +388,7 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Minhas doações</h3>
+                    <h3 class="text-primary">Pets encontrados</h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
@@ -396,23 +396,22 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div>
-                    <div ng-show="ctrl.nenhumaDoacao">
+                    <div ng-show="ctrl.nenhumPetEncontrado">
                         <div class="row">
-                            <div class="col-md-12" id="nenhumaDoacao">
-                                <p>Olá Saver, por enquanto você não tem nenhuma doação cadastrada.</p>
+                            <div class="col-md-12" id="nenhumPetEncontrado">
+                                <p>Olá Saver, por enquanto você não cadastrou nenhum pet que foi encontrado.</p>
                                 <p>Mas que tal começarmos agora?</p>
                             </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: center;">
-                                <button class="btn btn-primary" onclick="document.location.href='doacoes_cadastro.html'">
-                                    Quero
-                                    doar um pet!
+                                <button class="btn btn-primary" onclick="document.location.href='petencontrado_cadastro.html'">
+                                    Encontrei um pet!
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div ng-hide="ctrl.nenhumaDoacao">
+                    <div ng-hide="ctrl.nenhumPetEncontrado">
                         <div class="row">
                             <div>
                                 <p>Saver, aqui estão todos os pets que você cadastrou</p>
@@ -656,7 +655,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="../js/controllers/app.js"></script>
     <script src="../js/controllers/base.js"></script>
-    <script src="../js/controllers/doacoesRelatorio.js"></script>
+    <script src="../js/controllers/petencontradoRelatorio.js"></script>
 
 </body>
 
