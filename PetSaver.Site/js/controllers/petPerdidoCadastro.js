@@ -4,11 +4,11 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
 
     ctrl.base = $controller('baseController', {});
 
-    ctrl.petInfos1 = true;
+    ctrl.petFotos = true;
 
     ctrl.OnInit = function () {
 
-        InitializeMap();
+        //InitializeMap();
 
         $http({
             method: 'GET',
@@ -260,11 +260,17 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
     }
 
     ctrl.FinalizarCadastro = function () {
-        ctrl.petSelection = false;
-        ctrl.petInfos1 = false;
-        ctrl.petObservacoes = false;
-        ctrl.petFotos = false;
-        ctrl.confirmacao = true;
+        //ctrl.petSelection = false;
+        //ctrl.petInfos1 = false;
+        //ctrl.petObservacoes = false;
+        //ctrl.petFotos = false;
+        //ctrl.confirmacao = true;
+
+
+        //$('#fine-uploader-validation').uploadStoredFiles();
+
+        $('#fine-uploader-validation').fineUploader('uploadStoredFiles');
+
     }
 
 

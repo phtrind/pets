@@ -59,6 +59,7 @@
     <Compile Include="Base\BasePageContract.cs" />
     <Compile Include="Base\ChaveValorContract.cs" />
     <Compile Include="Anuncios\Response\FiltroAnuncioResponse.cs" />
+    <Compile Include="FineUploader\FineUploaderResponse.cs" />
     <Compile Include="Paginas\Response\CadastroAnuncioPageResponse.cs" />
     <Compile Include="Paginas\Response\PetPage\AnuncianteContract.cs" />
     <Compile Include="Paginas\Response\PetPage\DuvidaContract.cs" />

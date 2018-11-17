@@ -105,6 +105,7 @@
     <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -122,11 +123,13 @@
     <Compile Include="Controllers\Anuncios\AnuncioController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\FileUploaderController.cs" />
     <Compile Include="Controllers\Localizacao\CidadeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\Pets\PetController.cs" />
     <Compile Include="Controllers\Usuarios\LoginController.cs" />
     <Compile Include="Controllers\Usuarios\UsuarioController.cs" />
+    <Compile Include="FileUploader\FileUpload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
