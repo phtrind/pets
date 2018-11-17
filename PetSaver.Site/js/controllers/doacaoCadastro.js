@@ -1,4 +1,4 @@
-app.controller('daocaoCadastroController', function ($controller) {
+app.controller('daocaoCadastroController', function ($controller, $http) {
 
     var ctrl = this;
 
@@ -27,6 +27,7 @@ app.controller('daocaoCadastroController', function ($controller) {
             ctrl.comboOutrosMostrar = false;
         }
         else if (pet == 3) {
+            ctrl.SetLocalizacao();
             ctrl.dogSelected = false;
             ctrl.catSelected = false;
             ctrl.hamsterSelected = true;
@@ -124,6 +125,112 @@ app.controller('daocaoCadastroController', function ($controller) {
         if (resultado > 0 && resultado < 9){
             ctrl.quantidadePets = ctrl.quantidadePets + number;
         }
+    }
+
+    ctrl.BtnProximoInfoBasicas = function () {
+
+        if (ctrl.ValidarInfoBasicasPet()) {
+            ctrl.GoTo(4);
+        }
+
+    }
+
+    ctrl.ValidarInfoBasicasPet = function () {
+
+        var contErro = 0;
+
+        //Nome
+        if (ctrl.base.StringIsEmpty(ctrl.TxtNomePet)) {
+            ctrl.nomeError = true;
+            contErro++;
+        }
+        else {
+            ctrl.nomeError = false;
+        }
+
+        //Sexo
+        if (ctrl.base.StringIsEmpty(ctrl.CmbSexoPet)) {
+            ctrl.sexoError = true;
+            contErro++;
+        }
+        else {
+            ctrl.sexoError = false;
+        }
+
+        //Raça / Espécie
+        if (ctrl.base.StringIsEmpty(ctrl.CmbRacaEspeciePet)) {
+            ctrl.racaError = true;
+            contErro++;
+        }
+        else {
+            ctrl.racaError = false;
+        }
+
+        //Idade
+        if (ctrl.base.StringIsEmpty(ctrl.CmbIdadePet)) {
+            ctrl.idadeError = true;
+            contErro++;
+        }
+        else {
+            ctrl.idadeError = false;
+        }
+
+        //Porte
+        if (ctrl.base.StringIsEmpty(ctrl.CmbPortePet)) {
+            ctrl.porteError = true;
+            contErro++;
+        }
+        else {
+            ctrl.porteError = false;
+        }
+
+        //Pelo
+        if (ctrl.base.StringIsEmpty(ctrl.CmbPeloPet)) {
+            ctrl.peloError = true;
+            contErro++;
+        }
+        else {
+            ctrl.peloError = false;
+        }
+
+        //Cor 1
+        if (ctrl.base.StringIsEmpty(ctrl.Cor1Pet)) {
+            ctrl.cor1error = true;
+            contErro++;
+        }
+        else {
+            ctrl.cor1error = false;
+        }
+
+        //Cor 2
+        if (ctrl.base.StringIsEmpty(ctrl.Cor2Pet)) {
+            ctrl.cor2error = true;
+            contErro++;
+        }
+        else {
+            ctrl.cor2error = false;
+        }
+
+        //Estado
+        if (ctrl.base.StringIsEmpty(ctrl.EstadoPet)) {
+            ctrl.estadoErro = true;
+            contErro++;
+        }
+        else {
+            ctrl.estadoErro = false;
+        }
+
+        //Cidade
+        if (ctrl.base.StringIsEmpty(ctrl.CidadePet)) {
+            ctrl.cidadeErro = true;
+            contErro++;
+        }
+        else {
+            ctrl.cidadeErro = false;
+        }
+
+        return contErro == 0;
+
     }
 
     ctrl.FinalizarCadastro = function () {
