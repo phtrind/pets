@@ -342,7 +342,7 @@
                                 </li>
                                 <li>
                                     <a href="petperdido_relatorio.html" aria-expanded="false">
-                                        <img src="../icons/location.png" width="30px">
+                                        <img src="../icons/list.png" width="30px">
                                         <span class="show-menu">Visualizar</span>
                                     </a>
                                 </li>
@@ -364,7 +364,7 @@
                                 </li>
                                 <li>
                                     <a href="petencontrado_relatorio.html" aria-expanded="false">
-                                        <img src="../icons/location.png" width="30px">
+                                        <img src="../icons/list.png" width="30px">
                                         <span class="show-menu">Visualizar</span>
                                     </a>
                                 </li>
@@ -483,69 +483,14 @@
                                                 </ul>
                                             </div> -->
                                         </th>
-                                        <th class="columnFitCenter">Chat</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <th class="columnFitCenter" scope="row">1</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
-                                        <td>Cachorro</span></td>
-                                        <td><span class="badge badge-primary">Adotado</span></td>
-                                        <td class="columnFitCenter">
-                                            <img class="link imgDisabled" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">2</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
-                                        <td>Gato</span></td>
-                                        <td><span class="badge badge-success">Em andamento</span></td>
-                                        <td class="columnFitCenter">
-                                            <img class="link" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">3</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
-                                        <td>Ave</span></td>
-                                        <td><span class="badge badge-danger">Finalizado</span></td>
-                                        <td class="columnFitCenter">
-                                            <img class="link imgDisabled" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">4</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
-                                        <td>Cachorro</span></td>
-                                        <td><span class="badge badge-primary">Adotado</span></td>
-                                        <td class="columnFitCenter">
-                                            <img class="link imgDisabled" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">5</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
-                                        <td>Gato</span></td>
-                                        <td><span class="badge badge-success">Em andamento</span></td>
-                                        <td class="columnFitCenter">
-                                            <img class="link" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">6</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
-                                        <td>Ave</span></td>
-                                        <td><span class="badge badge-danger">Finalizado</span></td>
-                                        <td class="columnFitCenter">
-                                            <img class="link imgDisabled" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">{{ctrl.Pet.Nome}}</span></td>
+                                        <td>{{ctrl.Pet.RacaEspecie}}</span></td>
+                                        <td><span class="badge badge-primary">{{ctrl.Pet.Status}}</span></td>   
                                     </tr>
                                 </tbody>
                             </table>

@@ -342,7 +342,7 @@
                                 </li>
                                 <li>
                                     <a href="petperdido_relatorio.html" aria-expanded="false">
-                                        <img src="../icons/location.png" width="30px">
+                                        <img src="../icons/list.png" width="30px">
                                         <span class="show-menu">Visualizar</span>
                                     </a>
                                 </li>
@@ -364,7 +364,7 @@
                                 </li>
                                 <li>
                                     <a href="petencontrado_relatorio.html" aria-expanded="false">
-                                        <img src="../icons/location.png" width="30px">
+                                        <img src="../icons/list.png" width="30px">
                                         <span class="show-menu">Visualizar</span>
                                     </a>
                                 </li>
@@ -481,7 +481,7 @@
                                         <th class="columnFitCenter">#</th>
                                         <th>Pet</th>
                                         <th>Tipo</th>
-                                        <th>Cadastro</th>
+                                        <th>Data de cadastro</th>
                                         <th>
                                             Status
                                             <!-- <div class="dropdown">
@@ -497,7 +497,6 @@
                                             </div> -->
                                         </th>
                                         <th class="columnFitCenter">Visualizações</th>
-                                        <th class="columnFitCenter">Interessados</th>
                                         <th class="columnFitCenter">Chats</th>
                                         <th class="columnFitCenter">Editar</th>
                                     </tr>
@@ -505,90 +504,13 @@
                                 <tbody>
                                     <tr>
                                         <th class="columnFitCenter" scope="row">1</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
-                                        <td>Cachorro</span></td>
-                                        <td>15/12/2018</td>
-                                        <td><span class="badge badge-danger">Ativo</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary">120</td>
-                                        <td class="columnFitCenter columnBoldPrimary">10</td>
+                                        <td><span class="link" onclick="document.location.href='../pet.html'">{{ctrl.Pet.Nome}}</span></td>
+                                        <td><span>{{ctrl.Pet.RacaEspecie}}</span></td>
+                                        <td><span>{{ctrl.Pet.DthCadastro}}</span></td>
+                                        <td><span class="badge badge-danger">{{ctrl.Pet.Status}}</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary"><span>{{ctrl.Pet.QtdVisualizacoes}}</span></td>
                                         <td class="columnFitCenter">
                                             <img class="link" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                        <td class="columnFitCenter">
-                                            <img class="link imgDisabled" src="../icons/edit.png"
-                                                 width="30px">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">2</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
-                                        <td>Gato</span></td>
-                                        <td>02/01/2019</td>
-                                        <td><span class="badge badge-warning">Em análise</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary">30</td>
-                                        <td class="columnFitCenter columnBoldPrimary">5</td>
-                                        <td class="columnFitCenter">
-                                            <img class="link" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                        <td class="columnFitCenter"><img class="link" src="../icons/edit.png" width="30px"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">3</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
-                                        <td>Ave</span></td>
-                                        <td>28/01/2019</td>
-                                        <td><span class="badge badge-info">Finalizado</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary">2</td>
-                                        <td class="columnFitCenter columnBoldPrimary">0</td>
-                                        <td class="columnFitCenter">
-                                            <img class="link imgDisabled" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                        <td class="columnFitCenter"><img class="link" src="../icons/edit.png" width="30px"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">4</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Thor</span></td>
-                                        <td>Cachorro</span></td>
-                                        <td>15/12/2018</td>
-                                        <td><span class="badge badge-success">Adotado</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary">120</td>
-                                        <td class="columnFitCenter columnBoldPrimary">10</td>
-                                        <td class="columnFitCenter">
-                                            <img class="link" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                        <td class="columnFitCenter">
-                                            <img class="link imgDisabled" src="../icons/edit.png"
-                                                 width="30px">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">5</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Lauren</span></td>
-                                        <td>Gato</span></td>
-                                        <td>02/01/2019</td>
-                                        <td><span class="badge badge-primary">De volta ao lar</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary">30</td>
-                                        <td class="columnFitCenter columnBoldPrimary">5</td>
-                                        <td class="columnFitCenter">
-                                            <img class="link" src="../icons/chat.png"
-                                                 width="30px">
-                                        </td>
-                                        <td class="columnFitCenter"><img class="link" src="../icons/edit.png" width="30px"></td>
-                                    </tr>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">6</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">Raimundo</span></td>
-                                        <td>Ave</span></td>
-                                        <td>28/01/2019</td>
-                                        <td><span class="badge badge-default">Lar provisório</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary">30</td>
-                                        <td class="columnFitCenter columnBoldPrimary">5</td>
-                                        <td class="columnFitCenter">
-                                            <img class="link imgDisabled" src="../icons/chat.png"
                                                  width="30px">
                                         </td>
                                         <td class="columnFitCenter">

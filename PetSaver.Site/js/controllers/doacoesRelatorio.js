@@ -1,4 +1,4 @@
-    app.controller('doacoesRelatorioController', function ($controller) {
+app.controller('doacoesRelatorioController', function ($controller) {
 
         var ctrl = this;
     
