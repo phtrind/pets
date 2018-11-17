@@ -111,7 +111,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="petPerdidoCadastroController  as ctrl" ng-init="ctrl.OnInit()">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="petPerdidoCadastroController as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -410,7 +410,7 @@
                                 </li>
                                 <li>
                                     <a href="petperdido_relatorio.html" aria-expanded="false">
-                                        <img src="../icons/location.png" width="30px">
+                                        <img src="../icons/list.png" width="30px">
                                         <span class="show-menu">Visualizar</span>
                                     </a>
                                 </li>
@@ -418,7 +418,7 @@
                         </li>
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false">
-                                <img src="../icons/binoculars.png" width="30px">
+                                <img src="../icons/find.png" width="30px">
                                 <span class="hide-menu">
                                     Pet encontrado
                                 </span>
@@ -426,13 +426,13 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li>
                                     <a href="petencontrado_cadastrar.html" aria-expanded="false">
-                                        <img src="../icons/find.png" width="30px">
-                                        <span class="show-menu">Perdi meu pet</span>
+                                        <img src="../icons/binoculars.png" width="30px">
+                                        <span class="show-menu">Encontrei um pet</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="petencontrado_relatorio.html" aria-expanded="false">
-                                        <img src="../icons/location.png" width="30px">
+                                        <img src="../icons/list.png" width="30px">
                                         <span class="show-menu">Visualizar</span>
                                     </a>
                                 </li>
@@ -495,7 +495,7 @@
                             </div>
                             <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
                                  ng-click="ctrl.SelectPet(3);">
-                                <img src="../icons/hamster.png" style="width:95%; padding: 13px; margin-bottom: 20px; margin-top: 7px;">
+                                <img src="../icons/hamster.png" style="width:100%; padding: 25px; margin-bottom: 3px; margin-top: 7px;">
                                 <h3>Roedor</h3>
                             </div>
                             <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
@@ -670,7 +670,7 @@
                                     </small>
                                 </div>
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.peloError}">
-                                    <select class="form-control custom-select" id="tamanho" aria-describedby="tamanhoHelp" ng-model="ctrl.CmbPeloPet">
+                                    <select class="form-control custom-select" id="tamanho" aria-describedby="peloHelp" ng-model="ctrl.CmbPeloPet">
                                         <option value="" disabled selected>Pelo</option>
                                         <option ng-repeat="x in ctrl.Pelos" value="{{x.Chave}}">{{x.Valor}}</option>
                                         <option value="0">Não se aplica</option>

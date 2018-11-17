@@ -32,6 +32,8 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
 
     }
 
+    ctrl.petSelection = true;
+
     ctrl.SelectPet = function (pet) {
         if (pet == 1) {
             ctrl.dogSelected = true;
@@ -105,9 +107,7 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
             ctrl.petFotos = false;
         }
         else if (number == 3) {
-
             ctrl.SetLocalizacao();
-
             ctrl.petSelection = false;
             ctrl.petLocalizacao = false;
             ctrl.petInfos1 = true;
@@ -272,7 +272,5 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
         $('#fine-uploader-validation').fineUploader('uploadStoredFiles');
 
     }
-
-
-
+    
 });
