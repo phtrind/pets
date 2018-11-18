@@ -57,9 +57,9 @@
                 <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
             </span>
             <ul class="qq-upload-list-selector qq-upload-list" aria-live="polite" aria-relevant="additions removals" style="max-height: none">
-                <li class="row col-md-12">
+                <li class="row col-md-12 lilili">
                     <div class="col-1" style="display:flex;justify-content:center;align-items:center;">
-                        <input type="radio" name="teste" />
+                        <input name="radioDefaultImage" onclick="imgDefaultSelected()" type="radio" />
                     </div>
                     <div class="col-md-3 col-7">
                         <div class="qq-progress-bar-container-selector">
@@ -877,12 +877,6 @@
     <script src="../js/lib/datamap/datamaps.world.min.js"></script>
     <script src="../js/lib/datamap/datamap-init.js"></script>
 
-    <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-    <script src="../js/controllers/app.js"></script>
-    <script src="../js/controllers/base.js"></script>
-    <script src="../js/controllers/petPerdidoCadastro.js"></script>
-
     <!-- Fine Uploader jQuery JS file
     ====================================================================== -->
     <script src="../js/fileuploader/jquery.fine-uploader.js"></script>
@@ -890,6 +884,24 @@
     <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
     ====================================================================== -->
     <script>
+
+        //armaneza o index da imagem destaque
+        var indexDefaultImage = null;
+
+        var GenerateGuid = function () {
+
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16)
+                    .substring(1);
+            }
+
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+
+        }
+
+        var guidAnuncio = GenerateGuid();
+
         $('#fine-uploader-validation').fineUploader({
             debug: true,
             autoUpload: false,
@@ -899,14 +911,18 @@
                 endpoint: 'http://localhost/PetSaver.WebApi/api/FileUploader',
                 forceMultipart: true,
                 method: 'POST',
-                //customHeaders: {
-                //    Authorization: 'Bearer ' + sessionStorage.getItem('Token')
-                //}
+                customHeaders: {
+                    Authorization: 'Bearer ' + sessionStorage.getItem('Token')
+                },
+                //paramsInBody: false,
+                params: {
+                    Guid: guidAnuncio
+                }
             },
             thumbnails: {
                 placeholders: {
-                    waitingPath: '/source/placeholders/waiting-generic.png',
-                    notAvailablePath: '/source/placeholders/not_available-generic.png'
+                    waitingPath: '../images/loading.gif',
+                    notAvailablePath: '../icons/close.png'
                 }
             },
             validation: {
@@ -916,9 +932,42 @@
             },
             retry: {
                 enableAuto: true
+            },
+            scaling: {
+                sendOriginal: false,
+                sizes: [
+                    { name: "compress", maxSize: 750 }
+                ]
+            },
+            callbacks: {
+                onComplete: function (event, id, fileName, responseJSON) {
+                    var teste = JSON.parse(responseJSON.response);
+
+                    //TODO: implementar
+
+                    //alert(teste.extraInformation);
+                },
+                onAllComplete: function () {
+                    //TODO: implementar
+
+                    //alert('doneAll');
+                }
             }
         });
+
+        var imgDefaultSelected = function () {
+
+            indexDefaultImage = $("input[name=radioDefaultImage]:checked").closest('li').index();
+
+        }
+
     </script>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/base.js"></script>
+    <script src="../js/controllers/petPerdidoCadastro.js"></script>
 
 </body>
 

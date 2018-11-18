@@ -8,5 +8,7 @@
 
         public int IdEstado { get; set; }
         public int IdCidade { get; set; }
+
+        public string GuidImagens { get; set; }
     }
 }

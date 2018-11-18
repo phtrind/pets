@@ -32,7 +32,7 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
 
     }
 
-    ctrl.petSelection = true;
+    //ctrl.petSelection = true;
 
     ctrl.SelectPet = function (pet) {
         if (pet == 1) {

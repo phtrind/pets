@@ -1,4 +1,5 @@
-﻿using PetSaver.Contracts.FineUploader;
+﻿using Newtonsoft.Json;
+using PetSaver.Contracts.FineUploader;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,10 +11,11 @@ using System.Web.Http;
 
 namespace PetSaver.WebApi.Controllers
 {
+    [Authorize]
     public class FileUploaderController : ApiController
     {
         // POST: api/FileUploader
-        public async Task<FineUploaderResponse> Post()
+        public async Task<HttpResponseMessage> Post()
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
@@ -28,28 +30,40 @@ namespace PetSaver.WebApi.Controllers
             //READ CONTENTS OF REQUEST TO MEMORY WITHOUT FLUSHING TO DISK
             var result = await Request.Content.ReadAsMultipartAsync(provider);
 
-            var cont = 1;
+            var guidAnuncio = result.FormData["Guid"];
+            var name = result.FormData["qquuid"];
+
+            Directory.CreateDirectory($"{path}/{guidAnuncio}");
+
+            var cont = 0;
 
             //get the posted files  
             foreach (MultipartFileData file in result.FileData)
             {
                 string extension = Utilities.MimeTypeHelper.GetExtension(file.Headers.ContentType.MediaType);
 
-                if (File.Exists($"{path}/{cont}{extension}"))
+                if (File.Exists($"{path}/{guidAnuncio}/{name}{extension}"))
                 {
-                    File.Delete($"{path}/{cont}{extension}");
+                    File.Delete($"{path}/{name}{extension}");
                 }
 
-                File.Move(file.LocalFileName, $"{path}/{cont}{extension}");
+                File.Move(file.LocalFileName, $"{path}/{guidAnuncio}/{name}{extension}");
 
                 cont++;
             }
 
-            return new FineUploaderResponse
+            var retorno = JsonConvert.SerializeObject(new FineUploaderResponse
             {
-                Success = true,
-                ExtraInformation = 123
+                success = true,
+                extraInformation = 123
+            });
+
+            var resp = new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new StringContent(retorno, System.Text.Encoding.UTF8, "text/plain")
             };
+
+            return resp;
         }
     }
 }
