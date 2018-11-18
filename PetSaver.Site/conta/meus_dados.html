@@ -437,16 +437,18 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroDocumentoMeusDados}">
                                         <label class="color-primary">Documento</label>
-                                        <select class="form-control custom-select" style="border-radius: 8px" disabled>
+                                        <select class="form-control custom-select" style="border-radius: 8px" ng-model="ctrl.DocumentoMeusDados" disabled>
                                             <option>CPF</option>
                                             <option>CNPJ</option>
                                         </select>
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroDocumentoMeusDados">Data de nascimento inválida</small>
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroCpfCnpjMeusDados}">
                                         <label class="color-primary">CPF/CNPJ</label>
-                                        <input type="text" value="101.101.101-10" class="form-control" style="border-radius: 8px" disabled>
+                                        <input type="text" class="form-control" style="border-radius: 8px" ng-model="ctrl.CpfCnpjMeusDados" disabled>
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroCpfCnpjMeusDados">Data de nascimento inválida</small>
                                     </div>
                                     <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroEmailMeusDados}">
                                         <label class="color-primary">E-mail</label>

@@ -47,6 +47,24 @@
             ctrl.ErroSexoMeusDados = false;
         }
 
+        //Documento
+        if (ctrl.base.StringIsEmpty(ctrl.DocumentoMeusDados)) {
+            ctrl.ErroDocumentoMeusDados = true;
+            contErro++;
+        }
+        else {
+            ctrl.ErroDocumentoMeusDados = false;
+        }
+
+        //CPF/CNPJ
+        if (ctrl.base.StringIsEmpty(ctrl.CpfCnpjMeusDados)) {
+            ctrl.ErroCpfCnpjMeusDados = true;
+            contErro++;
+        }
+        else {
+            ctrl.ErroCpfCnpjMeusDados = false;
+        }
+
         //Email
         if (ctrl.base.EmailIsValid(ctrl.EmailMeusDados)) {
             ctrl.ErroEmailMeusDados = false;
