@@ -10,6 +10,7 @@
         #region .: Chaves Config :.
 
         public const string PathFotosAnuncios = "PathFotosAnuncios";
+        public const string NomePastaFotos = "NomePastaFotos";
 
         #endregion
     }

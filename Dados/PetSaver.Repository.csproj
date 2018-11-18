@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anuncios\AnuncioFotoRepository.cs" />
     <Compile Include="Anuncios\AnuncioGosteiRepository.cs" />
     <Compile Include="Anuncios\AnuncioRepository.cs" />
     <Compile Include="Anuncios\AnuncioStatusRepository.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Localizacao\EnderecoRepository.cs" />
     <Compile Include="Localizacao\EstadoRepository.cs" />
     <Compile Include="Localizacao\LocalizacaoRepository.cs" />
+    <Compile Include="Mapeamento\Anuncios\AnuncioFotoMap.cs" />
     <Compile Include="Mapeamento\Anuncios\AnuncioGosteiMap.cs" />
     <Compile Include="Mapeamento\Anuncios\AnuncioStatusMap.cs" />
     <Compile Include="Mapeamento\Anuncios\AnuncioVisitaMap.cs" />

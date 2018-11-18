@@ -24,12 +24,16 @@ namespace PetSaver.WebApi.Controllers
 
             var rootPath = ConfigurationManager.AppSettings[Utilities.Constantes.PathFotosAnuncios] ?? string.Empty;
 
+            if (string.IsNullOrEmpty(rootPath))
+            {
+                throw new BusinessException("O endereço da pasta raiz das fotos nos anúncios não está definido no config.");
+            }
+
             var provider = new MultipartFormDataStreamProvider(rootPath);
 
             var result = await Request.Content.ReadAsMultipartAsync(provider);
 
             var guidAnuncio = result.FormData["Guid"];
-            var imageName = result.FormData["qquuid"];
 
             Directory.CreateDirectory($"{rootPath}/{guidAnuncio}");
 
@@ -45,9 +49,11 @@ namespace PetSaver.WebApi.Controllers
                 throw new BusinessException("O tipo de arquivo enviado não é válido.");
             }
 
+            var arquivosExistentes = Directory.GetFiles($"{rootPath}/{guidAnuncio}");
+
             string extension = Utilities.MimeTypeHelper.GetExtension(file.Headers.ContentType.MediaType);
 
-            var filePath = $"{rootPath}/{guidAnuncio}/{imageName}{extension}";
+            var filePath = $"{rootPath}/{guidAnuncio}/{arquivosExistentes.Count()}{extension}";
 
             if (File.Exists(filePath))
             {

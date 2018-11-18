@@ -137,7 +137,7 @@ namespace PetSaver.Business.Anuncios
                 Sexo = Convert.ToString(x.PTS_DESCRICAO),
                 Idade = Convert.ToString(x.PID_DESCRICAO),
                 Localizacao = $"{Convert.ToString(x.CID_NOME)} / {Convert.ToString(x.EST_SIGLA)}",
-                Foto = Convert.ToString(x.ANF_LINK),
+                Foto = AnuncioFotoBusiness.TratarCaminhoImagem(Convert.ToString(x.ANF_LINK)),
                 Tipo = Convert.ToString(x.ANT_DESCRICAO)
             });
         }

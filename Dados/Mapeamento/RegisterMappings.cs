@@ -33,6 +33,7 @@ namespace PetSaver.Repository
                 config.AddMap(new AvaliacaoMap());
                 config.AddMap(new AnuncioGosteiMap());
                 config.AddMap(new AnuncioStatusMap());
+                config.AddMap(new AnuncioFotoMap());
                 config.ForDommel();
             });
         }
