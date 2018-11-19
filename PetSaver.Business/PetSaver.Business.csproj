@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anuncios\AnuncioBusiness.cs" />
+    <Compile Include="Anuncios\AnuncioFotoBusiness.cs" />
     <Compile Include="Anuncios\AnuncioGosteiBusiness.cs" />
     <Compile Include="Anuncios\AnuncioStatusBusiness.cs" />
     <Compile Include="Anuncios\AnuncioVisitaBusiness.cs" />

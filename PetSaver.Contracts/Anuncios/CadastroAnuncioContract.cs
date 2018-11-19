@@ -10,5 +10,6 @@
         public int IdCidade { get; set; }
 
         public string GuidImagens { get; set; }
+        public int IndexFotoDestaque { get; set; }
     }
 }

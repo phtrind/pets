@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PetSaver.Contracts.FineUploader;
-using System;
-using System.Collections.Generic;
+using PetSaver.Exceptions;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -19,51 +19,58 @@ namespace PetSaver.WebApi.Controllers
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable,
-                                                                       "This request is not properly formatted - not multipart."));
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotAcceptable, "A requisição não é um MimeMultipart."));
             }
 
-            var path = @"D:\Documents\Git\pets\PetSaver.Site\anuncios";
+            var rootPath = ConfigurationManager.AppSettings[Utilities.Constantes.PathFotosAnuncios] ?? string.Empty;
 
-            var provider = new MultipartFormDataStreamProvider(path);
+            if (string.IsNullOrEmpty(rootPath))
+            {
+                throw new BusinessException("O endereço da pasta raiz das fotos nos anúncios não está definido no config.");
+            }
 
-            //READ CONTENTS OF REQUEST TO MEMORY WITHOUT FLUSHING TO DISK
+            var provider = new MultipartFormDataStreamProvider(rootPath);
+
             var result = await Request.Content.ReadAsMultipartAsync(provider);
 
             var guidAnuncio = result.FormData["Guid"];
-            var name = result.FormData["qquuid"];
 
-            Directory.CreateDirectory($"{path}/{guidAnuncio}");
+            Directory.CreateDirectory($"{rootPath}/{guidAnuncio}");
 
-            var cont = 0;
-
-            //get the posted files  
-            foreach (MultipartFileData file in result.FileData)
+            if (!result.FileData.Any())
             {
-                string extension = Utilities.MimeTypeHelper.GetExtension(file.Headers.ContentType.MediaType);
-
-                if (File.Exists($"{path}/{guidAnuncio}/{name}{extension}"))
-                {
-                    File.Delete($"{path}/{name}{extension}");
-                }
-
-                File.Move(file.LocalFileName, $"{path}/{guidAnuncio}/{name}{extension}");
-
-                cont++;
+                throw new BusinessException("Nenhuma imagem foi recebida.");
             }
 
-            var retorno = JsonConvert.SerializeObject(new FineUploaderResponse
+            var file = result.FileData[0];
+
+            if (!Utilities.MimeTypeHelper.MimeIsValid(file.Headers.ContentType.MediaType))
             {
-                success = true,
-                extraInformation = 123
+                throw new BusinessException("O tipo de arquivo enviado não é válido.");
+            }
+
+            var arquivosExistentes = Directory.GetFiles($"{rootPath}/{guidAnuncio}");
+
+            string extension = Utilities.MimeTypeHelper.GetExtension(file.Headers.ContentType.MediaType);
+
+            var filePath = $"{rootPath}/{guidAnuncio}/{arquivosExistentes.Count()}{extension}";
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            File.Move(file.LocalFileName, filePath);
+
+            var objRetorno = JsonConvert.SerializeObject(new FineUploaderResponse
+            {
+                success = true
             });
 
-            var resp = new HttpResponseMessage(HttpStatusCode.OK)
+            return new HttpResponseMessage(HttpStatusCode.OK)
             {
-                Content = new StringContent(retorno, System.Text.Encoding.UTF8, "text/plain")
+                Content = new StringContent(objRetorno, System.Text.Encoding.UTF8, "text/plain")
             };
-
-            return resp;
         }
     }
 }
