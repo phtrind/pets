@@ -435,16 +435,13 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label class="color-primary">Nome</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" maxlength="30" class="form-control" ng-model="ctrl.Nome">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="color-primary">Tipo</label>
                                             <select class="form-control custom-select">
                                                 <option>Todos</option>
-                                                <option>Cachorro</option>
-                                                <option>Gato</option>
-                                                <option>Ave</option>
-                                                <option>Peixe</option>
+                                                <option ng-repeat="x in ctrl.Animais" value="{{x.Chave}}">{{x.Valor}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -461,13 +458,7 @@
                                             <label class="color-primary">Status</label>
                                             <select class="form-control custom-select">
                                                 <option>Todos</option>
-                                                <option>Ativo</option>
-                                                <option>Em análise</option>
-                                                <option>Adotado</option>
-                                                <option>Finalizado</option>
-                                                <option>Cancelado</option>
-                                                <option>De volta ao lar</option>
-                                                <option>Lar provisório</option>
+                                                <option ng-repeat="x in ctrl.Status" value="{{x.Chave}}">{{x.Valor}}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -506,7 +497,7 @@
                                         <th class="columnFitCenter" scope="row">1</th>
                                         <td><span class="link" onclick="document.location.href='../pet.html'">{{ctrl.Pet.Nome}}</span></td>
                                         <td><span>{{ctrl.Pet.RacaEspecie}}</span></td>
-                                        <td><span>{{ctrl.Pet.DthCadastro}}</span></td>
+                                        <td><span>{{ctrl.Pet.DataCadastro}}</span></td>
                                         <td><span class="badge badge-danger">{{ctrl.Pet.Status}}</span></td>
                                         <td class="columnFitCenter columnBoldPrimary"><span>{{ctrl.Pet.QtdVisualizacoes}}</span></td>
                                         <td class="columnFitCenter">
@@ -577,7 +568,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="../js/controllers/app.js"></script>
     <script src="../js/controllers/base.js"></script>
-    <script src="../js/controllers/petperdidoRelatorio.js"></script>
+    <script src="../js/controllers/petPerdidoRelatorio.js"></script>
 
 </body>
 
