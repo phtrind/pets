@@ -27,7 +27,6 @@ app.controller('daocaoCadastroController', function ($controller, $http) {
             ctrl.comboOutrosMostrar = false;
         }
         else if (pet == 3) {
-            ctrl.SetLocalizacao();
             ctrl.dogSelected = false;
             ctrl.catSelected = false;
             ctrl.hamsterSelected = true;
