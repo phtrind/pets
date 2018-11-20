@@ -1,6 +1,6 @@
 ﻿namespace PetSaver.Contracts.Anuncios
 {
-    public class CadastrarPetPerdidoRequest
+    public class CadastrarPetAnuncioRequest
     {
         public int IdUsuario { get; set; }
 

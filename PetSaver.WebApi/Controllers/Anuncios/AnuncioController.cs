@@ -85,11 +85,11 @@ namespace PetSaver.WebApi.Controllers.Anuncios
         [Authorize]
         [Route("api/Anuncio/CadastrarDoacao")]
         [HttpPost]
-        public HttpResponseMessage CadastrarDoacao([FromBody]CadastrarDoacaoRequest aRequest)
+        public HttpResponseMessage CadastrarDoacao([FromBody]CadastrarPetAnuncioRequest aRequest)
         {
             try
             {
-                new AnuncioBusiness().CadastrarDoacao(aRequest);
+                new AnuncioBusiness().Cadastrar(aRequest, TiposAnuncio.Doacao);
             }
             catch (Exception ex)
             {
@@ -102,11 +102,11 @@ namespace PetSaver.WebApi.Controllers.Anuncios
         [Authorize]
         [Route("api/Anuncio/CadastrarPetPerdido")]
         [HttpPost]
-        public HttpResponseMessage CadastrarPetPerdido([FromBody]CadastrarPetPerdidoRequest aRequest)
+        public HttpResponseMessage CadastrarPetPerdido([FromBody]CadastrarPetAnuncioRequest aRequest)
         {
             try
             {
-                new AnuncioBusiness().CadastrarPetPerdido(aRequest, TiposAnuncio.PetPerdido);
+                new AnuncioBusiness().Cadastrar(aRequest, TiposAnuncio.PetPerdido);
             }
             catch (Exception ex)
             {
@@ -119,11 +119,11 @@ namespace PetSaver.WebApi.Controllers.Anuncios
         [Authorize]
         [Route("api/Anuncio/CadastrarPetEncontrado")]
         [HttpPost]
-        public HttpResponseMessage CadastrarPetEncontrado([FromBody]CadastrarPetPerdidoRequest aRequest)
+        public HttpResponseMessage CadastrarPetEncontrado([FromBody]CadastrarPetAnuncioRequest aRequest)
         {
             try
             {
-                new AnuncioBusiness().CadastrarPetPerdido(aRequest, TiposAnuncio.PetEncontrado);
+                new AnuncioBusiness().Cadastrar(aRequest, TiposAnuncio.PetEncontrado);
             }
             catch (Exception ex)
             {

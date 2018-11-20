@@ -1,4 +1,5 @@
-﻿using PetSaver.Business.Pets;
+﻿using PetSaver.Business.Localizacao;
+using PetSaver.Business.Pets;
 using PetSaver.Business.Usuarios;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Paginas;
@@ -6,6 +7,7 @@ using PetSaver.Contracts.Paginas.Response.PetPage;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Entity.Enums.Tipos;
+using PetSaver.Entity.Localizacao;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
 using PetSaver.Utilities;
@@ -20,51 +22,8 @@ namespace PetSaver.Business.Anuncios
     {
         #region .: Cadastros :.
 
-        public void CadastrarDoacao(CadastrarDoacaoRequest aRequest)
+        public void Cadastrar(CadastrarPetAnuncioRequest aRequest, TiposAnuncio aTipoAnuncio)
         {
-            var usuario = new UsuarioBusiness().Listar(aRequest.IdUsuario);
-
-            if (usuario == null)
-            {
-                throw new BusinessException("O usuário informado é inválido.");
-            }
-
-            if (aRequest.Anuncios == null || !aRequest.Anuncios.Any())
-            {
-                throw new BusinessException("É obrigatório ter pelo menos um anúncio.");
-            }
-
-            foreach (var obj in aRequest.Anuncios)
-            {
-                if (obj.Pet == null)
-                {
-                    throw new BusinessException("O objeto Pet não pode ser nulo.");
-                }
-
-                var idPet = new PetBusiness().Cadastrar(usuario.IdLogin, obj.Pet);
-
-                Inserir(new AnuncioEntity()
-                {
-                    IdLoginCadastro = usuario.IdLogin,
-                    IdStatus = Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
-                    IdTipo = Conversor.EnumParaInt(TiposAnuncio.Doacao),
-                    IdPet = idPet,
-                    IdEstado = obj.IdEstado,
-                    IdCidade = obj.IdCidade,
-                    IdUsuario = aRequest.IdUsuario
-                });
-
-                //TODO: Implementar cadastro das imagens do anúncio
-            }
-        }
-
-        public void CadastrarPetPerdido(CadastrarPetPerdidoRequest aRequest, TiposAnuncio aTipoAnuncio)
-        {
-            if (aTipoAnuncio == TiposAnuncio.Doacao)
-            {
-                throw new BusinessException("Tipo de anúncio inválido.");
-            }
-
             var usuario = new UsuarioBusiness().Listar(aRequest.IdUsuario);
 
             if (usuario == null)
@@ -86,7 +45,7 @@ namespace PetSaver.Business.Anuncios
             {
                 var idPet = new PetBusiness().Cadastrar(usuario.IdLogin, aRequest.Anuncio.Pet);
 
-                var idAnuncio = Inserir(new AnuncioEntity()
+                var anuncio = new AnuncioEntity()
                 {
                     IdLoginCadastro = usuario.IdLogin,
                     IdStatus = Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
@@ -94,11 +53,25 @@ namespace PetSaver.Business.Anuncios
                     IdPet = idPet,
                     IdEstado = aRequest.Anuncio.IdEstado,
                     IdCidade = aRequest.Anuncio.IdCidade,
-                    IdUsuario = aRequest.IdUsuario,
-                    //IdLocalizacao = new LocalizacaoBusiness() //TODO: implementar 
-                });
+                    IdUsuario = aRequest.IdUsuario
+                };
 
-                new AnuncioFotoBusiness().Cadastrar(idAnuncio, usuario.IdLogin, aRequest.Anuncio.GuidImagens, aRequest.Anuncio.IndexFotoDestaque);
+                if (aRequest.Anuncio.Localizacao != null)
+                {
+                    anuncio.IdLocalizacao = new LocalizacaoBusiness().Inserir(new LocalizacaoEntity()
+                    {
+                        IdLoginCadastro = usuario.IdLogin,
+                        Latitude = aRequest.Anuncio.Localizacao.Latitude,
+                        Longitude = aRequest.Anuncio.Localizacao.Longitude
+                    });
+                }
+
+                var idAnuncio = Inserir(anuncio);
+
+                new AnuncioFotoBusiness().Cadastrar(idAnuncio,
+                                                    usuario.IdLogin,
+                                                    aRequest.Anuncio.GuidImagens,
+                                                    aRequest.Anuncio.IndexFotoDestaque);
 
                 transaction.Complete();
             }

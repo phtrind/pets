@@ -129,7 +129,7 @@ namespace PetSaver.Business.Tests.Anuncios
         [TestMethod]
         public void CadastrarPetPerdido_ValidPetPerdido_DoesntThrowException()
         {
-            new AnuncioBusiness().CadastrarPetPerdido(new CadastrarPetPerdidoRequest()
+            new AnuncioBusiness().Cadastrar(new CadastrarPetAnuncioRequest()
             {
                 IdUsuario = 4,
                 Anuncio = new CadastroAnuncioContract()
@@ -162,7 +162,7 @@ namespace PetSaver.Business.Tests.Anuncios
         [TestMethod]
         public void CadastrarPetPerdido_ValidPetEncontrado_DoesntThrowException()
         {
-            new AnuncioBusiness().CadastrarPetPerdido(new CadastrarPetPerdidoRequest()
+            new AnuncioBusiness().Cadastrar(new CadastrarPetAnuncioRequest()
             {
                 IdUsuario = 4,
                 Anuncio = new CadastroAnuncioContract()

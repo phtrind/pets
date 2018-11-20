@@ -44,11 +44,10 @@
     <Compile Include="Anuncios\CadastroAnuncioContract.cs" />
     <Compile Include="Anuncios\CadastroLocalizacaoContract.cs" />
     <Compile Include="Anuncios\CadastroPetContract.cs" />
-    <Compile Include="Anuncios\Request\CadastrarDoacaoRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarDuvidaRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarGosteiRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarInteresseRequest.cs" />
-    <Compile Include="Anuncios\Request\CadastrarPetPerdidoRequest.cs" />
+    <Compile Include="Anuncios\Request\CadastrarAnuncioRequest.cs" />
     <Compile Include="Anuncios\Request\RelatorioDoacoes\FiltroRelatorioDoacoesRequest.cs" />
     <Compile Include="Anuncios\Request\RelatorioDoacoes\RelatorioDoacoesRequest.cs" />
     <Compile Include="Anuncios\Response\AnuncioMiniaturaResponse.cs" />

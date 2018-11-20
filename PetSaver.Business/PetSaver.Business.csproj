@@ -57,6 +57,7 @@
     <Compile Include="Localizacao\CidadeBusiness.cs" />
     <Compile Include="Localizacao\EnderecoBusiness.cs" />
     <Compile Include="Localizacao\EstadoBusiness.cs" />
+    <Compile Include="Localizacao\LocalizacaoBusiness.cs" />
     <Compile Include="PageBusiness.cs" />
     <Compile Include="Pets\AnimalBusiness.cs" />
     <Compile Include="Pets\CorBusiness.cs" />
