@@ -4,16 +4,15 @@ using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Paginas;
 using PetSaver.Contracts.Paginas.Response.PetPage;
 using PetSaver.Entity.Anuncios;
-using PetSaver.Entity.Enums.Pets;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
 using PetSaver.Utilities;
-using PetSaver.Utilities.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 
 namespace PetSaver.Business.Anuncios
 {
@@ -83,20 +82,26 @@ namespace PetSaver.Business.Anuncios
                 throw new BusinessException("O objeto Pet não pode ser nulo.");
             }
 
-            var idPet = new PetBusiness().Cadastrar(usuario.IdLogin, aRequest.Anuncio.Pet);
-
-            Inserir(new AnuncioEntity()
+            using (var transaction = new TransactionScope())
             {
-                IdLoginCadastro = usuario.IdLogin,
-                IdStatus = Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
-                IdTipo = Conversor.EnumParaInt(aTipoAnuncio),
-                IdPet = idPet,
-                IdEstado = aRequest.Anuncio.IdEstado,
-                IdCidade = aRequest.Anuncio.IdCidade,
-                IdUsuario = aRequest.IdUsuario
-            });
+                var idPet = new PetBusiness().Cadastrar(usuario.IdLogin, aRequest.Anuncio.Pet);
 
-            //TODO: Implementar cadastro das imagens do anúncio
+                var idAnuncio = Inserir(new AnuncioEntity()
+                {
+                    IdLoginCadastro = usuario.IdLogin,
+                    IdStatus = Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
+                    IdTipo = Conversor.EnumParaInt(aTipoAnuncio),
+                    IdPet = idPet,
+                    IdEstado = aRequest.Anuncio.IdEstado,
+                    IdCidade = aRequest.Anuncio.IdCidade,
+                    IdUsuario = aRequest.IdUsuario,
+                    //IdLocalizacao = new LocalizacaoBusiness() //TODO: implementar 
+                });
+
+                new AnuncioFotoBusiness().Cadastrar(idAnuncio, usuario.IdLogin, aRequest.Anuncio.GuidImagens, aRequest.Anuncio.IndexFotoDestaque);
+
+                transaction.Complete();
+            }
         }
 
         #endregion

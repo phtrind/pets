@@ -77,6 +77,15 @@ function InitializeMap() {
                 bounds.extend(place.geometry.location);
             }
 
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            }));
+
+            latitude = place.geometry.location.lat();
+            longitude = place.geometry.location.lng();
+
         });
 
         map.fitBounds(bounds);

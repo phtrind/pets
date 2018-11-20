@@ -21,16 +21,23 @@ namespace PetSaver.Repository.Pets
 
             if (aObjeto.IdRacaEspecie.HasValue)
             {
-                var raca = new RacaEspecieRepository().Listar(aObjeto.IdRacaEspecie.Value);
-
-                if (raca == null)
+                if (aObjeto.IdRacaEspecie.Value == default)
                 {
-                    throw new DbValidationException("O Id da raça é inválido.");
+                    aObjeto.IdRacaEspecie = null;
                 }
-
-                if (raca.IdAnimal != aObjeto.IdAnimal)
+                else
                 {
-                    throw new BusinessException("O Id da raça não é referente ao Id do animal.");
+                    var raca = new RacaEspecieRepository().Listar(aObjeto.IdRacaEspecie.Value);
+
+                    if (raca == null)
+                    {
+                        throw new DbValidationException("O Id da raça é inválido.");
+                    }
+
+                    if (raca.IdAnimal != aObjeto.IdAnimal)
+                    {
+                        throw new BusinessException("O Id da raça não é referente ao Id do animal.");
+                    }
                 }
             }
 

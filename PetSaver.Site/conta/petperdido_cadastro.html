@@ -484,27 +484,27 @@
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
                             <div style="margin-left: 55px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
-                                 ng-click="ctrl.SelectPet(1);">
+                                 ng-click="ctrl.SelectPet('Cachorro');">
                                 <img src="../icons/dog.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Cachorro</h3>
                             </div>
                             <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
-                                 ng-click="ctrl.SelectPet(2);">
+                                 ng-click="ctrl.SelectPet('Gato');">
                                 <img src="../icons/cat.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Gato</h3>
                             </div>
                             <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
-                                 ng-click="ctrl.SelectPet(3);">
+                                 ng-click="ctrl.SelectPet('Roedor');">
                                 <img src="../icons/hamster.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Roedor</h3>
                             </div>
                             <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
-                                 ng-click="ctrl.SelectPet(4);">
+                                 ng-click="ctrl.SelectPet('Ave');">
                                 <img src="../icons/bird.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Ave</h3>
                             </div>
                             <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
-                                 ng-click="ctrl.SelectPet(5);">
+                                 ng-click="ctrl.SelectPet('Outros');">
                                 <img src="../icons/others.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Outros</h3>
                             </div>
@@ -514,23 +514,9 @@
                                 <select class="btn btn-primary" ng-show="ctrl.comboOutrosMostrar" ng-model="ctrl.outrosSelecionado"
                                         ng-change="ctrl.ValidarComboOutros()">
                                     <option value="">Selecione</option>
-                                    <option value="tartaruga">Tartaruga</option>
-                                    <option value="cagado">Cagado</option>
-                                    <option value="jabuti">Jabuti</option>
-                                    <option value="tartaruga">Tartaruga</option>
-                                    <option value="cagado">Cagado</option>
-                                    <option value="jabuti">Jabuti</option>
-                                    <option value="tartaruga">Tartaruga</option>
-                                    <option value="cagado">Cagado</option>
-                                    <option value="jabuti">Jabuti</option>
-                                    <option value="tartaruga">Tartaruga</option>
-                                    <option value="cagado">Cagado</option>
-                                    <option value="jabuti">Jabuti</option>
-                                    <option value="tartaruga">Tartaruga</option>
-                                    <option value="cagado">Cagado</option>
-                                    <option value="jabuti">Jabuti</option>
+                                    <option value="{{x.Chave}}" ng-repeat="x in ctrl.Animais">{{x.Valor}}</option>
                                 </select>
-                                <button class="btn btn-primary" ng-disabled="!ctrl.petSelected" ng-click="ctrl.GoTo(2)">Próximo</button>
+                                <button class="btn btn-primary" ng-disabled="!ctrl.petSelected" ng-click="ctrl.PetEscolhido()">Próximo</button>
                             </div>
                         </div>
                     </div>
@@ -663,7 +649,7 @@
                                 </div>
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.pesoError}">
                                     <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
-                                           placeholder="Peso" autocomplete="off">
+                                           placeholder="Peso" autocomplete="off" ng-model="ctrl.TxtPesoPet">
                                     <small id="pesoHelp" class="form-text text-muted">
                                         Caso não saiba o peso, pode deixar
                                         este campo em branco.
@@ -713,7 +699,7 @@
                                     </small>
                                 </div>
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.estadoErro}">
-                                    <select class="form-control custom-select" ng-model="ctrl.EstadoPet">
+                                    <select class="form-control custom-select" ng-model="ctrl.EstadoPet" ng-change="ctrl.EstadoSelecionadoChange()">
                                         <option value="" disabled selected>Estado</option>
                                         <option ng-repeat="x in ctrl.Estados" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
@@ -727,6 +713,7 @@
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.cidadeErro}">
                                     <select class="form-control custom-select" ng-model="ctrl.CidadePet">
                                         <option value="" disabled selected>Cidade</option>
+                                        <option ng-repeat="x in ctrl.Cidades" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
                                     <small id="cidadeErro" class="form-control-feedback" ng-show="ctrl.cidadeErro">
                                         Esse é
@@ -765,7 +752,7 @@
                                 <div class="col-md-12" style="margin-bottom:50px;">
                                     <div class="input-group">
                                         <textarea class="form-control" aria-label="With textarea" style="height: 150px; border-radius: 5px;"
-                                                  placeholder="É muito importante nos dizer se seu pet possui alguma coleira ou algo que facilite a sua identificação ;)"></textarea>
+                                                  placeholder="É muito importante nos dizer se seu pet possui alguma coleira ou algo que facilite a sua identificação ;)" ng-model="ctrl.TxtDescricaoPet"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -794,18 +781,22 @@
                         <p>Chegou a hora de nos enviar as fotos</p>
                         <p>Selecione as imagem e marque a foto destaque</p>
 
-                        <!--<div class="form-body" style="margin-top:50px;">-->
-                        <!--<div class="row" style="text-align: center">-->
                         <!-- Fine Uploader DOM Element
                         ====================================================================== -->
                         <div class="col-md-4 offset-md-4" id="fine-uploader-validation" style="width: 100%; margin-bottom: 25px"></div>
-                        <!--</div>-->
+
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center !important">
+                                <p style="color: #EF5350 !important" ng-show="ctrl.ImgDestaqueNaoSelecionada">É obrigatório selecionar a imagem destaque.</p>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-6" style="text-align: left;">
                                 <button class="btn btn-primary" ng-click="ctrl.GoTo(4)">Voltar</button>
                             </div>
                             <div class="col-6" style="text-align: right;">
-                                <button class="btn btn-primary" ng-click="ctrl.FinalizarCadastro()">Finalizar</button>
+                                <button class="btn btn-primary disabled" id="btnFinalizarCadastro" ng-click="ctrl.UploadImagens()">Finalizar</button>
                             </div>
                         </div>
                         <!--</div>-->
@@ -826,7 +817,7 @@
                         <p>Seu anúncio de pet perdido foi cadastrado com sucesso ;)</p>
                         <p>Precisamos de apenas 1h para colocá-lo no ar.</p>
                         <p>Mas não se preocupe, vamos lhe avisar assim que estiver tudo finalizado.</p>
-                        <p>Desejamos sorte e faremos o possível para que em breve o Thor esteja de volta ao seu lar!</p>
+                        <p>Desejamos sorte e faremos o possível para que em breve seu pet esteja de volta ao seu lar!</p>
 
 
                         <div class="form-body" style="margin-top:50px;">
@@ -940,17 +931,22 @@
                 ]
             },
             callbacks: {
-                onComplete: function (event, id, fileName, responseJSON) {
-                    var teste = JSON.parse(responseJSON.response);
+                //onComplete: function (event, id, fileName, responseJSON) {
 
-                    //TODO: implementar
+                //    var teste = JSON.parse(responseJSON.response);
 
-                    //alert(teste.extraInformation);
-                },
+                //},
                 onAllComplete: function () {
-                    //TODO: implementar
 
-                    //alert('doneAll');
+                    angular.element('body').controller().FinalizarCadastro();
+
+                },
+                onStatusChange: function (id, oldStatus, newStatus) {
+
+                    if (newStatus == "canceled") {
+                        desconsiderarImagem();
+                    }
+
                 }
             }
         });
@@ -959,7 +955,21 @@
 
             indexDefaultImage = $("input[name=radioDefaultImage]:checked").closest('li').index();
 
-        }
+            $("#btnFinalizarCadastro").removeClass("disabled");
+            $("#btnFinalizarCadastro").prop("disabled", false);
+
+        };
+
+        var desconsiderarImagem = function () {
+
+            var quantImagens = $('#fine-uploader-validation').fineUploader('getUploads').filter(x => x.status == "submitted").length;
+
+            if (quantImagens <= 0) {
+                $("#btnFinalizarCadastro").addClass("disabled");
+                $("#btnFinalizarCadastro").prop("disabled", true);
+            }
+
+        };
 
     </script>
 
