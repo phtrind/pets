@@ -28,16 +28,17 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
-    <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+        <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body class="fix-header fix-sidebar" ng-app="pets" ng-controller="dashboardController as ctrl">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
     </div>
     <!-- Main wrapper  -->
     <div id="main-wrapper">
@@ -81,7 +82,7 @@
                         <!-- Comment -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <!-- <i class="fa fa-bell"></i> -->
                                 <img src="../icons/notification.png" width="30">
                                 <div class="notify">
@@ -155,7 +156,7 @@
                         <!-- Messages -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" id="2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/chat.png" width="30">
                                 <div class="notify">
                                     <span class="heartbit"></span>
@@ -232,7 +233,7 @@
                         <!-- Profile -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/profile.png" width="30px" alt="user">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
@@ -241,12 +242,14 @@
                                         <a style="color: #500B89 !important;" href="meus_dados.html">
                                             <img src="../icons/profile_edit.png" width="30px" alt="meus dados"></i>
                                             meus
-                                            dados</a>
+                                            dados
+                                        </a>
                                     </li>
                                     <li>
                                         <a style="color: #500B89 !important;" href="#">
                                             <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
-                                            sair</a>
+                                            sair
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -382,122 +385,124 @@
             <!-- Container fluid  -->
             <div class="container-fluid">
                 <!-- Start Page Content -->
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card bg-primary p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span>
-                                        <i class="ti-bag f-s-40"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">15</h2>
-                                    <p class="m-b-0">meus anúncios</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card bg-pink p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span>
-                                        <i class="ti-comment f-s-40"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">4</h2>
-                                    <p class="m-b-0">anúncios que gostei</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card bg-success p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span>
-                                        <i class="ti-vector f-s-40"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">22</h2>
-                                    <p class="m-b-0">anúncios que visitei hoje</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card bg-danger p-20">
-                            <div class="media widget-ten">
-                                <div class="media-left meida media-middle">
-                                    <span>
-                                        <i class="ti-location-pin f-s-40"></i>
-                                    </span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2 class="color-white">3</h2>
-                                    <p class="m-b-0">minhas contribuições</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card" style="height: 90%;">
-                            <div class="card-title" style="text-align: center">
-                                <h3>Números da PetSaver</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover ">
-                                        <thead>
-                                            <tr>
-                                                <th style="color: #26DAD2 !important;">adoções concluídas</th>
-                                                <th style="background-color: #26DAD2 !important; text-align: center;">54</th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th style="color: #4680FF !important;">doações concluídas</th>
-                                                <th style="background-color: #4680FF !important; text-align: center;">12</th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th style="color: #E6A1F2 !important;">pets encontrados</th>
-                                                <th style="background-color: #E6A1F2 !important; text-align: center;">344</th>
-                                            </tr>
-                                        </thead>
-                                        <thead>
-                                            <tr>
-                                                <th style="color: #FC6180 !important">pets ainda perdidos</th>
-                                                <th style="background-color: #FC6180 !important; text-align: center;">3555</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="card" style="height: 90%;">
-                            <div class="card-title" style="text-align: center">
-                                <h3>#SouPetSaver</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6" style="text-align: center">
-                                        <a href="https://www.instagram.com/soupetsaver/" target="_blank">
-                                            <img class="link" src="../icons/instagram.png" style="width: 100%; max-width: 85%;">
-                                        </a>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3" style="height:50%">
+                            <div class="card bg-primary p-20">
+                                <div class="media widget-ten">
+                                    <div class="media-left meida media-middle">
+                                        <span>
+                                            <i class="ti-bag f-s-40"></i>
+                                        </span>
                                     </div>
-                                    <div class="col-md-6" style="text-align: center">
-                                        <a href="https://www.facebook.com/soupetsaver/" target="_blank">
-                                            <img src="../icons/facebook.png" style="width: 100%; max-width: 85%;">
-                                        </a>
+                                    <div class="media-body media-text-right">
+                                        <h2 class="color-white">15</h2>
+                                        <p class="m-b-0">anúncios realizados</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3" style="height:20%">
+                            <div class="card bg-pink p-20">
+                                <div class="media widget-ten">
+                                    <div class="media-left meida media-middle">
+                                        <span>
+                                            <i class="ti-comment f-s-40"></i>
+                                        </span>
+                                    </div>
+                                    <div class="media-body media-text-right">
+                                        <h2 class="color-white">4</h2>
+                                        <p class="m-b-0">anúncios que gostei</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div class="col-md-3">
+                            <div class="card bg-success p-20">
+                                <div class="media widget-ten">
+                                    <div class="media-left meida media-middle">
+                                        <span>
+                                            <i class="ti-vector f-s-40"></i>
+                                        </span>
+                                    </div>
+                                    <div class="media-body media-text-right">
+                                        <h2 class="color-white">22</h2>
+                                        <p class="m-b-0">anúncios que visitei hoje</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card bg-danger p-20">
+                                <div class="media widget-ten">
+                                    <div class="media-left meida media-middle">
+                                        <span>
+                                            <i class="ti-location-pin f-s-40"></i>
+                                        </span>
+                                    </div>
+                                    <div class="media-body media-text-right">
+                                        <h2 class="color-white">3</h2>
+                                        <p class="m-b-0">minhas contribuições</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="col-md-6">
+                            <div class="card" style="height: 90%;">
+                                <div class="card-title" style="text-align: center">
+                                    <h3>Números da PetSaver</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover ">
+                                            <thead>
+                                                <tr>
+                                                    <th style="color: #26DAD2 !important;">adoções concluídas</th>
+                                                    <th style="background-color: #26DAD2 !important; text-align: center;">54</th>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th style="color: #4680FF !important;">doações concluídas</th>
+                                                    <th style="background-color: #4680FF !important; text-align: center;">12</th>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th style="color: #E6A1F2 !important;">pets encontrados</th>
+                                                    <th style="background-color: #E6A1F2 !important; text-align: center;">344</th>
+                                                </tr>
+                                            </thead>
+                                            <thead>
+                                                <tr>
+                                                    <th style="color: #FC6180 !important">pets ainda perdidos</th>
+                                                    <th style="background-color: #FC6180 !important; text-align: center;">3555</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card" style="height: 30%;">
+                                <div class="card-title" style="text-align: center">
+                                    <h3>#SouPetSaver</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6" style="text-align: center">
+                                            <a href="https://www.instagram.com/soupetsaver/" target="_blank">
+                                                <img class="link" src="../icons/instagram.png" style="width: 40%; max-width: 85%;">
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6" style="text-align: center">
+                                            <a href="https://www.facebook.com/soupetsaver/" target="_blank">
+                                                <img src="../icons/facebook.png" style="width: 40%; max-width: 85%;">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
