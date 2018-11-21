@@ -10,11 +10,7 @@
 
 }
 
-var guidAnuncio = null;
-
-$(document).ready(function () {
-    guidAnuncio = angular.element('body').controller();
-});
+var guidAnuncio = GenerateGuid();
 
 $('#fine-uploader-validation').fineUploader({
     debug: true,

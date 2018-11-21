@@ -304,7 +304,372 @@
 
     //#region .: Cadastro Anúncio :.
 
+    base.ctrlCadastroAnuncio = new Object();
 
+    base.ctrlCadastroAnuncio.Animal = null;
+
+    base.ctrlCadastroAnuncio.petSelection = true;
+
+    base.ctrlCadastroAnuncio.CarregarPaginaCadastroAnuncio = function () {
+
+        $http({
+            method: 'GET',
+            url: base.servicePath + 'Page/CadastroAnuncio',
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            base.ctrlCadastroAnuncio.Animais = response.Animais.filter(x => x.Valor != "Cachorro" &&
+                x.Valor != "Gato" &&
+                x.Valor != "Roedores" &&
+                x.Valor != "Aves")
+
+            base.ctrlCadastroAnuncio.Sexos = response.Sexos;
+            base.ctrlCadastroAnuncio.Idades = response.Idades;
+            base.ctrlCadastroAnuncio.Portes = response.Portes;
+            base.ctrlCadastroAnuncio.Pelos = response.Pelos;
+            base.ctrlCadastroAnuncio.Cores = response.Cores;
+            base.ctrlCadastroAnuncio.Estados = response.Estados;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
+
+    base.ctrlCadastroAnuncio.SelectPet = function (aPet) {
+        if (aPet == 'Cachorro') {
+            base.ctrlCadastroAnuncio.dogSelected = true;
+            base.ctrlCadastroAnuncio.catSelected = false;
+            base.ctrlCadastroAnuncio.hamsterSelected = false;
+            base.ctrlCadastroAnuncio.birdSelected = false;
+            base.ctrlCadastroAnuncio.othersSelected = false;
+            base.ctrlCadastroAnuncio.petSelected = true;
+            base.ctrlCadastroAnuncio.comboOutrosMostrar = false;
+
+            base.ctrlCadastroAnuncio.PetSelecionado(1);
+
+            base.ctrlCadastroAnuncio.outrosSelecionado = "";
+        }
+        else if (aPet == 'Gato') {
+            base.ctrlCadastroAnuncio.dogSelected = false;
+            base.ctrlCadastroAnuncio.catSelected = true;
+            base.ctrlCadastroAnuncio.hamsterSelected = false;
+            base.ctrlCadastroAnuncio.birdSelected = false;
+            base.ctrlCadastroAnuncio.othersSelected = false;
+            base.ctrlCadastroAnuncio.petSelected = true;
+            base.ctrlCadastroAnuncio.comboOutrosMostrar = false;
+
+            base.ctrlCadastroAnuncio.PetSelecionado(2);
+
+            base.ctrlCadastroAnuncio.outrosSelecionado = "";
+        }
+        else if (aPet == 'Roedor') {
+            base.ctrlCadastroAnuncio.dogSelected = false;
+            base.ctrlCadastroAnuncio.catSelected = false;
+            base.ctrlCadastroAnuncio.hamsterSelected = true;
+            base.ctrlCadastroAnuncio.birdSelected = false;
+            base.ctrlCadastroAnuncio.othersSelected = false;
+            base.ctrlCadastroAnuncio.petSelected = true;
+            base.ctrlCadastroAnuncio.comboOutrosMostrar = false;
+
+            base.ctrlCadastroAnuncio.PetSelecionado(5);
+
+            base.ctrlCadastroAnuncio.outrosSelecionado = "";
+        }
+        else if (aPet == 'Ave') {
+            base.ctrlCadastroAnuncio.dogSelected = false;
+            base.ctrlCadastroAnuncio.catSelected = false;
+            base.ctrlCadastroAnuncio.hamsterSelected = false;
+            base.ctrlCadastroAnuncio.birdSelected = true;
+            base.ctrlCadastroAnuncio.othersSelected = false;
+            base.ctrlCadastroAnuncio.petSelected = true;
+            base.ctrlCadastroAnuncio.comboOutrosMostrar = false;
+
+            base.ctrlCadastroAnuncio.PetSelecionado(3);
+
+            base.ctrlCadastroAnuncio.outrosSelecionado = "";
+        }
+        else if (aPet == 'Outros') {
+            base.ctrlCadastroAnuncio.ValidarComboOutros();
+            base.ctrlCadastroAnuncio.comboOutrosMostrar = true;
+            base.ctrlCadastroAnuncio.othersSelected = true;
+            base.ctrlCadastroAnuncio.dogSelected = false;
+            base.ctrlCadastroAnuncio.catSelected = false;
+            base.ctrlCadastroAnuncio.birdSelected = false;
+            base.ctrlCadastroAnuncio.hamsterSelected = false;
+        }
+    }
+
+    base.ctrlCadastroAnuncio.PetSelecionado = function (aIdAnimal) {
+
+        base.ctrlCadastroAnuncio.Animal = aIdAnimal;
+
+        base.ctrlCadastroAnuncio.CmbRacaEspeciePet = "";
+
+    }
+
+    base.ctrlCadastroAnuncio.ValidarComboOutros = function () {
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.outrosSelecionado)) {
+            base.ctrlCadastroAnuncio.petSelected = false;
+        }
+        else {
+            base.ctrlCadastroAnuncio.petSelected = true;
+
+            base.ctrlCadastroAnuncio.PetSelecionado(base.ctrlCadastroAnuncio.outrosSelecionado);
+        }
+    }
+
+    base.ctrlCadastroAnuncio.PetEscolhido = function () {
+
+        $http({
+            method: 'GET',
+            url: base.servicePath + 'Anuncio/BuscarRacaEspeciePorAnimal/' + base.ctrlCadastroAnuncio.Animal,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            base.ctrlCadastroAnuncio.Racas = response;
+
+            base.ctrlCadastroAnuncio.GoTo(2);
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
+
+    base.ctrlCadastroAnuncio.GoTo = function (number) {
+        if (number == 1) {
+            base.ctrlCadastroAnuncio.petSelection = true;
+            base.ctrlCadastroAnuncio.petLocalizacao = false;
+            base.ctrlCadastroAnuncio.petInfos1 = false;
+            base.ctrlCadastroAnuncio.petObservacoes = false;
+            base.ctrlCadastroAnuncio.petFotos = false;
+        }
+        else if (number == 2) {
+            base.ctrlCadastroAnuncio.petSelection = false;
+            base.ctrlCadastroAnuncio.petLocalizacao = true;
+            base.ctrlCadastroAnuncio.petInfos1 = false;
+            base.ctrlCadastroAnuncio.petObservacoes = false;
+            base.ctrlCadastroAnuncio.petFotos = false;
+        }
+        else if (number == 3) {
+            base.ctrlCadastroAnuncio.SetLocalizacao();
+            base.ctrlCadastroAnuncio.petSelection = false;
+            base.ctrlCadastroAnuncio.petLocalizacao = false;
+            base.ctrlCadastroAnuncio.petInfos1 = true;
+            base.ctrlCadastroAnuncio.petObservacoes = false;
+            base.ctrlCadastroAnuncio.petFotos = false;
+        }
+        else if (number == 4) {
+            base.ctrlCadastroAnuncio.petSelection = false;
+            base.ctrlCadastroAnuncio.petLocalizacao = false;
+            base.ctrlCadastroAnuncio.petInfos1 = false;
+            base.ctrlCadastroAnuncio.petObservacoes = true;
+            base.ctrlCadastroAnuncio.petFotos = false;
+        }
+
+        else if (number == 5) {
+            base.ctrlCadastroAnuncio.petSelection = false;
+            base.ctrlCadastroAnuncio.petLocalizacao = false;
+            base.ctrlCadastroAnuncio.petInfos1 = false;
+            base.ctrlCadastroAnuncio.petObservacoes = false;
+            base.ctrlCadastroAnuncio.petFotos = true;
+        }
+
+        window.scrollTo(0, 0);
+    }
+
+    base.ctrlCadastroAnuncio.SetLocalizacao = function () {
+
+        if (!base.StringIsEmpty(latitude) && !base.StringIsEmpty(longitude)) {
+
+            base.ctrlCadastroAnuncio.Localizacao = {
+                Latitude: latitude,
+                Longitude: longitude
+            }
+
+        }
+        else {
+
+            base.ctrlCadastroAnuncio.Localizacao = null;
+
+        }
+
+    }
+
+    base.ctrlCadastroAnuncio.EstadoSelecionadoChange = function () {
+
+        if (!base.StringIsEmpty(base.ctrlCadastroAnuncio.EstadoPet)) {
+            $http({
+                method: 'GET',
+                url: base.servicePath + 'Cidade/Combo/' + base.ctrlCadastroAnuncio.EstadoPet
+            }).success(function (response) {
+
+                base.ctrlCadastroAnuncio.Cidades = response;
+
+            }).error(function (err, status) {
+
+                base.ctrlCadastroAnuncio.Cidades = null;
+
+                //TODO: Implementar tratamento de erro na base
+
+            });
+        }
+        else {
+            base.ctrlCadastroAnuncio.Cidades = null;
+        }
+
+    }
+
+    base.ctrlCadastroAnuncio.BtnProximoInfoBasicas = function () {
+
+        if (base.ctrlCadastroAnuncio.ValidarInfoBasicasPet()) {
+            base.ctrlCadastroAnuncio.GoTo(4);
+        }
+
+    }
+
+    base.ctrlCadastroAnuncio.ValidarInfoBasicasPet = function () {
+
+        var contErro = 0;
+
+        //Sexo
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.CmbSexoPet)) {
+            base.ctrlCadastroAnuncio.sexoError = true;
+            contErro++;
+        }
+        else {
+            base.ctrlCadastroAnuncio.sexoError = false;
+        }
+
+        //Raça / Espécie
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.CmbRacaEspeciePet)) {
+            base.ctrlCadastroAnuncio.racaError = true;
+            contErro++;
+        }
+        else {
+            base.ctrlCadastroAnuncio.racaError = false;
+        }
+
+        //Idade
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.CmbIdadePet)) {
+            base.ctrlCadastroAnuncio.idadeError = true;
+            contErro++;
+        }
+        else {
+            base.ctrlCadastroAnuncio.idadeError = false;
+        }
+
+        //Porte
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.CmbPortePet)) {
+            base.ctrlCadastroAnuncio.porteError = true;
+            contErro++;
+        }
+        else {
+            base.ctrlCadastroAnuncio.porteError = false;
+        }
+
+        //Pelo
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.CmbPeloPet)) {
+            base.ctrlCadastroAnuncio.peloError = true;
+            contErro++;
+        }
+        else {
+            base.ctrlCadastroAnuncio.peloError = false;
+        }
+
+        //Cor 1
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.Cor1Pet)) {
+            base.ctrlCadastroAnuncio.cor1error = true;
+            contErro++;
+        }
+        else {
+            base.ctrlCadastroAnuncio.cor1error = false;
+        }
+
+        //Cor 2
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.Cor2Pet)) {
+            base.ctrlCadastroAnuncio.cor2error = true;
+            contErro++;
+        }
+        else {
+            base.ctrlCadastroAnuncio.cor2error = false;
+        }
+
+        //Estado
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.EstadoPet)) {
+            base.ctrlCadastroAnuncio.estadoErro = true;
+            contErro++;
+        }
+        else {
+            base.ctrlCadastroAnuncio.estadoErro = false;
+        }
+
+        //Cidade
+        if (base.StringIsEmpty(base.ctrlCadastroAnuncio.CidadePet)) {
+            base.ctrlCadastroAnuncio.cidadeErro = true;
+            contErro++;
+        }
+        else {
+            base.ctrlCadastroAnuncio.cidadeErro = false;
+        }
+
+        return contErro == 0;
+
+    }
+
+    base.ctrlCadastroAnuncio.UploadImagens = function () {
+
+        $('#fine-uploader-validation').fineUploader('uploadStoredFiles');
+
+    }
+
+    base.ctrlCadastroAnuncio.DefinirFotoDestaque = function (aIdAnuncio) {
+
+        $http({
+            method: 'GET',
+            url: base.servicePath + 'Anuncio/BuscarFotos/' + aIdAnuncio
+        }).success(function (response) {
+
+            base.ctrlCadastroAnuncio.FotosCadastradas = response;
+
+            base.ctrlCadastroAnuncio.petSelection = false;
+            base.ctrlCadastroAnuncio.petInfos1 = false;
+            base.ctrlCadastroAnuncio.petObservacoes = false;
+            base.ctrlCadastroAnuncio.petFotos = false;
+            base.ctrlCadastroAnuncio.confirmacao = true;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
+
+    base.ctrlCadastroAnuncio.SelecionarFotoDestaque = function (aIdFoto) {
+
+        $http({
+            method: 'POST',
+            url: base.servicePath + 'Anuncio/AlterarFotoDestaque/' + aIdFoto,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            base.ctrlCadastroAnuncio.FotosCadastradas = null;
+
+            base.ctrlCadastroAnuncio.ImgDestaqueSucesso = true;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
 
     //#endregion
 

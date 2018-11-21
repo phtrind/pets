@@ -462,7 +462,7 @@
                 <!-- Start Page Content -->
                 <div>
                     <!-- Escolha do tipo de pet -->
-                    <div ng-show="ctrl.petSelection">
+                    <div ng-show="ctrl.base.ctrlCadastroAnuncio.petSelection">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -480,40 +480,40 @@
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
-                            <div style="margin-left: 55px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.dogSelected, 'boxSelecaoPet': !ctrl.dogSelected}"
-                                 ng-click="ctrl.SelectPet('Cachorro');">
+                            <div style="margin-left: 55px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.dogSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.dogSelected}"
+                                 ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Cachorro');">
                                 <img src="../icons/dog.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Cachorro</h3>
                             </div>
-                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.catSelected, 'boxSelecaoPet': !ctrl.catSelected}"
-                                 ng-click="ctrl.SelectPet('Gato');">
+                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.catSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.catSelected}"
+                                 ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Gato');">
                                 <img src="../icons/cat.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Gato</h3>
                             </div>
-                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.hamsterSelected, 'boxSelecaoPet': !ctrl.hamsterSelected}"
-                                 ng-click="ctrl.SelectPet('Roedor');">
+                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.hamsterSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.hamsterSelected}"
+                                 ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Roedor');">
                                 <img src="../icons/hamster.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Roedor</h3>
                             </div>
-                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.birdSelected, 'boxSelecaoPet': !ctrl.birdSelected}"
-                                 ng-click="ctrl.SelectPet('Ave');">
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.birdSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.birdSelected}"
+                                 ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Ave');">
                                 <img src="../icons/bird.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Ave</h3>
                             </div>
-                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.othersSelected, 'boxSelecaoPet': !ctrl.othersSelected}"
-                                 ng-click="ctrl.SelectPet('Outros');">
+                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.othersSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.othersSelected}"
+                                 ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Outros');">
                                 <img src="../icons/others.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Outros</h3>
                             </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: right;">
-                                <select class="btn btn-primary" ng-show="ctrl.comboOutrosMostrar" ng-model="ctrl.outrosSelecionado"
-                                        ng-change="ctrl.ValidarComboOutros()">
+                                <select class="btn btn-primary" ng-show="ctrl.base.ctrlCadastroAnuncio.comboOutrosMostrar" ng-model="ctrl.base.ctrlCadastroAnuncio.outrosSelecionado"
+                                        ng-change="ctrl.base.ctrlCadastroAnuncio.ValidarComboOutros()">
                                     <option value="">Selecione</option>
-                                    <option value="{{x.Chave}}" ng-repeat="x in ctrl.Animais">{{x.Valor}}</option>
+                                    <option value="{{x.Chave}}" ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Animais">{{x.Valor}}</option>
                                 </select>
-                                <button class="btn btn-primary" ng-disabled="!ctrl.petSelected" ng-click="ctrl.PetEscolhido()">Próximo</button>
+                                <button class="btn btn-primary" ng-disabled="!ctrl.base.ctrlCadastroAnuncio.petSelected" ng-click="ctrl.base.ctrlCadastroAnuncio.PetEscolhido()">Próximo</button>
                             </div>
                         </div>
                     </div>
@@ -521,7 +521,7 @@
 
                     <!-- Localização -->
 
-                    <div ng-show="ctrl.petLocalizacao">
+                    <div ng-show="ctrl.base.ctrlCadastroAnuncio.petLocalizacao">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -555,10 +555,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(1)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.GoTo(1)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(3)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.GoTo(3)">Próximo</button>
                                 </div>
                             </div>
                         </div>
@@ -567,7 +567,7 @@
 
                     <!-- Informações básicas -->
 
-                    <div ng-show="ctrl.petInfos1">
+                    <div ng-show="ctrl.base.ctrlCadastroAnuncio.petInfos1">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -580,29 +580,26 @@
 
                         <div class="form-body" style="margin-top:50px;">
                             <div class="row">
-                                <div class="form-group col-md-6" ng-class="{'has-error':ctrl.nomeError}">
+                                <div class="form-group col-md-6">
                                     <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp"
-                                           placeholder="Nome" autocomplete="off" ng-model="ctrl.TxtNomePet">
+                                           placeholder="Nome" autocomplete="off" ng-model="ctrl.base.ctrlCadastroAnuncio.TxtNomePet">
                                     <small id="nomeHelp" class="form-text text-muted">Nos conte qual o nome do seu pet.</small>
-                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.nomeError">
-                                        É obrigatório informar o nome do seu pet
-                                    </small>
                                 </div>
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.sexoError}">
-                                    <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp" ng-model="ctrl.CmbSexoPet">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.sexoError}">
+                                    <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp" ng-model="ctrl.base.ctrlCadastroAnuncio.CmbSexoPet">
                                         <option value="" disabled selected>Sexo</option>
-                                        <option ng-repeat="x in ctrl.Sexos" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Sexos" value="{{x.Chave}}">{{x.Valor}}</option>
                                         <option value="0">Não sei</option>
                                     </select>
                                     <small id="sexoHelp" class="form-text text-muted">Caso não saiba, selecione a opção "Não sei".</small>
-                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.sexoError">
+                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.base.ctrlCadastroAnuncio.sexoError">
                                         É obrigatório selecionar uma opção
                                     </small>
                                 </div>
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.racaError}">
-                                    <select class="form-control custom-select" aria-describedby="racaHelp" ng-model="ctrl.CmbRacaEspeciePet">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.racaError}">
+                                    <select class="form-control custom-select" aria-describedby="racaHelp" ng-model="ctrl.base.ctrlCadastroAnuncio.CmbRacaEspeciePet">
                                         <option value="" disabled selected>Raça / Espécie</option>
-                                        <option ng-repeat="x in ctrl.Racas" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Racas" value="{{x.Chave}}">{{x.Valor}}</option>
                                         <option value="0">Não sei</option>
                                     </select>
                                     <small id="racaHelp" class="form-text text-muted">
@@ -610,16 +607,16 @@
                                         raça/espécie,
                                         selecione a opção "Não sei".
                                     </small>
-                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.racaError">
+                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.base.ctrlCadastroAnuncio.racaError">
                                         É obrigatório selecionar uma opção
                                     </small>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.idadeError}">
-                                    <select class="form-control custom-select" id="idade" aria-describedby="idadeHelp" ng-model="ctrl.CmbIdadePet">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.idadeError}">
+                                    <select class="form-control custom-select" id="idade" aria-describedby="idadeHelp" ng-model="ctrl.base.ctrlCadastroAnuncio.CmbIdadePet">
                                         <option value="" disabled selected>Idade</option>
-                                        <option ng-repeat="x in ctrl.Idades" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Idades" value="{{x.Chave}}">{{x.Valor}}</option>
                                         <option value="0">Não sei</option>
                                     </select>
                                     <small id="idadeHelp" class="form-text text-muted">
@@ -627,63 +624,63 @@
                                         do
                                         pet, selecione a opção "Não sei".
                                     </small>
-                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.idadeError">
+                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.base.ctrlCadastroAnuncio.idadeError">
                                         É obrigatório selecionar uma opção
                                     </small>
                                 </div>
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.porteError}">
-                                    <select class="form-control custom-select" id="tamanho" aria-describedby="tamanhoHelp" ng-model="ctrl.CmbPortePet">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.porteError}">
+                                    <select class="form-control custom-select" id="tamanho" aria-describedby="tamanhoHelp" ng-model="ctrl.base.ctrlCadastroAnuncio.CmbPortePet">
                                         <option value="" disabled selected>Porte</option>
-                                        <option ng-repeat="x in ctrl.Portes" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Portes" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
                                     <small id="tamanhoHelp" class="form-text text-muted">Selecione o tamanho do pet.</small>
-                                    <small id="tamanhoError" class="form-control-feedback" ng-show="ctrl.porteError">
+                                    <small id="tamanhoError" class="form-control-feedback" ng-show="ctrl.base.ctrlCadastroAnuncio.porteError">
                                         Esse
                                         é um
                                         campo
                                         obrigatório.
                                     </small>
                                 </div>
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.pesoError}">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.pesoError}">
                                     <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
-                                           placeholder="Peso" autocomplete="off" ng-model="ctrl.TxtPesoPet">
+                                           placeholder="Peso" autocomplete="off" ng-model="ctrl.base.ctrlCadastroAnuncio.TxtPesoPet">
                                     <small id="pesoHelp" class="form-text text-muted">
                                         Caso não saiba o peso, pode deixar
                                         este campo em branco.
                                     </small>
                                 </div>
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.peloError}">
-                                    <select class="form-control custom-select" id="tamanho" aria-describedby="peloHelp" ng-model="ctrl.CmbPeloPet">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.peloError}">
+                                    <select class="form-control custom-select" id="tamanho" aria-describedby="peloHelp" ng-model="ctrl.base.ctrlCadastroAnuncio.CmbPeloPet">
                                         <option value="" disabled selected>Pelo</option>
-                                        <option ng-repeat="x in ctrl.Pelos" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Pelos" value="{{x.Chave}}">{{x.Valor}}</option>
                                         <option value="0">Não se aplica</option>
                                     </select>
                                     <small id="tamanhoHelp" class="form-text text-muted">
                                         Caso o pet não tenha pelo, selecione a opção "Não se aplica"
                                     </small>
-                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.peloError">
+                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.base.ctrlCadastroAnuncio.peloError">
                                         É obrigatório selecionar uma opção
                                     </small>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.cor1error}">
-                                    <select class="form-control custom-select" id="cor1" aria-describedby="cor1Help" ng-model="ctrl.Cor1Pet">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.cor1error}">
+                                    <select class="form-control custom-select" id="cor1" aria-describedby="cor1Help" ng-model="ctrl.base.ctrlCadastroAnuncio.Cor1Pet">
                                         <option value="" disabled selected>Cor principal</option>
-                                        <option ng-repeat="x in ctrl.Cores" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Cores" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
                                     <small id="cor1Help" class="form-text text-muted">Nos conte qual a cor do pet.</small>
-                                    <small id="cor1error" class="form-control-feedback" ng-show="ctrl.cor1error">
+                                    <small id="cor1error" class="form-control-feedback" ng-show="ctrl.base.ctrlCadastroAnuncio.cor1error">
                                         Esse é
                                         um
                                         campo
                                         obrigatório.
                                     </small>
                                 </div>
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.cor2error}">
-                                    <select class="form-control custom-select" id="cor2" aria-describedby="cor2Help" ng-model="ctrl.Cor2Pet">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.cor2error}">
+                                    <select class="form-control custom-select" id="cor2" aria-describedby="cor2Help" ng-model="ctrl.base.ctrlCadastroAnuncio.Cor2Pet">
                                         <option value="" disabled selected>Cor secundária</option>
-                                        <option ng-repeat="x in ctrl.Cores" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Cores" value="{{x.Chave}}">{{x.Valor}}</option>
                                         <option value="0">Não se aplica</option>
                                     </select>
                                     <small id="cor2Help" class="form-text text-muted">
@@ -691,28 +688,28 @@
                                         não
                                         tenha selecione a opção "Não se aplica".
                                     </small>
-                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.cor2error">
+                                    <small id="nomeError" class="form-control-feedback" ng-show="ctrl.base.ctrlCadastroAnuncio.cor2error">
                                         É obrigatório selecionar uma opção
                                     </small>
                                 </div>
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.estadoErro}">
-                                    <select class="form-control custom-select" ng-model="ctrl.EstadoPet" ng-change="ctrl.EstadoSelecionadoChange()">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.estadoErro}">
+                                    <select class="form-control custom-select" ng-model="ctrl.base.ctrlCadastroAnuncio.EstadoPet" ng-change="ctrl.base.ctrlCadastroAnuncio.EstadoSelecionadoChange()">
                                         <option value="" disabled selected>Estado</option>
-                                        <option ng-repeat="x in ctrl.Estados" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Estados" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
-                                    <small id="estadoErro" class="form-control-feedback" ng-show="ctrl.estadoErro">
+                                    <small id="estadoErro" class="form-control-feedback" ng-show="ctrl.base.ctrlCadastroAnuncio.estadoErro">
                                         Esse é
                                         um
                                         campo
                                         obrigatório.
                                     </small>
                                 </div>
-                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.cidadeErro}">
-                                    <select class="form-control custom-select" ng-model="ctrl.CidadePet">
+                                <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.cidadeErro}">
+                                    <select class="form-control custom-select" ng-model="ctrl.base.ctrlCadastroAnuncio.CidadePet">
                                         <option value="" disabled selected>Cidade</option>
-                                        <option ng-repeat="x in ctrl.Cidades" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Cidades" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
-                                    <small id="cidadeErro" class="form-control-feedback" ng-show="ctrl.cidadeErro">
+                                    <small id="cidadeErro" class="form-control-feedback" ng-show="ctrl.base.ctrlCadastroAnuncio.cidadeErro">
                                         Esse é
                                         um
                                         campo
@@ -722,10 +719,10 @@
                             </div>
                             <div class="row" style="margin-top:20px;">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(2)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.GoTo(2)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="ctrl.BtnProximoInfoBasicas()">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.BtnProximoInfoBasicas()">Próximo</button>
                                 </div>
                             </div>
                         </div>
@@ -733,7 +730,7 @@
 
                     <!-- Observações -->
 
-                    <div ng-show="ctrl.petObservacoes">
+                    <div ng-show="ctrl.base.ctrlCadastroAnuncio.petObservacoes">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -749,16 +746,16 @@
                                 <div class="col-md-12" style="margin-bottom:50px;">
                                     <div class="input-group">
                                         <textarea class="form-control" aria-label="With textarea" style="height: 150px; border-radius: 5px;"
-                                                  placeholder="É muito importante nos dizer se seu pet possui alguma coleira ou algo que facilite a sua identificação ;)" ng-model="ctrl.TxtDescricaoPet"></textarea>
+                                                  placeholder="É muito importante nos dizer se seu pet possui alguma coleira ou algo que facilite a sua identificação ;)" ng-model="ctrl.base.ctrlCadastroAnuncio.TxtDescricaoPet"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6" style="text-align: left;">
-                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(3)">Voltar</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.GoTo(3)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="ctrl.GoTo(5)">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.GoTo(5)">Próximo</button>
                                 </div>
                             </div>
                         </div>
@@ -766,7 +763,7 @@
 
                     <!-- Fotos -->
 
-                    <div ng-show="ctrl.petFotos">
+                    <div ng-show="ctrl.base.ctrlCadastroAnuncio.petFotos">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -783,10 +780,11 @@
 
                         <div class="row">
                             <div class="col-6" style="text-align: left;">
-                                <button class="btn btn-primary" ng-click="ctrl.GoTo(4)">Voltar</button>
+                                <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.GoTo(4)">Voltar</button>
                             </div>
                             <div class="col-6" style="text-align: right;">
-                                <button class="btn btn-primary disabled" id="btnFinalizarCadastro" ng-click="ctrl.UploadImagens()" disabled>Finalizar</button>
+                                <button class="btn btn-primary disabled" id="btnFinalizarCadastro" ng-click="ctrl.base.ctrlCadastroAnuncio.UploadImagens()" ng-hide="ctrl.base.ctrlCadastroAnuncio.Cadastrando" disabled>Finalizar</button>
+                                <img style="width:40px;" src="../images/loading.gif" ng-show="ctrl.base.ctrlCadastroAnuncio.Cadastrando" />
                             </div>
                         </div>
                         <!--</div>-->
@@ -794,7 +792,7 @@
 
                     <!-- Confirmacao -->
 
-                    <div ng-show="ctrl.confirmacao" style="text-align: center;">
+                    <div ng-show="ctrl.base.ctrlCadastroAnuncio.confirmacao" style="text-align: center;">
                         <div class="row" style="margin-top:20px; margin-bottom:40px;">
                             <div class="col-md-12">
                                 <div class="progress">
@@ -811,22 +809,22 @@
 
                         </div>
 
-                        <div style="margin-bottom: 40px" ng-show="ctrl.FotosCadastradas.length > 1">
+                        <div style="margin-bottom: 40px" ng-show="ctrl.base.ctrlCadastroAnuncio.FotosCadastradas.length > 1">
                             <div>
                                 <h2 class="color-primary" style="margin-bottom: 40px">Selecione a foto destaque do anúncio</h2>
                             </div>
 
                             <div class="row justify-content-center">
-                                <div class="col-md-3" style="height: 300px;" ng-repeat="x in ctrl.FotosCadastradas">
+                                <div class="col-md-3" ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.FotosCadastradas">
+                                    <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.SelecionarFotoDestaque(x.Chave)">Selecionar</button>
+                                    <br />
+                                    <br />
                                     <img src="../{{x.Valor}}" style="max-height: 90%; max-width: 90%" />
-                                    <br />
-                                    <br />
-                                    <button class="btn btn-primary" ng-click="ctrl.SelecionarFotoDestaque(x.Chave)">Selecionar</button>
                                 </div>
                             </div>
                         </div>
 
-                        <div style="margin-bottom: 40px" ng-show="ctrl.ImgDestaqueSucesso">
+                        <div style="margin-bottom: 40px" ng-show="ctrl.base.ctrlCadastroAnuncio.ImgDestaqueSucesso">
                             <img src="../icons/ok.png" width="200px" />
                         </div>
 
@@ -854,7 +852,6 @@
         <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
-
     <!-- All Jquery -->
     <script src="../js/lib/jquery/jquery.min.js"></script>
 

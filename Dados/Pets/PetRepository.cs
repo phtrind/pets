@@ -9,11 +9,6 @@ namespace PetSaver.Repository.Pets
     {
         protected override void ValidarAtributos(PetEntity aObjeto)
         {
-            if (string.IsNullOrEmpty(aObjeto.Descricao))
-            {
-                throw new BusinessException("Descrição do pet inválida.");
-            }
-
             if (aObjeto.IdAnimal == default || new AnimalRepository().Listar(aObjeto.IdAnimal) == null)
             {
                 throw new DbValidationException("O Id do animal é inválido.");
