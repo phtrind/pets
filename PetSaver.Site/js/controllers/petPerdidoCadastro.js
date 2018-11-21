@@ -6,8 +6,9 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
 
     ctrl.Animal = null;
 
-    //ctrl.petSelection = true;
-    ctrl.petFotos = true;
+    ctrl.petSelection = true;
+    //ctrl.petFotos = true;
+    //ctrl.confirmacao = true;
 
 
     ctrl.OnInit = function () {
@@ -339,17 +340,7 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
 
     ctrl.UploadImagens = function () {
 
-        var isChecked = $('input[name=radioDefaultImage]:checked').length;
-
-        if (ctrl.base.StringIsEmpty(indexDefaultImage) || isChecked <= 0) {
-            ctrl.ImgDestaqueNaoSelecionada = true;
-
-            $("#btnFinalizarCadastro").addClass("disabled");
-            $("#btnFinalizarCadastro").prop("disabled", true);
-        }
-        else {
-            $('#fine-uploader-validation').fineUploader('uploadStoredFiles');
-        }
+        $('#fine-uploader-validation').fineUploader('uploadStoredFiles');
 
     }
 
@@ -380,8 +371,7 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
                 },
                 IdEstado: ctrl.EstadoPet,
                 IdCidade: ctrl.CidadePet,
-                GuidImagens: guidAnuncio,
-                IndexFotoDestaque: indexDefaultImage
+                GuidImagens: guidAnuncio
             }
         };
 
@@ -392,11 +382,50 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
             data: request
         }).success(function (response) {
 
+            ctrl.DefinirFotoDestaque(response);
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
+
+    ctrl.DefinirFotoDestaque = function (aIdAnuncio) {
+
+        $http({
+            method: 'GET',
+            url: ctrl.base.servicePath + 'Anuncio/BuscarFotos/' + aIdAnuncio
+        }).success(function (response) {
+
+            ctrl.FotosCadastradas = response;
+
             ctrl.petSelection = false;
             ctrl.petInfos1 = false;
             ctrl.petObservacoes = false;
             ctrl.petFotos = false;
             ctrl.confirmacao = true;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
+
+    ctrl.SelecionarFotoDestaque = function (aIdFoto) {
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Anuncio/AlterarFotoDestaque/' + aIdFoto,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            ctrl.FotosCadastradas = null;
+
+            ctrl.ImgDestaqueSucesso = true;
 
         }).error(function (err, status) {
 

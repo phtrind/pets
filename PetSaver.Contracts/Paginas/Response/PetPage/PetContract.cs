@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PetSaver.Contracts.Base;
+using System.Collections.Generic;
 
 namespace PetSaver.Contracts.Paginas.Response.PetPage
 {
@@ -18,6 +19,6 @@ namespace PetSaver.Contracts.Paginas.Response.PetPage
         public string Vermifugado { get; set; }
         public string Castrado { get; set; }
         public string Descricao { get; set; }
-        public IEnumerable<string> Fotos { get; set; }
+        public IEnumerable<ChaveValorContract> Fotos { get; set; }
     }
 }

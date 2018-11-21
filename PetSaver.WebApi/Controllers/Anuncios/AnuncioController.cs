@@ -1,5 +1,6 @@
 ﻿using PetSaver.Business.Anuncios;
 using PetSaver.Contracts.Anuncios;
+using PetSaver.Contracts.Base;
 using PetSaver.Contracts.Paginas.Response.PetPage;
 using PetSaver.Entity.Enums.Tipos;
 using System;
@@ -85,45 +86,56 @@ namespace PetSaver.WebApi.Controllers.Anuncios
         [Authorize]
         [Route("api/Anuncio/CadastrarDoacao")]
         [HttpPost]
-        public HttpResponseMessage CadastrarDoacao([FromBody]CadastrarPetAnuncioRequest aRequest)
+        public int CadastrarDoacao([FromBody]CadastrarPetAnuncioRequest aRequest)
         {
             try
             {
-                new AnuncioBusiness().Cadastrar(aRequest, TiposAnuncio.Doacao);
+                return new AnuncioBusiness().Cadastrar(aRequest, TiposAnuncio.Doacao);
             }
             catch (Exception ex)
             {
                 throw TratarErro(ex);
             }
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Authorize]
         [Route("api/Anuncio/CadastrarPetPerdido")]
         [HttpPost]
-        public HttpResponseMessage CadastrarPetPerdido([FromBody]CadastrarPetAnuncioRequest aRequest)
+        public int CadastrarPetPerdido([FromBody]CadastrarPetAnuncioRequest aRequest)
         {
             try
             {
-                new AnuncioBusiness().Cadastrar(aRequest, TiposAnuncio.PetPerdido);
+                return new AnuncioBusiness().Cadastrar(aRequest, TiposAnuncio.PetPerdido);
             }
             catch (Exception ex)
             {
                 throw TratarErro(ex);
             }
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Authorize]
         [Route("api/Anuncio/CadastrarPetEncontrado")]
         [HttpPost]
-        public HttpResponseMessage CadastrarPetEncontrado([FromBody]CadastrarPetAnuncioRequest aRequest)
+        public int CadastrarPetEncontrado([FromBody]CadastrarPetAnuncioRequest aRequest)
         {
             try
             {
-                new AnuncioBusiness().Cadastrar(aRequest, TiposAnuncio.PetEncontrado);
+                return new AnuncioBusiness().Cadastrar(aRequest, TiposAnuncio.PetEncontrado);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
+        [Route("api/Anuncio/AlterarFotoDestaque/{aIdFoto}")]
+        [HttpPost]
+        public HttpResponseMessage AlterarFotoDestaque(int aIdFoto)
+        {
+            try
+            {
+                new AnuncioFotoBusiness().AlterarFotoDestaque(aIdFoto);
             }
             catch (Exception ex)
             {
@@ -144,6 +156,20 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             try
             {
                 return new DuvidaBusiness().BuscarPorAnuncio(aIdAnuncio);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Route("api/Anuncio/BuscarFotos/{aIdAnuncio}")]
+        [HttpGet]
+        public IEnumerable<ChaveValorContract> BuscarFotos(int aIdAnuncio)
+        {
+            try
+            {
+                return new AnuncioFotoBusiness().BuscarPorAnuncio(aIdAnuncio);
             }
             catch (Exception ex)
             {

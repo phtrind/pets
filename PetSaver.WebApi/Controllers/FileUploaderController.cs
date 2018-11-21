@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PetSaver.Contracts.FineUploader;
 using PetSaver.Exceptions;
+using System;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -29,7 +30,9 @@ namespace PetSaver.WebApi.Controllers
                 throw new BusinessException("O endereço da pasta raiz das fotos nos anúncios não está definido no config.");
             }
 
-            var provider = new MultipartFormDataStreamProvider(rootPath);
+            Directory.CreateDirectory($"{rootPath}/temp");
+
+            var provider = new MultipartFormDataStreamProvider($"{rootPath}/temp");
 
             var result = await Request.Content.ReadAsMultipartAsync(provider);
 
@@ -49,11 +52,9 @@ namespace PetSaver.WebApi.Controllers
                 throw new BusinessException("O tipo de arquivo enviado não é válido.");
             }
 
-            var arquivosExistentes = Directory.GetFiles($"{rootPath}/{guidAnuncio}");
-
             string extension = Utilities.MimeTypeHelper.GetExtension(file.Headers.ContentType.MediaType);
 
-            var filePath = $"{rootPath}/{guidAnuncio}/{arquivosExistentes.Count()}{extension}";
+            var filePath = $"{rootPath}/{guidAnuncio}/{new Random().Next(0,1000)}{extension}";
 
             if (File.Exists(filePath))
             {

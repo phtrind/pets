@@ -88,6 +88,28 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UPDATE ANF_ANUNCIOFOTOS
+        ///  SET 
+        ///      ANF_DESTAQUE = 0
+        ///WHERE ANU_CODIGO =
+        ///(
+        ///    SELECT ANU_CODIGO
+        ///    FROM ANF_ANUNCIOFOTOS
+        ///    WHERE ANF_CODIGO = @IdFoto
+        ///);
+        ///
+        ///UPDATE ANF_ANUNCIOFOTOS
+        ///  SET 
+        ///      ANF_DESTAQUE = 1
+        ///WHERE ANF_CODIGO = @IdFoto.
+        /// </summary>
+        internal static string AlterarFotoDestaque {
+            get {
+                return ResourceManager.GetString("AlterarFotoDestaque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT *
         ///FROM ANG_ANUNCIOSGOSTEI
         ///WHERE ANU_CODIGO = @IdAnuncio
@@ -178,6 +200,17 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT *
+        ///FROM ANF_ANUNCIOFOTOS
+        ///WHERE ANU_CODIGO = @IdAnuncio.
+        /// </summary>
+        internal static string BuscarFotosPorAnuncio {
+            get {
+                return ResourceManager.GetString("BuscarFotosPorAnuncio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT L.LOG_CODIGO, 
         ///       U.USU_CODIGO, 
         ///       U.USU_NOME
@@ -230,7 +263,8 @@ namespace PetSaver.Repository {
         ///   Looks up a localized string similar to SELECT RAC_CODIGO, 
         ///       RAC_NOME
         ///FROM RAC_RACASESPECIES
-        ///WHERE ANI_CODIGO = @IdAnimal.
+        ///WHERE ANI_CODIGO = @IdAnimal
+        ///ORDER BY RAC_NOME.
         /// </summary>
         internal static string BuscarRacaEspeciePorAnimal {
             get {

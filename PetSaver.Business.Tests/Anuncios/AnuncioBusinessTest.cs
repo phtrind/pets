@@ -3,7 +3,6 @@ using PetSaver.Business.Anuncios;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Entity.Enums.Pets;
 using PetSaver.Entity.Enums.Tipos;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace PetSaver.Business.Tests.Anuncios
@@ -93,35 +92,32 @@ namespace PetSaver.Business.Tests.Anuncios
         [TestMethod]
         public void CadastrarDoacao_ValidOneAnuncio_DoesntThrowException()
         {
-            new AnuncioBusiness().CadastrarDoacao(new CadastrarDoacaoRequest()
+            new AnuncioBusiness().Cadastrar(new CadastrarPetAnuncioRequest()
             {
                 IdUsuario = 4,
-                Anuncios = new List<CadastroAnuncioContract>()
+                Anuncio = new CadastroAnuncioContract()
                 {
-                    new CadastroAnuncioContract()
+                    IdEstado = 91,
+                    IdCidade = 6972,
+                    Pet = new CadastroPetContract()
                     {
-                        IdEstado = 91,
-                        IdCidade = 6972,
-                        Pet = new CadastroPetContract()
-                        {
-                            IdAnimal = 2,
-                            Nome = "Gato do Brunão",
-                            IdSexo = Utilities.Conversor.EnumParaInt(Sexos.Macho),
-                            IdRacaEspecie = 20,
-                            IdIdade = Utilities.Conversor.EnumParaInt(Idades.Idoso),
-                            IdPorte = Utilities.Conversor.EnumParaInt(Portes.Medio),
-                            Peso = 26.3M,
-                            IdPelo = Utilities.Conversor.EnumParaInt(Pelos.Longo),
-                            IdCorPrimaria = 5,
-                            IdCorSecundaria = 8,
-                            Vacinado = null,
-                            Vermifugado = true,
-                            Castrado = false,
-                            Descricao = "Gato sexy do Bruno Lima"
-                        }
+                        IdAnimal = 2,
+                        Nome = "Gato do Brunão",
+                        IdSexo = Utilities.Conversor.EnumParaInt(Sexos.Macho),
+                        IdRacaEspecie = 20,
+                        IdIdade = Utilities.Conversor.EnumParaInt(Idades.Idoso),
+                        IdPorte = Utilities.Conversor.EnumParaInt(Portes.Medio),
+                        Peso = 26.3M,
+                        IdPelo = Utilities.Conversor.EnumParaInt(Pelos.Longo),
+                        IdCorPrimaria = 5,
+                        IdCorSecundaria = 8,
+                        Vacinado = null,
+                        Vermifugado = true,
+                        Castrado = false,
+                        Descricao = "Gato sexy do Bruno Lima"
                     }
                 }
-            });
+            }, TiposAnuncio.Doacao);
 
             Assert.IsTrue(true);
         }

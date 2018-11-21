@@ -22,7 +22,7 @@ namespace PetSaver.Business.Anuncios
     {
         #region .: Cadastros :.
 
-        public void Cadastrar(CadastrarPetAnuncioRequest aRequest, TiposAnuncio aTipoAnuncio)
+        public int Cadastrar(CadastrarPetAnuncioRequest aRequest, TiposAnuncio aTipoAnuncio)
         {
             var usuario = new UsuarioBusiness().Listar(aRequest.IdUsuario);
 
@@ -70,10 +70,11 @@ namespace PetSaver.Business.Anuncios
 
                 new AnuncioFotoBusiness().Cadastrar(idAnuncio,
                                                     usuario.IdLogin,
-                                                    aRequest.Anuncio.GuidImagens,
-                                                    aRequest.Anuncio.IndexFotoDestaque);
+                                                    aRequest.Anuncio.GuidImagens);
 
                 transaction.Complete();
+
+                return idAnuncio;
             }
         }
 
@@ -111,9 +112,9 @@ namespace PetSaver.Business.Anuncios
             return aLista.Select(x => new AnuncioMiniaturaResponse()
             {
                 IdAnuncio = Convert.ToInt32(x.ANU_CODIGO),
-                Nome = Convert.ToString(x.PET_NOME) ?? Utilities.Constantes.Desconhecido,
-                Sexo = Convert.ToString(x.PTS_DESCRICAO),
-                Idade = Convert.ToString(x.PID_DESCRICAO),
+                Nome = Convert.ToString(x.PET_NOME) ?? Constantes.Desconhecido,
+                Sexo = Convert.ToString(x.PTS_DESCRICAO) ?? Constantes.Indefinido,
+                Idade = Convert.ToString(x.PID_DESCRICAO) ?? Constantes.Indefinido,
                 Localizacao = $"{Convert.ToString(x.CID_NOME)} / {Convert.ToString(x.EST_SIGLA)}",
                 Foto = AnuncioFotoBusiness.TratarCaminhoImagem(Convert.ToString(x.ANF_LINK)),
                 Tipo = Convert.ToString(x.ANT_DESCRICAO)
@@ -147,7 +148,7 @@ namespace PetSaver.Business.Anuncios
             response.Pet = new PetContract()
             {
                 Nome = string.IsNullOrEmpty(Convert.ToString(retornoDb.PET_NOME)) ? Constantes.Desconhecido : Convert.ToString(retornoDb.PET_NOME),
-                RacaEspecie = retornoDb.RAC_NOME != null ? Convert.ToString(retornoDb.RAC_NOME) : Constantes.Desconhecido,
+                RacaEspecie = retornoDb.RAC_NOME != null ? Convert.ToString(retornoDb.RAC_NOME) : Constantes.Indefinido,
                 Cidade = Convert.ToString(retornoDb.CID_NOME),
                 Estado = Convert.ToString(retornoDb.EST_SIGLA),
                 Sexo = retornoDb.SEXO != null ? Convert.ToString(retornoDb.SEXO) : Constantes.Indefinido,
@@ -162,6 +163,8 @@ namespace PetSaver.Business.Anuncios
             };
 
             response.Pet.Cor = Convert.ToString(retornoDb.COR_PRIMARIA);
+
+            response.Pet.Fotos = new AnuncioFotoBusiness().BuscarPorAnuncioComDestaque(aIdAnuncio);
 
             if (retornoDb.COR_SECUNDARIA != null)
             {

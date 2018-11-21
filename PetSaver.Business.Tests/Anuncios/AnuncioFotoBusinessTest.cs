@@ -10,7 +10,7 @@ namespace PetSaver.Business.Tests.Anuncios
         [TestMethod]
         public void Cadastrar_ValidObject_DoesntThrowException()
         {
-            new AnuncioFotoBusiness().Cadastrar(7, 1, "6b9659dc-16eb-b558-6149-166033ed26f4", 1);
+            new AnuncioFotoBusiness().Cadastrar(7, 1, "6b9659dc-16eb-b558-6149-166033ed26f4");
         }
 
         [TestMethod]

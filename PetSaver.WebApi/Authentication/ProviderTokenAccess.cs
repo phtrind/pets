@@ -34,9 +34,9 @@ namespace PetSaver.WebApi.Authentication
             }
             catch (Exception ex)
             {
-                Exceptions.Util.TratarExcecao(ex);
+                Util.TratarExcecao(ex);
 
-                context.SetError(Convert.ToInt32(HttpStatusCode.InternalServerError).ToString(), Exceptions.Util.MensagemErroNaoTratado);
+                context.SetError(Convert.ToInt32(HttpStatusCode.InternalServerError).ToString(), Util.MensagemErroNaoTratado);
             }
         }
     }

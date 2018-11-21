@@ -78,10 +78,10 @@ function InitializeMap() {
             }
 
             // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-                map: map,
-                position: place.geometry.location
-            }));
+                            markers.push(new google.maps.Marker({
+                                map: map,
+                                position: place.geometry.location
+                            }));
 
             latitude = place.geometry.location.lat();
             longitude = place.geometry.location.lng();

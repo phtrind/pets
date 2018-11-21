@@ -94,7 +94,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center">O que fazemos</h2>
+                    <h2 class="text-center color-primary">O que fazemos</h2>
                     <div class="row" style="text-align: center">
                         <div class="col-md-4" style="margin-top: 30px">
                             <img src="homepage/icons/adoption.png" width="96px" style="display: inline; text-align: center">
@@ -184,7 +184,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8 mx-auto">
-                    <h2 class="text-center">Por que adotar?</h2>
+                    <h2 class="text-center color-primary"">Por que adotar?</h2>
                     <div class="row" style="text-align: center">
                         <div class="col-md-4" style="margin-top: 60px">
                             <!-- <img src="icons/adoption.png" width="96px"> -->
@@ -220,15 +220,18 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center">Seu melhor amigo pode estar aqui</h2>
+                    <h2 class="text-center color-primary"">Seu melhor amigo pode estar aqui</h2>
                     <div class="row col-md-12" style="margin: 0; padding: 0">
                         <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in ctrl.Anuncios"
                              ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" ng-click="ctrl.base.AbrirAnuncio(x.IdAnuncio)" onclick="document.location.href='pet.html'">
-                            <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+                            <div style="height: 175px">
+                                <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="{{x.Foto}}">
+                            </div>
                             <div class="col-md-12 text-center" style="margin-top:15px;">
                                 <h2 class="color-primary" style="height: 70px">{{x.Nome}}</h2>
                                 <p><img src="icons/gender.png" width="25px">{{x.Sexo}} <img src="icons/size.png" width="25px">{{x.Idade}}</p>
                                 <p><img src="icons/location.png" width="25px">{{x.Localizacao}}</p>
+                                <span ng-class="{'badge-danger': x.Tipo == 'Pet perdido', 'badge-success': x.Tipo == 'Pet encontrado', 'badge-primary': x.Tipo == 'Doação'}" class="badge" ng-hide="adBoxHover" style="font-size: 16px">{{x.Tipo}}</span>
                                 <button ng-show="adBoxHover" class="btn btn-primary">conhecer pet</button>
                             </div>
                         </div>
@@ -249,7 +252,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto col-md-12" style="background-color: rgba(255, 255, 255, 0.95); padding:40px">
-                    <h2 class="text-center">Encontre seu amigo</h2>
+                    <h2 class="text-center color-primary"">Encontre seu amigo</h2>
                     <form>
                         <div class="row" style="margin-top: 60px">
                             <div class="form-group col-md-6">

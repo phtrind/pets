@@ -77,6 +77,16 @@
                     }
                 }
 
+                ctrl.FotoDestaque = response.Pet.Fotos.filter(x => x.Chave == "True")[0];
+                ctrl.Fotos = response.Pet.Fotos.filter(x => x.Chave != "True");
+
+                if (response.Localizacao) {
+
+                    ctrl.Localizacao = response.Localizacao
+
+                    ctrl.InicializarMapa();
+                }
+
             }).error(function (err, status) {
 
                 if (status == 400) {
@@ -252,6 +262,61 @@
             //TODO: Implementar tratamento de erro na base
 
         });
+
+    }
+
+    //#endregion
+
+    //#region .: Fotos :.
+
+    ctrl.AbrirImagem = function (aSrc) {
+
+        ctrl.Fotos.push(ctrl.FotoDestaque);
+
+        ctrl.FotoDestaque = ctrl.Fotos.filter(x => x.Valor == aSrc)[0];
+
+        ctrl.Fotos = ctrl.Fotos.filter(function (obj) {
+            return obj.Valor != aSrc;
+        });
+
+    }
+
+    ctrl.ExpandirImagemDestaque = function () {
+
+        $('#modalImagemDestaque').modal('show');
+
+    }
+
+    //#endregion
+
+    //#region .: Mapa :.
+
+    ctrl.InicializarMapa = function () {
+
+        var latlng = new google.maps.LatLng(ctrl.Localizacao.Latitude, ctrl.Localizacao.Longitude);
+
+        var options = {
+            zoom: 15,
+            center: latlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_BOTTOM
+            },
+            streetViewControl: true,
+            streetViewControlOptions: {
+                position: google.maps.ControlPosition.RIGHT_TOP
+            },
+            fullscreenControl: true
+        };
+
+        map = new google.maps.Map(document.getElementById("mapa"), options);
+
+        new google.maps.Marker({
+            map: map,
+            position: { lat: ctrl.Localizacao.Latitude, lng: ctrl.Localizacao.Longitude }
+        })
 
     }
 

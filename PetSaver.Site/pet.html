@@ -94,25 +94,33 @@
         </svg>
     </div>
 
+    <!-- Modal erro -->
+    <div class="modal fade" id="modalImagemDestaque" tabindex="-1" role="dialog" aria-hidden="true" style="">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body" style="text-align:center">
+                    <img src="{{ctrl.FotoDestaque.Valor}}" style="width:100%">
+                </div>
+                <div class="modal-footer" style="text-align: center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main wrapper  -->
     <div id="main-wrapper" style="margin-top: 85px">
         <div class="container-fluid">
             <div class="container">
                 <div class="row" style="margin-bottom: 25px">
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="margin-top: 25px">
                         <div class="col-md-12 bigImage">
-                            <img class="imgPetOpened" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+                            <img class="imgPetOpened" src="{{ctrl.FotoDestaque.Valor}}" ng-click="ctrl.ExpandirImagemDestaque()">
                         </div>
                         <div class="col-md-12 smallImages">
-                            <div class="row">
-                                <div class="col-md-4 col-xs-4">
-                                    <img class="imgPetClosed" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
-                                </div>
-                                <div class="col-md-4 col-xs-4">
-                                    <img class="imgPetClosed" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
-                                </div>
-                                <div class="col-md-4 col-xs-4">
-                                    <img class="imgPetClosed" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4 col-4" ng-repeat="x in ctrl.Fotos">
+                                    <img class="imgPetClosed" src="{{x.Valor}}" ng-click="ctrl.AbrirImagem(x.Valor)">
                                 </div>
                             </div>
                         </div>
@@ -308,9 +316,21 @@
                         </button>
                     </div>
                 </div>
-                <!--<hr />-->
-                <div class="row" style="margin-top: 25px; margin-bottom: 25px">
+                <hr  ng-show="ctrl.Localizacao"/>
+                <div class="row" style="margin-top: 25px; margin-bottom: 25px;" ng-show="ctrl.Localizacao">
                     <!--Localizacao-->
+
+                    <div class="col-md-12" style="text-align: center; margin-bottom: 25px;">
+                        <h1 class="color-primary">Localização</h1>
+                    </div>
+
+
+                    <div id="mapa" style="height: 380px; width: 100%;">
+
+                        <!-- Maps API Javascript -->
+                        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCXj4oZ3YtFg7rxU4xGJ1V0EaH2YDjlFCg"></script>
+
+                    </div>
 
                 </div>
                 <hr ng-show="ctrl.Duvidas.length > 0" />
