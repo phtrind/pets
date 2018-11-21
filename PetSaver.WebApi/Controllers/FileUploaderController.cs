@@ -54,7 +54,7 @@ namespace PetSaver.WebApi.Controllers
 
             string extension = Utilities.MimeTypeHelper.GetExtension(file.Headers.ContentType.MediaType);
 
-            var filePath = $"{rootPath}/{guidAnuncio}/{new Random().Next(0,1000)}{extension}";
+            var filePath = $"{rootPath}/{guidAnuncio}/{new Random().Next(0, 1000)}{extension}";
 
             if (File.Exists(filePath))
             {

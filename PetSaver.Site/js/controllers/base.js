@@ -2,8 +2,12 @@
 
     var base = this;
 
+    //#region .: Variáveis Globais :.
+
     base.servicePath = "http://localhost/PetSaver.WebApi/api/";
     //var servicePath = "http://localhost/PetSaver.WebApi/api/";
+
+    //#endregion
 
     //#region .: Login / Cadastro Básico :.
 
@@ -295,6 +299,12 @@
         window.location.href = "pet.html"
 
     }
+
+    //#endregion
+
+    //#region .: Cadastro Anúncio :.
+
+
 
     //#endregion
 

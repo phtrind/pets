@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using Dapper;
+﻿using Dapper;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Exceptions;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace PetSaver.Repository.Anuncios
 {

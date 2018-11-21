@@ -41,7 +41,7 @@
 
     <!-- Fine Uploader Thumbnails template w/ customization
     ====================================================================== -->
-    <script type="text/template" id="qq-template-validation">
+    <script src="../js/fineuploader/fineUploaderTemplate.js" type="text/template" id="qq-template-validation">
         <div class="qq-uploader-selector qq-uploader" qq-drop-area-text="Solte as fotos aqui" style="width: 100%; max-height: none">
             <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
                 <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
@@ -77,15 +77,15 @@
             <dialog class="qq-alert-dialog-selector">
                 <div class="qq-dialog-message-selector"></div>
                 <div class="qq-dialog-buttons">
-                    <button type="button" class="qq-cancel-button-selector">Close</button>
+                    <button type="button" class="qq-cancel-button-selector">Fechar</button>
                 </div>
             </dialog>
 
             <dialog class="qq-confirm-dialog-selector">
                 <div class="qq-dialog-message-selector"></div>
                 <div class="qq-dialog-buttons">
-                    <button type="button" class="qq-cancel-button-selector">No</button>
-                    <button type="button" class="qq-ok-button-selector">Yes</button>
+                    <button type="button" class="qq-cancel-button-selector">Não</button>
+                    <button type="button" class="qq-ok-button-selector">Sim</button>
                 </div>
             </dialog>
 
@@ -93,7 +93,7 @@
                 <div class="qq-dialog-message-selector"></div>
                 <input type="text">
                 <div class="qq-dialog-buttons">
-                    <button type="button" class="qq-cancel-button-selector">Cancel</button>
+                    <button type="button" class="qq-cancel-button-selector">Cancelar</button>
                     <button type="button" class="qq-ok-button-selector">Ok</button>
                 </div>
             </dialog>
@@ -854,17 +854,23 @@
         <!-- End Page wrapper  -->
     </div>
     <!-- End Wrapper -->
+
     <!-- All Jquery -->
     <script src="../js/lib/jquery/jquery.min.js"></script>
+
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../js/lib/bootstrap/js/popper.min.js"></script>
     <script src="../js/lib/bootstrap/js/bootstrap.min.js"></script>
+
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="../js/jquery.slimscroll.js"></script>
+
     <!--Menu sidebar -->
     <script src="../js/sidebarmenu.js"></script>
+
     <!--Custom JavaScript -->
     <script src="../js/custom.min.js"></script>
+
     <!--stickey kit -->
     <script src="../js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
 
@@ -873,103 +879,9 @@
     <script src="../js/lib/datamap/datamaps.world.min.js"></script>
     <script src="../js/lib/datamap/datamap-init.js"></script>
 
-    <!-- Fine Uploader jQuery JS file
-    ====================================================================== -->
-    <script src="../js/fileuploader/jquery.fine-uploader.js"></script>
-
-    <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
-    ====================================================================== -->
-    <script>
-
-        //armaneza o index da imagem destaque
-        var indexDefaultImage = null;
-
-        var GenerateGuid = function () {
-
-            function s4() {
-                return Math.floor((1 + Math.random()) * 0x10000)
-                    .toString(16)
-                    .substring(1);
-            }
-
-            return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-
-        }
-
-        var guidAnuncio = GenerateGuid();
-
-        $('#fine-uploader-validation').fineUploader({
-            debug: true,
-            autoUpload: false,
-            template: 'qq-template-validation',
-            multiple: true,
-            request: {
-                endpoint: 'http://localhost/PetSaver.WebApi/api/FileUploader',
-                forceMultipart: true,
-                method: 'POST',
-                customHeaders: {
-                    Authorization: 'Bearer ' + sessionStorage.getItem('Token')
-                },
-                //paramsInBody: false,
-                params: {
-                    Guid: guidAnuncio
-                }
-            },
-            thumbnails: {
-                placeholders: {
-                    waitingPath: '../images/loading.gif',
-                    notAvailablePath: '../icons/close.png'
-                }
-            },
-            validation: {
-                allowedExtensions: ['jpeg', 'jpg', 'png'],
-                itemLimit: 4
-                //sizeLimit: 512000 // 50 kB = 50 * 1024 bytes'
-            },
-            retry: {
-                enableAuto: true
-            },
-            scaling: {
-                sendOriginal: false,
-                sizes: [
-                    { name: "compress", maxSize: 750 }
-                ]
-            },
-            callbacks: {
-                //onComplete: function (event, id, fileName, responseJSON) {
-
-                //    var teste = JSON.parse(responseJSON.response);
-
-                //},
-                onAllComplete: function () {
-
-                    angular.element('body').controller().FinalizarCadastro();
-
-                },
-                onStatusChange: function (id, oldStatus, newStatus) {
-
-                    if (newStatus == "canceled") {
-                        desconsiderarImagem();
-                    }
-                    else if (newStatus == "submitted") {
-                        $("#btnFinalizarCadastro").removeClass("disabled");
-                        $("#btnFinalizarCadastro").prop("disabled", false);
-                    }
-
-                }
-            }
-        });
-
-        var desconsiderarImagem = function () {
-
-            if ($('#fine-uploader-validation').fineUploader('getUploads').filter(x => x.status == "submitted").length <= 0) {
-                $("#btnFinalizarCadastro").addClass("disabled");
-                $("#btnFinalizarCadastro").prop("disabled", true);
-            }
-
-        };
-
-    </script>
+    <!-- Fine Uploader-->
+    <script src="../js/fineuploader/jquery.fine-uploader.js"></script>
+    <script src="../js/fineuploader/fineUploaderHelper.js"></script>
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>

@@ -7,9 +7,6 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
     ctrl.Animal = null;
 
     ctrl.petSelection = true;
-    //ctrl.petFotos = true;
-    //ctrl.confirmacao = true;
-
 
     ctrl.OnInit = function () {
 
