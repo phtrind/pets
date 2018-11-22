@@ -104,6 +104,12 @@
         }
 
     }
+    
+    ctrl.BtnWhatsAppClick = function () {
+        if (!ctrl.base.StringIsEmpty(sessionStorage.getItem('IdAnuncioAtual'))) {
+            request.IdAnuncioAtual = sessionStorage.getItem('IdAnuncioAtual')
+        }
+    }
 
     //#region .: Gostar :.
 
