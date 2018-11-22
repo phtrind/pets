@@ -4,241 +4,92 @@ app.controller('daocaoCadastroController', function ($controller, $http) {
 
     ctrl.base = $controller('baseController', {});
 
-    ctrl.petSelection = true;
-    ctrl.quantidadePets = 1;
+    ctrl.perguntaVacinado = true;
+    ctrl.SaudePendente = true;
 
-    ctrl.SelectPet = function (pet) {
-        if (pet == 1) {
-            ctrl.dogSelected = true;
-            ctrl.catSelected = false;
-            ctrl.hamsterSelected = false;
-            ctrl.birdSelected = false;
-            ctrl.othersSelected = false;
-            ctrl.petSelected = true;
-            ctrl.comboOutrosMostrar = false;
-        }
-        else if (pet == 2) {
-            ctrl.dogSelected = false;
-            ctrl.catSelected = true;
-            ctrl.hamsterSelected = false;
-            ctrl.birdSelected = false;
-            ctrl.othersSelected = false;
-            ctrl.petSelected = true;
-            ctrl.comboOutrosMostrar = false;
-        }
-        else if (pet == 3) {
-            ctrl.dogSelected = false;
-            ctrl.catSelected = false;
-            ctrl.hamsterSelected = true;
-            ctrl.birdSelected = false;
-            ctrl.othersSelected = false;
-            ctrl.petSelected = true;
-            ctrl.comboOutrosMostrar = false;
-        }
-        else if (pet == 4) {
-            ctrl.dogSelected = false;
-            ctrl.catSelected = false;
-            ctrl.hamsterSelected = false;
-            ctrl.birdSelected = true;
-            ctrl.othersSelected = false;
-            ctrl.petSelected = true;
-            ctrl.comboOutrosMostrar = false;
-        }
-        else if (pet == 5) {
-            ctrl.ValidarComboOutros();
-            ctrl.comboOutrosMostrar = true;
-            ctrl.othersSelected = true;
-            ctrl.dogSelected = false;
-            ctrl.catSelected = false;
-            ctrl.birdSelected = false;
-            ctrl.hamsterSelected = false;
-        }
-    }
+    ctrl.OnInit = function () {
 
-    ctrl.ValidarComboOutros = function () {
-        if (ctrl.outrosSelecionado == "" || ctrl.outrosSelecionado == undefined) {
-            ctrl.petSelected = false;
-            }
-            else {
-            ctrl.petSelected = true;
-        }
-    }
-    
-    ctrl.GoTo = function (number) {
-        if (number == 1) {
-            ctrl.petSelection = true;
-            ctrl.quantidade = false;
-            ctrl.petInfos1 = false;
-            ctrl.petInfosSaude = false;
-            ctrl.petObservacoes = false;
-            ctrl.petFotos = false;
-        }
-        else if (number == 2) {
-            ctrl.petSelection = false;
-            ctrl.quantidade = true;
-            ctrl.petInfos1 = false;
-            ctrl.petInfosSaude = false;
-            ctrl.petObservacoes = false;
-            ctrl.petFotos = false;
-        }
-        else if (number == 3) {
-            ctrl.petSelection = false;
-            ctrl.quantidade = false;
-            ctrl.petInfos1 = true;
-            ctrl.petInfosSaude = false;
-            ctrl.petObservacoes = false;
-            ctrl.petFotos = false;
-        }
-        else if (number == 4) {
-            ctrl.petSelection = false;
-            ctrl.quantidade = false;
-            ctrl.petInfos1 = false;
-            ctrl.petInfosSaude = true;
-            ctrl.petObservacoes = false;
-            ctrl.petFotos = false;
-        }
-        else if (number == 5) {
-            ctrl.petSelection = false;
-            ctrl.quantidade = false;
-            ctrl.petInfos1 = false;
-            ctrl.petInfosSaude = false;
-            ctrl.petObservacoes = true;
-            ctrl.petFotos = false;
-        }
-        else if (number == 6) {
-            ctrl.petSelection = false;
-            ctrl.quantidade = false;
-            ctrl.petInfos1 = false;
-            ctrl.petInfosSaude = false;
-            ctrl.petObservacoes = false;
-            ctrl.petFotos = true;
-        }
-
-        window.scrollTo(0, 0);
-    }
-
-    ctrl.alterarQuantidadePets = function (number) {
-
-        var resultado = ctrl.quantidadePets + number;
-
-        if (resultado > 0 && resultado < 9){
-            ctrl.quantidadePets = ctrl.quantidadePets + number;
-        }
-    }
-
-    ctrl.BtnProximoInfoBasicas = function () {
-
-        if (ctrl.ValidarInfoBasicasPet()) {
-            ctrl.GoTo(4);
-        }
+        ctrl.base.ctrlCadastroAnuncio.CarregarPaginaCadastroAnuncio();
 
     }
 
-    ctrl.ValidarInfoBasicasPet = function () {
+    ctrl.RespostaVacinado = function (aResposta) {
 
-        var contErro = 0;
+        ctrl.Vacinado = aResposta;
 
-        //Nome
-        if (ctrl.base.StringIsEmpty(ctrl.TxtNomePet)) {
-            ctrl.nomeError = true;
-            contErro++;
-        }
-        else {
-            ctrl.nomeError = false;
-        }
+        ctrl.perguntaVacinado = false;
+        ctrl.perguntaVermifugado = true;
 
-        //Sexo
-        if (ctrl.base.StringIsEmpty(ctrl.CmbSexoPet)) {
-            ctrl.sexoError = true;
-            contErro++;
-        }
-        else {
-            ctrl.sexoError = false;
-        }
+    }
 
-        //Raça / Espécie
-        if (ctrl.base.StringIsEmpty(ctrl.CmbRacaEspeciePet)) {
-            ctrl.racaError = true;
-            contErro++;
-        }
-        else {
-            ctrl.racaError = false;
-        }
+    ctrl.RespostaVermifugado = function (aResposta) {
 
-        //Idade
-        if (ctrl.base.StringIsEmpty(ctrl.CmbIdadePet)) {
-            ctrl.idadeError = true;
-            contErro++;
-        }
-        else {
-            ctrl.idadeError = false;
-        }
+        ctrl.Vermifugado = aResposta;
 
-        //Porte
-        if (ctrl.base.StringIsEmpty(ctrl.CmbPortePet)) {
-            ctrl.porteError = true;
-            contErro++;
-        }
-        else {
-            ctrl.porteError = false;
-        }
+        ctrl.perguntaVermifugado = false;
+        ctrl.perguntaCastrado = true;
 
-        //Pelo
-        if (ctrl.base.StringIsEmpty(ctrl.CmbPeloPet)) {
-            ctrl.peloError = true;
-            contErro++;
-        }
-        else {
-            ctrl.peloError = false;
-        }
+    }
 
-        //Cor 1
-        if (ctrl.base.StringIsEmpty(ctrl.Cor1Pet)) {
-            ctrl.cor1error = true;
-            contErro++;
-        }
-        else {
-            ctrl.cor1error = false;
-        }
+    ctrl.RespostaCastrado = function (aResposta) {
 
-        //Cor 2
-        if (ctrl.base.StringIsEmpty(ctrl.Cor2Pet)) {
-            ctrl.cor2error = true;
-            contErro++;
-        }
-        else {
-            ctrl.cor2error = false;
-        }
+        ctrl.Castrado = aResposta;
 
-        //Estado
-        if (ctrl.base.StringIsEmpty(ctrl.EstadoPet)) {
-            ctrl.estadoErro = true;
-            contErro++;
-        }
-        else {
-            ctrl.estadoErro = false;
-        }
+        ctrl.perguntaCastrado = false;
+        ctrl.perguntaVacinado = true;
 
-        //Cidade
-        if (ctrl.base.StringIsEmpty(ctrl.CidadePet)) {
-            ctrl.cidadeErro = true;
-            contErro++;
-        }
-        else {
-            ctrl.cidadeErro = false;
-        }
+        ctrl.SaudePendente = false;
 
-        return contErro == 0;
+        ctrl.base.ctrlCadastroAnuncio.GoTo(4);
 
     }
 
     ctrl.FinalizarCadastro = function () {
-        ctrl.petSelection = false;
-        ctrl.petInfos1 = false;
-        ctrl.petInfosSaude = false;
-        ctrl.petObservacoes = false;
-        ctrl.petFotos = false;
-        ctrl.confirmacao = true;
+
+        var request = {
+            IdUsuario: sessionStorage.getItem('IdUsuario'),
+            Anuncio: {
+                Pet: {
+                    IdAnimal: ctrl.base.ctrlCadastroAnuncio.Animal,
+                    Nome: ctrl.base.ctrlCadastroAnuncio.TxtNomePet,
+                    IdSexo: ctrl.base.ctrlCadastroAnuncio.CmbSexoPet,
+                    IdRacaEspecie: ctrl.base.ctrlCadastroAnuncio.CmbRacaEspeciePet,
+                    IdIdade: ctrl.base.ctrlCadastroAnuncio.CmbIdadePet,
+                    IdPorte: ctrl.base.ctrlCadastroAnuncio.CmbPortePet,
+                    Peso: ctrl.base.ctrlCadastroAnuncio.TxtPesoPet,
+                    IdPelo: ctrl.base.ctrlCadastroAnuncio.CmbPeloPet,
+                    IdCorPrimaria: ctrl.base.ctrlCadastroAnuncio.Cor1Pet,
+                    IdCorSecundaria: ctrl.base.ctrlCadastroAnuncio.Cor2Pet,
+                    Vacinado: ctrl.Vacinado,
+                    Vermifugado: ctrl.Vermifugado,
+                    Castrado: ctrl.Castrado,
+                    Descricao: ctrl.base.ctrlCadastroAnuncio.TxtDescricaoPet
+                },
+                IdEstado: ctrl.base.ctrlCadastroAnuncio.EstadoPet,
+                IdCidade: ctrl.base.ctrlCadastroAnuncio.CidadePet,
+                GuidImagens: guidAnuncio
+            }
+        };
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Anuncio/CadastrarDoacao',
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') },
+            data: request
+        }).success(function (response) {
+
+            ctrl.base.ctrlCadastroAnuncio.DefinirFotoDestaque(response);
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        }).finally(function () {
+
+            ctrl.base.ctrlCadastroAnuncio.Cadastrando = false;
+
+        });
+
     }
 
 });

@@ -14,6 +14,11 @@ namespace PetSaver.Repository.Pets
                 throw new DbValidationException("O Id do animal é inválido.");
             }
 
+            if (string.IsNullOrEmpty(aObjeto.Nome))
+            {
+                aObjeto.Nome = null;
+            }
+
             if (aObjeto.IdRacaEspecie.HasValue)
             {
                 if (aObjeto.IdRacaEspecie.Value == default)
