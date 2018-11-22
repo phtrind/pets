@@ -56,7 +56,9 @@ namespace PetSaver.Business.Anuncios
                     IdUsuario = aRequest.IdUsuario
                 };
 
-                if (aRequest.Anuncio.Localizacao != null)
+                if (aRequest.Anuncio.Localizacao != null &&
+                    aRequest.Anuncio.Localizacao.Latitude != default &&
+                    aRequest.Anuncio.Localizacao.Longitude != default)
                 {
                     anuncio.IdLocalizacao = new LocalizacaoBusiness().Inserir(new LocalizacaoEntity()
                     {
