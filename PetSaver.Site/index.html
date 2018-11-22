@@ -192,12 +192,15 @@
                 <div class="row col-md-12" style="margin: 0; padding: 0">
                     <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in ctrl.Anuncios"
                          ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" ng-click="ctrl.base.AbrirAnuncio(x.IdAnuncio)" onclick="document.location.href='pet.html'">
-                        <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+                        <div style="height: 175px">
+                            <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="{{x.Foto}}">
+                        </div>
                         <div class="col-md-12 text-center" style="margin-top:15px;">
                             <h2 class="color-primary" style="height: 70px">{{x.Nome}}</h2>
                             <p><img src="icons/gender.png" width="25px">{{x.Sexo}} <img src="icons/size.png" width="25px">{{x.Idade}}</p>
                             <p><img src="icons/location.png" width="25px">{{x.Localizacao}}</p>
-                            <button ng-show="adBoxHover" class="btn btn-primary">Conhecer pet</button>
+                            <span ng-class="{'badge-danger': x.Tipo == 'Pet perdido', 'badge-success': x.Tipo == 'Pet encontrado', 'badge-primary': x.Tipo == 'Doação'}" class="badge" ng-hide="adBoxHover" style="font-size: 16px">{{x.Tipo}}</span>
+                            <button ng-show="adBoxHover" class="btn btn-primary">conhecer pet</button>
                         </div>
                     </div>
                 </div>
