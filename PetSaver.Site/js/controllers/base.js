@@ -437,8 +437,7 @@
 
         $http({
             method: 'GET',
-            url: base.servicePath + 'Anuncio/BuscarRacaEspeciePorAnimal/' + base.ctrlCadastroAnuncio.Animal,
-            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+            url: base.servicePath + 'Pet/BuscarRacaEspeciePorAnimal/' + base.ctrlCadastroAnuncio.Animal
         }).success(function (response) {
 
             base.ctrlCadastroAnuncio.Racas = response;
@@ -723,6 +722,25 @@
         }
 
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+
+    }
+
+    base.recuperarQueryString = function (key) {
+
+        var url = window.location.href;
+
+        var parametros = url.substring(url.indexOf("?") + 1).split("&");
+
+        for (var i = 0; i < parametros.length; i++) {
+
+            var agrupamento = parametros[i].split("=");
+
+            if (agrupamento[0] == key) {
+                return agrupamento[1];
+            }
+        }
+
+        return null;
 
     }
 

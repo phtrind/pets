@@ -272,7 +272,7 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Animal</label>
+                                <label for="exampleInputEmail1">Pet</label>
                                 <select class="form-control" style="height: 50px;" ng-model="ctrl.Animal">
                                     <option value="">Todos</option>
                                     <option ng-repeat="x in ctrl.Animais" value="{{x.Chave}}">{{x.Valor}}</option>
@@ -286,7 +286,7 @@
                                 </select>
                             </div>
                             <div class="col-md-12" style="text-align: center; margin-top: 60px">
-                                <button type="button" class="btn btn-primary" style="width: 150px; height: 50px" onclick="document.location.href='index.html'">Buscar</button>
+                                <button type="button" class="btn btn-primary" style="width: 150px; height: 50px" ng-click="ctrl.BuscarAnuncios()">Buscar</button>
                             </div>
                         </div>
                     </form>

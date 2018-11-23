@@ -116,6 +116,7 @@
     ctrl.BtnGostarClick = function () {
 
         if (!ctrl.base.IsLogged()) {
+            ctrl.base.AbrirModalLogin();
             $('#modalLogarCadastrar').modal('show');
         }
         else {
@@ -187,6 +188,7 @@
             $('#modalFazerPergunta').modal('show');
         }
         else {
+            ctrl.base.AbrirModalLogin();
             $('#modalLogarCadastrar').modal('show');
         }
 
@@ -239,6 +241,7 @@
             $('#modalQueroAdotar').modal('show');
         }
         else {
+            ctrl.base.AbrirModalLogin();
             $('#modalLogarCadastrar').modal('show');
         }
 

@@ -128,17 +128,12 @@ namespace PetSaver.Repository.Anuncios
 
                 if (Validador.FiltroIsValid(aFiltro.Nome))
                 {
-                    stringBuilder.Append($" AND P.PET_NOME LIKE %{aFiltro.Nome}%");
+                    stringBuilder.Append($" AND P.PET_NOME LIKE '%{aFiltro.Nome}%'");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.IdTipo))
                 {
                     stringBuilder.Append($" AND ANT.ANT_CODIGO = {aFiltro.IdTipo}");
-                }
-
-                if (Validador.FiltroIsValid(aFiltro.IdStatus))
-                {
-                    stringBuilder.Append($" AND A.ANS_CODIGO = {aFiltro.IdStatus}");
                 }
             }
             else
@@ -152,10 +147,12 @@ namespace PetSaver.Repository.Anuncios
 
             #endregion
 
+            stringBuilder.Append($" AND A.ANS_CODIGO = {Conversor.EnumParaInt(StatusAnuncio.Ativo)}");
+
             #region .: Paginação :.
 
             stringBuilder.Append($" ORDER BY A.ANU_DTHCADASTRO DESC ");
-            stringBuilder.Append($" OFFSET @PageSize * (@PageNumber - 1) ROWS FETCH NEXT @PageSize ROWS ONLY "); 
+            stringBuilder.Append($" OFFSET @PageSize * (@PageNumber - 1) ROWS FETCH NEXT @PageSize ROWS ONLY ");
 
             #endregion
 
@@ -237,7 +234,7 @@ namespace PetSaver.Repository.Anuncios
 
                 using (var db = new SqlConnection(StringConnection))
                 {
-                    return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario});
+                    return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario });
                 }
             }
             else

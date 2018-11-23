@@ -177,6 +177,20 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             }
         }
 
+        [Route("api/Anuncio/BuscarAnuncios")]
+        [HttpPost]
+        public IEnumerable<AnuncioMiniaturaResponse> BuscarAnuncios(FiltroAnuncioRequest aFiltro)
+        {
+            try
+            {
+                return new AnuncioBusiness().ListarMiniaturas(aFiltro);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
         #endregion
     }
 }

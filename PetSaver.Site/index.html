@@ -87,9 +87,18 @@
     <div id="main-wrapper" style="margin-top: 100px">
         <div class="container-fluid">
             <div class="container">
+                <div class="col-md-12" style="text-align: center; margin-bottom: 25px">
+                    <!--<h1 class="color-primary">Pets perdidos</h1>-->
+                    <select class="btn btn-primary" style="font-size: 24px; text-align-last: center" ng-model="ctrl.TipoAnuncio" ng-change="ctrl.AplicarFiltros()">
+                        <option value="">Todos</option>
+                        <option value="1">Doações</option>
+                        <option value="3">Pets encontrados</option>
+                        <option value="2">Pets perdidos</option>
+                    </select>
+                </div>
                 <!-- filter -->
                 <div class="col-md-12" style="text-align: center;">
-                    <h1>
+                    <h2>
                         Filtros
                         <img ng-show="ctrl.closedFilter" src="icons/minus.png" width="35px" style="cursor: pointer;"
                              data-toggle="collapse" data-target="#formFiltro" aria-expanded="false" aria-controls="formFiltro"
@@ -97,7 +106,7 @@
                         <img ng-show="!ctrl.closedFilter" src="icons/plus.png" width="35px" style="cursor: pointer;"
                              data-toggle="collapse" data-target="#formFiltro" aria-expanded="false" aria-controls="formFiltro"
                              ng-click="ctrl.closedFilter = true;">
-                    </h1>
+                    </h2>
                     <div class="collapse" id="formFiltro">
                         <form>
                             <div class="row">
@@ -131,57 +140,51 @@
                                 <div class="row">
                                     <div class="form-group col-md-2">
                                         <label>Sexo</label>
-                                        <select class="form-control custom-select">
-                                            <option>Todos</option>
-                                            <option>Macho</option>
-                                            <option>Fêmea</option>
+                                        <select class="form-control custom-select" ng-model="ctrl.Sexo">
+                                            <option value="">Todos</option>
+                                            <option ng-repeat="x in ctrl.Sexos" value="{{x.Chave}}">{{x.Valor}}</option>
                                         </select>
-
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label>{{ctrl.LabelRacaEspecie}}</label>
-                                        <select class="form-control custom-select">
-                                            <option>Todos</option>
-                                            <option>labrador</option>
-                                            <option>Outros</option>
+                                        <select class="form-control custom-select" ng-model="ctrl.RacaEspecie">
+                                            <option value="">Todos</option>
+                                            <option ng-repeat="x in ctrl.RacasEspecies" value="{{x.Chave}}">{{x.Valor}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label>Pelo</label>
-                                        <select class="form-control custom-select">
-                                            <option value="1">Todos</option>
-                                            <option value="2">Curto</option>
-                                            <option value="3">Médio</option>
-                                            <option value="4">Longo</option>
+                                        <select class="form-control custom-select" ng-model="ctrl.Pelo">
+                                            <option value="">Todos</option>
+                                            <option ng-repeat="x in ctrl.Pelos" value="{{x.Chave}}">{{x.Valor}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label>Idade</label>
-                                        <select class="form-control custom-select">
-                                            <option value="1">Todas</option>
-                                            <option value="2">Recém nascido</option>
-                                            <option value="3">Filhote</option>
-                                            <option value="4">Adulto</option>
-                                            <option value="0">Não sei</option>
+                                        <select class="form-control custom-select" ng-model="ctrl.Idade">
+                                            <option value="">Todos</option>
+                                            <option ng-repeat="x in ctrl.Idades" value="{{x.Chave}}">{{x.Valor}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label>Cor</label>
-                                        <select class="form-control custom-select">
-                                            <option value="1">Todas</option>
-                                            <option value="2">branco</option>
-                                            <option value="3">preto</option>
+                                        <select class="form-control custom-select" ng-model="ctrl.Cor">
+                                            <option value="">Todos</option>
+                                            <option ng-repeat="x in ctrl.Cores" value="{{x.Chave}}">{{x.Valor}}</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label>Porte</label>
-                                        <select class="form-control custom-select">
-                                            <option>Todos</option>
-                                            <option>Pequeno</option>
-                                            <option>Médio</option>
-                                            <option>Grande</option>
+                                        <select class="form-control custom-select" ng-model="ctrl.Porte">
+                                            <option value="">Todos</option>
+                                            <option ng-repeat="x in ctrl.Portes" value="{{x.Chave}}">{{x.Valor}}</option>
                                         </select>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-secondary col-12" ng-click="ctrl.AplicarFiltros()">Buscar</button>
                                 </div>
                             </div>
                         </form>
@@ -189,7 +192,7 @@
                 </div>
                 <!-- end filter -->
                 <!-- pets -->
-                <div class="row col-md-12" style="margin: 0; padding: 0">
+                <div ng-hide="ctrl.Buscando" class="row col-md-12" style="margin: 0; padding: 0" when-scrolled="ctrl.Teste()">
                     <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in ctrl.Anuncios"
                          ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" ng-click="ctrl.base.AbrirAnuncio(x.IdAnuncio)" onclick="document.location.href='pet.html'">
                         <div style="height: 175px">
@@ -204,11 +207,32 @@
                         </div>
                     </div>
                 </div>
+                <div ng-show="ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 30px">
+                    <img style="width:100px;" src="images/loading.gif" />
+                </div>
+                <div ng-show="!ctrl.Anuncios || ctrl.Anuncios.length == 0" class="col-md-12" style="text-align: center; margin-top: 35px">
+                    <p class="color-primary" style="font-size:24px">Nenhum pet encontrado</p>
+                    <p class="color-primary" style="font-size:24px">Caso queira cadastrar um, selecione uma das opções abaixo</p>
+                    <div class="row" style="margin-top: 35px">
+                        <div class="col-md-4">
+                            <img class="link" src="icons/donation.png" style="width: 96px" ng-click="ctrl.CadastrarAnuncio('doacao')" />
+                            <p class="color-primary link" ng-click="ctrl.CadastrarAnuncio('doacao')">Doação</p>
+                        </div>
+                        <div class="col-md-4">
+                            <img class="link" src="icons/find.png" style="width: 96px" ng-click="ctrl.CadastrarAnuncio('petPerdido')" />
+                            <p class="color-primary link" ng-click="ctrl.CadastrarAnuncio('petPerdido')">Pet perdido</p>
+                        </div>
+                        <div class="col-md-4">
+                            <img class="link" src="icons/lost.png" style="width: 96px" ng-click="ctrl.CadastrarAnuncio('petEncontrado')" />
+                            <p class="color-primary link" ng-click="ctrl.CadastrarAnuncio('petEncontrado')">Pet encontrado</p>
+                        </div>
+                    </div>
+                </div>
                 <!-- end pets -->
             </div>
         </div>
     </div>
-    
+
     <div ng-include="'login.html'"></div>
 
     <div ng-include="'rodape.html'"></div>
@@ -227,7 +251,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="js/controllers/app.js"></script>
     <script src="js/controllers/base.js"></script>
-    <script src="js/controllers/index.js" charset="ISO-8859-1"></script>
+    <script src="js/controllers/index.js"></script>
+
+    <script>
+
+        window.onscroll = function () { myFunction() };
+
+        function myFunction() {
+
+            var scrollPosition = window.pageYOffset;
+            var windowSize = window.innerHeight;
+            var bodyHeight = document.body.offsetHeight;
+
+            var distancia = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
+
+            if (distancia <= 75) {
+                angular.element('body').controller().CarregarProximaPagina();
+            }
+
+        }
+
+    </script>
 
 </body>
 

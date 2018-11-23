@@ -62,4 +62,39 @@
 
     }
 
+    ctrl.BuscarAnuncios = function () {
+
+        var parameters = "";
+        var url = "index.html";
+
+        if (!ctrl.base.StringIsEmpty(ctrl.Estado)) {
+            parameters = parameters + "estado=" + ctrl.Estado + "&";
+        }
+
+        if (!ctrl.base.StringIsEmpty(ctrl.Cidade)) {
+            parameters = parameters + "cidade=" + ctrl.Cidade + "&";
+        }
+
+        if (!ctrl.base.StringIsEmpty(ctrl.Animal)) {
+            parameters = parameters + "pet=" + ctrl.Animal + "&";
+        }
+
+        if (!ctrl.base.StringIsEmpty(ctrl.Sexo)) {
+            parameters = parameters + "sexo=" + ctrl.Sexo;
+        }
+
+        if (!ctrl.base.StringIsEmpty(parameters)) {
+
+            if (parameters[parameters.length - 1] == "&") {
+                parameters = parameters.substring(0, parameters.length - 1);
+            }
+
+            url = url + "?" + parameters;
+
+        }
+
+        document.location.href = url;
+
+    }
+
 });
