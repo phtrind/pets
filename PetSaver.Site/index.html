@@ -182,6 +182,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row" style="margin-bottom: 20px">
+                                <div class="col-md-12" style="text-align: right">
+                                    <span class="color-primary link" style="font-weight: bold" ng-click="ctrl.LimparFiltros()">Limpar filtros</span>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <button class="btn btn-secondary col-12" ng-click="ctrl.AplicarFiltros()">Buscar</button>
@@ -192,7 +197,7 @@
                 </div>
                 <!-- end filter -->
                 <!-- pets -->
-                <div ng-hide="ctrl.Buscando" class="row col-md-12" style="margin: 0; padding: 0" when-scrolled="ctrl.Teste()">
+                <div class="row col-md-12" style="margin: 0; padding: 0" when-scrolled="ctrl.Teste()">
                     <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in ctrl.Anuncios"
                          ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" ng-click="ctrl.base.AbrirAnuncio(x.IdAnuncio)" onclick="document.location.href='pet.html'">
                         <div style="height: 175px">
@@ -210,8 +215,8 @@
                 <div ng-show="ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 30px">
                     <img style="width:100px;" src="images/loading.gif" />
                 </div>
-                <div ng-show="!ctrl.Anuncios || ctrl.Anuncios.length == 0" class="col-md-12" style="text-align: center; margin-top: 35px">
-                    <p class="color-primary" style="font-size:24px">Nenhum pet encontrado</p>
+                <div ng-show="(!ctrl.Anuncios || ctrl.Anuncios.length == 0) && !ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 35px">
+                    <p class="color-primary" style="font-size:24px">Que pena, não encontramos nenhum pet</p>
                     <p class="color-primary" style="font-size:24px">Caso queira cadastrar um, selecione uma das opções abaixo</p>
                     <div class="row" style="margin-top: 35px">
                         <div class="col-md-4">

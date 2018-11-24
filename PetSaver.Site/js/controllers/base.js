@@ -104,13 +104,14 @@
                 $('#modalLogarCadastrar').modal('hide');
                 $('#modalLoginRealizado').modal('show');
 
+                base.LimparCamposLoginCadastro();
+
             }).error(function (err, status) {
 
                 sessionStorage.clear();
 
                 if (status == 400) {
-                    base.EmailLogin = "";
-                    base.SenhaLogin = "";
+                    base.LimparCamposLoginCadastro();
                     $('#modalErroLogin').modal('show');
                 }
                 else {
@@ -127,6 +128,20 @@
         else {
             base.Logando = false;
         }
+
+    }
+
+    base.LimparCamposLoginCadastro = function () {
+
+        base.EmailLogin = "";
+        base.SenhaLogin = "";
+        base.NomeCadastro = "";
+        base.SobrenomeCadastro = "";
+        base.DthNascimentoCadastro = "";
+        base.EmailCadastro = "";
+        base.ConfirmacaoEmailCadastro = "";
+        base.SenhaCadastro = "";
+        base.ConfirmacaoSenhaCadastro = "";
 
     }
 
@@ -259,6 +274,8 @@
                     sessionStorage.setItem("TokenExpiresIn", response.expires_in);
 
                     base.BuscarInformacoesSession(base.EmailLogin);
+
+                    base.LimparCamposLoginCadastro();
 
                 }).error(function (err, status) {
 

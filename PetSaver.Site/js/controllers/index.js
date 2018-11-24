@@ -12,6 +12,8 @@
 
     ctrl.OnInit = function () {
 
+        ctrl.Buscando = true;
+
         var estado = ctrl.base.recuperarQueryString("estado");
         var cidade = ctrl.base.recuperarQueryString("cidade");
         var pet = ctrl.base.recuperarQueryString("pet");
@@ -68,6 +70,10 @@
         }).error(function (err, status) {
 
             //TODO: Implementar tratamento de erro na base
+
+        }).finally(function () {
+
+            ctrl.Buscando = false;
 
         });
 
@@ -136,7 +142,27 @@
 
     ctrl.AplicarFiltros = function () {
 
-        ctrl.BuscarAnuncios(1, 8, false);
+        ctrl.BuscarAnuncios(1, 12, false);
+
+        pagina = 1;
+
+        proximaPaginaLiberada = true;
+
+    }
+
+    ctrl.LimparFiltros = function () {
+
+        ctrl.Estado = "";
+        ctrl.Cidade = "";
+        ctrl.Animal = "";
+        ctrl.Sexo = "";
+        ctrl.RacaEspecie = "";
+        ctrl.Pelo = "";
+        ctrl.Idade = "";
+        ctrl.Cor = "";
+        ctrl.Porte = "";
+
+        ctrl.BuscarAnuncios(1, 12, false);
 
         pagina = 1;
 
@@ -221,7 +247,7 @@
 
         if (scrollLiberado && proximaPaginaLiberada) {
 
-            ctrl.BuscarAnuncios(pagina + 1, 4, true);
+            ctrl.BuscarAnuncios(pagina + 1, 12, true);
 
             pagina++;
 

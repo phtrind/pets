@@ -151,7 +151,7 @@ namespace PetSaver.Repository.Anuncios
 
             #region .: Paginação :.
 
-            stringBuilder.Append($" ORDER BY A.ANU_DTHCADASTRO DESC ");
+            stringBuilder.Append($" ORDER BY A.ANU_DTHCADASTRO ");
             stringBuilder.Append($" OFFSET @PageSize * (@PageNumber - 1) ROWS FETCH NEXT @PageSize ROWS ONLY ");
 
             #endregion
