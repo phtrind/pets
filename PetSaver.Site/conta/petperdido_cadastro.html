@@ -23,7 +23,6 @@
     <link href="../css/helper.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/myStyle.css" rel="stylesheet">
-    <link href="../css/toggle.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
@@ -513,7 +512,7 @@
                                     <option value="">Selecione</option>
                                     <option value="{{x.Chave}}" ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Animais">{{x.Valor}}</option>
                                 </select>
-                                <button class="btn btn-primary" ng-disabled="!ctrl.base.ctrlCadastroAnuncio.petSelected" ng-click="ctrl.base.ctrlCadastroAnuncio.PetEscolhido()">Próximo</button>
+                                <button class="btn btn-primary" ng-disabled="!ctrl.base.ctrlCadastroAnuncio.petSelected" ng-click="ctrl.base.ctrlCadastroAnuncio.PetEscolhido(false)">Próximo</button>
                             </div>
                         </div>
                     </div>
@@ -583,7 +582,7 @@
                                 <div class="form-group col-md-6">
                                     <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp"
                                            placeholder="Nome" autocomplete="off" ng-model="ctrl.base.ctrlCadastroAnuncio.TxtNomePet">
-                                    <small id="nomeHelp" class="form-text text-muted">Nos conte qual o nome do seu pet.</small>
+                                    <small id="nomeHelp" class="form-text text-muted">Nos conte qual o nome do seu pet. Caso não saiba ou não tenha, pode deixar em branco.</small>
                                 </div>
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.sexoError}">
                                     <select class="form-control custom-select" id="sexo" aria-describedby="sexoHelp" ng-model="ctrl.base.ctrlCadastroAnuncio.CmbSexoPet">
@@ -665,7 +664,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.cor1error}">
-                                    <select class="form-control custom-select" id="cor1" aria-describedby="cor1Help" ng-model="ctrl.base.ctrlCadastroAnuncio.Cor1Pet">
+                                    <select class="form-control custom-select" id="cor1" aria-describedby="cor1Help" ng-model="ctrl.base.ctrlCadastroAnuncio.Cor1Pet" ng-change="ctrl.base.ctrlCadastroAnuncio.CorPrimariaChange()">
                                         <option value="" disabled selected>Cor principal</option>
                                         <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Cores" value="{{x.Chave}}">{{x.Valor}}</option>
                                     </select>
@@ -680,7 +679,7 @@
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.cor2error}">
                                     <select class="form-control custom-select" id="cor2" aria-describedby="cor2Help" ng-model="ctrl.base.ctrlCadastroAnuncio.Cor2Pet">
                                         <option value="" disabled selected>Cor secundária</option>
-                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.Cores" value="{{x.Chave}}">{{x.Valor}}</option>
+                                        <option ng-repeat="x in ctrl.base.ctrlCadastroAnuncio.CoresSecundarias" value="{{x.Chave}}">{{x.Valor}}</option>
                                         <option value="0">Não se aplica</option>
                                     </select>
                                     <small id="cor2Help" class="form-text text-muted">
@@ -722,7 +721,7 @@
                                     <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.GoTo(2)">Voltar</button>
                                 </div>
                                 <div class="col-6" style="text-align: right;">
-                                    <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.BtnProximoInfoBasicas()">Próximo</button>
+                                    <button class="btn btn-primary" ng-click="ctrl.base.ctrlCadastroAnuncio.BtnProximoInfoBasicas(false)">Próximo</button>
                                 </div>
                             </div>
                         </div>

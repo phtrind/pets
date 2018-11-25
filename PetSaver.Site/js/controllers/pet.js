@@ -98,24 +98,28 @@
 
             });
 
+            ctrl.PreencherLinksCompartilhamento();
+
         }
         else {
             //TODO: Mostrar mensagem que o anúncio não foi encontrado
         }
 
     }
-    
-    ctrl.BtnWhatsAppClick = function () {
-        if (!ctrl.base.StringIsEmpty(sessionStorage.getItem('IdAnuncioAtual'))) {
-            request.IdAnuncioAtual = sessionStorage.getItem('IdAnuncioAtual')
-        }
+
+    ctrl.PreencherLinksCompartilhamento = function () {
+
+        ctrl.linkCompartilharWpp = "https://api.whatsapp.com/send?text=" + "Olá, veja esse pet na PetSaver: " + "http://petsaver.com.br/pet.html?pet=" + sessionStorage.getItem('IdAnuncioAtual');
+
     }
+
 
     //#region .: Gostar :.
 
     ctrl.BtnGostarClick = function () {
 
         if (!ctrl.base.IsLogged()) {
+            ctrl.base.AbrirModalLogin();
             $('#modalLogarCadastrar').modal('show');
         }
         else {
@@ -187,6 +191,7 @@
             $('#modalFazerPergunta').modal('show');
         }
         else {
+            ctrl.base.AbrirModalLogin();
             $('#modalLogarCadastrar').modal('show');
         }
 
@@ -239,6 +244,7 @@
             $('#modalQueroAdotar').modal('show');
         }
         else {
+            ctrl.base.AbrirModalLogin();
             $('#modalLogarCadastrar').modal('show');
         }
 

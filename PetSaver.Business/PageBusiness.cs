@@ -56,7 +56,11 @@ namespace PetSaver.Business
             {
                 Estados = new EstadoBusiness().Combo(),
                 Animais = new AnimalBusiness().Combo(),
-                Sexos = new SexoBusiness().Combo()
+                Sexos = new SexoBusiness().Combo(),
+                Pelos = new PeloBusiness().Combo(),
+                Idades = new IdadeBusiness().Combo(),
+                Cores = new CorBusiness().Combo(),
+                Portes = new PorteBusiness().Combo()
             };
         }
 

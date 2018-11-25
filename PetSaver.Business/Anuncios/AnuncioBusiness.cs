@@ -114,7 +114,7 @@ namespace PetSaver.Business.Anuncios
             return aLista.Select(x => new AnuncioMiniaturaResponse()
             {
                 IdAnuncio = Convert.ToInt32(x.ANU_CODIGO),
-                Nome = Convert.ToString(x.PET_NOME) ?? Constantes.Desconhecido,
+                Nome = string.IsNullOrEmpty(Convert.ToString(x.PET_NOME)) ? Constantes.Desconhecido : Convert.ToString(x.PET_NOME),
                 Sexo = Convert.ToString(x.PTS_DESCRICAO) ?? Constantes.Indefinido,
                 Idade = Convert.ToString(x.PID_DESCRICAO) ?? Constantes.Indefinido,
                 Localizacao = $"{Convert.ToString(x.CID_NOME)} / {Convert.ToString(x.EST_SIGLA)}",

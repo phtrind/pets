@@ -14,8 +14,6 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
 
     ctrl.FinalizarCadastro = function () {
 
-        ctrl.base.ctrlCadastroAnuncio.Cadastrando = true;
-
         var request = {
             IdUsuario: sessionStorage.getItem('IdUsuario'),
             Anuncio: {

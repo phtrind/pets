@@ -104,13 +104,14 @@
                 $('#modalLogarCadastrar').modal('hide');
                 $('#modalLoginRealizado').modal('show');
 
+                base.LimparCamposLoginCadastro();
+
             }).error(function (err, status) {
 
                 sessionStorage.clear();
 
                 if (status == 400) {
-                    base.EmailLogin = "";
-                    base.SenhaLogin = "";
+                    base.LimparCamposLoginCadastro();
                     $('#modalErroLogin').modal('show');
                 }
                 else {
@@ -127,6 +128,20 @@
         else {
             base.Logando = false;
         }
+
+    }
+
+    base.LimparCamposLoginCadastro = function () {
+
+        base.EmailLogin = "";
+        base.SenhaLogin = "";
+        base.NomeCadastro = "";
+        base.SobrenomeCadastro = "";
+        base.DthNascimentoCadastro = "";
+        base.EmailCadastro = "";
+        base.ConfirmacaoEmailCadastro = "";
+        base.SenhaCadastro = "";
+        base.ConfirmacaoSenhaCadastro = "";
 
     }
 
@@ -260,6 +275,8 @@
 
                     base.BuscarInformacoesSession(base.EmailLogin);
 
+                    base.LimparCamposLoginCadastro();
+
                 }).error(function (err, status) {
 
                     sessionStorage.clear();
@@ -308,6 +325,7 @@
 
     base.ctrlCadastroAnuncio.Animal = null;
 
+    //base.ctrlCadastroAnuncio.petSelection = true;
     base.ctrlCadastroAnuncio.petSelection = true;
 
     base.ctrlCadastroAnuncio.CarregarPaginaCadastroAnuncio = function () {
@@ -328,6 +346,7 @@
             base.ctrlCadastroAnuncio.Portes = response.Portes;
             base.ctrlCadastroAnuncio.Pelos = response.Pelos;
             base.ctrlCadastroAnuncio.Cores = response.Cores;
+            base.ctrlCadastroAnuncio.CoresSecundarias = response.Cores;
             base.ctrlCadastroAnuncio.Estados = response.Estados;
 
         }).error(function (err, status) {
@@ -335,6 +354,16 @@
             //TODO: Implementar tratamento de erro na base
 
         });
+
+    }
+
+    base.ctrlCadastroAnuncio.CorPrimariaChange = function () {
+
+        if (!base.StringIsEmpty(base.ctrlCadastroAnuncio.Cor1Pet)) {
+
+            base.ctrlCadastroAnuncio.CoresSecundarias = base.ctrlCadastroAnuncio.Cores.filter(x => x.Chave != base.ctrlCadastroAnuncio.Cor1Pet);
+
+        }
 
     }
 
@@ -421,17 +450,22 @@
         }
     }
 
-    base.ctrlCadastroAnuncio.PetEscolhido = function () {
+    base.ctrlCadastroAnuncio.PetEscolhido = function (aIsDoacao) {
 
         $http({
             method: 'GET',
-            url: base.servicePath + 'Anuncio/BuscarRacaEspeciePorAnimal/' + base.ctrlCadastroAnuncio.Animal,
-            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+            url: base.servicePath + 'Pet/BuscarRacaEspeciePorAnimal/' + base.ctrlCadastroAnuncio.Animal
         }).success(function (response) {
 
             base.ctrlCadastroAnuncio.Racas = response;
 
-            base.ctrlCadastroAnuncio.GoTo(2);
+            if (aIsDoacao) {
+                base.ctrlCadastroAnuncio.GoTo(3);
+            }
+            else {
+                base.ctrlCadastroAnuncio.GoTo(2);
+            }
+
 
         }).error(function (err, status) {
 
@@ -448,6 +482,7 @@
             base.ctrlCadastroAnuncio.petInfos1 = false;
             base.ctrlCadastroAnuncio.petObservacoes = false;
             base.ctrlCadastroAnuncio.petFotos = false;
+            base.ctrlCadastroAnuncio.petInfosSaude = false;
         }
         else if (number == 2) {
             base.ctrlCadastroAnuncio.petSelection = false;
@@ -455,6 +490,7 @@
             base.ctrlCadastroAnuncio.petInfos1 = false;
             base.ctrlCadastroAnuncio.petObservacoes = false;
             base.ctrlCadastroAnuncio.petFotos = false;
+            base.ctrlCadastroAnuncio.petInfosSaude = false;
         }
         else if (number == 3) {
             base.ctrlCadastroAnuncio.SetLocalizacao();
@@ -463,6 +499,7 @@
             base.ctrlCadastroAnuncio.petInfos1 = true;
             base.ctrlCadastroAnuncio.petObservacoes = false;
             base.ctrlCadastroAnuncio.petFotos = false;
+            base.ctrlCadastroAnuncio.petInfosSaude = false;
         }
         else if (number == 4) {
             base.ctrlCadastroAnuncio.petSelection = false;
@@ -470,14 +507,23 @@
             base.ctrlCadastroAnuncio.petInfos1 = false;
             base.ctrlCadastroAnuncio.petObservacoes = true;
             base.ctrlCadastroAnuncio.petFotos = false;
+            base.ctrlCadastroAnuncio.petInfosSaude = false;
         }
-
         else if (number == 5) {
             base.ctrlCadastroAnuncio.petSelection = false;
             base.ctrlCadastroAnuncio.petLocalizacao = false;
             base.ctrlCadastroAnuncio.petInfos1 = false;
             base.ctrlCadastroAnuncio.petObservacoes = false;
             base.ctrlCadastroAnuncio.petFotos = true;
+            base.ctrlCadastroAnuncio.petInfosSaude = false;
+        }
+        else if (number == 6) {
+            base.ctrlCadastroAnuncio.petSelection = false;
+            base.ctrlCadastroAnuncio.petLocalizacao = false;
+            base.ctrlCadastroAnuncio.petInfos1 = false;
+            base.ctrlCadastroAnuncio.petObservacoes = false;
+            base.ctrlCadastroAnuncio.petFotos = false;
+            base.ctrlCadastroAnuncio.petInfosSaude = true;
         }
 
         window.scrollTo(0, 0);
@@ -525,10 +571,16 @@
 
     }
 
-    base.ctrlCadastroAnuncio.BtnProximoInfoBasicas = function () {
+    base.ctrlCadastroAnuncio.BtnProximoInfoBasicas = function (aIsDoacao) {
 
         if (base.ctrlCadastroAnuncio.ValidarInfoBasicasPet()) {
-            base.ctrlCadastroAnuncio.GoTo(4);
+            if (aIsDoacao) {
+                base.ctrlCadastroAnuncio.GoTo(6);
+
+            }
+            else {
+                base.ctrlCadastroAnuncio.GoTo(4);
+            }
         }
 
     }
@@ -624,6 +676,8 @@
 
     base.ctrlCadastroAnuncio.UploadImagens = function () {
 
+        base.ctrlCadastroAnuncio.Cadastrando = true;
+
         $('#fine-uploader-validation').fineUploader('uploadStoredFiles');
 
     }
@@ -639,6 +693,7 @@
 
             base.ctrlCadastroAnuncio.petSelection = false;
             base.ctrlCadastroAnuncio.petInfos1 = false;
+            base.ctrlCadastroAnuncio.petInfosSaude = false;
             base.ctrlCadastroAnuncio.petObservacoes = false;
             base.ctrlCadastroAnuncio.petFotos = false;
             base.ctrlCadastroAnuncio.confirmacao = true;
@@ -684,6 +739,25 @@
         }
 
         return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+
+    }
+
+    base.recuperarQueryString = function (key) {
+
+        var url = window.location.href;
+
+        var parametros = url.substring(url.indexOf("?") + 1).split("&");
+
+        for (var i = 0; i < parametros.length; i++) {
+
+            var agrupamento = parametros[i].split("=");
+
+            if (agrupamento[0] == key) {
+                return agrupamento[1];
+            }
+        }
+
+        return null;
 
     }
 

@@ -41,15 +41,6 @@
         }
     </style>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            //conteúdo que será compartilhado: Título da página + URL
-            var conteudo = encodeURIComponent(document.title + " " + window.location.href + Response.IdAnuncioAtual);
-            //altera a URL do botão
-            document.getElementById("whatsapp-share-btt").href = "https://api.whatsapp.com/send?text=" + conteudo;
-        }, false);
-    </script>
-
     <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
@@ -315,7 +306,7 @@
                                     <img class="imgIconShare" src="icons/copy.png">
                                 </div>
                                 <div class="col-4">
-                                    <a href="" id="whatsapp-share-btt"  ng-click="ctrl.BtnWhatsAppClick()" rel="nofollow" target="_blank"><img class="imgIconShare" src="icons/whatsapp.png"></a>
+                                    <a href="{{ctrl.linkCompartilharWpp}}" id="whatsapp-share-btt" rel="nofollow" target="_blank"><img class="imgIconShare" src="icons/whatsapp.png"></a>
                                 </div>
                                 <div class="col-4">
                                     <a target="_blank" href="http://www.facebook.com/sharer.php?u=http://www.desarrolloweb.com/articulos/1.php"><img class="imgIconShare" src="icons/facebook.png"></a>
