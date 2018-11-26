@@ -5,7 +5,7 @@
     //#region .: Variáveis Globais :.
 
     base.servicePath = "http://localhost/PetSaver.WebApi/api/";
-    //var servicePath = "http://localhost/PetSaver.WebApi/api/";
+    //base.servicePath = "http://173.193.169.235:4000/api/";
 
     //#endregion
 
