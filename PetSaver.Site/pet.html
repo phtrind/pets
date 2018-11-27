@@ -18,12 +18,25 @@
             });
     </script>
     <script>
+        $(document).ready(function () {
+            //store nodepath value to clipboard	(copy to top of page)
+            $('li').live('click', function () {
+                //console.log($('#pathtonode').html()+ " copied to window");
+                var path = $('#pathtonode').html();
+                path = path.replace(/ &gt; /g, ".");
+                //console.log(path);
+                addtoppath(path);
+            });
+
         $(function () {
             $("#copiar").on("click", function () {
                 $("#link").text($("#paraCopiar").text());
+                var url = window.location.href; 
             });
         });
+
     </script>
+
 
     <!-- ############################################### -->
     <!-- Google Analytics Produção -->
@@ -313,7 +326,7 @@
                                     <a href="{{ctrl.linkCompartilharWpp}}" id="whatsapp-share-btt" rel="nofollow" target="_blank"><img class="imgIconShare" src="icons/whatsapp.png"></a>
                                 </div>
                                 <di class="col-4">
-                                    <a target="_blank" data-layout="button_count" href="{{ctrl.linkCompartilharFace}}"><img class="imgIconShare" src="icons/facebook.png"></a>
+                                    <a target="_blank" data-href="{{ctrl.linkCompartilharFace}}" data-layout="button_count" href="{{ctrl.linkCompartilharFace}}"><img class="imgIconShare" src="icons/facebook.png"></a>
                                 </di>
                             </div>
                         </div>
