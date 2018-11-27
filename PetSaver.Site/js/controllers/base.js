@@ -196,7 +196,7 @@
         }
 
         //Data nascimento
-        if (base.StringIsEmpty(base.DthNascimentoCadastro)) {
+        if (!base.DthNascimentoIsValid(base.DthNascimentoCadastro)) {
             base.ErroDthNascimentoCadastro = true;
             contErro++;
         }
@@ -352,11 +352,7 @@
     //#region .: Anúncios :.
 
     base.AbrirAnuncio = function (aIdAnuncio) {
-
-        sessionStorage.setItem("IdAnuncioAtual", aIdAnuncio);
-
-        window.location.href = "pet.html"
-
+        window.location.href = "pet.html?idAnuncio=" + aIdAnuncio;
     }
 
     //#endregion
@@ -834,6 +830,20 @@
         else {
             return false;
         }
+
+    }
+
+    base.DthNascimentoIsValid = function (aDthNascimento) {
+
+        if (base.StringIsEmpty(aDthNascimento)) {
+            return false;
+        }
+
+        var date = new Date(aDthNascimento);
+
+        var today = new Date().setDate(0, 0, 0, 0);
+
+        return date < today;
 
     }
 

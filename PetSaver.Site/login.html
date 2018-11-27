@@ -9,8 +9,7 @@
                             <div class="modal-body modal-lg">
                                 <div class="col-md-12 login-form" ng-hide="ctrl.base.isRegister">
                                     <div class="col-md-12" style="text-align: center; margin-bottom: 20px; margin-top: 5%;">
-                                        <img src="images/logos/logo_fundo_branco_fina.gif" onclick="document.location.href='home.html'"
-                                             style="width: 300px; max-width: 85%; cursor: pointer">
+                                        <img src="images/logos/logo_fundo_branco_fina.gif" style="width: 100%; max-width: 85%;">
                                     </div>
                                     <form autocomplete="off">
                                         <div class="form-group" ng-class="{'has-error':ctrl.base.ErroEmailLogin}">
@@ -77,7 +76,7 @@
                                             <div class="col-md-6 form-group" ng-class="{'has-error':ctrl.base.ErroDthNascimentoCadastro}">
                                                 <input type="text" class="form-control" placeholder="Nascimento"
                                                        style="border-radius: 8px" onfocus="(this.type='date')"
-                                                       onblur="(this.type='text')" autocomplete="off" ng-model="ctrl.base.DthNascimentoCadastro">
+                                                       onblur="if (!this.value) { (this.type = 'text') }" autocomplete="off" ng-model="ctrl.base.DthNascimentoCadastro">
                                                 <small class="form-control-feedback" ng-show="ctrl.base.ErroDthNascimentoCadastro">Data de nascimento inválida</small>
                                             </div>
                                         </div>

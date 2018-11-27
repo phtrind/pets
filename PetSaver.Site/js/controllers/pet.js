@@ -6,12 +6,16 @@
 
     ctrl.isRegister = false;
 
+    var idAnuncio = null;
+
     ctrl.OnInit = function () {
 
-        if (!ctrl.base.StringIsEmpty(sessionStorage.getItem('IdAnuncioAtual'))) {
+        idAnuncio = ctrl.base.recuperarQueryString("idAnuncio");
+
+        if (!ctrl.base.StringIsEmpty(idAnuncio)) {
 
             var request = {
-                IdAnuncio: sessionStorage.getItem('IdAnuncioAtual')
+                IdAnuncio: idAnuncio
             };
 
             if (!ctrl.base.StringIsEmpty(sessionStorage.getItem('IdUsuario'))) {
@@ -87,10 +91,13 @@
                     ctrl.InicializarMapa();
                 }
 
+                ctrl.notFound = false;
+
             }).error(function (err, status) {
 
                 if (status == 400) {
                     //TODO: Mostrar mensagem que o anúncio não foi encontrado
+                    ctrl.notFound = true;
                 }
                 else {
                     //TODO: Implementar tratamento de erro na base
@@ -103,14 +110,16 @@
         }
         else {
             //TODO: Mostrar mensagem que o anúncio não foi encontrado
+
+            ctrl.notFound = true;
         }
 
     }
 
     ctrl.PreencherLinksCompartilhamento = function () {
 
-        ctrl.linkCompartilharWpp = "https://api.whatsapp.com/send?text=" + "Olá, veja esse pet na PetSaver: " + "http://petsaver.com.br/pet.html?pet=" + sessionStorage.getItem('IdAnuncioAtual');
-        ctrl.linkCompartilharFace = "http://www.facebook.com/soupetsaver" + "Olá, veja esse pet na PetSaver: " + "http://petsaver.com.br/pet.html?pet=" + sessionStorage.getItem('IdAnuncioAtual');
+        ctrl.linkCompartilharWpp = "https://api.whatsapp.com/send?text=" + "Olá, veja esse pet na PetSaver: " + "http://petsaver.com.br/pet.html?pet=" + idAnuncio;
+        ctrl.linkCompartilharFace = "http://www.facebook.com/soupetsaver" + "Olá, veja esse pet na PetSaver: " + "http://petsaver.com.br/pet.html?pet=" + idAnuncio;
 
     }
 
@@ -137,7 +146,7 @@
     ctrl.RemoverGostei = function () {
 
         var request = {
-            IdAnuncio: sessionStorage.getItem('IdAnuncioAtual'),
+            IdAnuncio: idAnuncio,
             IdUsuario: sessionStorage.getItem('IdUsuario')
         };
 
@@ -161,7 +170,7 @@
     ctrl.CadastrarGostei = function () {
 
         var request = {
-            IdAnuncio: sessionStorage.getItem('IdAnuncioAtual'),
+            IdAnuncio: idAnuncio,
             IdUsuario: sessionStorage.getItem('IdUsuario')
         };
 
@@ -210,7 +219,7 @@
             ctrl.ErroTxtPergunta = false;
 
             var request = {
-                IdAnuncio: sessionStorage.getItem('IdAnuncioAtual'),
+                IdAnuncio: idAnuncio,
                 IdUsuario: sessionStorage.getItem('IdUsuario'),
                 Pergunta: ctrl.TxtPergunta
             };
@@ -254,7 +263,7 @@
     ctrl.BtnConfirmarInteresse = function () {
 
         var request = {
-            IdAnuncio: sessionStorage.getItem('IdAnuncioAtual'),
+            IdAnuncio: idAnuncio,
             IdUsuario: sessionStorage.getItem('IdUsuario')
         };
 
