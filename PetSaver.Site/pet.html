@@ -17,6 +17,13 @@
                 'page_path': '/pet'
             });
     </script>
+    <script>
+        $(function () {
+            $("#copiar").on("click", function () {
+                $("#link").text($("#paraCopiar").text());
+            });
+        });
+    </script>
 
     <!-- ############################################### -->
     <!-- Google Analytics Produção -->
@@ -334,15 +341,15 @@
                                 </div>
                             </div>
                             <div class="row col-md-8 offset-md-2" style="text-align: center;">
-                                <div class="col-4">
+                                <div id="copiar" class="col-4">
                                     <img class="imgIconShare" src="icons/copy.png">
                                 </div>
                                 <div class="col-4">
                                     <a href="{{ctrl.linkCompartilharWpp}}" id="whatsapp-share-btt" rel="nofollow" target="_blank"><img class="imgIconShare" src="icons/whatsapp.png"></a>
                                 </div>
-                                <div class="col-4">
-                                    <a target="_blank" href="{{ctrl.linkCompartilharFace}}"><img class="imgIconShare" src="icons/facebook.png"></a>
-                                </div>
+                                <di class="col-4">
+                                    <a target="_blank" data-layout="button_count" href="{{ctrl.linkCompartilharFace}}"><img class="imgIconShare" src="icons/facebook.png"></a>
+                                </di>
                             </div>
                         </div>
                         <button id="buttonGostei" class="btn" ng-show="ctrl.MostarGostei" ng-click="ctrl.BtnGostarClick()" ng-disabled="!ctrl.HabilitarAcoes" ng-class="{'btn-primary': ctrl.Gostei, 'btn-secondary': !ctrl.Gostei}">
