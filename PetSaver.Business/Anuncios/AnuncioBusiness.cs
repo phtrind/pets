@@ -48,7 +48,7 @@ namespace PetSaver.Business.Anuncios
                 var anuncio = new AnuncioEntity()
                 {
                     IdLoginCadastro = usuario.IdLogin,
-                    IdStatus = Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
+                    IdStatus = Conversor.EnumParaInt(StatusAnuncio.Ativo), //TODO: quando for pra produção colocar para o anúncio iniciar em análise
                     IdTipo = Conversor.EnumParaInt(aTipoAnuncio),
                     IdPet = idPet,
                     IdEstado = aRequest.Anuncio.IdEstado,

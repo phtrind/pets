@@ -5,6 +5,7 @@ using Owin;
 using PetSaver.WebApi.Authentication;
 using System;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 [assembly: OwinStartup(typeof(PetSaver.WebApi.Startup))]
 
@@ -19,6 +20,8 @@ namespace PetSaver.WebApi
             Business.Util.MapearBaseDados();
 
             config.UseBugsnag(Bugsnag.ConfigurationSection.Configuration.Settings);
+
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             config.MapHttpAttributeRoutes();
 
