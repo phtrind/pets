@@ -180,6 +180,14 @@ h3 {
     cursor: not-allowed !important;
 }
 
+.link-white {
+    cursor: pointer !important;
+}
+
+.link-white:hover {
+    color: white !important;
+}
+
 /* #region .: Table :. */
 
 th {

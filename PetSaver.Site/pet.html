@@ -91,42 +91,7 @@
 
 <body class="fix-header fix-sidebar mini-sidebar" ng-app="pets" ng-controller="petController as ctrl" ng-init="ctrl.OnInit()">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="home.html">
-                <img src="images/logos/logo_fundo_roxo_fina.gif"
-                     height="40px">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="index.html">Quero adotar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="conta/doacoes_cadastro.html">Quero doar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="index.html">Perdi meu pet</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="index.html">Encontrei um pet</a>
-                    </li>
-                    <li class="nav-item">
-                        <button ng-hide="ctrl.base.IsLogged()" ng-click="ctrl.base.AbrirModalLogin()" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalLogarCadastrar">Entrar</button>
-                        <button ng-show="ctrl.base.IsLogged()" type="button" class="btn btn-secondary" onclick="location.href = 'conta/dashboard.html';">Minha conta</button>
-                    </li>
-                    <li class="nav-item" ng-show="ctrl.base.IsLogged()">
-                        <a class="nav-link js-scroll-trigger link" ng-click="ctrl.base.FazerLogoff()">Sair</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div ng-include="'header.html'"></div>
 
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
@@ -357,7 +322,7 @@
                         </button>
                     </div>
                 </div>
-                <hr  ng-show="ctrl.Localizacao"/>
+                <hr ng-show="ctrl.Localizacao" />
                 <div class="row" style="margin-top: 25px; margin-bottom: 25px;" ng-show="ctrl.Localizacao">
                     <!--Localizacao-->
 

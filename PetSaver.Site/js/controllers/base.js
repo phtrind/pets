@@ -56,6 +56,8 @@
         sessionStorage.removeItem('IdUsuario');
         sessionStorage.removeItem('Nome');
         sessionStorage.removeItem('Token');
+        sessionStorage.removeItem('DataHoraAutenticacao');
+        sessionStorage.removeItem('TokenExpiresIn');
 
     }
 
@@ -273,7 +275,7 @@
                     sessionStorage.setItem("DataHoraAutenticacao", new Date().toLocaleString());
                     sessionStorage.setItem("TokenExpiresIn", response.expires_in);
 
-                    base.BuscarInformacoesSession(base.EmailLogin);
+                    base.BuscarInformacoesSession(request.Email);
 
                     base.LimparCamposLoginCadastro();
 
@@ -301,6 +303,46 @@
         }
         else {
             base.Cadastrando = false;
+        }
+
+    }
+
+    //#endregion
+
+    //#region .: Header :.
+
+    base.btnQueroDoar = function () {
+
+        if (base.IsLogged()) {
+            window.location.href = "conta/doacoes_cadastro.html";
+        }
+        else {
+            base.AbrirModalLogin();
+            $('#modalLogarCadastrar').modal('show');
+        }
+
+    }
+
+    base.btnPerdiPet = function () {
+
+        if (base.IsLogged()) {
+            window.location.href = "conta/petperdido_cadastro.html";
+        }
+        else {
+            base.AbrirModalLogin();
+            $('#modalLogarCadastrar').modal('show');
+        }
+
+    }
+
+    base.btnEncontreiPet = function () {
+
+        if (base.IsLogged()) {
+            window.location.href = "conta/petencontrado_cadastrar.html";
+        }
+        else {
+            base.AbrirModalLogin();
+            $('#modalLogarCadastrar').modal('show');
         }
 
     }
