@@ -2742,7 +2742,7 @@
                     minSizeError: "{file} é muito pequeno, o tamanho mínimo é {minSizeLimit}.",
                     emptyError: "{file} está vazio, selecione o arquivos de novo.",
                     noFilesError: "Nenhuma foto foi carregada.",
-                    tooManyItemsError: "Too many items ({netItems}) would be uploaded.  Item limit is {itemLimit}.",
+                    tooManyItemsError: "Você selecionou muitas fotos ({netItems}). O limite são {itemLimit}.",
                     maxHeightImageError: "Imagem com altura muito grande.",
                     maxWidthImageError: "Imagem com largura muito grande.",
                     minHeightImageError: "Imagem com altura muito pequena.",
