@@ -24,7 +24,7 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
                     IdRacaEspecie: ctrl.base.ctrlCadastroAnuncio.CmbRacaEspeciePet,
                     IdIdade: ctrl.base.ctrlCadastroAnuncio.CmbIdadePet,
                     IdPorte: ctrl.base.ctrlCadastroAnuncio.CmbPortePet,
-                    Peso: ctrl.base.ctrlCadastroAnuncio.TxtPesoPet,
+                    Peso: ctrl.base.ctrlCadastroAnuncio.TxtPesoPet ? ctrl.base.ctrlCadastroAnuncio.TxtPesoPet.replace(",", ".") : null,
                     IdPelo: ctrl.base.ctrlCadastroAnuncio.CmbPeloPet,
                     IdCorPrimaria: ctrl.base.ctrlCadastroAnuncio.Cor1Pet,
                     IdCorSecundaria: ctrl.base.ctrlCadastroAnuncio.Cor2Pet,
