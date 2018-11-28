@@ -115,6 +115,10 @@
 
     }
 
+    ctrl.AcoesDisabled = function () {
+        return !ctrl.HabilitarAcoes || (ctrl.Anunciante.Id == sessionStorage.getItem('IdUsuario'));
+    }
+
     ctrl.PreencherLinksCompartilhamento = function () {
 
         ctrl.linkCompartilharWpp = "https://api.whatsapp.com/send?text=" + "Olá, veja esse pet na PetSaver: " + "http://petsaver.com.br/pet.html?pet=" + idAnuncio;

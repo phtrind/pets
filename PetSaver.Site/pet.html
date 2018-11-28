@@ -147,7 +147,7 @@
                             <h2 class="color-primary" style="font-style:italic">{{ctrl.TipoAnuncio}}</h2>
                         </div>
                         <div class="col-md-12" style="margin-top: 20px; padding: 0px;">
-                            <button class="btn btn-primary" style="width: 100%; height: 50px;" ng-click="ctrl.BtnInteresse()" ng-disabled="!ctrl.HabilitarAcoes">
+                            <button class="btn btn-primary" style="width: 100%; height: 50px;" ng-click="ctrl.BtnInteresse()" ng-disabled="ctrl.AcoesDisabled()">
                                 {{ctrl.btnInteresseText}}
                             </button>
                             <!-- Modal -->
@@ -162,7 +162,7 @@
                                                 Ficamos muito felizes em saber que você encontrou nosso amigo!
                                             </div>
                                             <br>
-                                            Ao confirmar seu interesse, será aberto um chat para que você combine todos
+                                            Ao clicar em "Confirmar interesse", será aberto um chat para que você combine todos
                                             os detalhes com o Saver.
                                             <br><br>
                                             Esperamos que dê tudo certo, e estamos aqui para o que precisar ;)
@@ -171,7 +171,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                            <button type="button" class="btn btn-primary" ng-click="ctrl.BtnConfirmarInteresse()">Confirmar</button>
+                                            <button type="button" class="btn btn-primary" ng-click="ctrl.BtnConfirmarInteresse()">Confirmar interesse</button>
                                         </div>
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@
                             </div>
                         </div>
                         <div class="col-md-12" style="margin-top: 20px; padding: 0px;">
-                            <button class="btn btn-secondary" style="width: 100%; height: 50px;" ng-click="ctrl.BtnFazerPergunta()" ng-disabled="!ctrl.HabilitarAcoes">
+                            <button class="btn btn-secondary" style="width: 100%; height: 50px;" ng-click="ctrl.BtnFazerPergunta()" ng-disabled="ctrl.AcoesDisabled()">
                                 Fazer uma pergunta
                             </button>
                         </div>
@@ -330,7 +330,7 @@
                                 </di>
                             </div>
                         </div>
-                        <button id="buttonGostei" class="btn" ng-show="ctrl.MostarGostei" ng-click="ctrl.BtnGostarClick()" ng-disabled="!ctrl.HabilitarAcoes" ng-class="{'btn-primary': ctrl.Gostei, 'btn-secondary': !ctrl.Gostei}">
+                        <button id="buttonGostei" class="btn" ng-show="ctrl.MostarGostei" ng-click="ctrl.BtnGostarClick()" ng-disabled="ctrl.AcoesDisabled()" ng-class="{'btn-primary': ctrl.Gostei, 'btn-secondary': !ctrl.Gostei}">
                             <img src="icons/heart.png" width="30px">
                         </button>
                     </div>
