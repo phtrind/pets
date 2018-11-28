@@ -33,5 +33,17 @@ namespace PetSaver.Business.Tests.Usuarios
         {
             new LoginBusiness().EfetuarLogin("phtrind@hotmail.com", "");
         }
+
+        [TestMethod]
+        public void VerificarEmailExistente_EmailExistente_ReturnsTrue()
+        {
+            Assert.IsTrue(new LoginBusiness().VerificarEmailExistente("usuario@hotmail.com"));
+        }
+
+        [TestMethod]
+        public void VerificarEmailExistente_EmailInexistente_ReturnsFalse()
+        {
+            Assert.IsFalse(new LoginBusiness().VerificarEmailExistente("asdasdasda"));
+        }
     }
 }

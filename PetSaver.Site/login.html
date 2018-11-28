@@ -84,7 +84,8 @@
                                             <div class="col-md-6 form-group" ng-class="{'has-error':ctrl.base.ErroEmailCadastro}">
                                                 <input type="text" class="form-control" placeholder="E-mail"
                                                        style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.EmailCadastro">
-                                                <small class="form-control-feedback" ng-show="ctrl.base.ErroEmailCadastro">E-mail inválido</small>
+                                                <small class="form-control-feedback" ng-show="ctrl.base.ErroEmailCadastro1">E-mail inválido</small>
+                                                <small class="form-control-feedback" ng-show="ctrl.base.ErroEmailCadastroExistente">E-mail já cadastrado</small>
                                             </div>
                                             <div class="col-md-6 form-group" ng-class="{'has-error':ctrl.base.ErroConfirmacaoEmailCadastro}">
                                                 <input type="text" class="form-control" placeholder="Confirme seu e-mail"

@@ -189,6 +189,27 @@
 
         var contErro = 0;
 
+        //E-mail existente
+        $http({
+            method: 'GET',
+            url: base.servicePath + 'Login/VerificarEmailExistente/' + base.EmailCadastro + '/'
+        }).success(function (response) {
+
+            if (response == true) {
+                base.ErroEmailCadastro = true;
+                base.ErroEmailCadastroExistente = true;
+                contErro++;
+            }
+            else {
+                base.ErroEmailCadastroExistente = false;
+            }
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
         //Nome
         if (base.StringIsEmpty(base.NomeCadastro)) {
             base.ErroNomeCadastro = true;
@@ -218,10 +239,11 @@
 
         //Email
         if (base.EmailIsValid(base.EmailCadastro)) {
-            base.ErroEmailCadastro = false;
+            base.ErroEmailCadastro1 = false;
         }
         else {
             base.ErroEmailCadastro = true;
+            base.ErroEmailCadastro1 = true;
             contErro++;
         }
 
