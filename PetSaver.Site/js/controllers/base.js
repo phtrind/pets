@@ -71,6 +71,14 @@
 
     }
 
+    base.FazerLogoffInside = function () {
+
+        base.LimparSessionAuth();
+
+        window.location.href = '../home.html';
+
+    }
+
     base.FazerLogin = function () {
 
         //TODO: Implementar loading
