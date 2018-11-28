@@ -5,11 +5,13 @@
     //#region .: Variáveis Globais :.
 
     base.servicePath = "http://localhost/PetSaver.WebApi/api/";
-    //base.servicePath = "http://173.193.169.235:4000/api/";
+    //base.servicePath = "http://www.petsaver.com.br/api/";
 
     //#endregion
 
     //#region .: Login / Cadastro Básico :.
+
+    base.nomeUsuario = sessionStorage.getItem('Nome');
 
     base.AbrirModalLogin = function () {
 
