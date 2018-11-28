@@ -1,4 +1,5 @@
-﻿using PetSaver.Entity.Usuarios;
+﻿using System;
+using PetSaver.Entity.Usuarios;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Usuarios;
 
@@ -37,6 +38,16 @@ namespace PetSaver.Business.Usuarios
             };
 
             new HistoricoLoginBusiness().Inserir(historicoLogin);
+        }
+
+        /// <summary>
+        /// Verificar se o e-mail já existe na base de dados
+        /// </summary>
+        /// <param name="aEmail">E-mail que será verificado</param>
+        /// <returns></returns>
+        public bool VerificarEmailExistente(string aEmail)
+        {
+            return new LoginRepository().BuscarPorEmail(aEmail) != null;
         }
     }
 }

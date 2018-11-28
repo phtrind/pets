@@ -96,7 +96,6 @@
             }).error(function (err, status) {
 
                 if (status == 400) {
-                    //TODO: Mostrar mensagem que o anúncio não foi encontrado
                     ctrl.notFound = true;
                 }
                 else {
@@ -114,6 +113,10 @@
             ctrl.notFound = true;
         }
 
+    }
+
+    ctrl.AcoesDisabled = function () {
+        return !ctrl.HabilitarAcoes || (ctrl.Anunciante.Id == sessionStorage.getItem('IdUsuario'));
     }
 
     ctrl.PreencherLinksCompartilhamento = function () {

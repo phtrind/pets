@@ -65,7 +65,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="dashboardController as ctrl">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="dashboardController as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -277,8 +277,8 @@
                                             dados
                                         </a>
                                     </li>
-                                    <li>
-                                        <a style="color: #500B89 !important;" href="#">
+                                    <li class="link" ng-click="ctrl.base.FazerLogoffInside(); ">
+                                        <a style="color: #500B89 !important;">
                                             <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
                                             sair
                                         </a>
