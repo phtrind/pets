@@ -6,6 +6,7 @@
     <!-- Google Analytics Desenvolvimento -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128203439-1"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -673,7 +674,7 @@
                                     </small>
                                 </div>
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.pesoError}">
-                                    <input type="text" class="form-control" id="peso" aria-describedby="pesoHelp"
+                                    <input type="text" class="form-control" id="peso" name="peso" maxlength="6" aria-describedby="pesoHelp"
                                            placeholder="Peso" autocomplete="off" ng-model="ctrl.base.ctrlCadastroAnuncio.TxtPesoPet">
                                     <small id="pesoHelp" class="form-text text-muted">
                                         Caso não saiba o peso, pode deixar
@@ -838,7 +839,7 @@
 
                             <h1 class="color-primary" style="margin-bottom: 40px">Seu anúncio de pet encontrado foi cadastrado com sucesso!</h1>
                             <p>Precisamos de no máximo 1h para colocá-lo no ar, mas não se preocupe, vamos lhe avisar assim que estiver tudo pronto.</p>
-                            <p>Esperamos que logo logo um Saver o encontre, faremos o possível! Enquanto isso, cuide bem do nosso amigo ;)</p>
+                            <p>Esperamos que em breve um Saver o encontre, faremos o possível! Enquanto isso, cuide bem do nosso amigo ;)</p>
 
                         </div>
 
