@@ -11,7 +11,9 @@
 
     //#region .: Login / Cadastro Básico :.
 
-    base.nomeUsuario = sessionStorage.getItem('Nome');
+    base.getNomeUsuario = function () {
+        return sessionStorage.getItem('Nome');
+    }
 
     base.AbrirModalLogin = function () {
 
