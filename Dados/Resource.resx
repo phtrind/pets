@@ -163,9 +163,6 @@
   <data name="RemoverGostei" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Queries\Anuncios\RemoverGostei.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="RelatorioDoacoes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Queries\Anuncios\RelatorioDoacoes.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-  </data>
   <data name="BuscarRacaEspeciePorAnimal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Queries\Pets\BuscarRacaEspeciePorAnimal.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
@@ -174,5 +171,8 @@
   </data>
   <data name="AlterarFotoDestaque" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Queries\Anuncios\AlterarFotoDestaque.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="RelatorioAnuncios" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Queries\Anuncios\RelatorioAnuncios.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

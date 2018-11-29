@@ -16,11 +16,6 @@ namespace PetSaver.Repository.Anuncios
 
         protected override void ValidarAtributos(AnuncioVisitaEntity aObjeto)
         {
-            if (aObjeto.IdUsuario == default || new UsuarioRepository().Listar(aObjeto.IdUsuario) == null)
-            {
-                throw new DbValidationException("O Id do usuário é inválido;");
-            }
-
             var anuncio = new AnuncioRepository().Listar(aObjeto.IdAnuncio);
 
             if (aObjeto.IdAnuncio == default || anuncio == null)
@@ -31,6 +26,11 @@ namespace PetSaver.Repository.Anuncios
             if (anuncio.IdUsuario == aObjeto.IdUsuario)
             {
                 throw new BusinessException("Não é gravado log de acesso em anúncios do próprio usuário.");
+            }
+
+            if (aObjeto.IdUsuario == default)
+            {
+                aObjeto.IdUsuario = null;
             }
         }
     }

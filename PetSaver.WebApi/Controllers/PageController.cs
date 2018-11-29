@@ -79,7 +79,7 @@ namespace PetSaver.WebApi.Controllers
         [Authorize]
         [Route("api/Page/RelatorioDoacoes")]
         [HttpPost]
-        public RelatorioDoacoesResponse RelatorioDoacoes(RelatorioDoacoesRequest aRequest)
+        public RelatorioAnunciosResponse RelatorioDoacoes(RelatorioAnunciosRequest aRequest)
         {
             try
             {

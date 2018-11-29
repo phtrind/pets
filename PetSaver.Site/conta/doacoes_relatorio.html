@@ -75,7 +75,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="doacoesRelatorioController as ctrl">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="doacoesRelatorioController as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -518,6 +518,7 @@
                                         <th class="columnFitCenter">#</th>
                                         <th>Pet</th>
                                         <th>Tipo</th>
+                                        <th>Raça / Espécie</th>
                                         <th>Data de cadastro</th>
                                         <th>
                                             Status
@@ -536,26 +537,27 @@
                                         <th class="columnFitCenter">Visualizações</th>
                                         <th class="columnFitCenter">Interessados</th>
                                         <th class="columnFitCenter">Chats</th>
-                                        <th class="columnFitCenter">Editar</th>
+                                        <!--<th class="columnFitCenter">Editar</th>-->
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">1</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">{{ctrl.Pet.Nome}}</span></td>
-                                        <td><span>{{ctrl.Pet.RacaEspecie}}</span></td>
-                                        <td><span>{{ctrl.Pet.DthCadastro}}</span></td>
-                                        <td><span class="badge badge-danger">{{ctrl.Pet.Status}}</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary"><span>{{ctrl.Pet.QtdVisualizacoes}}</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary"><span>{{ctrl.Pet.QtdInteressados}}</span></td>
+                                    <tr ng-repeat="x in ctrl.Anuncios">
+                                        <th class="columnFitCenter" scope="row">{{x.IdAnuncio}}</th>
+                                        <td><span class="link">{{x.Nome}}</span></td>
+                                        <td><span>{{x.Animal}}</span></td>
+                                        <td><span>{{x.RacaEspecie}}</span></td>
+                                        <td>{{x.DataCadastro}}</span></td>
+                                        <td><span class="badge badge-danger">{{x.Status}}</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary"><span>{{x.Visualizacoes}}</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary"><span>{{x.Interessados}}</span></td>
                                         <td class="columnFitCenter">
                                             <img class="link" src="../icons/chat.png"
                                                  width="30px">
                                         </td>
-                                        <td class="columnFitCenter">
+                                        <!--<td class="columnFitCenter">
                                             <img class="link imgDisabled" src="../icons/edit.png"
                                                  width="30px">
-                                        </td>
+                                        </td>-->
                                     </tr>
                                 </tbody>
                             </table>

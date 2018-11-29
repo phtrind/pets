@@ -17,7 +17,7 @@ namespace PetSaver.Entity.Anuncios
         /// <summary>
         /// Id do usuário que visitou o anúncio
         /// </summary>
-        public int IdUsuario { get; set; }
+        public int? IdUsuario { get; set; }
 
         /// <summary>
         /// Id do anúncio visitado

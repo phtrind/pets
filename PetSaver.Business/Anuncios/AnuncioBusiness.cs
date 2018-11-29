@@ -211,29 +211,32 @@ namespace PetSaver.Business.Anuncios
             return response;
         }
 
-        public IEnumerable<RelatorioDoacoesContract> ListarRelatorioDoacoes(int aIdUsuario, FiltroRelatorioDoacoesRequest aFiltro)
+        public IEnumerable<RelatorioAnunciosContract> ListarRelatorioDoacoes(RelatorioAnunciosRequest aRequest)
         {
-            if (aIdUsuario == default)
+            if (aRequest == null)
+            {
+                throw new BusinessException("O objeto de request é inválido");
+            }
+
+            if (aRequest.IdUsuario == default)
             {
                 throw new BusinessException("O Id do usuário é inválido");
             }
 
-            FiltroRelatorioDoacoesRequest filtro;
-
-            if (aFiltro == null)
+            if (aRequest.Filtro == null)
             {
-                filtro = new FiltroRelatorioDoacoesRequest();
-            }
-            else
-            {
-                filtro = aFiltro;
+                aRequest.Filtro = new FiltroRelatorioAnunciosRequest();
             }
 
-            return new AnuncioRepository().ListarRelatorioDoacoes(aIdUsuario, aFiltro).Select(x => new RelatorioDoacoesContract()
+            aRequest.Filtro.TipoAnuncio = Conversor.EnumParaInt(TiposAnuncio.Doacao);
+
+            return new AnuncioRepository().ListarRelatorioAnuncios(aRequest.IdUsuario, aRequest.Filtro).Select(x => new RelatorioAnunciosContract()
             {
                 IdAnuncio = Convert.ToInt32(x.ANU_CODIGO),
+                TipoAnuncio = Convert.ToString(x.ANT_DESCRICAO),
                 Nome = Convert.ToString(x.PET_NOME),
                 Animal = Convert.ToString(x.ANI_NOME),
+                RacaEspecie = Convert.ToString(x.RAC_NOME),
                 DataCadastro = Convert.ToDateTime(x.ANU_DTHCADASTRO).ToString("dd/MM/yyyy"),
                 Status = Convert.ToString(x.ANS_DESCRICAO),
                 Visualizacoes = Convert.ToInt32(x.VISUALIZACOES),

@@ -191,6 +191,21 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             }
         }
 
+        [Authorize]
+        [Route("api/Anuncio/RelatorioDoacoes")]
+        [HttpPost]
+        public IEnumerable<RelatorioAnunciosContract> RelatorioDoacoes(RelatorioAnunciosRequest aRequest)
+        {
+            try
+            {
+                return new AnuncioBusiness().ListarRelatorioDoacoes(aRequest);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
         #endregion
     }
 }

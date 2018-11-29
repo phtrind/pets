@@ -1,36 +1,30 @@
 app.controller('doacoesRelatorioController', function ($controller, $http) {
 
-        var ctrl = this;
-    
-        ctrl.base = $controller('baseController', {});
+    var ctrl = this;
 
-    // $scope.nenhumaDoacao = true;,
+    ctrl.base = $controller('baseController', {});
 
+    // $scope.nenhumaDoacao = true;
 
     ctrl.OnInit = function () {
 
-        // TODO: ALTERAR NOME IdAnuncioAtual e IdUsuario PARA O CORRETO
-        if (!ctrl.base.StringIsEmpty(sessionStorage.getItem('IdAnuncioAtual'))) {
+        var request = {
+            IdUsuario: sessionStorage.getItem('IdUsuario')
+        };
 
-            if (!ctrl.base.StringIsEmpty(sessionStorage.getItem('IdUsuario'))) {
-                request.IdUsuario = sessionStorage.getItem('IdUsuario')
-            }
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Page/RelatorioDoacoes',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
 
-            $http({
-                method: 'POST',
-                url: ctrl.base.servicePath + 'Page/conta/adocoes_relatorio',
-                data: request
-            }).success(function (response) {
+            ctrl.Animais = response.Filtros.Animais;
+            ctrl.Status = response.Filtros.Status;
 
-                ctrl.Pet.Nome = response.Nome;
-                ctrl.Pet.RacaEspecie = response.RacaEspecie;
-                ctrl.Pet.DataCadastro = response.DataCadastro;
-                ctrl.Pet.Status = response.Status;
-                ctrl.Pet.QtdVisualizacoes = response.QtdVisualizacoes;
-                ctrl.Pet.QtdInteressados = response.QtdInteressados;
+            ctrl.Anuncios = response.Anuncios;
 
-            })
-        }
+        })
     }
 
 });

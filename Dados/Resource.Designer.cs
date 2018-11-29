@@ -305,29 +305,30 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT A.ANU_CODIGO, 
-        ///       P.PET_NOME, 
-        ///       ANI.ANI_NOME, 
-        ///       A.ANU_DTHCADASTRO, 
-        ///       ANS.ANS_DESCRICAO,
+        ///   Looks up a localized string similar to SELECT ANU.ANU_CODIGO, 
+        ///       PET.PET_NOME, 
+        ///	   ANI.ANI_NOME,
+        ///       RAC.RAC_NOME, 
+        ///	   ANT.ANT_DESCRICAO,
+        ///       ANU.ANU_DTHCADASTRO, 
+        ///       ANS.ANS_DESCRICAO, 
         ///(
         ///    SELECT COUNT(*)
         ///    FROM AVI_ANUNCIOSVISITAS
-        ///    WHERE ANU_CODIGO = A.ANU_CODIGO
-        ///) AS VISUALIZACOES, 
+        ///    WHERE ANU_CODIGO = ANU.ANU_CODIGO
+        ///), 
         ///(
         ///    SELECT COUNT(*)
         ///    FROM INT_INTERESSES
-        ///    WHERE ANU_CODIGO = A.ANU_CODIGO
-        ///) AS INTERESSADOS
-        ///FROM ANU_ANUNCIOS A
-        ///     INNER JOIN PET_PETS P ON A.PET_CODIGO = P.PET_CODIGO
-        ///     INNER JOIN ANI_ANIMAIS ANI ON P.ANI_CODIGO = ANI.ANI_CODIGO
-        ///     INNER JOIN ANS_ANUNCI [rest of string was truncated]&quot;;.
+        ///    WHERE ANU_CODIGO = ANU.ANU_CODIGO
+        ///)
+        ///FROM ANU_ANUNCIOS ANU
+        ///     INNER JOIN PET_PETS PET ON ANU.PET_CODIGO = PET.PET_CODIGO
+        ///	 INNER JOIN ANI_ANIMAIS ANI ON PET.ANI_CODIGO = ANI.ANI_CODIGO [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string RelatorioDoacoes {
+        internal static string RelatorioAnuncios {
             get {
-                return ResourceManager.GetString("RelatorioDoacoes", resourceCulture);
+                return ResourceManager.GetString("RelatorioAnuncios", resourceCulture);
             }
         }
         

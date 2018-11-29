@@ -155,7 +155,7 @@
   <ItemGroup>
     <Content Include="Resources\Queries\Anuncios\AlterarFotoDestaque.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarFotosPorAnuncio.sql" />
-    <Content Include="Resources\Queries\Anuncios\RelatorioDoacoes.sql" />
+    <Content Include="Resources\Queries\Anuncios\RelatorioAnuncios.sql" />
     <Content Include="Resources\Queries\Anuncios\RemoverGostei.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarAnuncioGosteiPorAnuncioUsuario.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarDuvidasPorAnuncio.sql" />

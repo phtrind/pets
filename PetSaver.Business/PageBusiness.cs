@@ -92,16 +92,16 @@ namespace PetSaver.Business
             };
         }
 
-        public RelatorioDoacoesResponse InicializarRelatorioDoacoes(RelatorioDoacoesRequest aRequest)
+        public RelatorioAnunciosResponse InicializarRelatorioDoacoes(RelatorioAnunciosRequest aRequest)
         {
-            return new RelatorioDoacoesResponse()
+            return new RelatorioAnunciosResponse()
             {
-                Filtros = new FiltroRelatorioDoacoesResponse()
+                Filtros = new FiltroRelatorioAnunciosResponse()
                 {
                     Animais = new AnimalBusiness().Combo(),
                     Status = new AnuncioStatusBusiness().Combo()
                 },
-                Anuncios = new AnuncioBusiness().ListarRelatorioDoacoes(aRequest.IdUsuario, aRequest.Filtro)
+                Anuncios = new AnuncioBusiness().ListarRelatorioDoacoes(aRequest)
             };
         }
 

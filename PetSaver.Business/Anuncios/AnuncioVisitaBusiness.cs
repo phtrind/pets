@@ -8,20 +8,17 @@ namespace PetSaver.Business.Anuncios
     {
         public void GravarLog(int aIdAnuncio, int? aIdUsuario)
         {
-            if (aIdUsuario.HasValue && aIdUsuario.Value != default)
+            try
             {
-                try
+                new AnuncioVisitaBusiness().Inserir(new AnuncioVisitaEntity()
                 {
-                    new AnuncioVisitaBusiness().Inserir(new AnuncioVisitaEntity()
-                    {
-                        IdAnuncio = aIdAnuncio,
-                        IdUsuario = aIdUsuario.Value
-                    });
-                }
-                catch (Exception ex)
-                {
-                    Exceptions.Util.TratarExcecao(ex);
-                }
+                    IdAnuncio = aIdAnuncio,
+                    IdUsuario = aIdUsuario
+                });
+            }
+            catch (Exception ex)
+            {
+                Exceptions.Util.TratarExcecao(ex);
             }
         }
     }

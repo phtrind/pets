@@ -178,43 +178,48 @@ namespace PetSaver.Repository.Anuncios
             }
         }
 
-        public IEnumerable<dynamic> ListarRelatorioDoacoes(int aIdUsuario, FiltroRelatorioDoacoesRequest aFiltro)
+        public IEnumerable<dynamic> ListarRelatorioAnuncios(int aIdUsuario, FiltroRelatorioAnunciosRequest aFiltro)
         {
             if (aIdUsuario == default)
             {
                 return new List<dynamic>();
             }
 
-            StringBuilder stringBuilder = new StringBuilder(Resource.RelatorioDoacoes);
+            StringBuilder stringBuilder = new StringBuilder(Resource.RelatorioAnuncios);
 
             if (aFiltro != null)
             {
                 if (Validador.FiltroIsValid(aFiltro.Nome))
                 {
-                    stringBuilder.Append($" AND P.PET_NOME = {aFiltro.Nome}");
+                    stringBuilder.Append($" AND PET.PET_NOME = {aFiltro.Nome}");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.Animal))
                 {
-                    stringBuilder.Append($" AND P.ANI_CODIGO = {aFiltro.Animal.Value}");
+                    stringBuilder.Append($" AND PET.ANI_CODIGO = {aFiltro.Animal.Value}");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.DataCadastroInicio))
                 {
-                    stringBuilder.Append($" AND A.ANU_DTHCADASTRO >= {aFiltro.DataCadastroInicio.Value}");
+                    stringBuilder.Append($" AND ANU.ANU_DTHCADASTRO >= {aFiltro.DataCadastroInicio.Value}");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.DataCadastroFim))
                 {
-                    stringBuilder.Append($" AND A.ANU_DTHCADASTRO <= {aFiltro.DataCadastroInicio.Value}");
+                    stringBuilder.Append($" AND ANU.ANU_DTHCADASTRO <= {aFiltro.DataCadastroInicio.Value}");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.Status))
                 {
-                    stringBuilder.Append($" AND A.ANS_CODIGO = {aFiltro.Status}");
+                    stringBuilder.Append($" AND ANU.ANS_CODIGO = {aFiltro.Status}");
                 }
 
-                stringBuilder.Append($" ORDER BY A.ANU_DTHCADASTRO ");
+                if (Validador.FiltroIsValid(aFiltro.TipoAnuncio))
+                {
+                    stringBuilder.Append($" AND ANU.ANT_CODIGO = {aFiltro.TipoAnuncio}");
+                }
+
+                stringBuilder.Append($" ORDER BY ANU.ANU_DTHCADASTRO ");
 
                 #region .: Paginação :.
 
@@ -231,18 +236,11 @@ namespace PetSaver.Repository.Anuncios
                 }
 
                 #endregion
-
-                using (var db = new SqlConnection(StringConnection))
-                {
-                    return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario });
-                }
             }
-            else
+
+            using (var db = new SqlConnection(StringConnection))
             {
-                using (var db = new SqlConnection(StringConnection))
-                {
-                    return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario });
-                }
+                return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario });
             }
         }
     }
