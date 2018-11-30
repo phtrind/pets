@@ -211,7 +211,7 @@ namespace PetSaver.Business.Anuncios
             return response;
         }
 
-        public IEnumerable<RelatorioAnunciosContract> ListarRelatorioDoacoes(RelatorioAnunciosRequest aRequest)
+        public IEnumerable<RelatorioAnunciosContract> ListarRelatorioAnuncios(RelatorioAnunciosRequest aRequest, TiposAnuncio aTipoAnuncio)
         {
             if (aRequest == null)
             {
@@ -228,7 +228,7 @@ namespace PetSaver.Business.Anuncios
                 aRequest.Filtro = new FiltroRelatorioAnunciosRequest();
             }
 
-            aRequest.Filtro.TipoAnuncio = Conversor.EnumParaInt(TiposAnuncio.Doacao);
+            aRequest.Filtro.TipoAnuncio = Conversor.EnumParaInt(aTipoAnuncio);
 
             return new AnuncioRepository().ListarRelatorioAnuncios(aRequest.IdUsuario, aRequest.Filtro).Select(x => new RelatorioAnunciosContract()
             {

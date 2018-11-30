@@ -4,8 +4,6 @@
 
     ctrl.base = $controller('baseController', {});
 
-    // $scope.nenhumaDoacao = true;
-
     ctrl.OnInit = function () {
 
         ctrl.Buscando = true;
@@ -77,6 +75,12 @@
         ctrl.StatusSelecionado = "";
 
         ctrl.FiltrarAnuncios();
+
+    }
+
+    ctrl.abrirAnuncio = function (aIdAnuncio) {
+
+        window.open('../pet.html?idAnuncio=' + aIdAnuncio, '_blank');
 
     }
 

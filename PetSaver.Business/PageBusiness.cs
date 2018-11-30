@@ -1,9 +1,11 @@
-﻿using PetSaver.Business.Anuncios;
+﻿using System;
+using PetSaver.Business.Anuncios;
 using PetSaver.Business.Localizacao;
 using PetSaver.Business.Pets;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Paginas;
 using PetSaver.Entity.Enums.Status;
+using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
 
 namespace PetSaver.Business
@@ -92,7 +94,7 @@ namespace PetSaver.Business
             };
         }
 
-        public RelatorioAnunciosResponse InicializarRelatorioDoacoes(RelatorioAnunciosRequest aRequest)
+        public RelatorioAnunciosResponse InicializarRelatorioAnuncios(RelatorioAnunciosRequest aRequest, TiposAnuncio aTipoAnuncio)
         {
             return new RelatorioAnunciosResponse()
             {
@@ -101,7 +103,7 @@ namespace PetSaver.Business
                     Animais = new AnimalBusiness().Combo(),
                     Status = new AnuncioStatusBusiness().Combo()
                 },
-                Anuncios = new AnuncioBusiness().ListarRelatorioDoacoes(aRequest)
+                Anuncios = new AnuncioBusiness().ListarRelatorioAnuncios(aRequest, aTipoAnuncio)
             };
         }
 

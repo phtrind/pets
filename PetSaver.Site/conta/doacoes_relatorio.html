@@ -556,7 +556,7 @@
                                 <tbody>
                                     <tr ng-repeat="x in ctrl.Anuncios">
                                         <th class="columnFitCenter" scope="row">{{x.IdAnuncio}}</th>
-                                        <td><span class="link" ng-class="{'font-italic': x.Nome === 'Desconhecido', 'color-primary': x.Nome !== 'Desconhecido'}">{{x.Nome}}</span></td>
+                                        <td><span class="link" ng-class="{'font-italic': x.Nome === 'Desconhecido', 'color-primary': x.Nome !== 'Desconhecido'}" ng-click="ctrl.abrirAnuncio(x.IdAnuncio)">{{x.Nome}}</span></td>
                                         <td><span>{{x.Animal}}</span></td>
                                         <td><span>{{x.RacaEspecie}}</span></td>
                                         <td>{{x.DataCadastro}}</span></td>

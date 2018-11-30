@@ -198,7 +198,37 @@ namespace PetSaver.WebApi.Controllers.Anuncios
         {
             try
             {
-                return new AnuncioBusiness().ListarRelatorioDoacoes(aRequest);
+                return new AnuncioBusiness().ListarRelatorioAnuncios(aRequest, TiposAnuncio.Doacao);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
+        [Route("api/Anuncio/RelatorioPetPerdido")]
+        [HttpPost]
+        public IEnumerable<RelatorioAnunciosContract> RelatorioPetPerdido(RelatorioAnunciosRequest aRequest)
+        {
+            try
+            {
+                return new AnuncioBusiness().ListarRelatorioAnuncios(aRequest, TiposAnuncio.PetPerdido);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
+        [Route("api/Anuncio/RelatorioPetEncontrado")]
+        [HttpPost]
+        public IEnumerable<RelatorioAnunciosContract> RelatorioPetEncontrado(RelatorioAnunciosRequest aRequest)
+        {
+            try
+            {
+                return new AnuncioBusiness().ListarRelatorioAnuncios(aRequest, TiposAnuncio.PetEncontrado);
             }
             catch (Exception ex)
             {

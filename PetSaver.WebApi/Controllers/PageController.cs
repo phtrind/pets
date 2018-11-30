@@ -2,6 +2,7 @@
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Base;
 using PetSaver.Contracts.Paginas;
+using PetSaver.Entity.Enums.Tipos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,7 +84,37 @@ namespace PetSaver.WebApi.Controllers
         {
             try
             {
-                return new PageBusiness().InicializarRelatorioDoacoes(aRequest);
+                return new PageBusiness().InicializarRelatorioAnuncios(aRequest, TiposAnuncio.Doacao);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
+        [Route("api/Page/RelatorioPetPerdido")]
+        [HttpPost]
+        public RelatorioAnunciosResponse RelatorioPetPerdido(RelatorioAnunciosRequest aRequest)
+        {
+            try
+            {
+                return new PageBusiness().InicializarRelatorioAnuncios(aRequest, TiposAnuncio.PetPerdido);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
+        [Route("api/Page/RelatorioPetEncontrado")]
+        [HttpPost]
+        public RelatorioAnunciosResponse RelatorioPetEncontrado(RelatorioAnunciosRequest aRequest)
+        {
+            try
+            {
+                return new PageBusiness().InicializarRelatorioAnuncios(aRequest, TiposAnuncio.PetEncontrado);
             }
             catch (Exception ex)
             {
