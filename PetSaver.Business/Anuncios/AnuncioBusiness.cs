@@ -234,9 +234,9 @@ namespace PetSaver.Business.Anuncios
             {
                 IdAnuncio = Convert.ToInt32(x.ANU_CODIGO),
                 TipoAnuncio = Convert.ToString(x.ANT_DESCRICAO),
-                Nome = Convert.ToString(x.PET_NOME),
-                Animal = Convert.ToString(x.ANI_NOME),
-                RacaEspecie = Convert.ToString(x.RAC_NOME),
+                Nome = Convert.ToString(x.PET_NOME) ?? Constantes.Desconhecido,
+                Animal = Convert.ToString(x.ANI_NOME) ?? Constantes.Indefinido,
+                RacaEspecie = Convert.ToString(x.RAC_NOME) ?? Constantes.Indefinido,
                 DataCadastro = Convert.ToDateTime(x.ANU_DTHCADASTRO).ToString("dd/MM/yyyy"),
                 Status = Convert.ToString(x.ANS_DESCRICAO),
                 Visualizacoes = Convert.ToInt32(x.VISUALIZACOES),

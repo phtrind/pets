@@ -800,6 +800,36 @@
 
     //#endregion
 
+    //#region .: Relatório Anúncios :.
+
+    base.buscarStyleStatus = function (aStatus) {
+
+        if (aStatus === 'Em análise') {
+            return 'badge-info';
+        }
+        else if (aStatus === 'Ativo') {
+            return 'badge-success';
+        }
+        else if (aStatus === 'Cancelado') {
+            return 'badge-danger';
+        }
+        else if (aStatus === 'Adotado') {
+            return 'badge-primary';
+        }
+        else if (aStatus === 'Finalizado') {
+            return 'badge-secondary';
+        }
+        else if (aStatus === 'Lar provisório') {
+            return 'badge-primary';
+        }
+        else if (aStatus === 'De volta ao lar') {
+            return 'badge-primary';
+        }
+
+    }
+
+    //#endregion
+
     //#region .: Métodos Utilitários :.
 
     base.GenerateGuid = function () {

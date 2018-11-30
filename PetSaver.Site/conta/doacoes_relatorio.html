@@ -444,7 +444,7 @@
                     <div ng-show="ctrl.nenhumaDoacao">
                         <div class="row">
                             <div class="col-md-12" id="nenhumaDoacao">
-                                <p>Olá Saver, por enquanto você não tem nenhuma doação cadastrada.</p>
+                                <p>Olá Saver, por enquanto você ainda não tem nenhuma doação cadastrada.</p>
                                 <p>Mas que tal começarmos agora?</p>
                             </div>
                         </div>
@@ -476,7 +476,7 @@
                             </h2>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 collapse" id="formFiltro">
+                            <div class="col-md-12 collapse" id="formFiltro" style="margin-bottom: 20px;">
                                 <form>
                                     <div class="row">
                                         <div class="form-group col-md-6">
@@ -485,7 +485,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="color-primary">Tipo</label>
-                                            <select class="form-control custom-select">
+                                            <select class="form-control custom-select" ng-model="ctrl.Animal">
                                                 <option>Todos</option>
                                                 <option ng-repeat="x in ctrl.Animais" value="{{x.Chave}}">{{x.Valor}}</option>
                                             </select>
@@ -494,25 +494,38 @@
                                     <div class="row">
                                         <div class="form-group col-md-4">
                                             <label class="color-primary">Cadastrado de</label>
-                                            <input type="date" class="form-control">
+                                            <input type="date" class="form-control" ng-model="ctrl.DthInicio">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="color-primary">Cadastrado até</label>
-                                            <input type="date" class="form-control">
+                                            <input type="date" class="form-control" ng-model="ctrl.DthFim">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="color-primary">Status</label>
-                                            <select class="form-control custom-select">
+                                            <select class="form-control custom-select" ng-model="ctrl.StatusSelecionado">
                                                 <option>Todos</option>
                                                 <option ng-repeat="x in ctrl.Status" value="{{x.Chave}}">{{x.Valor}}</option>
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col-md-12" style="text-align: right">
+                                            <span class="color-primary link" style="font-weight: bold" ng-click="ctrl.LimparFiltros()">Limpar filtros</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="text-align: center">
+                                            <button class="btn btn-secondary col-md-12" ng-click="ctrl.FiltrarAnuncios()">Buscar</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover">
+                        <div ng-show="ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 30px">
+                            <img style="width:100px;" src="../images/loading.gif" />
+                        </div>
+                        <div ng-hide="ctrl.Buscando || !ctrl.Anuncios || ctrl.Anuncios.length < 1" class="table-responsive">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th class="columnFitCenter">#</th>
@@ -543,11 +556,11 @@
                                 <tbody>
                                     <tr ng-repeat="x in ctrl.Anuncios">
                                         <th class="columnFitCenter" scope="row">{{x.IdAnuncio}}</th>
-                                        <td><span class="link">{{x.Nome}}</span></td>
+                                        <td><span class="link" ng-class="{'font-italic': x.Nome === 'Desconhecido', 'color-primary': x.Nome !== 'Desconhecido'}">{{x.Nome}}</span></td>
                                         <td><span>{{x.Animal}}</span></td>
                                         <td><span>{{x.RacaEspecie}}</span></td>
                                         <td>{{x.DataCadastro}}</span></td>
-                                        <td><span class="badge badge-danger">{{x.Status}}</span></td>
+                                        <td><span class="badge" ng-class="ctrl.base.buscarStyleStatus(x.Status)">{{x.Status}}</span></td>
                                         <td class="columnFitCenter columnBoldPrimary"><span>{{x.Visualizacoes}}</span></td>
                                         <td class="columnFitCenter columnBoldPrimary"><span>{{x.Interessados}}</span></td>
                                         <td class="columnFitCenter">
@@ -562,12 +575,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row" style="margin-top:20px;">
-                            <div class="col-6" style="text-align: left;">
-                                <button class="btn btn-primary">Anterior</button>
-                            </div>
-                            <div class="col-6" style="text-align: right;">
-                                <button class="btn btn-primary">Próxima</button>
+                        <div class="row" ng-show="!ctrl.Anuncios || ctrl.Anuncios.length < 1">
+                            <div class="col-md-12" style="text-align: center; font-size:24px">
+                                <img src="../icons/announcement_not_found.png" style="width: 96px; margin-bottom:25px; margin-top: 25px" />
+                                <p class="color-primary">Nenhum anúncio encontrado</p>
+                                <button class="btn btn-primary" onclick="window.location='doacoes_cadastro.html'">Clique aqui para cadastrar</button>
                             </div>
                         </div>
                     </div>
@@ -579,7 +591,7 @@
     <!-- End Container fluid  -->
     <!-- footer -->
     <div ng-include="'footer.html'"></div>
-    <!-- End footer --> 
+    <!-- End footer -->
     <!-- End Page wrapper  -->
     <!-- End Wrapper -->
     <!-- All Jquery -->

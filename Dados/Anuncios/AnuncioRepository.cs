@@ -191,7 +191,7 @@ namespace PetSaver.Repository.Anuncios
             {
                 if (Validador.FiltroIsValid(aFiltro.Nome))
                 {
-                    stringBuilder.Append($" AND PET.PET_NOME = {aFiltro.Nome}");
+                    stringBuilder.Append($" AND PET.PET_NOME LIKE '%{aFiltro.Nome}%'");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.Animal))
@@ -201,12 +201,12 @@ namespace PetSaver.Repository.Anuncios
 
                 if (Validador.FiltroIsValid(aFiltro.DataCadastroInicio))
                 {
-                    stringBuilder.Append($" AND ANU.ANU_DTHCADASTRO >= {aFiltro.DataCadastroInicio.Value}");
+                    stringBuilder.Append($" AND ANU.ANU_DTHCADASTRO >= '{aFiltro.DataCadastroInicio.Value.Date}'");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.DataCadastroFim))
                 {
-                    stringBuilder.Append($" AND ANU.ANU_DTHCADASTRO <= {aFiltro.DataCadastroInicio.Value}");
+                    stringBuilder.Append($" AND ANU.ANU_DTHCADASTRO <= '{aFiltro.DataCadastroFim.Value.Date.AddDays(1)}'");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.Status))
@@ -226,9 +226,7 @@ namespace PetSaver.Repository.Anuncios
                 if (Validador.FiltroIsValid(aFiltro.Quantidade) && Validador.FiltroIsValid(aFiltro.Pagina))
                 {
                     stringBuilder.Append($" OFFSET @PageSize * (@PageNumber - 1) ROWS FETCH NEXT @PageSize ROWS ONLY ");
-                }
-                else
-                {
+
                     using (var db = new SqlConnection(StringConnection))
                     {
                         return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario, @PageSize = aFiltro.Quantidade, @PageNumber = aFiltro.Pagina });
