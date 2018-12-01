@@ -236,6 +236,21 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             }
         }
 
+        [Authorize]
+        [Route("api/Anuncio/RelatorioInteresses")]
+        [HttpPost]
+        public IEnumerable<RelatorioInteressesContract> RelatorioInteresses(RelatorioInteressesRequest aRequest)
+        {
+            try
+            {
+                return new InteresseBusiness().BuscarRelatorioInteresses(aRequest);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
         #endregion
     }
 }

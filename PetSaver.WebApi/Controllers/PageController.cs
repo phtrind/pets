@@ -138,6 +138,21 @@ namespace PetSaver.WebApi.Controllers
             }
         }
 
+        [Authorize]
+        [Route("api/Page/Interesses/{aIdUsuario}")]
+        [HttpGet]
+        public RelatorioInteressesPageResponse RelatorioInteresses(int aIdUsuario)
+        {
+            try
+            {
+                return new PageBusiness().InicializarMeusInteresses(aIdUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
         #endregion
     }
 }

@@ -1,10 +1,13 @@
 ﻿using Dapper;
+using PetSaver.Contracts.Anuncios;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Usuarios;
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace PetSaver.Repository.Anuncios
 {
@@ -57,6 +60,36 @@ namespace PetSaver.Repository.Anuncios
             using (var db = new SqlConnection(StringConnection))
             {
                 return db.QueryFirstOrDefault<InteresseEntity>(Resource.BuscarInteressePorUsuarioAnuncio, new { @IdUsuario = aIdUsuario, @IdAnuncio = aIdAnuncio });
+            }
+        }
+
+        public IEnumerable<dynamic> BuscarRelatorioInteresses(RelatorioInteressesRequest aRequest)
+        {
+            if (aRequest.IdUsuario == default)
+            {
+                return new List<dynamic>();
+            }
+
+            var stringBuilder = new StringBuilder(Resource.RelatorioInteresses);
+
+            if (Utilities.Validador.FiltroIsValid(aRequest.Nome))
+            {
+                stringBuilder.Append($" AND PET.PET_NOME LIKE '%{aRequest.Nome}%'");
+            }
+
+            if (Utilities.Validador.FiltroIsValid(aRequest.IdAnimal))
+            {
+                stringBuilder.Append($" AND ANI.ANI_CODIGO = {aRequest.IdAnimal}");
+            }
+
+            if (Utilities.Validador.FiltroIsValid(aRequest.IdTipoAnuncio))
+            {
+                stringBuilder.Append($" AND ANT.ANT_CODIGO = {aRequest.IdTipoAnuncio}");
+            }
+
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.Query(stringBuilder.ToString(), new { @IdUsuario = aRequest.IdUsuario });
             }
         }
 

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
 
@@ -13,8 +13,8 @@
 
         gtag('config', 'UA-128203439-1',
             {
-                'page_title': 'AdocoesRelatorio',
-                'page_path': '/adocoes_relatorio'
+                'page_title': 'RelatorioDoacoes',
+                'page_path': '/doacoes_relatorio'
             });
     </script>
 
@@ -29,8 +29,8 @@
 
         gtag('config', 'UA-128174105-1',
             {
-                'page_title': 'AdocoesRelatorio',
-                'page_path': '/adocoes_relatorio'
+                'page_title': 'RelatorioDoacoes',
+                'page_path': '/doacoes_relatorio'
             });
     </script> -->
 
@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
     <style>
-        #nenhumaAdocao p {
+        #nenhumaDoacao p {
             color: #500B89 !important;
             font-size: 20px;
             text-align: center;
@@ -75,7 +75,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="adocoesRelatorioController as ctrl">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="meusInteressesController as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -186,7 +186,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);">
+                                        <a class="nav-link text-center" href="chats.html">
                                             <strong>ver todas</strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>
@@ -263,7 +263,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="chats.html">
+                                        <a class="nav-link text-center" href="javascript:void(0);">
                                             <strong>ver todas</strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>
@@ -402,6 +402,19 @@
                                 </li>
                             </ul>
                         </li>
+                        <!--<li style="position: absolute; bottom: 75px; text-align:left;">
+                            <a href="https://www.instagram.com/soupetsaver/" target="_blank" aria-expanded="false">
+
+                                <img class="link" src="../icons/instagram.png" style="width: 20%; max-width: 85%;">
+                            </a>
+                        </li>
+                        <li style="position: absolute; bottom: 75px; text-align:right;">
+                            <a href="https://www.facebook.com/soupetsaver/" target="_blank" aria-expanded="false">
+                                <img src="../icons/facebook.png" style="width: 20%; max-width: 85%;">
+
+                                <span style="margin-left:12px;">#SouPetSaver</span>
+                            </a>
+                        </li>-->
                         <li style="position: absolute; bottom: 15px;">
                             <a href="contribuir.html" aria-expanded="false">
                                 <img src="../icons/donate_money.png" width="30px">
@@ -420,7 +433,7 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Minhas adoções</h3>
+                    <h3 class="text-primary">Minhas doações</h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
@@ -428,24 +441,26 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div>
-                    <div ng-show="ctrl.nenhumaAdocao">
+                    <div ng-show="ctrl.nenhumInteresse">
                         <div class="row">
-                            <div class="col-md-12" id="nenhumaAdocao">
-                                <p>Olá Saver, por enquanto você não tem nenhuma adoção.</p>
-                                <p>Mas que tal procurarmos um pet agora?</p>
+                            <div class="col-md-12" id="nenhumaDoacao">
+                                <p>Olá Saver, por enquanto você ainda não tem nenhum interesse cadastrado.</p>
+                                <p>Mas que tal começarmos agora?</p>
                             </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: center;">
-                                <button class="btn btn-primary" onclick="document.location.href='../index.html'">Procurar um pet</button>
+                                <button class="btn btn-primary" onclick="document.location.href='../index.html'">
+                                    Procurar um pet!
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div ng-hide="ctrl.nenhumaAdocao">
+                    <div ng-hide="ctrl.nenhumInteresse">
                         <div class="row">
                             <div>
-                                <p>Saver, aqui estão todas as suas adoções.</p>
-                                <p>Clique no nome para visualizar.</p>
+                                <p>Saver, aqui estão todos os pets que você cadastrou</p>
+                                <p>Clique no nome para visualizar</p>
                             </div>
                         </div>
                         <div class="row">
@@ -460,7 +475,7 @@
                             </h2>
                         </div>
                         <div class="row">
-                            <div class="col-md-12 collapse" id="formFiltro">
+                            <div class="col-md-12 collapse" id="formFiltro" style="margin-bottom: 20px;">
                                 <form>
                                     <div class="row">
                                         <div class="form-group col-md-4">
@@ -469,61 +484,75 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="color-primary">Tipo</label>
-                                            <select class="form-control custom-select">
+                                            <select class="form-control custom-select" ng-model="ctrl.Animal">
                                                 <option>Todos</option>
                                                 <option ng-repeat="x in ctrl.Animais" value="{{x.Chave}}">{{x.Valor}}</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label class="color-primary">Status</label>
-                                            <select class="form-control custom-select">
+                                            <label class="color-primary">Anúncio</label>
+                                            <select class="form-control custom-select" ng-model="ctrl.TipoAnuncio">
                                                 <option>Todos</option>
-                                                <option ng-repeat="x in ctrl.Status" value="{{x.Chave}}">{{x.Valor}}</option>
+                                                <option ng-repeat="x in ctrl.TiposAnuncio" value="{{x.Chave}}">{{x.Valor}}</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col-md-12" style="text-align: right">
+                                            <span class="color-primary link" style="font-weight: bold" ng-click="ctrl.LimparFiltros()">Limpar filtros</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="text-align: center">
+                                            <button class="btn btn-secondary col-md-12" ng-click="ctrl.FiltrarInteresses()">Buscar</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover">
+                        <div ng-show="ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 30px">
+                            <img style="width:100px;" src="../images/loading.gif" />
+                        </div>
+                        <div ng-hide="ctrl.Buscando || !ctrl.Interesses || ctrl.Interesses.length < 1" class="table-responsive">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th class="columnFitCenter">#</th>
                                         <th>Pet</th>
                                         <th>Tipo</th>
-                                        <th>
-                                            Status
-                                            <!-- <div class="dropdown">
-                                                <button id="dropdownButton" class="btn btn-primary dropdown-toggle"
-                                                    type="button" data-toggle="dropdown" aria-expanded="false">Status
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Adotado</a></li>
-                                                    <li><a href="#">Ativo</a></li>
-                                                    <li><a href="#">Em análise</a></li>
-                                                    <li><a href="#">Finalizado</a></li>
-                                                </ul>
-                                            </div> -->
-                                        </th>
+                                        <th>Raça / Espécie</th>
+                                        <th>Data</th>
+                                        <th>Anúncio</th>
+                                        <th>Saver</th>
+                                        <th class="columnFitCenter">Chat</th>
+                                        <th class="columnFitCenter">Remover</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th class="columnFitCenter" scope="row">1</th>
-                                        <td><span class="link" onclick="document.location.href='../pet.html'">{{ctrl.Pet.Nome}}</span></td>
-                                        <td>{{ctrl.Pet.RacaEspecie}}</span></td>
-                                        <td><span class="badge badge-primary">{{ctrl.Pet.Status}}</span></td>
+                                    <tr ng-repeat="x in ctrl.Interesses">
+                                        <th class="columnFitCenter" scope="row">{{x.IdAnuncio}}</th>
+                                        <td><span class="link" ng-class="{'font-italic': x.Pet === 'Desconhecido', 'color-primary': x.Pet !== 'Desconhecido'}" ng-click="ctrl.abrirAnuncio(x.IdAnuncio)">{{x.Pet}}</span></td>
+                                        <td><span>{{x.Animal}}</span></td>
+                                        <td><span>{{x.RacaEspecie}}</span></td>
+                                        <td>{{x.Data}}</span></td>
+                                        <td><span class="badge" ng-class="{'badge-danger': x.TipoAnuncio == 'Pet perdido', 'badge-success': x.TipoAnuncio == 'Pet encontrado', 'badge-primary': x.TipoAnuncio == 'Doação'}">{{x.TipoAnuncio}}</span></td>
+                                        <td><span>{{x.Usuario}}</span></td>
+                                        <td class="columnFitCenter">
+                                            <img class="link" src="../icons/chat.png" width="30px">
+                                        </td>
+                                        <td class="columnFitCenter">
+                                            <img class="link imgDisabled" src="../icons/close.png"
+                                                 width="30px">
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row" style="margin-top:20px;">
-                            <div class="col-6" style="text-align: left;">
-                                <button class="btn btn-primary">Anterior</button>
-                            </div>
-                            <div class="col-6" style="text-align: right;">
-                                <button class="btn btn-primary">Próxima</button>
+                        <div class="row" ng-show="!ctrl.Interesses || ctrl.Interesses.length < 1">
+                            <div class="col-md-12" style="text-align: center; font-size:24px">
+                                <img src="../icons/announcement_not_found.png" style="width: 96px; margin-bottom:25px; margin-top: 25px" />
+                                <p class="color-primary">Nenhum interesse encontrado</p>
+                                <button class="btn btn-primary" onclick="window.location='../index.html'">Clique aqui para procurar um pet</button>
                             </div>
                         </div>
                     </div>
@@ -561,7 +590,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="../js/controllers/app.js"></script>
     <script src="../js/controllers/base.js"></script>
-    <script src="../js/controllers/adocoesRelatorio.js"></script>
+    <script src="../js/controllers/meusInteresses.js"></script>
 
 </body>
 
