@@ -345,15 +345,15 @@
                             </a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="adocoes_interesses.html" aria-expanded="false">
+                                    <a href="favoritos.html" aria-expanded="false">
                                         <img src="../icons/heart.png" width="30px">
-                                        <span class="show-menu">Meus interesses</span>
+                                        <span class="show-menu">Favoritos</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="adocoes_relatorio.html" aria-expanded="false">
                                         <img src="../icons/list.png" width="30px">
-                                        <span class="show-menu">Visualizar</span>
+                                        <span class="show-menu">Interesses</span>
                                     </a>
                                 </li>
                             </ul>
@@ -521,7 +521,7 @@
                                         <th>Data de cadastro</th>
                                         <th>Status</th>
                                         <th class="columnFitCenter">Visualizações</th>
-                                        <th class="columnFitCenter">Interessados</th>
+                                        <!--<th class="columnFitCenter">Interessados</th>-->
                                         <th class="columnFitCenter">Chats</th>
                                         <!--<th class="columnFitCenter">Editar</th>-->
                                     </tr>
@@ -535,8 +535,8 @@
                                         <td>{{x.DataCadastro}}</span></td>
                                         <td><span class="badge" ng-class="ctrl.base.buscarStyleStatus(x.Status)">{{x.Status}}</span></td>
                                         <td class="columnFitCenter columnBoldPrimary"><span>{{x.Visualizacoes}}</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary"><span>{{x.Interessados}}</span></td>
-                                        <td class="columnFitCenter">
+                                        <!--<td class="columnFitCenter columnBoldPrimary"><span>{{x.Interessados}}</span></td>-->
+                                        <td class="columnFitCenter" ng-disabled="x.Interessados < 1">
                                             <img class="link" src="../icons/chat.png"
                                                  width="30px">
                                         </td>

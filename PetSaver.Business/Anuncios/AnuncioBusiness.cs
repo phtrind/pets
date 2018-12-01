@@ -244,6 +244,21 @@ namespace PetSaver.Business.Anuncios
             });
         }
 
+        /// <summary>
+        /// Buscar favoritos por usuário
+        /// </summary>
+        /// <param name="aIdUsuario">Usuário</param>
+        /// <returns></returns>
+        public IEnumerable<AnuncioMiniaturaResponse> BuscarFavoritos(int aIdUsuario)
+        {
+            if (aIdUsuario == default || new UsuarioBusiness().Listar(aIdUsuario) == null)
+            {
+                throw new BusinessException("O Id do usuário é inválido");
+            }
+
+            return PreencherObjetoMiniatura(new AnuncioRepository().BuscarFavoritos(aIdUsuario));
+        }
+
         #endregion
     }
 }

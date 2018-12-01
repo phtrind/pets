@@ -175,4 +175,7 @@
   <data name="RelatorioAnuncios" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Queries\Anuncios\RelatorioAnuncios.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="BuscarAnunciosFavoritos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Queries\Anuncios\BuscarAnunciosFavoritos.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

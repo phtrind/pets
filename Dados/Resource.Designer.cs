@@ -166,6 +166,28 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT P.PET_NOME, 
+        ///       PTS.PTS_DESCRICAO, 
+        ///       PID.PID_DESCRICAO, 
+        ///       E.EST_SIGLA, 
+        ///       C.CID_NOME, 
+        ///       F.ANF_LINK, 
+        ///       ANT.ANT_DESCRICAO, 
+        ///       A.ANU_CODIGO
+        ///FROM ANU_ANUNCIOS A
+        ///     INNER JOIN PET_PETS P ON A.PET_CODIGO = P.PET_CODIGO
+        ///     INNER JOIN EST_ESTADOS E ON A.EST_CODIGO = E.EST_CODIGO
+        ///     INNER JOIN CID_CIDADES C ON C.CID_CODIGO = A.CID_CODIGO
+        ///     LEFT JOIN ANF_ANUNCIOFOTOS F ON F.ANU_CODIGO = A.ANU_CODIGO
+        ///                                     AND F.ANF_DESTA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string BuscarAnunciosFavoritos {
+            get {
+                return ResourceManager.GetString("BuscarAnunciosFavoritos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT *
         ///FROM AVA_AVALIACOES
         ///WHERE USU_AVALIADO = @IdUsuario.
@@ -307,24 +329,24 @@ namespace PetSaver.Repository {
         /// <summary>
         ///   Looks up a localized string similar to SELECT ANU.ANU_CODIGO, 
         ///       PET.PET_NOME, 
-        ///	   ANI.ANI_NOME,
+        ///       ANI.ANI_NOME, 
         ///       RAC.RAC_NOME, 
-        ///	   ANT.ANT_DESCRICAO,
+        ///       ANT.ANT_DESCRICAO, 
         ///       ANU.ANU_DTHCADASTRO, 
         ///       ANS.ANS_DESCRICAO, 
         ///(
         ///    SELECT COUNT(*)
         ///    FROM AVI_ANUNCIOSVISITAS
         ///    WHERE ANU_CODIGO = ANU.ANU_CODIGO
-        ///), 
+        ///) AS VISUALIZACOES, 
         ///(
         ///    SELECT COUNT(*)
         ///    FROM INT_INTERESSES
         ///    WHERE ANU_CODIGO = ANU.ANU_CODIGO
-        ///)
+        ///) AS INTERESSADOS
         ///FROM ANU_ANUNCIOS ANU
         ///     INNER JOIN PET_PETS PET ON ANU.PET_CODIGO = PET.PET_CODIGO
-        ///	 INNER JOIN ANI_ANIMAIS ANI ON PET.ANI_CODIGO = ANI.ANI_CODIGO [rest of string was truncated]&quot;;.
+        ///     INNER JOIN ANI_AN [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string RelatorioAnuncios {
             get {

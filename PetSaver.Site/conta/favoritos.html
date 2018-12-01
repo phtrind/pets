@@ -75,7 +75,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="adocoesInteressesController as ctrl">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="favoritosController as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -341,15 +341,15 @@
                             </a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>
-                                    <a href="adocoes_interesses.html" aria-expanded="false">
+                                    <a href="favoritos.html" aria-expanded="false">
                                         <img src="../icons/heart.png" width="30px">
-                                        <span class="show-menu">Meus interesses</span>
+                                        <span class="show-menu">Favoritos</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="adocoes_relatorio.html" aria-expanded="false">
                                         <img src="../icons/list.png" width="30px">
-                                        <span class="show-menu">Visualizar</span>
+                                        <span class="show-menu">Interesses</span>
                                     </a>
                                 </li>
                             </ul>
@@ -416,7 +416,7 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Meus interesses</h3>
+                    <h3 class="text-primary">Favoritos</h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
@@ -427,7 +427,7 @@
                     <div ng-show="ctrl.nenhumInteresse">
                         <div class="row">
                             <div class="col-md-12" id="nenhumInteresse">
-                                <p>Olá Saver, por enquanto você não tem nenhum interesse cadastrado</p>
+                                <p>Olá Saver, por enquanto você não tem nenhum pet favorito</p>
                                 <p>Mas que tal procurarmos um Pet agora?</p>
                             </div>
                         </div>
@@ -437,17 +437,22 @@
                             </div>
                         </div>
                     </div>
-                    <div ng-hide="ctrl.nenhumInteresse">
-                        <div class="row">
-                            <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in [].constructor(4) track by $index"
-                                 ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;"
-                                 onclick="document.location.href='../pet.html'">
-                                <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557">
+                    <div ng-show="ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 30px">
+                        <img style="width:100px;" src="../images/loading.gif" />
+                    </div>
+                    <div ng-hide="ctrl.nenhumInteresse || ctrl.Buscando">
+                        <div class="row col-md-12" style="margin: 0; padding: 0">
+                            <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in ctrl.Anuncios"
+                                 ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" ng-click="ctrl.base.AbrirAnuncioConta(x.IdAnuncio)">
+                                <div style="height: 175px">
+                                    <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="../{{x.Foto}}">
+                                </div>
                                 <div class="col-md-12 text-center" style="margin-top:15px;">
-                                    <span><h2 style="color: #500B89">{{ctrl.Pet.Nome}}</h2></span>
-                                    <p><span><img src="../icons/gender.png" width="25px">{{ctrl.Pet.Sexo}}</span><span><img src="../icons/size.png" width="25px">{{ctrl.Pet.Sexo}}</span></p>
-                                    <p><span><img src="../icons/location.png" width="25px">{{ctrl.Pet.Cidade}} / {{ctrl.Pet.Estado}}</span></p>
-                                    <button ng-show="adBoxHover" class="btn btn-primary">ver pet</button>
+                                    <h2 class="color-primary" style="height: 70px">{{x.Nome}}</h2>
+                                    <p><img src="../icons/gender.png" width="25px">{{x.Sexo}} <img src="../icons/size.png" width="25px">{{x.Idade}}</p>
+                                    <p><img src="../icons/location.png" width="25px">{{x.Localizacao}}</p>
+                                    <span ng-class="{'badge-danger': x.Tipo == 'Pet perdido', 'badge-success': x.Tipo == 'Pet encontrado', 'badge-primary': x.Tipo == 'Doação'}" class="badge" ng-hide="adBoxHover" style="font-size: 16px">{{x.Tipo}}</span>
+                                    <button ng-show="adBoxHover" class="btn btn-primary">conhecer pet</button>
                                 </div>
                             </div>
                         </div>
@@ -486,7 +491,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="../js/controllers/app.js"></script>
     <script src="../js/controllers/base.js"></script>
-    <script src="../js/controllers/adocoesInteresses.js"></script>
+    <script src="../js/controllers/favoritos.js"></script>
 
 </body>
 

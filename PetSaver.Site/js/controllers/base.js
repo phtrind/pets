@@ -389,6 +389,10 @@
         window.location.href = "pet.html?idAnuncio=" + aIdAnuncio;
     }
 
+    base.AbrirAnuncioConta = function (aIdAnuncio) {
+        window.location.href = "../pet.html?idAnuncio=" + aIdAnuncio;
+    }
+
     //#endregion
 
     //#region .: Cadastro Anúncio :.

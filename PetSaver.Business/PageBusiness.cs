@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PetSaver.Business.Anuncios;
 using PetSaver.Business.Localizacao;
 using PetSaver.Business.Pets;

@@ -1,4 +1,5 @@
 ﻿using PetSaver.Business;
+using PetSaver.Business.Anuncios;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Base;
 using PetSaver.Contracts.Paginas;
@@ -115,6 +116,21 @@ namespace PetSaver.WebApi.Controllers
             try
             {
                 return new PageBusiness().InicializarRelatorioAnuncios(aRequest, TiposAnuncio.PetEncontrado);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
+        [Route("api/Page/Favoritos/{aIdUsuario}")]
+        [HttpGet]
+        public IEnumerable<AnuncioMiniaturaResponse> Favoritos(int aIdUsuario)
+        {
+            try
+            {
+                return new AnuncioBusiness().BuscarFavoritos(aIdUsuario);
             }
             catch (Exception ex)
             {

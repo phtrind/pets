@@ -241,5 +241,18 @@ namespace PetSaver.Repository.Anuncios
                 return db.Query(stringBuilder.ToString(), new { @IdUsuario = aIdUsuario });
             }
         }
+
+        public IEnumerable<dynamic> BuscarFavoritos(int aIdUsuario)
+        {
+            if (aIdUsuario == default)
+            {
+                return new List<dynamic>();
+            }
+
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.Query(Resource.BuscarAnunciosFavoritos, new { @IdUsuario = aIdUsuario });
+            }
+        }
     }
 }
