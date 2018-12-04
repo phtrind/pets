@@ -7,6 +7,8 @@ app.controller('dashboardController', function ($controller) {
     ctrl.OnInit = function () {
 
         if (!ctrl.base.IsLogged()) {
+            ctrl.base.LimparSessionAuth();
+
             window.location.href = '../home.html';
         }
 

@@ -1,10 +1,10 @@
 app.controller('contribuirController', function ($controller) {
 
-        var ctrl = this;
-    
-        ctrl.base = $controller('baseController', {});
-    
-        ctrl.petSelection = true;
+    var ctrl = this;
+
+    ctrl.base = $controller('baseController', {});
+
+    ctrl.petSelection = true;
 
     ctrl.petSelection = true;
     // ctrl.petInfos1 = true;

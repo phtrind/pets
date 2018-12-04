@@ -6,34 +6,42 @@
 
     ctrl.OnInit = function () {
 
-        ctrl.Buscando = true;
+        if (!ctrl.base.IsLogged()) {
+            ctrl.base.LimparSessionAuth();
 
-        var request = {
-            IdUsuario: sessionStorage.getItem('IdUsuario')
-        };
+            window.location.href = '../home.html';
+        }
+        else {
+            ctrl.Buscando = true;
 
-        $http({
-            method: 'POST',
-            url: ctrl.base.servicePath + 'Page/RelatorioPetEncontrado',
-            data: request,
-            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
-        }).success(function (response) {
+            var request = {
+                IdUsuario: sessionStorage.getItem('IdUsuario')
+            };
 
-            ctrl.Animais = response.Filtros.Animais;
-            ctrl.Status = response.Filtros.Status;
+            $http({
+                method: 'POST',
+                url: ctrl.base.servicePath + 'Page/RelatorioPetEncontrado',
+                data: request,
+                headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+            }).success(function (response) {
 
-            ctrl.Anuncios = response.Anuncios;
+                ctrl.Animais = response.Filtros.Animais;
+                ctrl.Status = response.Filtros.Status;
 
-            if (!ctrl.Anuncios || ctrl.Anuncios.length < 1) {
-                ctrl.nenhumPetEncontrado = true;
-            }
-            else {
-                ctrl.nenhumPetEncontrado = false;
-            }
+                ctrl.Anuncios = response.Anuncios;
 
-        }).finally(function () {
-            ctrl.Buscando = false;
-        });
+                if (!ctrl.Anuncios || ctrl.Anuncios.length < 1) {
+                    ctrl.nenhumPetEncontrado = true;
+                }
+                else {
+                    ctrl.nenhumPetEncontrado = false;
+                }
+
+            }).finally(function () {
+                ctrl.Buscando = false;
+            });
+        }
+
     }
 
     ctrl.FiltrarAnuncios = function () {

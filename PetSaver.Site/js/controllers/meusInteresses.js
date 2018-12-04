@@ -6,33 +6,41 @@
 
     ctrl.OnInit = function () {
 
-        ctrl.Buscando = true;
+        if (!ctrl.base.IsLogged()) {
+            ctrl.base.LimparSessionAuth();
 
-        $http({
-            method: 'GET',
-            url: ctrl.base.servicePath + 'Page/Interesses/' + sessionStorage.getItem('IdUsuario'),
-            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
-        }).success(function (response) {
+            window.location.href = '../home.html';
+        }
+        else {
+            ctrl.Buscando = true;
 
-            ctrl.Animais = response.Filtros.Animais;
-            ctrl.TiposAnuncio = response.Filtros.TiposAnuncio;
+            $http({
+                method: 'GET',
+                url: ctrl.base.servicePath + 'Page/Interesses/' + sessionStorage.getItem('IdUsuario'),
+                headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+            }).success(function (response) {
 
-            ctrl.Interesses = response.Interesses;
+                ctrl.Animais = response.Filtros.Animais;
+                ctrl.TiposAnuncio = response.Filtros.TiposAnuncio;
 
-            if (!ctrl.Interesses || ctrl.Interesses.length < 1) {
-                ctrl.nenhumInteresse = true;
-            }
-            else {
-                ctrl.nenhumInteresse = false;
-            }
+                ctrl.Interesses = response.Interesses;
 
-        }).error(function (err, status) {
+                if (!ctrl.Interesses || ctrl.Interesses.length < 1) {
+                    ctrl.nenhumInteresse = true;
+                }
+                else {
+                    ctrl.nenhumInteresse = false;
+                }
 
-            //TODO: Implementar tratamento de erro na base
+            }).error(function (err, status) {
 
-        }).finally(function () {
-            ctrl.Buscando = false;
-        });
+                //TODO: Implementar tratamento de erro na base
+
+            }).finally(function () {
+                ctrl.Buscando = false;
+            });
+        }
+
     }
 
     ctrl.FiltrarInteresses = function () {

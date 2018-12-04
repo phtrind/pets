@@ -6,9 +6,16 @@ app.controller('petPerdidoCadastroController', function ($controller, $http) {
 
     ctrl.OnInit = function () {
 
-        InitializeMap();
+        if (!ctrl.base.IsLogged()) {
+            ctrl.base.LimparSessionAuth();
 
-        ctrl.base.ctrlCadastroAnuncio.CarregarPaginaCadastroAnuncio();
+            window.location.href = '../home.html';
+        }
+        else {
+            InitializeMap();
+
+            ctrl.base.ctrlCadastroAnuncio.CarregarPaginaCadastroAnuncio();
+        }
 
     }
 

@@ -6,26 +6,33 @@ app.controller('favoritosController', function ($controller, $http) {
 
     ctrl.OnInit = function () {
 
-        ctrl.Buscando = true;
+        if (!ctrl.base.IsLogged()) {
+            ctrl.base.LimparSessionAuth();
 
-        $http({
-            method: 'GET',
-            url: ctrl.base.servicePath + 'Page/Favoritos/' + sessionStorage.getItem('IdUsuario'),
-            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
-        }).success(function (response) {
+            window.location.href = '../home.html';
+        }
+        else {
+            ctrl.Buscando = true;
 
-            ctrl.Anuncios = response;
+            $http({
+                method: 'GET',
+                url: ctrl.base.servicePath + 'Page/Favoritos/' + sessionStorage.getItem('IdUsuario'),
+                headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+            }).success(function (response) {
 
-            if (!ctrl.Anuncios || ctrl.Anuncios.length < 1) {
-                ctrl.nenhumInteresse = true;
-            }
-            else {
-                ctrl.nenhumInteresse = false;
-            }
+                ctrl.Anuncios = response;
 
-        }).finally(function () {
-            ctrl.Buscando = false;
-        });
+                if (!ctrl.Anuncios || ctrl.Anuncios.length < 1) {
+                    ctrl.nenhumInteresse = true;
+                }
+                else {
+                    ctrl.nenhumInteresse = false;
+                }
+
+            }).finally(function () {
+                ctrl.Buscando = false;
+            });
+        }
 
     }
 

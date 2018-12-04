@@ -9,7 +9,14 @@ app.controller('daocaoCadastroController', function ($controller, $http) {
 
     ctrl.OnInit = function () {
 
-        ctrl.base.ctrlCadastroAnuncio.CarregarPaginaCadastroAnuncio();
+        if (!ctrl.base.IsLogged()) {
+            ctrl.base.LimparSessionAuth();
+
+            window.location.href = '../home.html';
+        }
+        else {
+            ctrl.base.ctrlCadastroAnuncio.CarregarPaginaCadastroAnuncio();
+        }
 
     }
 
