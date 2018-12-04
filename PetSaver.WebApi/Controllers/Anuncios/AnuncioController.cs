@@ -162,6 +162,23 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [Authorize]
+        [Route("api/Anuncio/ConcretizarDoacao")]
+        [HttpPost]
+        public HttpResponseMessage ConcretizarDoacao(ConcretizarInteresseRequest aRequest)
+        {
+            try
+            {
+                new InteresseBusiness().ConcretizarInteresse(aRequest, TiposAnuncio.Doacao);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
         #endregion
 
         #region .: Busca :.

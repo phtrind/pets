@@ -161,6 +161,7 @@
         ctrl.Idade = "";
         ctrl.Cor = "";
         ctrl.Porte = "";
+        ctrl.Nome = "";
 
         ctrl.BuscarAnuncios(1, 12, false);
 

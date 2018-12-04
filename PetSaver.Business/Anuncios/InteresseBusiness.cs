@@ -2,11 +2,13 @@
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Entity.Enums.Status;
+using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 
 namespace PetSaver.Business.Anuncios
 {
@@ -74,6 +76,69 @@ namespace PetSaver.Business.Anuncios
             interesseEntity.DataAlteracao = DateTime.Now;
 
             Atualizar(interesseEntity);
+        }
+
+        public void ConcretizarInteresse(ConcretizarInteresseRequest aRequest, TiposAnuncio aTipoAnuncio)
+        {
+            if (aRequest == null)
+            {
+                throw new BusinessException("O objeto de request é inválido.");
+            }
+
+            if (aRequest.IdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuario é inválido.");
+            }
+
+            if (aRequest.IdLogin == default)
+            {
+                throw new BusinessException("O Id do login do usuário é inválido.");
+            }
+
+            var interesseEntity = Listar(aRequest.IdInteresse);
+
+            if (interesseEntity == null)
+            {
+                throw new BusinessException("O Id do interesse é inválido.");
+            }
+
+            var anuncioBusiness = new AnuncioBusiness();
+
+            var anuncioEntity = anuncioBusiness.Listar(interesseEntity.IdAnuncio);
+
+            if (anuncioEntity.IdUsuario != aRequest.IdUsuario)
+            {
+                throw new BusinessException("O Id do usuário informado não é o Id do usuário dono do anúncio.");
+            }
+
+            interesseEntity.IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.Concretizado);
+            interesseEntity.IdLoginAlteracao = aRequest.IdLogin;
+            interesseEntity.DataAlteracao = DateTime.Now;
+
+            switch (aTipoAnuncio)
+            {
+                case TiposAnuncio.Doacao:
+                    anuncioEntity.IdStatus = Utilities.Conversor.EnumParaInt(StatusAnuncio.Adotado);
+                    break;
+                case TiposAnuncio.PetPerdido:
+                case TiposAnuncio.PetEncontrado:
+                    anuncioEntity.IdStatus = Utilities.Conversor.EnumParaInt(StatusAnuncio.DeVoltaAoLar);
+                    break;
+                default:
+                    throw new BusinessException("Tipo de anúncio não encontrado.");
+            }
+
+            anuncioEntity.IdLoginAlteracao = aRequest.IdLogin;
+            anuncioEntity.DataAlteracao = DateTime.Now;
+
+            using (var transaction = new TransactionScope())
+            {
+                Atualizar(interesseEntity);
+                anuncioBusiness.Atualizar(anuncioEntity);
+
+                transaction.Complete();
+            }
+
         }
 
         #endregion

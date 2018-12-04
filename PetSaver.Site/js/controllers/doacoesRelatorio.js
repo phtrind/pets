@@ -102,9 +102,11 @@
 
     ctrl.DetalharInteressados = function (aIdAnuncio, aInteressados, aStatus) {
 
-        if (aInteressados < 1 || aStatus != 'Ativo') {
+        if (aInteressados < 1 || aStatus != 'Ativo' || ctrl.Buscando) {
             return;
         }
+
+        ctrl.BuscandoInteressados = true;
 
         $http({
             method: 'GET',
@@ -114,13 +116,70 @@
 
             ctrl.Interessados = response;
 
+            $("html, body").animate({ scrollTop: $('#tableAnuncios')[0].scrollHeight }, 1000);
+
         }).error(function (err, status) {
 
             ctrl.Interessados = null;
 
             //TODO: Implementar tratamento de erro na base
 
+        }).finally(function () {
+
+            ctrl.BuscandoInteressados = false;
+
         });
+
+    }
+
+    ctrl.ConcretizarDoacao = function (aIdInteresse, aStatus) {
+
+        if (aStatus != 'Em andamento') {
+            return;
+        }
+
+        ctrl.interesseConcretizacao = aIdInteresse;
+
+        $('#modalConfirmarConcretizacao').modal('show');
+
+    }
+
+    ctrl.ConfirmarConcretizacaoDoacao = function () {
+
+        var request = {
+            IdUsuario: sessionStorage.getItem('IdUsuario'),
+            IdLogin: sessionStorage.getItem('IdLogin'),
+            IdInteresse: ctrl.interesseConcretizacao
+        };
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Anuncio/ConcretizarDoacao',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            ctrl.FiltrarAnuncios();
+
+            $('#modalConfirmarConcretizacao').modal('hide');
+
+            $('#modalConfirmacaoConcretizacao').modal('show');
+
+            ctrl.Interessados = null;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
+
+    }
+
+    ctrl.FecharInteresses = function () {
+
+        ctrl.Interessados = null
+
+        $("html, body").animate({ scrollTop: $('html').offset().top }, 1000);
 
     }
 

@@ -525,7 +525,7 @@
                         <div ng-show="ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 30px">
                             <img style="width:100px;" src="../images/loading.gif" />
                         </div>
-                        <div ng-hide="ctrl.Buscando || !ctrl.Anuncios || ctrl.Anuncios.length < 1" class="table-responsive">
+                        <div id="tableAnuncios" ng-hide="ctrl.Buscando || !ctrl.Anuncios || ctrl.Anuncios.length < 1" class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
@@ -557,16 +557,23 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row" ng-show="!ctrl.Anuncios || ctrl.Anuncios.length < 1">
+                        <div class="row" ng-show="(!ctrl.Anuncios || ctrl.Anuncios.length < 1) && !ctrl.Buscando">
                             <div class="col-md-12" style="text-align: center; font-size:24px">
                                 <img src="../icons/announcement_not_found.png" style="width: 96px; margin-bottom:25px; margin-top: 25px" />
                                 <p class="color-primary">Nenhum anúncio encontrado</p>
                                 <button class="btn btn-primary" onclick="window.location='doacoes_cadastro.html'">Clique aqui para cadastrar</button>
                             </div>
                         </div>
-                        <div class="row" style="margin-top: 40px" ng-show="ctrl.Interessados && ctrl.Interessados.length > 0">
-                            <div class="col-md-12">
+                        <div ng-show="ctrl.BuscandoInteressados" class="col-md-12" style="text-align: center; margin-top: 30px">
+                            <img style="width:100px;" src="../images/loading.gif" />
+                        </div>
+                        <div id="saversInteressados" class="row" style="margin-top: 40px" ng-show="ctrl.Interessados && ctrl.Interessados.length > 0 && !ctrl.BuscandoInteressados">
+                            <div class="col-6">
                                 <h2 class="color-primary">Savers interessados</h2>
+                            </div>
+                            <div class="col-6" style="text-align: right">
+                                <!--<img src="../icons/close.png" style="width: 30px" />-->
+                                <button class="btn btn-secondary" ng-click="ctrl.FecharInteresses()">Fechar</button>
                             </div>
                             <div class="col-md-12 table-responsive">
                                 <table class="table table-striped">
@@ -587,10 +594,10 @@
                                             <td><span>{{x.Data}}</span></td>
                                             <td><span>{{x.Status}}</span></td>
                                             <td class="columnFitCenter">
-                                                <img ng-class="{'imgDisabled': x.Status != 'Ativo'}" class="link" src="../icons/chat.png" width="30px">
+                                                <img ng-class="{'imgDisabled': x.Status != 'Em andamento'}" class="link" src="../icons/chat.png" width="30px">
                                             </td>
                                             <td class="columnFitCenter">
-                                                <img ng-class="{'imgDisabled': x.Status != 'Ativo'}" class="link" src="../icons/ok.png" width="30px">
+                                                <img ng-class="{'imgDisabled': x.Status != 'Em andamento'}" class="link" src="../icons/ok.png" width="30px" ng-click="ctrl.ConcretizarDoacao(x.IdInteresse, x.Status)">
                                             </td>
                                         </tr>
                                     </tbody>
@@ -602,6 +609,43 @@
             </div>
         </div>
         <!-- End PAge Content -->
+    </div>
+    <!-- Modal -->
+    <div class="col-md-12">
+        <div class="modal" id="modalConfirmarConcretizacao" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div>
+                            Olá Saver, que notícia maravilhosa!
+                            <br /><br />
+                            Clique em "Confirmar" para finalizar a doação.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.ConfirmarConcretizacaoDoacao()">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="col-md-12">
+        <div class="modal" id="modalConfirmacaoConcretizacao" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div>
+                            Doação concretizada com sucesso!
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End Container fluid  -->
     <!-- footer -->
