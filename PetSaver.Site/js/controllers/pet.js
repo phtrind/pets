@@ -37,6 +37,7 @@
                 ctrl.TipoAnuncio = response.TipoAnuncio;
 
                 if (ctrl.StatusAnuncio != "Ativo") {
+                    $('#modalStatusAnuncio').modal('show');
                     ctrl.HabilitarAcoes = false;
                 }
                 else {
