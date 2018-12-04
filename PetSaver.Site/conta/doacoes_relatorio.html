@@ -576,6 +576,7 @@
                                             <th>Saver</th>
                                             <th>Data</th>
                                             <th>Status</th>
+                                            <th class="columnFitCenter">Chat</th>
                                             <th class="columnFitCenter">Concretizar</th>
                                         </tr>
                                     </thead>
@@ -585,6 +586,9 @@
                                             <td><span>{{x.Nome}}</span></td>
                                             <td><span>{{x.Data}}</span></td>
                                             <td><span>{{x.Status}}</span></td>
+                                            <td class="columnFitCenter">
+                                                <img ng-class="{'imgDisabled': x.Status != 'Ativo'}" class="link" src="../icons/chat.png" width="30px">
+                                            </td>
                                             <td class="columnFitCenter">
                                                 <img ng-class="{'imgDisabled': x.Status != 'Ativo'}" class="link" src="../icons/ok.png" width="30px">
                                             </td>
