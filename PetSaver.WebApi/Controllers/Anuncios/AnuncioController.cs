@@ -268,6 +268,21 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             }
         }
 
+        [Authorize]
+        [Route("api/Anuncio/BuscarInteressados/{aIdAnuncio}")]
+        [HttpGet]
+        public IEnumerable<InteressadosContract> BuscarInteressados(int aIdAnuncio)
+        {
+            try
+            {
+                return new InteresseBusiness().BuscarInteressados(aIdAnuncio);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
         #endregion
     }
 }

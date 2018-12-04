@@ -338,27 +338,27 @@
                             </ul>
                         </li>
                         <!--<li>
-                <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
-                    <img src="../icons/house.png" width="30px">
-                    <span class="hide-menu">
-                        Adoções
-                    </span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    <li>
-                        <a href="favoritos.html" aria-expanded="false">
-                            <img src="../icons/heart.png" width="30px">
-                            <span class="show-menu">Favoritos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="adocoes_relatorio.html" aria-expanded="false">
-                            <img src="../icons/list.png" width="30px">
-                            <span class="show-menu">Interesses</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>-->
+                            <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
+                                <img src="../icons/house.png" width="30px">
+                                <span class="hide-menu">
+                                    Adoções
+                                </span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li>
+                                    <a href="favoritos.html" aria-expanded="false">
+                                        <img src="../icons/heart.png" width="30px">
+                                        <span class="show-menu">Favoritos</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="adocoes_relatorio.html" aria-expanded="false">
+                                        <img src="../icons/list.png" width="30px">
+                                        <span class="show-menu">Interesses</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>-->
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/binoculars.png" width="30px">
@@ -462,7 +462,7 @@
                         <div class="row">
                             <div>
                                 <p>Saver, aqui estão todos os pets que você cadastrou</p>
-                                <p>Clique no nome para visualizar</p>
+                                <p>Clique no nome do pet para visualizar</p>
                             </div>
                         </div>
                         <div class="row">
@@ -534,24 +534,10 @@
                                         <th>Tipo</th>
                                         <th>Raça / Espécie</th>
                                         <th>Data de cadastro</th>
-                                        <th>
-                                            Status
-                                            <!-- <div class="dropdown">
-                                                <button id="dropdownButton" class="btn btn-primary dropdown-toggle"
-                                                    type="button" data-toggle="dropdown" aria-expanded="false">Status
-                                                    <span class="caret"></span></button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a href="#">Adotado</a></li>
-                                                    <li><a href="#">Ativo</a></li>
-                                                    <li><a href="#">Em análise</a></li>
-                                                    <li><a href="#">Finalizado</a></li>
-                                                </ul>
-                                            </div> -->
-                                        </th>
+                                        <th>Status</th>
                                         <th class="columnFitCenter">Visualizações</th>
-                                        <th class="columnFitCenter">Interessados</th>
-                                        <th class="columnFitCenter">Chats</th>
-                                        <!--<th class="columnFitCenter">Editar</th>-->
+                                        <!--<th class="columnFitCenter">Interessados</th>-->
+                                        <th class="columnFitCenter">Interesses</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -563,15 +549,10 @@
                                         <td>{{x.DataCadastro}}</span></td>
                                         <td><span class="badge" ng-class="ctrl.base.buscarStyleStatus(x.Status)">{{x.Status}}</span></td>
                                         <td class="columnFitCenter columnBoldPrimary"><span>{{x.Visualizacoes}}</span></td>
-                                        <td class="columnFitCenter columnBoldPrimary"><span>{{x.Interessados}}</span></td>
+                                        <!--<td class="columnFitCenter columnBoldPrimary"><span>{{x.Interessados}}</span></td>-->
                                         <td class="columnFitCenter">
-                                            <img class="link" src="../icons/chat.png"
-                                                 width="30px">
+                                            <img ng-class="{'imgDisabled': x.Interessados < 1 || x.Status != 'Ativo'}" class="link" src="../icons/find.png" width="30px" ng-click="ctrl.DetalharInteressados(x.IdAnuncio, x.Interessados, x.Status)">
                                         </td>
-                                        <!--<td class="columnFitCenter">
-                                            <img class="link imgDisabled" src="../icons/edit.png"
-                                                 width="30px">
-                                        </td>-->
                                     </tr>
                                 </tbody>
                             </table>
@@ -581,6 +562,35 @@
                                 <img src="../icons/announcement_not_found.png" style="width: 96px; margin-bottom:25px; margin-top: 25px" />
                                 <p class="color-primary">Nenhum anúncio encontrado</p>
                                 <button class="btn btn-primary" onclick="window.location='doacoes_cadastro.html'">Clique aqui para cadastrar</button>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 40px" ng-show="ctrl.Interessados && ctrl.Interessados.length > 0">
+                            <div class="col-md-12">
+                                <h2 class="color-primary">Savers interessados</h2>
+                            </div>
+                            <div class="col-md-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="columnFitCenter">#</th>
+                                            <th>Saver</th>
+                                            <th>Data</th>
+                                            <th>Status</th>
+                                            <th class="columnFitCenter">Concretizar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="x in ctrl.Interessados">
+                                            <th class="columnFitCenter" scope="row">{{$index + 1}}</th>
+                                            <td><span>{{x.Nome}}</span></td>
+                                            <td><span>{{x.Data}}</span></td>
+                                            <td><span>{{x.Status}}</span></td>
+                                            <td class="columnFitCenter">
+                                                <img ng-class="{'imgDisabled': x.Status != 'Ativo'}" class="link" src="../icons/ok.png" width="30px">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>

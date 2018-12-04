@@ -44,6 +44,7 @@
     <Compile Include="Anuncios\CadastroAnuncioContract.cs" />
     <Compile Include="Anuncios\CadastroLocalizacaoContract.cs" />
     <Compile Include="Anuncios\CadastroPetContract.cs" />
+    <Compile Include="Anuncios\InteressadosContract.cs" />
     <Compile Include="Anuncios\RelatorioInteressesContract.cs" />
     <Compile Include="Anuncios\Request\CadastrarDuvidaRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarGosteiRequest.cs" />

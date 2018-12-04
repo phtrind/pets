@@ -1,9 +1,9 @@
- app.controller('chatsController', function ($controller) {
+app.controller('chatsController', function ($controller) {
 
-        var ctrl = this;
-    
-        ctrl.base = $controller('baseController', {});
-        
+    var ctrl = this;
+
+    ctrl.base = $controller('baseController', {});
+
 
     ctrl.minimizarMenu = function () {
         $("body").addClass("mini-sidebar");

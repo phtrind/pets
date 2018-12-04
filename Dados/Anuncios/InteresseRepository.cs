@@ -93,6 +93,19 @@ namespace PetSaver.Repository.Anuncios
             }
         }
 
+        public IEnumerable<dynamic> BuscarInteressadosPorAnuncio(int aIdAnuncio)
+        {
+            if (aIdAnuncio == default)
+            {
+                return new List<dynamic>();
+            }
+
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.Query(Resource.BuscarInteressados, new { @IdAnuncio = aIdAnuncio });
+            }
+        }
+
         #endregion
     }
 }

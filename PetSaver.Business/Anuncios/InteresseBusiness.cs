@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using PetSaver.Business.Usuarios;
+﻿using PetSaver.Business.Usuarios;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PetSaver.Business.Anuncios
 {
@@ -112,6 +112,22 @@ namespace PetSaver.Business.Anuncios
                 Data = Convert.ToDateTime(x.INT_DTHCADASTRO).ToString("dd/MM/yyyy"),
                 TipoAnuncio = Convert.ToString(x.ANT_DESCRICAO),
                 Usuario = Convert.ToString(x.USU_NOME),
+                Status = Convert.ToString(x.INS_DESCRICAO)
+            });
+        }
+
+        public IEnumerable<InteressadosContract> BuscarInteressados(int aIdAnuncio)
+        {
+            if (aIdAnuncio == default)
+            {
+                throw new BusinessException("O Id do anúncio é inválido.");
+            }
+
+            return new InteresseRepository().BuscarInteressadosPorAnuncio(aIdAnuncio).Select(x => new InteressadosContract()
+            {
+                IdInteresse = Convert.ToInt32(x.INT_CODIGO),
+                Nome = Convert.ToString(x.USU_NOME),
+                Data = Convert.ToDateTime(x.INT_DTHCADASTRO).ToString("dd/MM/yyyy"),
                 Status = Convert.ToString(x.INS_DESCRICAO)
             });
         }
