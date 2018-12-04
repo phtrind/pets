@@ -42,7 +42,7 @@ namespace PetSaver.Repository.Anuncios
                 throw new DbValidationException("O Id do status do interesse é inválido.");
             }
 
-            if (BuscarPorUsuarioAnuncio(aObjeto.IdUsuario, aObjeto.IdAnuncio) != null)
+            if (aObjeto.Id == default && BuscarPorUsuarioAnuncio(aObjeto.IdUsuario, aObjeto.IdAnuncio) != null)
             {
                 throw new BusinessException("O usuário já tem um interesse cadastrado nesse anúncio.");
             }

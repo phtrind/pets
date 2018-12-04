@@ -26,6 +26,10 @@
                 ctrl.nenhumInteresse = false;
             }
 
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
         }).finally(function () {
             ctrl.Buscando = false;
         });
@@ -51,6 +55,10 @@
 
             ctrl.Interesses = response;
 
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
         }).finally(function () {
             ctrl.Buscando = false;
         });
@@ -71,6 +79,44 @@
 
         window.open('../pet.html?idAnuncio=' + aIdAnuncio, '_blank');
 
+    }
+
+    ctrl.BtnCancelarInteresse = function (aIdAnuncio, aStatus) {
+
+        if (aStatus != 'Finalizado') {
+            ctrl.anuncioCancelamento = aIdAnuncio;
+
+            $('#modalConfirmarCancelamento').modal('show');
+        }
+
+    }
+
+    ctrl.CancelarInteresse = function () {
+
+        $('#modalConfirmarCancelamento').modal('hide');
+
+        var request = {
+            IdUsuario: sessionStorage.getItem('IdUsuario'),
+            IdLogin: sessionStorage.getItem('IdLogin'),
+            IdInteresse: ctrl.anuncioCancelamento
+        };
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Anuncio/CancelarInteresse',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function () {
+
+            $('#modalConfirmacaoCancelamento').modal('show');
+
+            ctrl.FiltrarInteresses();
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
     }
 
 });

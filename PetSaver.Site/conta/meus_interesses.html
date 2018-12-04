@@ -46,9 +46,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../images/logos/favicon_pata.ico">
     <title>PetSaver</title>
 
-    <link href="../css/lib/chartist/chartist.min.css" rel="stylesheet">
-    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet" />
-    <link href="../css/lib/owl.theme.default.min.css" rel="stylesheet" />
     <!-- Bootstrap Core CSS -->
     <link href="../css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -337,28 +334,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <!--<li>
-                <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
-                    <img src="../icons/house.png" width="30px">
-                    <span class="hide-menu">
-                        Adoções
-                    </span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    <li>
-                        <a href="favoritos.html" aria-expanded="false">
-                            <img src="../icons/heart.png" width="30px">
-                            <span class="show-menu">Favoritos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="adocoes_relatorio.html" aria-expanded="false">
-                            <img src="../icons/list.png" width="30px">
-                            <span class="show-menu">Interesses</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>-->
                         <li>
                             <a class="has-arrow" href="#" aria-expanded="false">
                                 <img src="../icons/binoculars.png" width="30px">
@@ -461,7 +436,7 @@
                         <div class="row">
                             <div>
                                 <p>Saver, aqui estão todos os anúncios com os quais você interagiu</p>
-                                <p>Clique no nome do pet para visualizar</p>
+                                <p>Clique no nome do pet para visualizar o anúncio</p>
                             </div>
                         </div>
                         <div class="row">
@@ -525,6 +500,7 @@
                                         <th>Data</th>
                                         <th>Anúncio</th>
                                         <th>Saver</th>
+                                        <th>Status</th>
                                         <th class="columnFitCenter">Chat</th>
                                         <th class="columnFitCenter">Cancelar</th>
                                     </tr>
@@ -538,18 +514,19 @@
                                         <td>{{x.Data}}</span></td>
                                         <td><span class="badge" ng-class="{'badge-danger': x.TipoAnuncio == 'Pet perdido', 'badge-success': x.TipoAnuncio == 'Pet encontrado', 'badge-primary': x.TipoAnuncio == 'Doação'}">{{x.TipoAnuncio}}</span></td>
                                         <td><span>{{x.Usuario}}</span></td>
+                                        <td><span>{{x.Status}}</span></td>
                                         <td class="columnFitCenter">
-                                            <img class="link" src="../icons/chat.png" width="30px">
+                                            <img ng-class="{'imgDisabled': x.Status != 'Em andamento', 'link': x.Status == 'Em andamento'}" class="link" src="../icons/chat.png" width="30px">
                                         </td>
                                         <td class="columnFitCenter">
-                                            <img class="link" src="../icons/close.png"
-                                                 width="30px">
+                                            <img ng-class="{'imgDisabled': x.Status != 'Em andamento', 'link': x.Status == 'Em andamento'}" src="../icons/close.png"
+                                                 width="30px" ng-click="ctrl.BtnCancelarInteresse(x.IdInteresse, x.Status)">
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row" ng-show="!ctrl.Interesses || ctrl.Interesses.length < 1">
+                        <div class="row" ng-show="(!ctrl.Interesses || ctrl.Interesses.length < 1) && !ctrl.Buscando">
                             <div class="col-md-12" style="text-align: center; font-size:24px">
                                 <img src="../icons/announcement_not_found.png" style="width: 96px; margin-bottom:25px; margin-top: 25px" />
                                 <p class="color-primary">Nenhum interesse encontrado</p>
@@ -561,6 +538,41 @@
             </div>
         </div>
         <!-- End PAge Content -->
+    </div>
+    <!-- Modal -->
+    <div class="col-md-12">
+        <div class="modal" id="modalConfirmarCancelamento" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div>
+                            Você tem certeza que deseja cancelar seu interesse?
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.CancelarInteresse()">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="col-md-12">
+        <div class="modal" id="modalConfirmacaoCancelamento" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div>
+                            Interesse cancelado com sucesso.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End Container fluid  -->
     <!-- footer -->

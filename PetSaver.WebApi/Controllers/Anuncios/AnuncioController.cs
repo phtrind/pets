@@ -145,6 +145,23 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [Authorize]
+        [Route("api/Anuncio/CancelarInteresse")]
+        [HttpPost]
+        public HttpResponseMessage CancelarInteresse(CancelarInteresseRequest aRequest)
+        {
+            try
+            {
+                new InteresseBusiness().CancelarInteresse(aRequest);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
         #endregion
 
         #region .: Busca :.
