@@ -344,6 +344,19 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UPDATE INT_INTERESSES
+        ///  SET 
+        ///      INS_CODIGO = 2
+        ///WHERE ANU_CODIGO = @IdAnuncio
+        ///      AND USU_CODIGO &lt;&gt; @IdUsuario.
+        /// </summary>
+        internal static string FinalizarDemaisInteresses {
+            get {
+                return ResourceManager.GetString("FinalizarDemaisInteresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT ANU.ANU_CODIGO, 
         ///       PET.PET_NOME, 
         ///       ANI.ANI_NOME, 

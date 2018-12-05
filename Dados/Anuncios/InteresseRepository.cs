@@ -13,6 +13,8 @@ namespace PetSaver.Repository.Anuncios
 {
     public class InteresseRepository : BaseRepository<InteresseEntity>
     {
+        #region .: Validações :.
+
         protected override void ValidarAtributos(InteresseEntity aObjeto)
         {
             if (aObjeto.IdUsuario == default || new UsuarioRepository().Listar(aObjeto.IdUsuario) == null)
@@ -46,7 +48,9 @@ namespace PetSaver.Repository.Anuncios
             {
                 throw new BusinessException("O usuário já tem um interesse cadastrado nesse anúncio.");
             }
-        }
+        } 
+
+        #endregion
 
         #region .: Consultas :.
 
@@ -103,6 +107,28 @@ namespace PetSaver.Repository.Anuncios
             using (var db = new SqlConnection(StringConnection))
             {
                 return db.Query(Resource.BuscarInteressados, new { @IdAnuncio = aIdAnuncio });
+            }
+        }
+
+        #endregion
+
+        #region .: Cadastros :.
+
+        public void FinalizarDemaisInteresses(int aIdAnuncio, int aIdUsuario)
+        {
+            if (aIdAnuncio == default)
+            {
+                throw new BusinessException("O Id do anúnico é inválido.");
+            }
+
+            if (aIdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuário é inválido.");
+            }
+
+            using (var db = new SqlConnection(StringConnection))
+            {
+                db.Query(Resource.FinalizarDemaisInteresses, new { @IdAnuncio = aIdAnuncio, @IdUsuario = aIdUsuario });
             }
         }
 

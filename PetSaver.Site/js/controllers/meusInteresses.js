@@ -91,7 +91,7 @@
 
     ctrl.BtnCancelarInteresse = function (aIdAnuncio, aStatus) {
 
-        if (aStatus != 'Finalizado') {
+        if (aStatus == 'Em andamento') {
             ctrl.anuncioCancelamento = aIdAnuncio;
 
             $('#modalConfirmarCancelamento').modal('show');

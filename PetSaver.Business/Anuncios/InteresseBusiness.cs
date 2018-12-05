@@ -138,6 +138,8 @@ namespace PetSaver.Business.Anuncios
                 Atualizar(interesseEntity);
                 anuncioBusiness.Atualizar(anuncioEntity);
 
+                new InteresseRepository().FinalizarDemaisInteresses(interesseEntity.IdAnuncio, interesseEntity.IdUsuario);
+
                 transaction.Complete();
             }
 

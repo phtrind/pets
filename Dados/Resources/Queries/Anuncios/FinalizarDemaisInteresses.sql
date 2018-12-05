@@ -1,0 +1,5 @@
+UPDATE INT_INTERESSES
+  SET 
+      INS_CODIGO = 2
+WHERE ANU_CODIGO = @IdAnuncio
+      AND USU_CODIGO <> @IdUsuario
