@@ -163,13 +163,13 @@ namespace PetSaver.WebApi.Controllers.Anuncios
         }
 
         [Authorize]
-        [Route("api/Anuncio/ConcretizarDoacao")]
+        [Route("api/Anuncio/ConcretizarInteresse")]
         [HttpPost]
-        public HttpResponseMessage ConcretizarDoacao(ConcretizarInteresseRequest aRequest)
+        public HttpResponseMessage ConcretizarInteresse(ConcretizarInteresseRequest aRequest)
         {
             try
             {
-                new InteresseBusiness().ConcretizarInteresse(aRequest, TiposAnuncio.Doacao);
+                new InteresseBusiness().ConcretizarInteresse(aRequest);
             }
             catch (Exception ex)
             {
@@ -263,6 +263,21 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             try
             {
                 return new AnuncioBusiness().ListarRelatorioAnuncios(aRequest, TiposAnuncio.PetEncontrado);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
+        [Route("api/Anuncio/RelatorioAnuncios")]
+        [HttpPost]
+        public IEnumerable<RelatorioAnunciosContract> RelatorioAnuncios(RelatorioAnunciosRequest aRequest)
+        {
+            try
+            {
+                return new AnuncioBusiness().ListarRelatorioAnuncios(aRequest, null);
             }
             catch (Exception ex)
             {

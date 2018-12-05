@@ -78,7 +78,7 @@ namespace PetSaver.Business.Anuncios
             Atualizar(interesseEntity);
         }
 
-        public void ConcretizarInteresse(ConcretizarInteresseRequest aRequest, TiposAnuncio aTipoAnuncio)
+        public void ConcretizarInteresse(ConcretizarInteresseRequest aRequest)
         {
             if (aRequest == null)
             {
@@ -115,7 +115,9 @@ namespace PetSaver.Business.Anuncios
             interesseEntity.IdLoginAlteracao = aRequest.IdLogin;
             interesseEntity.DataAlteracao = DateTime.Now;
 
-            switch (aTipoAnuncio)
+            var tipoAnuncio = Utilities.Conversor.IntParaEnum<TiposAnuncio>(anuncioEntity.IdTipo);
+
+            switch (tipoAnuncio)
             {
                 case TiposAnuncio.Doacao:
                     anuncioEntity.IdStatus = Utilities.Conversor.EnumParaInt(StatusAnuncio.Adotado);

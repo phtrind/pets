@@ -2,6 +2,7 @@
 using PetSaver.Business.Pets;
 using PetSaver.Business.Usuarios;
 using PetSaver.Contracts.Anuncios;
+using PetSaver.Contracts.Base;
 using PetSaver.Contracts.Paginas;
 using PetSaver.Contracts.Paginas.Response.PetPage;
 using PetSaver.Entity.Anuncios;
@@ -211,7 +212,7 @@ namespace PetSaver.Business.Anuncios
             return response;
         }
 
-        public IEnumerable<RelatorioAnunciosContract> ListarRelatorioAnuncios(RelatorioAnunciosRequest aRequest, TiposAnuncio aTipoAnuncio)
+        public IEnumerable<RelatorioAnunciosContract> ListarRelatorioAnuncios(RelatorioAnunciosRequest aRequest, TiposAnuncio? aTipoAnuncio)
         {
             if (aRequest == null)
             {
@@ -228,7 +229,11 @@ namespace PetSaver.Business.Anuncios
                 aRequest.Filtro = new FiltroRelatorioAnunciosRequest();
             }
 
-            aRequest.Filtro.TipoAnuncio = Conversor.EnumParaInt(aTipoAnuncio);
+            if (aTipoAnuncio.HasValue)
+            {
+                aRequest.Filtro.TipoAnuncio = Conversor.EnumParaInt(aTipoAnuncio);
+            }
+
 
             return new AnuncioRepository().ListarRelatorioAnuncios(aRequest.IdUsuario, aRequest.Filtro).Select(x => new RelatorioAnunciosContract()
             {
@@ -257,6 +262,32 @@ namespace PetSaver.Business.Anuncios
             }
 
             return PreencherObjetoMiniatura(new AnuncioRepository().BuscarFavoritos(aIdUsuario));
+        }
+
+        #endregion
+
+        #region .: Utilitários :.
+
+        public IEnumerable<ChaveValorContract> ComboTiposAnuncios()
+        {
+            return new List<ChaveValorContract>()
+            {
+                new ChaveValorContract()
+                {
+                    Chave = Conversor.EnumParaInt(TiposAnuncio.Doacao).ToString(),
+                    Valor = "Doação"
+                },
+                new ChaveValorContract()
+                {
+                    Chave = Conversor.EnumParaInt(TiposAnuncio.PetEncontrado).ToString(),
+                    Valor = "Pet encontrado"
+                },
+                new ChaveValorContract()
+                {
+                    Chave = Conversor.EnumParaInt(TiposAnuncio.PetPerdido).ToString(),
+                    Valor = "Pet perdido"
+                }
+            }.OrderBy(x => x.Valor);
         }
 
         #endregion

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using PetSaver.Business.Anuncios;
+﻿using PetSaver.Business.Anuncios;
 using PetSaver.Business.Localizacao;
 using PetSaver.Business.Pets;
 using PetSaver.Contracts.Anuncios;
@@ -11,6 +8,7 @@ using PetSaver.Contracts.Paginas;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
+using System.Collections.Generic;
 
 namespace PetSaver.Business
 {
@@ -98,14 +96,15 @@ namespace PetSaver.Business
             };
         }
 
-        public RelatorioAnunciosResponse InicializarRelatorioAnuncios(RelatorioAnunciosRequest aRequest, TiposAnuncio aTipoAnuncio)
+        public RelatorioAnunciosResponse InicializarRelatorioAnuncios(RelatorioAnunciosRequest aRequest, TiposAnuncio? aTipoAnuncio)
         {
             return new RelatorioAnunciosResponse()
             {
                 Filtros = new FiltroRelatorioAnunciosResponse()
                 {
                     Animais = new AnimalBusiness().Combo(),
-                    Status = new AnuncioStatusBusiness().Combo()
+                    Status = new AnuncioStatusBusiness().Combo(),
+                    TiposAnuncio = new AnuncioBusiness().ComboTiposAnuncios()
                 },
                 Anuncios = new AnuncioBusiness().ListarRelatorioAnuncios(aRequest, aTipoAnuncio)
             };
@@ -123,24 +122,7 @@ namespace PetSaver.Business
                 Filtros = new FiltroRelatorioInteressesResponse()
                 {
                     Animais = new AnimalBusiness().Combo(),
-                    TiposAnuncio = new List<ChaveValorContract>()
-                    {
-                        new ChaveValorContract()
-                        {
-                            Chave = Utilities.Conversor.EnumParaInt(TiposAnuncio.Doacao).ToString(),
-                            Valor = "Doação"
-                        },
-                        new ChaveValorContract()
-                        {
-                            Chave = Utilities.Conversor.EnumParaInt(TiposAnuncio.PetEncontrado).ToString(),
-                            Valor = "Pet encontrado"
-                        },
-                        new ChaveValorContract()
-                        {
-                            Chave = Utilities.Conversor.EnumParaInt(TiposAnuncio.PetPerdido).ToString(),
-                            Valor = "Pet perdido"
-                        }
-                    }.OrderBy(x => x.Valor)
+                    TiposAnuncio = new AnuncioBusiness().ComboTiposAnuncios()
                 },
                 Interesses = new InteresseBusiness().BuscarRelatorioInteresses(request)
             };

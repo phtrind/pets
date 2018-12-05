@@ -78,7 +78,8 @@
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
     </div>
     <!-- Main wrapper  -->
     <div id="main-wrapper">
@@ -122,7 +123,7 @@
                         <!-- Comment -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <!-- <i class="fa fa-bell"></i> -->
                                 <img src="../icons/notification.png" width="30">
                                 <div class="notify">
@@ -196,7 +197,7 @@
                         <!-- Messages -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" id="2" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/chat.png" width="30">
                                 <div class="notify">
                                     <span class="heartbit"></span>
@@ -273,7 +274,7 @@
                         <!-- Profile -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted" href="#" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
+                               aria-haspopup="true" aria-expanded="false">
                                 <img src="../icons/profile.png" width="30px" alt="user">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn">
@@ -282,12 +283,14 @@
                                         <a style="color: #500B89 !important;" href="meus_dados.html">
                                             <img src="../icons/profile_edit.png" width="30px" alt="meus dados"></i>
                                             meus
-                                            dados</a>
+                                            dados
+                                        </a>
                                     </li>
                                     <li class="link" ng-click="ctrl.base.FazerLogoffInside(); ">
                                         <a style="color: #500B89 !important;" href="#">
                                             <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
-                                            sair</a>
+                                            sair
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -313,91 +316,37 @@
                         <li class="nav-label color-primary">Meus anúncios</li>
                         <li>
                             <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
-                                <img src="../homepage/icons/donation.png" width="30px">
+                                <img src="../icons/new.png" width="30px">
                                 <span class="hide-menu">
-                                    Doações
+                                    Cadastrar
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
                                 <li>
                                     <a href="doacoes_cadastro.html" aria-expanded="false">
-                                        <img src="../icons/new.png" width="30px">
-                                        <span class="show-menu">Cadastrar</span>
+                                        <img src="../icons/donation.png" width="30px">
+                                        <span class="show-menu">Doação</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="doacoes_relatorio.html" aria-expanded="false">
-                                        <img src="../icons/list.png" width="30px">
-                                        <span class="show-menu">Visualizar</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!--<li>
-                <a style="color: #500B89 !important;" class="has-arrow" href="#" aria-expanded="false">
-                    <img src="../icons/house.png" width="30px">
-                    <span class="hide-menu">
-                        Adoções
-                    </span>
-                </a>
-                <ul aria-expanded="false" class="collapse">
-                    <li>
-                        <a href="favoritos.html" aria-expanded="false">
-                            <img src="../icons/heart.png" width="30px">
-                            <span class="show-menu">Favoritos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="adocoes_relatorio.html" aria-expanded="false">
-                            <img src="../icons/list.png" width="30px">
-                            <span class="show-menu">Interesses</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>-->
-                        <li>
-                            <a class="has-arrow" href="#" aria-expanded="false">
-                                <img src="../icons/binoculars.png" width="30px">
-                                <span class="hide-menu">
-                                    Pet perdido
-                                </span>
-                            </a>
-                            <ul aria-expanded="false" class="collapse">
                                 <li>
                                     <a href="petperdido_cadastro.html" aria-expanded="false">
                                         <img src="../icons/find.png" width="30px">
-                                        <span class="show-menu">Perdi meu pet</span>
+                                        <span class="show-menu">Pet perdido</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="petperdido_relatorio.html" aria-expanded="false">
-                                        <img src="../icons/list.png" width="30px">
-                                        <span class="show-menu">Visualizar</span>
+                                    <a href="petencontrado_cadastrar.html" aria-expanded="false">
+                                        <img src="../icons/binoculars.png" width="30px">
+                                        <span class="show-menu">Pet encontrado</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a class="has-arrow" href="#" aria-expanded="false">
-                                <img src="../icons/find.png" width="30px">
-                                <span class="hide-menu">
-                                    Pet encontrado
-                                </span>
+                            <a href="anuncios_relatorio.html" aria-expanded="false">
+                                <img src="../icons/list.png" width="30px">
+                                <span class="show-menu">Visualizar</span>
                             </a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li>
-                                    <a href="petencontrado_cadastrar.html" aria-expanded="false">
-                                        <img src="../icons/binoculars.png" width="30px">
-                                        <span class="show-menu">Encontrei um pet</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="petencontrado_relatorio.html" aria-expanded="false">
-                                        <img src="../icons/list.png" width="30px">
-                                        <span class="show-menu">Visualizar</span>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
                         <li class="nav-label color-primary">Minhas interações</li>
                         <li>

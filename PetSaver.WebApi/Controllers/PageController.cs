@@ -124,6 +124,21 @@ namespace PetSaver.WebApi.Controllers
         }
 
         [Authorize]
+        [Route("api/Page/RelatorioAnuncios")]
+        [HttpPost]
+        public RelatorioAnunciosResponse RelatorioAnuncios(RelatorioAnunciosRequest aRequest)
+        {
+            try
+            {
+                return new PageBusiness().InicializarRelatorioAnuncios(aRequest, null);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
         [Route("api/Page/Favoritos/{aIdUsuario}")]
         [HttpGet]
         public IEnumerable<AnuncioMiniaturaResponse> Favoritos(int aIdUsuario)

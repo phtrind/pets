@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
 
@@ -13,8 +13,8 @@
 
         gtag('config', 'UA-128203439-1',
             {
-                'page_title': 'Favoritos',
-                'page_path': '/adocoes_interesses'
+                'page_title': 'RelatorioDoacoes',
+                'page_path': '/doacoes_relatorio'
             });
     </script>
 
@@ -29,8 +29,8 @@
 
         gtag('config', 'UA-128174105-1',
             {
-                'page_title': 'Favoritos',
-                'page_path': '/adocoes_interesses'
+                'page_title': 'RelatorioDoacoes',
+                'page_path': '/doacoes_relatorio'
             });
     </script> -->
 
@@ -60,7 +60,7 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
     <style>
-        #nenhumInteresse p {
+        #nenhumaDoacao p {
             color: #500B89 !important;
             font-size: 20px;
             text-align: center;
@@ -75,7 +75,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="favoritosController as ctrl" ng-init="ctrl.OnInit()">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="anunciosRelatorioController as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -84,6 +84,7 @@
     </div>
     <!-- Main wrapper  -->
     <div id="main-wrapper">
+
         <!-- header header  -->
         <div class="header">
             <nav class="navbar top-navbar navbar-expand-md navbar-light bg-light">
@@ -185,7 +186,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);">
+                                        <a class="nav-link text-center" href="chats.html">
                                             <strong>ver todas</strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>
@@ -262,7 +263,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="chats.html">
+                                        <a class="nav-link text-center" href="javascript:void(0);">
                                             <strong>ver todas</strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>
@@ -379,7 +380,7 @@
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Favoritos</h3>
+                    <h3 class="text-primary">Meus anúncios</h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
@@ -387,49 +388,225 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
                 <div>
-                    <div ng-show="ctrl.nenhumInteresse">
+                    <div ng-show="ctrl.nenhumaDoacao">
                         <div class="row">
-                            <div class="col-md-12" id="nenhumInteresse">
-                                <p>Olá Saver, por enquanto você não tem nenhum pet favorito</p>
-                                <p>Mas que tal procurarmos um Pet agora?</p>
+                            <div class="col-md-12" id="nenhumaDoacao">
+                                <p>Olá Saver, por enquanto você ainda não tem nenhuma doação cadastrada.</p>
+                                <p>Mas que tal começarmos agora?</p>
                             </div>
                         </div>
                         <div class="row" style="margin-top:20px;">
                             <div class="col-md-12" style="text-align: center;">
-                                <button class="btn btn-primary" onclick="document.location.href='../index.html'">Quero um Pet!</button>
+                                <button class="btn btn-primary" onclick="document.location.href='doacoes_cadastro.html'">
+                                    Quero
+                                    doar um pet!
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <div ng-show="ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 30px">
-                        <img style="width:100px;" src="../images/loading.gif" />
-                    </div>
-                    <div ng-hide="ctrl.nenhumInteresse || ctrl.Buscando">
-                        <div class="row col-md-12" style="margin: 0; padding: 0">
-                            <div class="col-md-3 col-xs-12 adBox" ng-class="{'adBoxHover': adBoxHover}" ng-repeat="x in ctrl.Anuncios"
-                                 ng-style="style" ng-mouseenter="adBoxHover = true;" ng-mouseleave="adBoxHover = false;" ng-click="ctrl.base.AbrirAnuncioConta(x.IdAnuncio)">
-                                <div style="height: 175px">
-                                    <img ng-class="{'imgAdBox': !adBoxHover, 'imgAdBoxHover': adBoxHover}" src="../{{x.Foto}}">
-                                </div>
-                                <div class="col-md-12 text-center" style="margin-top:15px;">
-                                    <h2 class="color-primary" style="height: 70px">{{x.Nome}}</h2>
-                                    <p><img src="../icons/gender.png" width="25px">{{x.Sexo}} <img src="../icons/size.png" width="25px">{{x.Idade}}</p>
-                                    <p><img src="../icons/location.png" width="25px">{{x.Localizacao}}</p>
-                                    <span ng-class="{'badge-danger': x.Tipo == 'Pet perdido', 'badge-success': x.Tipo == 'Pet encontrado', 'badge-primary': x.Tipo == 'Doação'}" class="badge" ng-hide="adBoxHover" style="font-size: 16px">{{x.Tipo}}</span>
-                                    <button ng-show="adBoxHover" class="btn btn-primary">conhecer pet</button>
-                                </div>
+                    <div ng-hide="ctrl.nenhumaDoacao">
+                        <div class="row">
+                            <div>
+                                <p>Saver, aqui estão todos os pets que você cadastrou</p>
+                                <p>Clique no nome do pet para visualizar</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <h2 class="color-primary">
+                                Filtros
+                                <img ng-show="ctrl.closedFilter" src="../icons/minus.png" width="35px" style="cursor: pointer;"
+                                     data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                     aria-controls="formFiltro" ng-click="ctrl.closedFilter = false;">
+                                <img ng-show="!ctrl.closedFilter" src="../icons/plus.png" width="35px" style="cursor: pointer;"
+                                     data-toggle="collapse" data-target="#formFiltro" aria-expanded="false"
+                                     aria-controls="formFiltro" ng-click="ctrl.closedFilter = true;">
+                            </h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 collapse" id="formFiltro" style="margin-bottom: 20px;">
+                                <form>
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Nome</label>
+                                            <input type="text" maxlength="30" class="form-control" ng-model="ctrl.Nome">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Tipo</label>
+                                            <select class="form-control custom-select" ng-model="ctrl.Animal">
+                                                <option>Todos</option>
+                                                <option ng-repeat="x in ctrl.Animais" value="{{x.Chave}}">{{x.Valor}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Anúncio</label>
+                                            <select class="form-control custom-select" ng-model="ctrl.TipoAnuncioSelecionado">
+                                                <option>Todos</option>
+                                                <option ng-repeat="x in ctrl.TiposAnuncios" value="{{x.Chave}}">{{x.Valor}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Cadastrado de</label>
+                                            <input type="date" class="form-control" ng-model="ctrl.DthInicio">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Cadastrado até</label>
+                                            <input type="date" class="form-control" ng-model="ctrl.DthFim">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="color-primary">Status</label>
+                                            <select class="form-control custom-select" ng-model="ctrl.StatusSelecionado">
+                                                <option>Todos</option>
+                                                <option ng-repeat="x in ctrl.Status" value="{{x.Chave}}">{{x.Valor}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col-md-12" style="text-align: right">
+                                            <span class="color-primary link" style="font-weight: bold" ng-click="ctrl.LimparFiltros()">Limpar filtros</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12" style="text-align: center">
+                                            <button class="btn btn-secondary col-md-12" ng-click="ctrl.FiltrarAnuncios()">Buscar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div ng-show="ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 30px">
+                            <img style="width:100px;" src="../images/loading.gif" />
+                        </div>
+                        <div id="tableAnuncios" ng-hide="ctrl.Buscando || !ctrl.Anuncios || ctrl.Anuncios.length < 1" class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="columnFitCenter">#</th>
+                                        <th>Pet</th>
+                                        <th>Tipo</th>
+                                        <th>Raça / Espécie</th>
+                                        <th>Anúncio</th>
+                                        <th>Data de cadastro</th>
+                                        <th>Status</th>
+                                        <th class="columnFitCenter">Visualizações</th>
+                                        <!--<th class="columnFitCenter">Interessados</th>-->
+                                        <th class="columnFitCenter">Interesses</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="x in ctrl.Anuncios">
+                                        <th class="columnFitCenter" scope="row">{{$index + 1}}</th>
+                                        <td><span class="link" ng-class="{'font-italic': x.Nome === 'Desconhecido', 'color-primary': x.Nome !== 'Desconhecido'}" ng-click="ctrl.abrirAnuncio(x.IdAnuncio)">{{x.Nome}}</span></td>
+                                        <td><span>{{x.Animal}}</span></td>
+                                        <td><span>{{x.RacaEspecie}}</span></td>
+                                        <td><span class="badge" ng-class="{'badge-danger': x.TipoAnuncio == 'Pet perdido', 'badge-success': x.TipoAnuncio == 'Pet encontrado', 'badge-primary': x.TipoAnuncio == 'Doação'}">{{x.TipoAnuncio}}</span></td>
+                                        <td>{{x.DataCadastro}}</span></td>
+                                        <td><span class="badge" ng-class="ctrl.base.buscarStyleStatus(x.Status)">{{x.Status}}</span></td>
+                                        <td class="columnFitCenter columnBoldPrimary"><span>{{x.Visualizacoes}}</span></td>
+                                        <!--<td class="columnFitCenter columnBoldPrimary"><span>{{x.Interessados}}</span></td>-->
+                                        <td class="columnFitCenter">
+                                            <img ng-class="{'imgDisabled': x.Interessados < 1 || x.Status != 'Ativo'}" class="link" src="../icons/find.png" width="30px" ng-click="ctrl.DetalharInteressados(x.IdAnuncio, x.Interessados, x.Status)">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row" ng-show="(!ctrl.Anuncios || ctrl.Anuncios.length < 1) && !ctrl.Buscando">
+                            <div class="col-md-12" style="text-align: center; font-size:24px">
+                                <img src="../icons/announcement_not_found.png" style="width: 96px; margin-bottom:25px; margin-top: 25px" />
+                                <p class="color-primary">Nenhum anúncio encontrado</p>
+                                <button class="btn btn-primary" onclick="window.location='doacoes_cadastro.html'">Clique aqui para cadastrar</button>
+                            </div>
+                        </div>
+                        <div ng-show="ctrl.BuscandoInteressados" class="col-md-12" style="text-align: center; margin-top: 30px">
+                            <img style="width:100px;" src="../images/loading.gif" />
+                        </div>
+                        <div id="saversInteressados" class="row" style="margin-top: 40px" ng-show="ctrl.Interessados && ctrl.Interessados.length > 0 && !ctrl.BuscandoInteressados">
+                            <div class="col-6">
+                                <h2 class="color-primary">Savers interessados</h2>
+                            </div>
+                            <div class="col-6" style="text-align: right">
+                                <!--<img src="../icons/close.png" style="width: 30px" />-->
+                                <button class="btn btn-secondary" ng-click="ctrl.FecharInteresses()">Fechar</button>
+                            </div>
+                            <div class="col-md-12 table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="columnFitCenter">#</th>
+                                            <th>Saver</th>
+                                            <th>Data</th>
+                                            <th>Status</th>
+                                            <th class="columnFitCenter">Chat</th>
+                                            <th class="columnFitCenter">Concretizar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="x in ctrl.Interessados">
+                                            <th class="columnFitCenter" scope="row">{{$index + 1}}</th>
+                                            <td><span>{{x.Nome}}</span></td>
+                                            <td><span>{{x.Data}}</span></td>
+                                            <td><span>{{x.Status}}</span></td>
+                                            <td class="columnFitCenter">
+                                                <img ng-class="{'imgDisabled': x.Status != 'Em andamento'}" class="link" src="../icons/chat.png" width="30px">
+                                            </td>
+                                            <td class="columnFitCenter">
+                                                <img ng-class="{'imgDisabled': x.Status != 'Em andamento'}" class="link" src="../icons/ok.png" width="30px" ng-click="ctrl.ConcretizarDoacao(x.IdInteresse, x.Status)">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End PAge Content -->
             </div>
-            <!-- End Container fluid  -->
-            <!-- footer -->
-            <div ng-include="'footer.html'"></div>
-            <!-- End footer -->
         </div>
-        <!-- End Page wrapper  -->
+        <!-- End PAge Content -->
     </div>
+    <!-- Modal -->
+    <div class="col-md-12">
+        <div class="modal" id="modalConfirmarConcretizacao" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div>
+                            Olá Saver, que notícia maravilhosa!
+                            <br /><br />
+                            Clique em "Confirmar" para finalizar a doação.
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.ConfirmarConcretizacaoDoacao()">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="col-md-12">
+        <div class="modal" id="modalConfirmacaoConcretizacao" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div>
+                            Doação concretizada com sucesso!
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Container fluid  -->
+    <!-- footer -->
+    <div ng-include="'footer.html'"></div>
+    <!-- End footer -->
+    <!-- End Page wrapper  -->
     <!-- End Wrapper -->
     <!-- All Jquery -->
     <script src="../js/lib/jquery/jquery.min.js"></script>
@@ -454,7 +631,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="../js/controllers/app.js"></script>
     <script src="../js/controllers/base.js"></script>
-    <script src="../js/controllers/favoritos.js"></script>
+    <script src="../js/controllers/anunciosRelatorio.js"></script>
 
 </body>
 
