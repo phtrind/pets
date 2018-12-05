@@ -188,7 +188,7 @@ namespace PetSaver.Business.Anuncios
 
             response.TipoAnuncio = Convert.ToString(retornoDb.ANT_DESCRICAO);
 
-            response.Duvidas = new DuvidaBusiness().BuscarPorAnuncio(aIdAnuncio).Where(x => !string.IsNullOrEmpty(x.Resposta));
+            response.Duvidas = new DuvidaBusiness().BuscarPorAnuncio(aIdAnuncio);
 
             if (aIdUsuario.HasValue && aIdUsuario.Value != default)
             {

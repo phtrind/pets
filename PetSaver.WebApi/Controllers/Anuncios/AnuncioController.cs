@@ -50,6 +50,23 @@ namespace PetSaver.WebApi.Controllers.Anuncios
         }
 
         [Authorize]
+        [Route("api/Anuncio/CadastrarResposta")]
+        [HttpPost]
+        public HttpResponseMessage CadastrarResposta([FromBody]CadastrarRespostaRequest aRequest)
+        {
+            try
+            {
+                new DuvidaBusiness().CadastrarResposta(aRequest);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        [Authorize]
         [Route("api/Anuncio/CadastrarGostei")]
         [HttpPost]
         public HttpResponseMessage CadastrarGostei([FromBody]CadastrarGosteiRequest aRequest)

@@ -36,6 +36,14 @@
                 ctrl.StatusAnuncio = response.StatusAnuncio;
                 ctrl.TipoAnuncio = response.TipoAnuncio;
 
+                if (ctrl.Anunciante.Id == sessionStorage.getItem('IdUsuario')) {
+                    ctrl.DonoAuncio = true;
+                }
+                else {
+                    ctrl.Duvidas = ctrl.Duvidas.filter(x => x.Resposta && x.Resposta.length > 0);
+                    ctrl.DonoAuncio = false;
+                }
+
                 if (ctrl.StatusAnuncio != "Ativo") {
                     $('#modalStatusAnuncio').modal('show');
                     ctrl.HabilitarAcoes = false;
@@ -239,6 +247,54 @@
 
                 $('#modalFazerPergunta').modal('hide');
                 $('#modalPerguntaRealizada').modal('show');
+
+            }).error(function (err, status) {
+
+                //TODO: Implementar tratamento de erro na base
+
+            });
+        }
+    }
+
+    ctrl.ResponderPergunta = function (aIdDuvida, aPergunta) {
+
+        ctrl.IdDuvidaAtual = aIdDuvida;
+        ctrl.DuvidaAtual = aPergunta;
+
+        $('#modalRespostaPergunta').modal('show');
+    }
+
+    ctrl.BtnConfirmarResposta = function () {
+
+        //validar campos
+
+        if (ctrl.base.StringIsEmpty(ctrl.TxtResposta)) {
+            ctrl.ErroTxtResposta = true;
+        }
+        else {
+
+            ctrl.ErroTxtResposta = false;
+
+            var request = {
+                IdDuvida: ctrl.IdDuvidaAtual,
+                IdUsuario: sessionStorage.getItem('IdUsuario'),
+                IdLogin: sessionStorage.getItem('IdLogin'),
+                Resposta: ctrl.TxtResposta
+            };
+
+            $http({
+                method: 'POST',
+                url: ctrl.base.servicePath + 'Anuncio/CadastrarResposta',
+                data: request,
+                headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+            }).success(function (response) {
+
+                ctrl.TxtResposta = "";
+
+                $('#modalRespostaPergunta').modal('hide');
+                $('#modalRespostaRealizada').modal('show');
+
+                ctrl.OnInit();
 
             }).error(function (err, status) {
 

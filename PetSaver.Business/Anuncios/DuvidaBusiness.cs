@@ -4,6 +4,7 @@ using PetSaver.Contracts.Paginas.Response.PetPage;
 using PetSaver.Entity.Anuncios;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Anuncios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,6 +16,7 @@ namespace PetSaver.Business.Anuncios
         {
             return new DuvidaRepository().BuscarPorAnuncio(aIdAnuncio).Select(x => new DuvidaContract()
             {
+                IdDuvida = x.Id,
                 Pergunta = x.Pergunta,
                 Resposta = x.Resposta
             });
@@ -46,6 +48,49 @@ namespace PetSaver.Business.Anuncios
                 IdAnuncio = aRequest.IdAnuncio,
                 Pergunta = aRequest.Pergunta
             });
+        }
+
+        public void CadastrarResposta(CadastrarRespostaRequest aRequest)
+        {
+            if (aRequest == null)
+            {
+                throw new BusinessException("O objeto de request é inválido.");
+            }
+
+            if (aRequest.IdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuário é inválido.");
+            }
+
+            if (aRequest.IdLogin == default)
+            {
+                throw new BusinessException("O Id do login é inválido.");
+            }
+
+            if (string.IsNullOrEmpty(aRequest.Resposta))
+            {
+                throw new BusinessException("A resposta é inválida.");
+            }
+
+            var duvidaEntity = Listar(aRequest.IdDuvida);
+
+            if (duvidaEntity == null)
+            {
+                throw new BusinessException("O Id da dúvida é inválido.");
+            }
+
+            var anuncioEntity = new AnuncioBusiness().Listar(duvidaEntity.IdAnuncio);
+
+            if (anuncioEntity.IdUsuario != aRequest.IdUsuario)
+            {
+                throw new BusinessException("O usuário não é o dono do anúncio.");
+            }
+
+            duvidaEntity.Resposta = aRequest.Resposta;
+            duvidaEntity.IdLoginAlteracao = aRequest.IdLogin;
+            duvidaEntity.DataAlteracao = DateTime.Now;
+
+            Atualizar(duvidaEntity);
         }
     }
 }

@@ -37,24 +37,24 @@
 
     </script>
     <script>
-            $(document).ready(function () {
-                $('li').live('click', function () {
-                    var path = $('#copy').html();
-                    path = path.replace(/ &gt; /g, ".");
-                    //console.log(path);
-                    addtoppath(path);
-                });
-                //initially hide copy window
-                $('#toppathwrap').hide();
-
-                function addtoppath(path) {
-                    //console.log(path);
-                    $('#copypath').val(path);
-                    $('#toppathwrap').show();
-                    $('#copypath').focus();
-                    $('#copypath').select();
-                }
+        $(document).ready(function () {
+            $('li').live('click', function () {
+                var path = $('#copy').html();
+                path = path.replace(/ &gt; /g, ".");
+                //console.log(path);
+                addtoppath(path);
             });
+            //initially hide copy window
+            $('#toppathwrap').hide();
+
+            function addtoppath(path) {
+                //console.log(path);
+                $('#copypath').val(path);
+                $('#toppathwrap').show();
+                $('#copypath').focus();
+                $('#copypath').select();
+            }
+        });
     </script>
 
     <!-- ############################################### -->
@@ -382,6 +382,7 @@
                         <span style="font-style: italic;">{{x.Pergunta}}</span>
                         <br />
                         <span style="font-weight: bold; margin-left: 25px">{{x.Resposta}}</span>
+                        <span ng-click="ctrl.ResponderPergunta(x.IdDuvida, x.Pergunta)" ng-show="ctrl.DonoAuncio && (!x.Resposta || x.Resposta.length < 1)" class="color-primary link">Responder</span>
                     </div>
                 </div>
             </div>
@@ -415,6 +416,44 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Resposta -->
+    <div class="modal fade" id="modalRespostaPergunta" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Responda a pergunta abaixo.
+                    <br><br>
+                    <p class="color-primary" style="font-size: 18px">{{ctrl.DuvidaAtual}}</p>
+                    <div class="form-group" ng-class="{'has-error':ctrl.ErroTxtResposta}">
+                        <textarea class="form-control" style="height: 150px; border-radius: 5px;" ng-model="ctrl.TxtResposta"></textarea>
+                        <small class="form-control-feedback" ng-show="ctrl.ErroTxtResposta">Resposta inválida</small>
+                    </div>
+                    <br>
+                    #SouPetSaver
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" ng-click="ctrl.BtnConfirmarResposta()">Responder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal resposta sucesso -->
+    <div class="modal fade" id="modalRespostaRealizada" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body" style="text-align:center">
+                    <img src="icons/ok.png" style="width:150px">
+                    <br /><br />
+                    <span style="font-size: 24px">Sua resposta foi enviada com sucesso!</span>
+                </div>
+                <div class="modal-footer" style="text-align: center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div ng-include="'login.html'"></div>

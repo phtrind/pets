@@ -50,6 +50,7 @@
     <Compile Include="Anuncios\Request\CadastrarGosteiRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarInteresseRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarAnuncioRequest.cs" />
+    <Compile Include="Anuncios\Request\CadastrarRespostaRequest.cs" />
     <Compile Include="Anuncios\Request\CancelarInteresseRequest.cs" />
     <Compile Include="Anuncios\Request\ConcretizarInteresseRequest.cs" />
     <Compile Include="Anuncios\Request\FiltroRelatorioAnunciosRequest.cs" />
