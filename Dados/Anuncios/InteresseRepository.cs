@@ -114,7 +114,7 @@ namespace PetSaver.Repository.Anuncios
 
         #region .: Cadastros :.
 
-        public void FinalizarDemaisInteresses(int aIdAnuncio, int aIdUsuario)
+        public void FinalizarDemaisInteresses(int aIdAnuncio, int aIdUsuario, int aIdLogin)
         {
             if (aIdAnuncio == default)
             {
@@ -126,9 +126,14 @@ namespace PetSaver.Repository.Anuncios
                 throw new BusinessException("O Id do usuário é inválido.");
             }
 
+            if (aIdLogin == default)
+            {
+                throw new BusinessException("O Id do login é inválido.");
+            }
+
             using (var db = new SqlConnection(StringConnection))
             {
-                db.Query(Resource.FinalizarDemaisInteresses, new { @IdAnuncio = aIdAnuncio, @IdUsuario = aIdUsuario });
+                db.Execute(Resource.FinalizarDemaisInteresses, new { @IdAnuncio = aIdAnuncio, @IdUsuario = aIdUsuario, @IdLogin = aIdLogin });
             }
         }
 

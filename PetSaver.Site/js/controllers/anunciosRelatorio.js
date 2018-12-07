@@ -119,8 +119,6 @@
 
             ctrl.Interessados = response;
 
-            $("html, body").animate({ scrollTop: $('#tableAnuncios')[0].scrollHeight }, 1000);
-
         }).error(function (err, status) {
 
             ctrl.Interessados = null;
@@ -133,6 +131,7 @@
 
         });
 
+        $("html, body").animate({ scrollTop: $('#tableAnuncios')[0].scrollHeight }, 1000);
     }
 
     ctrl.ConcretizarDoacao = function (aIdInteresse, aStatus) {
@@ -183,6 +182,101 @@
         ctrl.Interessados = null
 
         $("html, body").animate({ scrollTop: $('html').offset().top }, 1000);
+
+    }
+
+    ctrl.BtnAlterarStatus = function (aIdAnuncio, aStatus, aInteressados) {
+
+        if (!ctrl.HabilitarAlterarStatus(aStatus)) {
+            return;
+        }
+
+        $('#modalAlterarStatus').modal('show');
+
+        ctrl.selecaoStatus = true;
+        ctrl.confirmacaoFinalizacao = false;
+        ctrl.selecaoInteressado = false;
+        ctrl.sucessoFinalizacao = false;
+
+        ctrl.idAnuncioAlteracaoStatus = aIdAnuncio;
+        ctrl.BtnConcretizarModalDisabled = aInteressados < 1;
+
+    }
+
+    ctrl.HabilitarAlterarStatus = function (aStatus) {
+
+        return aStatus == 'Ativo' || aStatus == 'Em análise';
+
+    }
+
+    ctrl.BtnSelecaoStatus = function (aStatus) {
+
+        if (aStatus == 'Finalizar' || aStatus == 'Cancelar') {
+
+            ctrl.selecaoStatus = false;
+            ctrl.confirmacaoFinalizacao = true;
+
+            ctrl.StatusFinalizarModal = aStatus;
+
+        }
+        else if (aStatus == 'Concretizar') {
+
+            ctrl.selecaoStatus = false;
+            ctrl.confirmacaoFinalizacao = false;
+            ctrl.selecaoInteressado = true;
+
+        }
+
+    }
+
+    ctrl.BtnSelecionarSaver = function () {
+
+        $('#modalAlterarStatus').modal('hide');
+
+        $("html, body").animate({ scrollTop: $('#tableAnuncios')[0].scrollHeight }, 1000);
+
+        ctrl.DetalharInteressados(ctrl.idAnuncioAlteracaoStatus, 1, 'Ativo');
+
+        ctrl.idAnuncioAlteracaoStatus = null;
+
+    }
+
+    ctrl.FinalizarAnuncio = function () {
+
+        ctrl.loadingFinalizacao = true;
+        ctrl.confirmacaoFinalizacao = false;
+
+        var request = {
+            IdLogin: sessionStorage.getItem('IdLogin'),
+            IdUsuario: sessionStorage.getItem('IdUsuario'),
+            IdAnuncio: ctrl.idAnuncioAlteracaoStatus,
+            Status: ctrl.StatusFinalizarModal
+        };
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Anuncio/FinalizarAnuncio',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            ctrl.sucessoFinalizacao = true;
+
+            ctrl.FiltrarAnuncios();
+
+            ctrl.Interessados = null;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        }).finally(function () {
+
+            ctrl.loadingFinalizacao = false;
+
+        });
+
+        ctrl.idAnuncioAlteracaoStatus = null;
 
     }
 

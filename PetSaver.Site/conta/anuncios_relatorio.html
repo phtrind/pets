@@ -488,10 +488,10 @@
                                         <th>Raça / Espécie</th>
                                         <th>Anúncio</th>
                                         <th>Data de cadastro</th>
-                                        <th>Status</th>
-                                        <th class="columnFitCenter">Visualizações</th>
-                                        <!--<th class="columnFitCenter">Interessados</th>-->
+                                        <th>Situação</th>
+                                        <th class="columnFitCenter">Visitas</th>
                                         <th class="columnFitCenter">Interesses</th>
+                                        <th class="columnFitCenter">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -504,9 +504,11 @@
                                         <td>{{x.DataCadastro}}</span></td>
                                         <td><span class="badge" ng-class="ctrl.base.buscarStyleStatus(x.Status)">{{x.Status}}</span></td>
                                         <td class="columnFitCenter columnBoldPrimary"><span>{{x.Visualizacoes}}</span></td>
-                                        <!--<td class="columnFitCenter columnBoldPrimary"><span>{{x.Interessados}}</span></td>-->
                                         <td class="columnFitCenter">
-                                            <img ng-class="{'imgDisabled': x.Interessados < 1 || x.Status != 'Ativo'}" class="link" src="../icons/find.png" width="30px" ng-click="ctrl.DetalharInteressados(x.IdAnuncio, x.Interessados, x.Status)">
+                                            <img data-toggle="tooltip" title="Visualizar os interesses nesse anúncio" ng-class="{'imgDisabled': x.Interessados < 1 || x.Status != 'Ativo'}" class="link" src="../icons/find.png" width="30px" ng-click="ctrl.DetalharInteressados(x.IdAnuncio, x.Interessados, x.Status)">
+                                        </td>
+                                        <td class="columnFitCenter">
+                                            <img data-toggle="tooltip" title="Atualizar o status do anúncio" ng-class="{'imgDisabled': !ctrl.HabilitarAlterarStatus(x.Status)}" class="link" src="../icons/update.png" width="30px" ng-click="ctrl.BtnAlterarStatus(x.IdAnuncio, x.Status, x.Interessados)">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -565,7 +567,7 @@
         </div>
         <!-- End PAge Content -->
     </div>
-    <!-- Modal -->
+    <!-- Modal Confirmar Concretizacao-->
     <div class="col-md-12">
         <div class="modal" id="modalConfirmarConcretizacao" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -585,7 +587,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal sucesso concretizacao-->
     <div class="col-md-12">
         <div class="modal" id="modalConfirmacaoConcretizacao" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -596,6 +598,91 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal alterar status -->
+    <div class="col-md-12">
+        <div class="modal" id="modalAlterarStatus" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!-- Seleção do status -->
+                        <div ng-show="ctrl.selecaoStatus">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="color-primary">Olá Saver,</p>
+                                    <p class="color-primary">O que você deseja fazer com seu anúncio?</p>
+                                </div>
+                            </div>
+                            <div class="row" style="text-align: center; margin-top: 10px">
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-primary" style="width: 100%; word-wrap: break-word; white-space:normal !important" ng-click="ctrl.BtnSelecaoStatus('Concretizar')" ng-disabled="ctrl.BtnConcretizarModalDisabled">Concluir, pois concretizei através da PetSaver</button>
+                                </div>
+                            </div>
+                            <div class="row" style="text-align: center; margin-top: 10px">
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-secondary" style="width: 100%; word-wrap: break-word; white-space:normal !important" ng-click="ctrl.BtnSelecaoStatus('Finalizar')">Encerrar, pois concretizei fora da PetSaver</button>
+                                </div>
+                            </div>
+                            <div class="row" style="text-align: center; margin-top: 10px">
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-secondary" style="width: 100%; word-wrap: break-word; white-space:normal !important" ng-click="ctrl.BtnSelecaoStatus('Cancelar')">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Cancelamento / Finalização anúncio -->
+                        <div ng-show="ctrl.confirmacaoFinalizacao">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="color-primary">Tem certeza que deseja finalizar o anúncio?</p>
+                                </div>
+                            </div>
+                            <div class="row" style="text-align: center; margin-top: 10px">
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-secondary" style="width: 100%;" data-dismiss="modal">Não</button>
+                                </div>
+                                <div class="col-6">
+                                    <button type="button" class="btn btn-primary" style="width: 100%;" ng-click="ctrl.FinalizarAnuncio()">Sim</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Loading -->
+                        <div ng-show="ctrl.loadingFinalizacao">
+                            <div class="row">
+                                <div class="col-md-12" style="text-align: center">
+                                    <img style="width:45px;" src="../images/loading.gif" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Cancelamento / Finalização anúncio -->
+                        <div ng-show="ctrl.sucessoFinalizacao">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="color-primary">Anúncio finalizado com sucesso.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Seleção interessado -->
+                        <div ng-show="ctrl.selecaoInteressado">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="color-primary">Mas que ótima notícia! Agora falta pouco...</p>
+                                    <p class="color-primary">Assim que você clicar em "Selecionar Saver" vamos lhe mostrar todos os Savers interessados nesse anúncio.</p>
+                                    <p class="color-primary">Encontre o Saver na lista, e clique em "Concretizar".</p>
+                                </div>
+                            </div>
+                            <div class="row" style="text-align: center; margin-top: 10px">
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-primary" style="width: 100%;" ng-click="ctrl.BtnSelecionarSaver()">Selecionar Saver</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div ng-show="ctrl.selecaoStatus || ctrl.sucessoFinalizacao" class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>

@@ -75,10 +75,85 @@ namespace PetSaver.Business.Anuncios
                                                     usuario.IdLogin,
                                                     aRequest.Anuncio.GuidImagens);
 
+                new AnuncioStatusHistoricoBusiness().Inserir(new AnuncioStatusHistoricoEntity()
+                {
+                    IdAnuncio = idAnuncio,
+                    IdStatus = Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
+                    IdLoginCadastro = usuario.IdLogin
+                });
+
                 transaction.Complete();
 
                 return idAnuncio;
             }
+        }
+
+        public void FinalizarAnuncio(FinalizarAnuncioRequest aRequest)
+        {
+            if (aRequest == null)
+            {
+                throw new BusinessException("O objeto de request é inválido.");
+            }
+
+            if (aRequest.IdLogin == default)
+            {
+                throw new BusinessException("O Id do login do usuário é inválido.");
+            }
+
+            if (aRequest.IdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuário é inválido.");
+            }
+
+            if (aRequest.IdAnuncio == default)
+            {
+                throw new BusinessException("O Id do anúncio é inválido.");
+            }
+
+            var anuncio = Listar(aRequest.IdAnuncio);
+
+            if (anuncio.IdUsuario != aRequest.IdUsuario)
+            {
+                throw new BusinessException("O usuário informado não é o dono do anúncio.");
+            }
+
+            var usuario = new UsuarioBusiness().Listar(aRequest.IdUsuario);
+
+            if (usuario == null || usuario.IdLogin != aRequest.IdLogin)
+            {
+                throw new BusinessException("O Id informado não corresponde ao usuário informado.");
+            }
+
+            if (aRequest.Status == "Finalizar")
+            {
+                anuncio.IdStatus = Conversor.EnumParaInt(StatusAnuncio.Finalizado);
+            }
+            else if (aRequest.Status == "Cancelar")
+            {
+                anuncio.IdStatus = Conversor.EnumParaInt(StatusAnuncio.Cancelado);
+            }
+            else
+            {
+                throw new BusinessException("O status informado é inválido.");
+            }
+
+            anuncio.IdLoginAlteracao = aRequest.IdLogin;
+            anuncio.DataAlteracao = DateTime.Now;
+
+            using (var transaction = new TransactionScope())
+            {
+                Atualizar(anuncio);
+
+                new AnuncioStatusHistoricoBusiness().Inserir(new AnuncioStatusHistoricoEntity()
+                {
+                    IdAnuncio = anuncio.Id,
+                    IdStatus = anuncio.IdStatus,
+                    IdLoginCadastro = usuario.IdLogin
+                });
+
+                transaction.Complete();
+            }
+
         }
 
         #endregion
