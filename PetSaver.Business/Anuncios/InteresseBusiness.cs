@@ -1,6 +1,7 @@
 ﻿using PetSaver.Business.Usuarios;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Entity.Anuncios;
+using PetSaver.Entity.Base;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
@@ -28,13 +29,32 @@ namespace PetSaver.Business.Anuncios
                 throw new BusinessException("Não é possível cadastrar um interesse sem anúncio.");
             }
 
-            return Inserir(new InteresseEntity()
+            int idInteresse;
+
+            using (var transaction = new TransactionScope())
             {
-                IdAnuncio = aRequest.IdAnuncio,
-                IdUsuario = aRequest.IdUsuario,
-                IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.EmAndamento),
-                IdLoginCadastro = new UsuarioBusiness().Listar(aRequest.IdUsuario)?.IdLogin ?? default
-            });
+                var idLogin = new UsuarioBusiness().Listar(aRequest.IdUsuario)?.IdLogin ?? default;
+
+                idInteresse = Inserir(new InteresseEntity()
+                {
+                    IdAnuncio = aRequest.IdAnuncio,
+                    IdUsuario = aRequest.IdUsuario,
+                    IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.EmAndamento),
+                    IdLoginCadastro = idLogin
+                });
+
+                new InteresseStatusHistoricoBusiness().Inserir(new HistoricoStatusEntity()
+                {
+                    IdEntidade = idInteresse,
+                    IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.EmAndamento),
+                    IdLoginCadastro = idLogin
+                });
+
+                transaction.Complete();
+
+            }
+
+            return idInteresse;
         }
 
         public void CancelarInteresse(CancelarInteresseRequest aRequest)
@@ -75,7 +95,19 @@ namespace PetSaver.Business.Anuncios
             interesseEntity.IdLoginAlteracao = aRequest.IdLogin;
             interesseEntity.DataAlteracao = DateTime.Now;
 
-            Atualizar(interesseEntity);
+            using (var transaction = new TransactionScope())
+            {
+                Atualizar(interesseEntity);
+
+                new InteresseStatusHistoricoBusiness().Inserir(new HistoricoStatusEntity()
+                {
+                    IdEntidade = interesseEntity.Id,
+                    IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.Finalizado),
+                    IdLoginCadastro = aRequest.IdLogin
+                });
+
+                transaction.Complete();
+            }
         }
 
         public void ConcretizarInteresse(ConcretizarInteresseRequest aRequest)
@@ -138,7 +170,14 @@ namespace PetSaver.Business.Anuncios
                 Atualizar(interesseEntity);
                 anuncioBusiness.Atualizar(anuncioEntity);
 
-                new InteresseRepository().FinalizarDemaisInteresses(interesseEntity.IdAnuncio, interesseEntity.IdUsuario);
+                new InteresseStatusHistoricoBusiness().Inserir(new HistoricoStatusEntity()
+                {
+                    IdEntidade = interesseEntity.Id,
+                    IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.Concretizado),
+                    IdLoginCadastro = aRequest.IdLogin
+                });
+
+                new InteresseRepository().FinalizarDemaisInteresses(interesseEntity.IdAnuncio, interesseEntity.IdUsuario, aRequest.IdLogin);
 
                 transaction.Complete();
             }

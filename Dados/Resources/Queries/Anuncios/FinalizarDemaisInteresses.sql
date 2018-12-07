@@ -1,5 +1,21 @@
 UPDATE INT_INTERESSES
   SET 
-      INS_CODIGO = 2
+      INS_CODIGO = 2, 
+      LOG_ALTERACAO = @IdLogin, 
+      INT_DTHALTERACAO = GETDATE()
 WHERE ANU_CODIGO = @IdAnuncio
       AND USU_CODIGO <> @IdUsuario
+
+INSERT INTO ISH_INTERSTATUSHIST
+(INT_CODIGO, 
+ INS_CODIGO, 
+ LOG_CADASTRO, 
+ ISH_DTHCADASTRO
+)
+       SELECT INT_CODIGO, 
+              2, 
+              @IdLogin, 
+              GETDATE()
+       FROM INT_INTERESSES
+       WHERE ANU_CODIGO = @IdAnuncio
+             AND USU_CODIGO <> @IdUsuario

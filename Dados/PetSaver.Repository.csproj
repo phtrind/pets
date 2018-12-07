@@ -69,6 +69,7 @@
     <Compile Include="Anuncios\AvaliacaoRepository.cs" />
     <Compile Include="Anuncios\DuvidaRepository.cs" />
     <Compile Include="Anuncios\InteresseRepository.cs" />
+    <Compile Include="Anuncios\InteresseStatusHistoricoRepository.cs" />
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Base\TipoRepository.cs" />
     <Compile Include="Interface\IRepository.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="Mapeamento\Anuncios\AnuncioVisitaMap.cs" />
     <Compile Include="Mapeamento\Anuncios\AvaliacaoMap.cs" />
     <Compile Include="Mapeamento\Anuncios\DuvidaMap.cs" />
+    <Compile Include="Mapeamento\Anuncios\InteresseStatusHistoricoMap.cs" />
     <Compile Include="Mapeamento\Localizacao\CidadeMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EnderecoMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EstadoMap.cs" />
