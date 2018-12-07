@@ -47,11 +47,13 @@ $("#status-options ul li").click(function () {
     $("#status-options").removeClass("active");
 });
 
-function newMessage() {
+var newMessage = function () {
     message = $(".message-input input").val();
+
     if ($.trim(message) == '') {
         return false;
     }
+
     $('<li class="replies"><p>' + message + '</p></li>').appendTo($('.messages ul'));
     $('.message-input input').val(null);
     $('.contact.active .preview').html('<span>You: </span>' + message);
