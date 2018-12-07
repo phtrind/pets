@@ -196,6 +196,23 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [Authorize]
+        [Route("api/Anuncio/FinalizarAnuncio")]
+        [HttpPost]
+        public HttpResponseMessage FinalizarAnuncio(FinalizarAnuncioRequest aRequest)
+        {
+            try
+            {
+                new AnuncioBusiness().FinalizarAnuncio(aRequest);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
         #endregion
 
         #region .: Busca :.
