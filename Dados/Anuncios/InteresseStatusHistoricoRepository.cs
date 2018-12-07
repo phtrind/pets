@@ -1,15 +1,15 @@
-﻿using PetSaver.Entity.Base;
+﻿using PetSaver.Entity.Anuncios;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Exceptions;
 using System;
 
 namespace PetSaver.Repository.Anuncios
 {
-    public class InteresseStatusHistoricoRepository : BaseRepository<HistoricoStatusEntity>
+    public class InteresseStatusHistoricoRepository : BaseRepository<InteresseStatusHistoricoEntity>
     {
-        protected override void ValidarAtributos(HistoricoStatusEntity aObjeto)
+        protected override void ValidarAtributos(InteresseStatusHistoricoEntity aObjeto)
         {
-            if (aObjeto.IdEntidade == default || new InteresseRepository().Listar(aObjeto.IdEntidade) == null)
+            if (aObjeto.IdInteresse == default || new InteresseRepository().Listar(aObjeto.IdInteresse) == null)
             {
                 throw new DbValidationException("O Id do Interesse é inválido.");
             }

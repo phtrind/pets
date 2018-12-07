@@ -1,9 +1,9 @@
-﻿using PetSaver.Entity.Base;
+﻿using PetSaver.Entity.Anuncios;
 using PetSaver.Repository.Anuncios;
 
 namespace PetSaver.Business.Anuncios
 {
-    public class InteresseStatusHistoricoBusiness : BaseBusiness<HistoricoStatusEntity, InteresseStatusHistoricoRepository>
+    public class InteresseStatusHistoricoBusiness : BaseBusiness<InteresseStatusHistoricoEntity, InteresseStatusHistoricoRepository>
     {
     }
 }

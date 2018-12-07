@@ -1,7 +1,6 @@
 ﻿using PetSaver.Business.Usuarios;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Entity.Anuncios;
-using PetSaver.Entity.Base;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
@@ -43,9 +42,9 @@ namespace PetSaver.Business.Anuncios
                     IdLoginCadastro = idLogin
                 });
 
-                new InteresseStatusHistoricoBusiness().Inserir(new HistoricoStatusEntity()
+                new InteresseStatusHistoricoBusiness().Inserir(new InteresseStatusHistoricoEntity()
                 {
-                    IdEntidade = idInteresse,
+                    IdInteresse = idInteresse,
                     IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.EmAndamento),
                     IdLoginCadastro = idLogin
                 });
@@ -99,10 +98,10 @@ namespace PetSaver.Business.Anuncios
             {
                 Atualizar(interesseEntity);
 
-                new InteresseStatusHistoricoBusiness().Inserir(new HistoricoStatusEntity()
+                new InteresseStatusHistoricoBusiness().Inserir(new InteresseStatusHistoricoEntity()
                 {
-                    IdEntidade = interesseEntity.Id,
-                    IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.Finalizado),
+                    IdInteresse = interesseEntity.Id,
+                    IdStatus = interesseEntity.IdStatus,
                     IdLoginCadastro = aRequest.IdLogin
                 });
 
@@ -168,16 +167,24 @@ namespace PetSaver.Business.Anuncios
             using (var transaction = new TransactionScope())
             {
                 Atualizar(interesseEntity);
-                anuncioBusiness.Atualizar(anuncioEntity);
 
-                new InteresseStatusHistoricoBusiness().Inserir(new HistoricoStatusEntity()
+                new InteresseStatusHistoricoBusiness().Inserir(new InteresseStatusHistoricoEntity()
                 {
-                    IdEntidade = interesseEntity.Id,
-                    IdStatus = Utilities.Conversor.EnumParaInt(StatusInteresse.Concretizado),
+                    IdInteresse = interesseEntity.Id,
+                    IdStatus = interesseEntity.IdStatus,
                     IdLoginCadastro = aRequest.IdLogin
                 });
 
                 new InteresseRepository().FinalizarDemaisInteresses(interesseEntity.IdAnuncio, interesseEntity.IdUsuario, aRequest.IdLogin);
+
+                anuncioBusiness.Atualizar(anuncioEntity);
+
+                new AnuncioStatusHistoricoBusiness().Inserir(new AnuncioStatusHistoricoEntity()
+                {
+                    IdAnuncio = anuncioEntity.Id,
+                    IdStatus = anuncioEntity.IdStatus,
+                    IdLoginCadastro = aRequest.IdLogin
+                });
 
                 transaction.Complete();
             }

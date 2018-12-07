@@ -47,6 +47,7 @@
     <Compile Include="Anuncios\AnuncioFotoEntity.cs" />
     <Compile Include="Anuncios\AnuncioGosteiEntity.cs" />
     <Compile Include="Anuncios\AnuncioStatusEntity.cs" />
+    <Compile Include="Anuncios\AnuncioStatusHistoricoEntity.cs" />
     <Compile Include="Anuncios\AnuncioVisitaEntity.cs" />
     <Compile Include="Anuncios\AvaliacaoEntity.cs" />
     <Compile Include="Anuncios\DuvidaEntity.cs" />
@@ -68,7 +69,7 @@
     <Compile Include="Localizacao\EnderecoEntity.cs" />
     <Compile Include="Localizacao\EstadoEntity.cs" />
     <Compile Include="Localizacao\LocalizacaoEntity.cs" />
-    <Compile Include="Base\HistoricoStatusEntity.cs" />
+    <Compile Include="Anuncios\InteresseStatusHistoricoEntity.cs" />
     <Compile Include="Base\StatusEntity.cs" />
     <Compile Include="Base\TipoEntity.cs" />
     <Compile Include="Pets\AnimalEntity.cs" />

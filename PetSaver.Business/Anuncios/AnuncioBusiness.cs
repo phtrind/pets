@@ -75,6 +75,13 @@ namespace PetSaver.Business.Anuncios
                                                     usuario.IdLogin,
                                                     aRequest.Anuncio.GuidImagens);
 
+                new AnuncioStatusHistoricoBusiness().Inserir(new AnuncioStatusHistoricoEntity()
+                {
+                    IdAnuncio = idAnuncio,
+                    IdStatus = Conversor.EnumParaInt(StatusAnuncio.EmAnalise),
+                    IdLoginCadastro = usuario.IdLogin
+                });
+
                 transaction.Complete();
 
                 return idAnuncio;
@@ -133,7 +140,20 @@ namespace PetSaver.Business.Anuncios
             anuncio.IdLoginAlteracao = aRequest.IdLogin;
             anuncio.DataAlteracao = DateTime.Now;
 
-            Atualizar(anuncio);
+            using (var transaction = new TransactionScope())
+            {
+                Atualizar(anuncio);
+
+                new AnuncioStatusHistoricoBusiness().Inserir(new AnuncioStatusHistoricoEntity()
+                {
+                    IdAnuncio = anuncio.Id,
+                    IdStatus = anuncio.IdStatus,
+                    IdLoginCadastro = usuario.IdLogin
+                });
+
+                transaction.Complete();
+            }
+
         }
 
         #endregion

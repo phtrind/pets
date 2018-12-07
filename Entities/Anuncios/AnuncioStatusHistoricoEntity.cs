@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace PetSaver.Entity.Base
+namespace PetSaver.Entity.Anuncios
 {
-    public class HistoricoStatusEntity : BaseEntity
+    public class AnuncioStatusHistoricoEntity : BaseEntity
     {
         #region .: Base Entity :.
 
@@ -21,7 +21,7 @@ namespace PetSaver.Entity.Base
         /// <summary>
         /// Entidade do status. Ex.: Anúncio, Interesse, Contribuição, etc
         /// </summary>
-        public int IdEntidade { get; set; }
+        public int IdAnuncio { get; set; }
 
         /// <summary>
         /// Id do status. Ex.: Ativo, Pendente, etc

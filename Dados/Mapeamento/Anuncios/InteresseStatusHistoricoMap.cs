@@ -1,9 +1,9 @@
 ﻿using Dapper.FluentMap.Dommel.Mapping;
-using PetSaver.Entity.Base;
+using PetSaver.Entity.Anuncios;
 
 namespace PetSaver.Repository
 {
-    public class InteresseStatusHistoricoMap : DommelEntityMap<HistoricoStatusEntity>
+    public class InteresseStatusHistoricoMap : DommelEntityMap<InteresseStatusHistoricoEntity>
     {
         public InteresseStatusHistoricoMap()
         {
@@ -13,7 +13,7 @@ namespace PetSaver.Repository
 
             #region .: Foreign Keys :.
 
-            Map(x => x.IdEntidade).ToColumn("INT_CODIGO");
+            Map(x => x.IdInteresse).ToColumn("INT_CODIGO");
             Map(x => x.IdStatus).ToColumn("INS_CODIGO");
 
             #endregion

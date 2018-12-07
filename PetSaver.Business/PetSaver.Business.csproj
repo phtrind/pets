@@ -49,6 +49,7 @@
     <Compile Include="Anuncios\AnuncioFotoBusiness.cs" />
     <Compile Include="Anuncios\AnuncioGosteiBusiness.cs" />
     <Compile Include="Anuncios\AnuncioStatusBusiness.cs" />
+    <Compile Include="Anuncios\AnuncioStatusHistoricoBusiness.cs" />
     <Compile Include="Anuncios\AnuncioVisitaBusiness.cs" />
     <Compile Include="Anuncios\AvaliacaoBusiness.cs" />
     <Compile Include="Anuncios\DuvidaBusiness.cs" />
