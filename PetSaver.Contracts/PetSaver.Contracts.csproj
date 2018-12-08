@@ -66,6 +66,7 @@
     <Compile Include="Base\ChaveValorContract.cs" />
     <Compile Include="Anuncios\Response\FiltroAnuncioResponse.cs" />
     <Compile Include="Chat\InboxResponseContract.cs" />
+    <Compile Include="Chat\Request\BuscarInboxRequest.cs" />
     <Compile Include="Chat\Request\CadastroInboxRequest.cs" />
     <Compile Include="FineUploader\FineUploaderResponse.cs" />
     <Compile Include="Paginas\Request\ChatPageRequest.cs" />

@@ -390,7 +390,10 @@
                             </div>
                             <div class="messages">
                                 <ul>
-                                    <li ng-class="{'sent': x.Enviada, 'replies': !x.Enviada}" ng-repeat="x in ctrl.Mensagem">
+                                    <li ng-show="ctrl.BuscandoMensagens" class="sent">
+                                        <p>Carregando...</p>
+                                    </li>
+                                    <li ng-class="{'sent': x.Enviada, 'replies': !x.Enviada}" ng-repeat="x in ctrl.Mensagens">
                                         <p>{{x.Mensagem}}</p>
                                     </li>
                                 </ul>
@@ -398,7 +401,8 @@
                             <div class="message-input">
                                 <div class="wrap">
                                     <textarea type="text" placeholder="Digite aqui..." ng-model="ctrl.Mensagem" id="textboxMensagem"></textarea>
-                                    <button class="btn btn-primary" style="width: 65px !important; height: 50px !important; border-radius: 0 !important;" ng-click="ctrl.EnviarMensagem()">Enviar</button>
+                                    <button class="btn btn-primary" style="width: 65px !important; height: 50px !important; border-radius: 0 !important;" ng-click="ctrl.EnviarMensagem()" ng-hide="ctrl.EnviandoMensagem">Enviar</button>
+                                    <button class="btn btn-primary" style="width: 65px !important; height: 50px !important; border-radius: 0 !important;" ng-click="ctrl.EnviarMensagem()" disabled ng-show="ctrl.EnviandoMensagem">...</button>
                                 </div>
                             </div>
                         </div>
@@ -438,10 +442,6 @@
     <script src="../js/controllers/app.js"></script>
     <script src="../js/controllers/base.js"></script>
     <script src="../js/controllers/chats.js"></script>
-
-    <!-- #################################### Chats ################################# -->
-
-    <script src="../js/chats.js"></script>
 
 </body>
 

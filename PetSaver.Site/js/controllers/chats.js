@@ -16,7 +16,7 @@ app.controller('chatsController', function ($controller, $http) {
             window.location.href = '../home.html';
         }
         else {
-            ctrl.Buscando = true;
+            ctrl.BuscandoMensagens = true;
 
             var request = {
                 IdUsuario: sessionStorage.getItem('IdUsuario'),
@@ -37,12 +37,14 @@ app.controller('chatsController', function ($controller, $http) {
                 ctrl.ConversandoCom = response.Usuario;
                 ctrl.Mensagens = response.Mensagens;
 
+                $(".messages").animate({ scrollTop: 10000000000000000000 }, "fast");
+
             }).error(function (err, status) {
 
                 //TODO: Implementar tratamento de erro na base
 
             }).finally(function () {
-                ctrl.Buscando = false;
+                ctrl.BuscandoMensagens = false;
             });
         }
 
@@ -50,62 +52,70 @@ app.controller('chatsController', function ($controller, $http) {
 
     ctrl.AtualizarChat = function () {
 
-        $(".messages").animate({ scrollTop: $(document).height() }, "fast");
+        ctrl.BuscandoMensagens = true;
 
-        ctrl.Mensagens = [
-            {
-                Mensagem: "How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!",
-                Enviada: true
-            },
-            {
-                Mensagem: "How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!",
-                Enviada: false
-            },
-            {
-                Mensagem: "How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!",
-                Enviada: true
-            },
-            {
-                Mensagem: "How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!",
-                Enviada: false
-            },
-            {
-                Mensagem: "How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!",
-                Enviada: true
-            },
-            {
-                Mensagem: "How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!",
-                Enviada: false
-            },
-            {
-                Mensagem: "How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!",
-                Enviada: true
-            },
-            {
-                Mensagem: "How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!",
-                Enviada: false
-            },
-            {
-                Mensagem: "How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!",
-                Enviada: true
-            },
-        ];
+        var request = {
+            IdUsuario: sessionStorage.getItem('IdUsuario'),
+            IdInteresse: idChat
+        };
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Inbox/BuscarTodas',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            ctrl.Mensagens = response;
+            
+            $(".messages").animate({ scrollTop: $('.messages')[0].scrollHeight }, "fast");
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        }).finally(function () {
+            ctrl.BuscandoMensagens = false;
+            ctrl.EnviandoMensagem = false;
+        });
 
     }
 
     ctrl.EnviarMensagem = function () {
 
-        if (!ctrl.Mensagem || ctrl.Mensagem == '') {
+        if (!ctrl.Mensagem || ctrl.Mensagem == '' || ctrl.EnviandoMensagem) {
             return false;
         }
 
-        ctrl.Mensagens.push({ Mensagem: ctrl.Mensagem, Enviada: true })
+        ctrl.EnviandoMensagem = true;
 
-        $(".messages").animate({ scrollTop: $('.messages')[0].scrollHeight }, "fast");
+        var request = {
+            IdLogin: sessionStorage.getItem('IdLogin'),
+            IdUsuario: sessionStorage.getItem('IdUsuario'),
+            IdInteresse: idChat,
+            Mensagem: ctrl.Mensagem
+        };
 
-        ctrl.Mensagem = '';
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Inbox',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
 
-        $('#textboxMensagem').focus();
+            $(".messages").animate({ scrollTop: $('.messages')[0].scrollHeight }, "fast");
+
+            ctrl.Mensagem = '';
+
+            $('#textboxMensagem').focus();
+
+            ctrl.AtualizarChat();
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        });
 
     }
 
@@ -115,4 +125,13 @@ app.controller('chatsController', function ($controller, $http) {
 
     }
 
+});
+
+$(function () {
+    $("#textboxMensagem").keypress(function (e) {
+        if (e.which == 13) {
+            angular.element('body').controller().EnviarMensagem();
+            e.preventDefault();
+        }
+    });
 });

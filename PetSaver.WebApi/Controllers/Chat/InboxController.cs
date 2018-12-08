@@ -14,7 +14,7 @@ namespace PetSaver.WebApi.Controllers.Chat
         #region .: Cadastro :.
 
         [Authorize]
-        [Route("api/Inbox/NovaMensagem")]
+        [Route("api/Inbox")]
         [HttpPost]
         public HttpResponseMessage Post([FromBody]CadastroInboxRequest aRequest)
         {
@@ -34,22 +34,20 @@ namespace PetSaver.WebApi.Controllers.Chat
 
         #region .: Buscas :.
 
-        //[Authorize]
-        //[Route("api/Inbox/NaoLidas")]
-        //[HttpGet]
-        //public HttpResponseMessage Post([FromBody]CadastroInboxRequest aRequest)
-        //{
-        //    try
-        //    {
-        //        new InboxBusiness().NovaMensagem(aRequest);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw TratarErro(ex);
-        //    }
-
-        //    return new HttpResponseMessage(HttpStatusCode.OK);
-        //}
+        [Authorize]
+        [Route("api/Inbox/BuscarTodas")]
+        [HttpPost]
+        public IEnumerable<InboxResponseContract> BuscarTodas([FromBody]BuscarInboxRequest aRequest)
+        {
+            try
+            {
+                return new InboxBusiness().BuscarTodasMensagens(aRequest.IdInteresse, aRequest.IdUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
 
         #endregion
     }

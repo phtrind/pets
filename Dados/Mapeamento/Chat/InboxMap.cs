@@ -29,6 +29,9 @@ namespace PetSaver.Repository
             #region .: Controle de Alteração :.
 
             Map(x => x.DataCadastro).ToColumn("INB_DTHCADASTRO");
+            Map(x => x.IdLoginCadastro).Ignore();
+            Map(x => x.IdLoginAlteracao).Ignore();
+            Map(x => x.DataAlteracao).Ignore();
 
             #endregion
         }
