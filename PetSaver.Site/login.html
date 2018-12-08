@@ -1,4 +1,15 @@
-﻿<div id="main-wrapper">
+﻿<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.2&appId=776063449407150&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div id="main-wrapper">
     <div class="unix-login">
         <div class="container-fluid">
             <div class="row">
@@ -36,6 +47,10 @@
                                                 a senha?
                                             </label>
                                         </div>
+                                        <hr />
+
+                                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="true"></div>
+
                                         <!--<hr>
 
                                         <button type="button" class="btn btn-primary btn-flat m-b-10 m-t-20"
@@ -124,20 +139,21 @@
                                         </div>
                                         <!-- <hr>-->
                                         <!--
-        <div class="row">
-            <div class="col-md-6">
-                <button type="button" class="btn btn-primary" style="margin-bottom:5px; background-color: #3B5998 !important">
-                    <i class="fab fa-facebook-f"></i>
-                </button>
-            </div>
-            <div class="col-md-6">
-                <button type="button" class="btn btn-primary" style="background-color: #D44C3D !important">
-                    <i class="fab fa-google"></i>
-                </button>
-            </div>
-        </div>
-        -->
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-primary" style="margin-bottom:5px; background-color: #3B5998 !important">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-primary" style="background-color: #D44C3D !important">
+                                                    <i class="fab fa-google"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        -->
                                     </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -146,7 +162,6 @@
         </div>
     </div>
 </div>
-    </div>
 
 <!-- Modal login sucesso -->
 <div class="modal fade" id="modalLoginRealizado" tabindex="-1" role="dialog" aria-hidden="true">
