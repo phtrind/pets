@@ -29,6 +29,10 @@ app.controller('favoritosController', function ($controller, $http) {
                     ctrl.nenhumInteresse = false;
                 }
 
+            }).error(function (err, status) {
+
+                //TODO: Implementar tratamento de erro na base
+
             }).finally(function () {
                 ctrl.Buscando = false;
             });

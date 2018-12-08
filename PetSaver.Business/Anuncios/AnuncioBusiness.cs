@@ -356,6 +356,26 @@ namespace PetSaver.Business.Anuncios
             return Listar(interesse.IdAnuncio);
         }
 
+        public int QuantidadeAnunciosUsuario(int aIdUsuario)
+        {
+            if (aIdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuário informado é inválido.");
+            }
+
+            return new AnuncioRepository().ListarRelatorioAnuncios(aIdUsuario, null).Count();
+        }
+
+        public int QuantidadeFavoritosUsuario(int aIdUsuario)
+        {
+            if (aIdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuário informado é inválido.");
+            }
+
+            return new AnuncioRepository().BuscarFavoritos(aIdUsuario).Count();
+        }
+
         #endregion
 
         #region .: Utilitários :.

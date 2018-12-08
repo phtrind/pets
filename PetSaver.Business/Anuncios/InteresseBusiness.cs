@@ -191,6 +191,16 @@ namespace PetSaver.Business.Anuncios
 
         }
 
+        public int QuantidadeInteracoesUsuario(int aIdUsuario)
+        {
+            if (aIdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuário informado é inválido.");
+            }
+
+            return new InteresseRepository().BuscarRelatorioInteresses(new RelatorioInteressesRequest() { IdUsuario = aIdUsuario }).Count();
+        }
+
         #endregion
 
         #region .: Buscas :.

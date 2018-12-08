@@ -379,8 +379,8 @@
                 <!-- Start Page Content -->
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-3" style="height:20%">
-                            <div class="card bg-primary p-20">
+                        <div class="col-md-4">
+                            <div class="card bg-primary p-20" onclick="document.location.href='meus_interesses.html'">
                                 <div class="media widget-ten">
                                     <div class="media-left meida media-middle">
                                         <span>
@@ -388,14 +388,14 @@
                                         </span>
                                     </div>
                                     <div class="media-body media-text-right">
-                                        <h2 class="color-white">15</h2>
-                                        <p class="m-b-0">anúncios realizados</p>
+                                        <h2 class="color-white">{{ctrl.QuantidadeAnuncios}}</h2>
+                                        <p class="m-b-0">meus anúncios</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="card bg-pink p-20">
+                        <div class="col-md-4">
+                            <div class="card bg-pink p-20" onclick="document.location.href='favoritos.html'">
                                 <div class="media widget-ten">
                                     <div class="media-left meida media-middle">
                                         <span>
@@ -403,15 +403,15 @@
                                         </span>
                                     </div>
                                     <div class="media-body media-text-right">
-                                        <h2 class="color-white">4</h2>
-                                        <p class="m-b-0">anúncios que gostei</p>
+                                        <h2 class="color-white">{{ctrl.QuantidadeFavoritos}}</h2>
+                                        <p class="m-b-0">favoritos</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <div class="card bg-success p-20">
+                        <div class="col-md-4">
+                            <div class="card bg-success p-20" onclick="document.location.href='meus_interesses.html'">
                                 <div class="media widget-ten">
                                     <div class="media-left meida media-middle">
                                         <span>
@@ -419,13 +419,13 @@
                                         </span>
                                     </div>
                                     <div class="media-body media-text-right">
-                                        <h2 class="color-white">22</h2>
-                                        <p class="m-b-0">anúncios que visitei hoje</p>
+                                        <h2 class="color-white">{{ctrl.QuantidadeInteracoes}}</h2>
+                                        <p class="m-b-0">minhas interações</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <!--<div class="col-md-3">
                             <div class="card bg-danger p-20">
                                 <div class="media widget-ten">
                                     <div class="media-left meida media-middle">
@@ -439,7 +439,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                         <!--div class="col-md-6">
                             <div class="card" style="height: 90%;">
                                 <div class="card-title" style="text-align: center">
@@ -510,11 +510,6 @@
     <script src="../js/lib/weather/weather-init.js"></script>
     <script src="../js/lib/owl-carousel/owl.carousel.min.js"></script>
     <script src="../js/lib/owl-carousel/owl.carousel-init.js"></script>
-
-
-    <script src="../js/lib/chartist/chartist.min.js"></script>
-    <script src="../js/lib/chartist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../js/lib/chartist/chartist-init.js"></script>
 
     <!--Custom JavaScript -->
     <script src="../js/custom.min.js"></script>

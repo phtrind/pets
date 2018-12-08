@@ -64,6 +64,21 @@ namespace PetSaver.WebApi.Controllers
         #region .: Conta :.
 
         [Authorize]
+        [Route("api/Page/Dashboard/{aIdUsuario}")]
+        [HttpGet]
+        public DashboardPageResponse Dashboard(int aIdUsuario)
+        {
+            try
+            {
+                return new PageBusiness().InicializarDashboard(aIdUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
         [Route("api/Page/CadastroAnuncio")]
         [HttpGet]
         public CadastroAnuncioPageResponse CadastroAnuncio()

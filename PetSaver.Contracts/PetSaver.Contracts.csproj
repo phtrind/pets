@@ -72,6 +72,7 @@
     <Compile Include="Paginas\Request\ChatPageRequest.cs" />
     <Compile Include="Paginas\Response\CadastroAnuncioPageResponse.cs" />
     <Compile Include="Paginas\Response\Conta\ChatPageResponse.cs" />
+    <Compile Include="Paginas\Response\Conta\DashboardPageResponse.cs" />
     <Compile Include="Paginas\Response\Conta\RelatorioAnunciosResponse.cs" />
     <Compile Include="Paginas\Response\Conta\RelatorioInteressesPageResponse.cs" />
     <Compile Include="Paginas\Response\PetPage\AnuncianteContract.cs" />

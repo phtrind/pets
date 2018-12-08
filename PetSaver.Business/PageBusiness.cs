@@ -185,6 +185,16 @@ namespace PetSaver.Business
             };
         }
 
+        public DashboardPageResponse InicializarDashboard(int aIdUsuario)
+        {
+            return new DashboardPageResponse()
+            {
+                QuantidadeAnuncios = new AnuncioBusiness().QuantidadeAnunciosUsuario(aIdUsuario),
+                QuantidadeFavoritos = new AnuncioBusiness().QuantidadeFavoritosUsuario(aIdUsuario),
+                QuantidadeInteracoes = new InteresseBusiness().QuantidadeInteracoesUsuario(aIdUsuario)
+            };
+        }
+
         #endregion
     }
 }
