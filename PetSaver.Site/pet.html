@@ -17,44 +17,20 @@
                 'page_path': '/pet'
             });
     </script>
-    <script>
-        $(document).ready(function () {
-            //store nodepath value to clipboard	(copy to top of page)
-            $('li').live('click', function () {
-                //console.log($('#pathtonode').html()+ " copied to window");
-                var path = $('#pathtonode').html();
-                path = path.replace(/ &gt; /g, ".");
-                //console.log(path);
-                addtoppath(path);
-            });
-
-            $(function () {
-                $("#copiar").on("click", function () {
-                    $("#link").text($("#paraCopiar").text());
-                    var url = window.location.href;
-                });
-            });
-
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('li').live('click', function () {
-                var path = $('#copy').html();
-                path = path.replace(/ &gt; /g, ".");
-                //console.log(path);
-                addtoppath(path);
-            });
-            //initially hide copy window
-            $('#toppathwrap').hide();
-
-            function addtoppath(path) {
-                //console.log(path);
-                $('#copypath').val(path);
-                $('#toppathwrap').show();
-                $('#copypath').focus();
-                $('#copypath').select();
-            }
+    <script type="text/javascript">
+        //set path
+        ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
+        //create client
+        var clip = new ZeroClipboard.Client();
+        //event
+        clip.addEventListener('mousedown', function () {
+            clip.setText(document.getElementById('copy').value);
         });
+        clip.addEventListener('complete', function (client, text) {
+            alert('copied: ' + text);
+        });
+        //glue it to the button
+        clip.glue('copy');
     </script>
 
     <!-- ############################################### -->
@@ -340,7 +316,7 @@
                             </div>
                             <div class="row col-md-8 offset-md-2" style="text-align: center;">
                                 <div class="col-4">
-                                    <img id="copy" class="imgIconShare" src="icons/copy.png">
+                                    <img id="copy" name="copy" value="Copy to Clipboard" class="imgIconShare" src="icons/copy.png">
                                 </div>
                                 <div class="col-4">
                                     <a href="{{ctrl.linkCompartilharWpp}}" id="whatsapp-share-btt" rel="nofollow" target="_blank"><img class="imgIconShare" src="icons/whatsapp.png"></a>

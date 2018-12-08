@@ -130,8 +130,8 @@
 
     ctrl.PreencherLinksCompartilhamento = function () {
 
-        ctrl.linkCompartilharWpp = "https://api.whatsapp.com/send?text=%Olá%,%veja%esse%pet%na%PetSaver:%" + "http://petsaver.com.br/pet.html?pet=" + idAnuncio;
-        ctrl.linkCompartilharFace = "http://www.facebook.com/soupetsaver" + "Olá, veja esse pet na PetSaver: " + "http://petsaver.com.br/pet.html?pet=" + idAnuncio;
+        ctrl.linkCompartilharWpp = "https://api.whatsapp.com/send?text=%Olá%,%veja%esse%pet%na%PetSaver:%"+"http://petsaver.com.br/pet.html?pet="+idAnuncio;
+        ctrl.linkCompartilharFace = "http://www.facebook.com/soupetsaver" + "Olá, veja esse pet na PetSaver: "+"http://petsaver.com.br/pet.html?pet="+idAnuncio;
 
     }
 
