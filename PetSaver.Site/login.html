@@ -56,7 +56,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-md-12 login-form" style="padding-top: 1% !important"  ng-show="ctrl.base.isRegister">
+                                <div class="col-md-12 login-form" style="padding-top: 1% !important" ng-show="ctrl.base.isRegister">
                                     <div class="col-md-12" style="text-align: center; margin-bottom: 20px; margin-top: 5%;">
                                         <img src="images/logos/logo_fundo_branco_fina.gif" style="width: 300px; max-width: 85%; cursor: pointer;"
                                              onclick="document.location.href='home.html'">
@@ -112,9 +112,11 @@
                                         <div style="text-align: center">
                                             <div class="checkbox col-md-12 text-center" style="width:100%; margin-top: 20px !important; margin-bottom: 30px !important">
                                                 <input type="checkbox" ng-model="ctrl.base.AceitoCadastro">
-                                                <label style="color: #500b89 !important; cursor: pointer;">
-                                                    Aceito os termos de uso
-                                                </label>
+                                                <a href="termo_uso.html" target="_blank">
+                                                    <label style="color: #500b89 !important; cursor: pointer;">
+                                                        Aceito os termos de uso
+                                                    </label>
+                                                </a>
                                             </div>
                                             <button type="button" class="btn btn-primary" style="background-color: #500b89" ng-disabled="!ctrl.base.AceitoCadastro" ng-click="ctrl.base.FazerCadastroBasico()" ng-show="!ctrl.base.Cadastrando">Cadastrar</button>
                                             <div class="col-12" style="text-align: center">
@@ -123,21 +125,20 @@
                                         </div>
                                         <!-- <hr>-->
                                         <!--
-    <div class="row">
-        <div class="col-md-6">
-            <button type="button" class="btn btn-primary" style="margin-bottom:5px; background-color: #3B5998 !important">
-                <i class="fab fa-facebook-f"></i>
-            </button>
+        <div class="row">
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" style="margin-bottom:5px; background-color: #3B5998 !important">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-primary" style="background-color: #D44C3D !important">
+                    <i class="fab fa-google"></i>
+                </button>
+            </div>
         </div>
-        <div class="col-md-6">
-            <button type="button" class="btn btn-primary" style="background-color: #D44C3D !important">
-                <i class="fab fa-google"></i>
-            </button>
-        </div>
-    </div>
-    -->
+        -->
                                     </form>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -146,6 +147,7 @@
         </div>
     </div>
 </div>
+    </div>
 
 <!-- Modal login sucesso -->
 <div class="modal fade" id="modalLoginRealizado" tabindex="-1" role="dialog" aria-hidden="true">
