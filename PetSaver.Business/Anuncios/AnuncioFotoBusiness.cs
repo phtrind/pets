@@ -104,6 +104,16 @@ namespace PetSaver.Business.Anuncios
             });
         }
 
+        public string BuscarCaminhoFotoDestaquePorAnuncio(int aIdAnuncio)
+        {
+            if (aIdAnuncio == default)
+            {
+                throw new BusinessException("O Id do anúncio é inválido.");
+            }
+
+            return TratarCaminhoImagem(new AnuncioFotoRepository().BuscarPorAnuncio(aIdAnuncio).FirstOrDefault(x => x.Destaque)?.Caminho);
+        }
+
         public IEnumerable<ChaveValorContract> BuscarPorAnuncioComDestaque(int aIdAnuncio)
         {
             if (aIdAnuncio == default)

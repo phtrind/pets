@@ -168,6 +168,21 @@ namespace PetSaver.WebApi.Controllers
             }
         }
 
+        [Authorize]
+        [Route("api/Page/Chat")]
+        [HttpPost]
+        public ChatPageResponse Chat(ChatPageRequest aIdInteresse)
+        {
+            try
+            {
+                return new PageBusiness().InicializarChat(aIdInteresse);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
         #endregion
     }
 }

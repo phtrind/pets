@@ -1,6 +1,8 @@
 ﻿using PetSaver.Business.Anuncios;
+using PetSaver.Business.Chat;
 using PetSaver.Business.Localizacao;
 using PetSaver.Business.Pets;
+using PetSaver.Business.Usuarios;
 using PetSaver.Contracts.Anuncios;
 using PetSaver.Contracts.Anuncios.Response;
 using PetSaver.Contracts.Base;
@@ -8,6 +10,7 @@ using PetSaver.Contracts.Paginas;
 using PetSaver.Entity.Enums.Status;
 using PetSaver.Entity.Enums.Tipos;
 using PetSaver.Exceptions;
+using System;
 using System.Collections.Generic;
 
 namespace PetSaver.Business
@@ -125,6 +128,60 @@ namespace PetSaver.Business
                     TiposAnuncio = new AnuncioBusiness().ComboTiposAnuncios()
                 },
                 Interesses = new InteresseBusiness().BuscarRelatorioInteresses(request)
+            };
+        }
+
+        public ChatPageResponse InicializarChat(ChatPageRequest aRequest)
+        {
+            if (aRequest.IdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuário é inválido.");
+            }
+
+            if (aRequest.IdInteresse == default)
+            {
+                throw new BusinessException("O Id do interesse é inválido.");
+            }
+
+            var interesseEntity = new InteresseBusiness().Listar(aRequest.IdInteresse);
+
+            if (interesseEntity == null)
+            {
+                throw new BusinessException("O Id do interesse é inválido.");
+            }
+
+            var anuncioEntity = new AnuncioBusiness().Listar(interesseEntity.IdAnuncio);
+
+            if (anuncioEntity == null)
+            {
+                throw new BusinessException("O anúncio não foi encontrado.");
+            }
+
+            string nomeUsuario;
+
+            var usuarioBusiness = new UsuarioBusiness();
+
+            if (aRequest.IdUsuario == interesseEntity.IdUsuario)
+            {
+                nomeUsuario = usuarioBusiness.Listar(anuncioEntity.IdUsuario)?.Nome;
+            }
+            else if (aRequest.IdUsuario == anuncioEntity.IdUsuario)
+            {
+                nomeUsuario = usuarioBusiness.Listar(interesseEntity.IdUsuario)?.Nome;
+            }
+            else
+            {
+                throw new BusinessException("O Id do usuário informado não é referente à esse chat.");
+            }
+
+            return new ChatPageResponse()
+            {
+                IdAnuncio = anuncioEntity.Id,
+                IdInteresse = interesseEntity.Id,
+                Imagem = new AnuncioFotoBusiness().BuscarCaminhoFotoDestaquePorAnuncio(anuncioEntity.Id),
+                Pet = new PetBusiness().Listar(anuncioEntity.IdPet)?.Nome ?? Utilities.Constantes.Desconhecido,
+                Usuario = nomeUsuario,
+                Mensagens = new InboxBusiness().BuscarTodasMensagens(aRequest.IdInteresse, aRequest.IdUsuario)
             };
         }
 

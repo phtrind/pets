@@ -233,6 +233,17 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT *
+        ///FROM INB_INBOX
+        ///WHERE INT_CODIGO = @IdInteresse.
+        /// </summary>
+        internal static string BuscarInboxPorInteresse {
+            get {
+                return ResourceManager.GetString("BuscarInboxPorInteresse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT L.LOG_CODIGO, 
         ///       U.USU_CODIGO, 
         ///       U.USU_NOME
@@ -346,9 +357,25 @@ namespace PetSaver.Repository {
         /// <summary>
         ///   Looks up a localized string similar to UPDATE INT_INTERESSES
         ///  SET 
-        ///      INS_CODIGO = 2
+        ///      INS_CODIGO = 2, 
+        ///      LOG_ALTERACAO = @IdLogin, 
+        ///      INT_DTHALTERACAO = GETDATE()
         ///WHERE ANU_CODIGO = @IdAnuncio
-        ///      AND USU_CODIGO &lt;&gt; @IdUsuario.
+        ///      AND USU_CODIGO &lt;&gt; @IdUsuario
+        ///
+        ///INSERT INTO ISH_INTERSTATUSHIST
+        ///(INT_CODIGO, 
+        /// INS_CODIGO, 
+        /// LOG_CADASTRO, 
+        /// ISH_DTHCADASTRO
+        ///)
+        ///       SELECT INT_CODIGO, 
+        ///              2, 
+        ///              @IdLogin, 
+        ///              GETDATE()
+        ///       FROM INT_INTERESSES
+        ///       WHERE ANU_CODIGO = @IdAnuncio
+        ///             AND USU_CODIGO &lt;&gt; @IdUsuario.
         /// </summary>
         internal static string FinalizarDemaisInteresses {
             get {

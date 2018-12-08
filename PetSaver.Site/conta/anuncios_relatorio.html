@@ -551,7 +551,7 @@
                                             <td><span>{{x.Data}}</span></td>
                                             <td><span>{{x.Status}}</span></td>
                                             <td class="columnFitCenter">
-                                                <img ng-class="{'imgDisabled': x.Status != 'Em andamento'}" class="link" src="../icons/chat.png" width="30px">
+                                                <img ng-class="{'imgDisabled': x.Status != 'Em andamento'}" class="link" src="../icons/chat.png" width="30px" ng-click="ctrl.AbrirChat(x.IdInteresse, x.Status)">
                                             </td>
                                             <td class="columnFitCenter">
                                                 <img ng-class="{'imgDisabled': x.Status != 'Em andamento'}" class="link" src="../icons/ok.png" width="30px" ng-click="ctrl.ConcretizarDoacao(x.IdInteresse, x.Status)">
@@ -630,7 +630,7 @@
                             </div>
                             <div class="row" style="text-align: center; margin-top: 10px">
                                 <div class="col-md-12">
-                                    <button type="button" class="btn btn-secondary" style="width: 100%; word-wrap: break-word; white-space:normal !important" ng-click="ctrl.BtnSelecaoStatus('Cancelar')">Cancelar</button>
+                                    <button type="button" class="btn btn-danger" style="width: 100%; word-wrap: break-word; white-space:normal !important" ng-click="ctrl.BtnSelecaoStatus('Cancelar')">Finalizar</button>
                                 </div>
                             </div>
                         </div>

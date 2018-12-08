@@ -56,6 +56,7 @@
     <Compile Include="Anuncios\InteresseBusiness.cs" />
     <Compile Include="Anuncios\InteresseStatusHistoricoBusiness.cs" />
     <Compile Include="Base\BaseBusiness.cs" />
+    <Compile Include="Chat\InboxBusiness.cs" />
     <Compile Include="Localizacao\CidadeBusiness.cs" />
     <Compile Include="Localizacao\EnderecoBusiness.cs" />
     <Compile Include="Localizacao\EstadoBusiness.cs" />
