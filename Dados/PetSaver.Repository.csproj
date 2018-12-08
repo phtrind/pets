@@ -73,6 +73,7 @@
     <Compile Include="Anuncios\InteresseStatusHistoricoRepository.cs" />
     <Compile Include="Base\BaseRepository.cs" />
     <Compile Include="Base\TipoRepository.cs" />
+    <Compile Include="Chat\InboxRepository.cs" />
     <Compile Include="Interface\IRepository.cs" />
     <Compile Include="Localizacao\CidadeRepository.cs" />
     <Compile Include="Localizacao\EnderecoRepository.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Mapeamento\Anuncios\AvaliacaoMap.cs" />
     <Compile Include="Mapeamento\Anuncios\DuvidaMap.cs" />
     <Compile Include="Mapeamento\Anuncios\InteresseStatusHistoricoMap.cs" />
+    <Compile Include="Mapeamento\Chat\InboxMap.cs" />
     <Compile Include="Mapeamento\Localizacao\CidadeMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EnderecoMap.cs" />
     <Compile Include="Mapeamento\Localizacao\EstadoMap.cs" />
@@ -171,6 +173,7 @@
     <Content Include="Resources\Queries\Anuncios\BuscarAnuncios.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarAnunciosDestaques.sql" />
     <Content Include="Resources\Queries\Avaliacoes\BuscarAvaliacaoPorUsuario.sql" />
+    <Content Include="Resources\Queries\Chat\BuscarInboxPorInteresse.sql" />
     <Content Include="Resources\Queries\Interesse\BuscarInteressePorUsuarioAnuncio.sql" />
     <Content Include="Resources\Queries\Localizacao\BuscarCidadePorEstado.sql" />
     <Content Include="Resources\Queries\Login\BuscarInformacoesSession.sql" />

@@ -129,6 +129,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Authentication\ProviderTokenAccess.cs" />
     <Compile Include="Controllers\Anuncios\AnuncioController.cs" />
+    <Compile Include="Controllers\Chat\InboxController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FileUploaderController.cs" />

@@ -484,7 +484,7 @@
                                         <td><span>{{x.Usuario}}</span></td>
                                         <td><span>{{x.Status}}</span></td>
                                         <td class="columnFitCenter">
-                                            <img ng-class="{'imgDisabled': x.Status != 'Em andamento', 'link': x.Status == 'Em andamento'}" class="link" src="../icons/chat.png" width="30px">
+                                            <img ng-class="{'imgDisabled': x.Status != 'Em andamento', 'link': x.Status == 'Em andamento'}" class="link" src="../icons/chat.png" width="30px" ng-click="ctrl.AbrirChat(x.IdInteresse, x.Status)">
                                         </td>
                                         <td class="columnFitCenter">
                                             <img ng-class="{'imgDisabled': x.Status != 'Em andamento', 'link': x.Status == 'Em andamento'}" src="../icons/close.png"

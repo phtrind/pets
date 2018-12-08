@@ -339,6 +339,23 @@ namespace PetSaver.Business.Anuncios
             return PreencherObjetoMiniatura(new AnuncioRepository().BuscarFavoritos(aIdUsuario));
         }
 
+        public AnuncioEntity BuscarAnuncioPorInteresse(int aIdInteresse)
+        {
+            if (aIdInteresse == default)
+            {
+                return null;
+            }
+
+            var interesse = new InteresseBusiness().Listar(aIdInteresse);
+
+            if (interesse == null)
+            {
+                return null;
+            }
+
+            return Listar(interesse.IdAnuncio);
+        }
+
         #endregion
 
         #region .: Utilitários :.

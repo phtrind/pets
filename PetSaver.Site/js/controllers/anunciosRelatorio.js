@@ -280,4 +280,14 @@
 
     }
 
+    ctrl.AbrirChat = function (aIdInteresse, aStatus) {
+
+        if (aStatus != 'Em andamento') {
+            return;
+        }
+
+        window.location.href = 'chats.html?idChat=' + aIdInteresse;
+
+    }
+
 });

@@ -70,7 +70,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="chatsController as ctrl">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="chatsController as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -381,84 +381,24 @@
                     <div id="frame">
                         <div class="content" style="height: 100% !important;">
                             <div class="contact-profile">
-                                <img class="imgContact" src="https://dl5zpyw5k3jeb.cloudfront.net/photos/pets/42965742/1/?bust=1539040557"
-                                     alt="" />
-                                <span class="color-primary" style="font-size: 25px;">Thor</span>
+                                <img class="imgContact link" src="../{{ctrl.Imagem}}"
+                                     alt="" ng-click="ctrl.AbrirAnuncio()" />
+                                <span class="color-primary link" style="font-size: 25px;" ng-click="ctrl.AbrirAnuncio()">{{ctrl.Pet}}</span>
                                 <span style="font-size: 17px; font-style: italic; float: right; padding-right: 15px">
-                                    conversando com Bruno Lima
+                                    conversando com {{ctrl.ConversandoCom}}
                                 </span>
                             </div>
                             <div class="messages">
                                 <ul>
-                                    <li class="sent">
-                                        <p>
-                                            How the hell am I supposed to get a jury to believe you when I am not
-                                            even sure that I do?!
-                                            <br><br>
-                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
-                                        </p>
-                                    </li>
-                                    <li class="replies">
-                                        <p>
-                                            When you're backed against the wall, break the god damn thing down.
-                                            <br><br>
-                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
-                                        </p>
-                                    </li>
-                                    <li class="replies">
-                                        <p>
-                                            Excuses don't win championships.
-                                            <br><br>
-                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
-                                        </p>
-                                    </li>
-                                    <li class="sent">
-                                        <p>
-                                            Oh yeah, did Michael Jordan tell you that?
-                                            <br><br>
-                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
-                                        </p>
-                                    </li>
-                                    <li class="replies">
-                                        <p>
-                                            No, I told him that.
-                                            <br><br>
-                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
-                                        </p>
-                                    </li>
-                                    <li class="replies">
-                                        <p>
-                                            What are your choices when someone puts a gun to your head?
-                                            <br><br>
-                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
-                                        </p>
-                                    </li>
-                                    <li class="sent">
-                                        <p>
-                                            What are you talking about? You do what they say or they shoot you.
-                                            <br><br>
-                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
-                                        </p>
-                                    </li>
-                                    <li class="replies">
-                                        <p>
-                                            Wrong. You take the gun, or you pull out a bigger one. Or, you call
-                                            their bluff. Or, you do any one of a hundred and forty six other
-                                            things.
-                                            <br><br>
-                                            <span style="font-style: italic; font-size: 14px;">10:30</span>
-                                        </p>
+                                    <li ng-class="{'sent': x.Enviada, 'replies': !x.Enviada}" ng-repeat="x in ctrl.Mensagem">
+                                        <p>{{x.Mensagem}}</p>
                                     </li>
                                 </ul>
                             </div>
                             <div class="message-input">
                                 <div class="wrap">
-                                    <textarea type="text" placeholder="Digite aqui..."></textarea>
-                                    <!--<div class="col-md-12">-->
-                                        <button class="btn btn-primary" style="width: 65px !important; height: 50px !important; border-radius: 0 !important;">
-                                            Enviar
-                                        </button>
-                                    <!--</div>-->
+                                    <textarea type="text" placeholder="Digite aqui..." ng-model="ctrl.Mensagem" id="textboxMensagem"></textarea>
+                                    <button class="btn btn-primary" style="width: 65px !important; height: 50px !important; border-radius: 0 !important;" ng-click="ctrl.EnviarMensagem()">Enviar</button>
                                 </div>
                             </div>
                         </div>
