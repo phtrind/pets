@@ -82,6 +82,12 @@
     <div id="main-wrapper" style="margin-top: 100px">
         <div class="container-fluid">
             <div class="container">
+                <div ng-show="ctrl.TipoAnuncio == 3" class="col-md-12" style="text-align: center; margin-bottom: 25px">
+                    <h2>Caso não encontre seu pet, <span class="color-primary link" ng-click="ctrl.base.btnPerdiPet()">clique aqui</span> para cadastrá-lo</h2>
+                </div>
+                <div ng-show="ctrl.TipoAnuncio == 2" class="col-md-12" style="text-align: center; margin-bottom: 25px">
+                    <h2>Caso não encontre seu pet, <span class="color-primary link" ng-click="ctrl.base.btnEncontreiPet()">clique aqui</span> para cadastrá-lo</h2>
+                </div>
                 <div class="col-md-12" style="text-align: center; margin-bottom: 25px">
                     <!--<h1 class="color-primary">Pets perdidos</h1>-->
                     <select class="btn btn-primary" style="font-size: 24px; text-align-last: center" ng-model="ctrl.TipoAnuncio" ng-change="ctrl.AplicarFiltros()">

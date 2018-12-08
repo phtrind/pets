@@ -74,6 +74,8 @@
 
             ctrl.Anuncios = response;
 
+            ctrl.Interessados = null;
+
         }).error(function (err, status) {
 
             //TODO: Implementar tratamento de erro na base
