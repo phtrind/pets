@@ -77,9 +77,8 @@
                                                 <small class="form-control-feedback" ng-show="ctrl.base.ErroSobrenomeCadastro">Sobrenome inválido</small>
                                             </div>
                                             <div class="col-md-6 form-group" ng-class="{'has-error':ctrl.base.ErroDthNascimentoCadastro}">
-                                                <input type="text" class="form-control" placeholder="Nascimento"
-                                                       style="border-radius: 8px" onfocus="(this.type='date')"
-                                                       onblur="if (!this.value) { (this.type = 'text') }" autocomplete="off" ng-model="ctrl.base.DthNascimentoCadastro">
+                                                <input type="date" class="form-control dateclass placeholderclass" placeholder="Nascimento"
+                                                       style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.DthNascimentoCadastro" onClick="$(this).removeClass('placeholderclass')">
                                                 <small class="form-control-feedback" ng-show="ctrl.base.ErroDthNascimentoCadastro">Data de nascimento inválida</small>
                                             </div>
                                         </div>
