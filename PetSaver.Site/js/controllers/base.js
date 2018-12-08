@@ -802,6 +802,12 @@
 
     }
 
+    base.ctrlCadastroAnuncio.ValidarPeso = function () {
+
+        base.ctrlCadastroAnuncio.TxtPesoPet = base.ctrlCadastroAnuncio.TxtPesoPet.replace(/\D/g, '');
+
+    }
+
     //#endregion
 
     //#region .: Relatório Anúncios :.

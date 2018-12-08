@@ -634,8 +634,8 @@
                                     </small>
                                 </div>
                                 <div class="form-group col-md-3" ng-class="{'has-error':ctrl.base.ctrlCadastroAnuncio.pesoError}">
-                                    <input type="text" class="form-control" id="peso" name="peso" maxlength="6" aria-describedby="pesoHelp"
-                                           placeholder="Peso" autocomplete="off" ng-model="ctrl.base.ctrlCadastroAnuncio.TxtPesoPet">
+                                    <input type="text" class="form-control" id="peso" name="peso" aria-describedby="pesoHelp"
+                                           placeholder="Peso" autocomplete="off" ng-model="ctrl.base.ctrlCadastroAnuncio.TxtPesoPet" ng-change="ctrl.base.ctrlCadastroAnuncio.ValidarPeso()" maxlength="3">
                                     <small id="pesoHelp" class="form-text text-muted">
                                         Caso não saiba o peso, pode deixar
                                         este campo em branco. Unidade: Kg
