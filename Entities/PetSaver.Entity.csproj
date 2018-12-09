@@ -53,6 +53,7 @@
     <Compile Include="Anuncios\DuvidaEntity.cs" />
     <Compile Include="Anuncios\InteresseEntity.cs" />
     <Compile Include="Chat\InboxEntity.cs" />
+    <Compile Include="Contato\FaleConoscoEntity.cs" />
     <Compile Include="Enums\Pets\Idades.cs" />
     <Compile Include="Enums\Pets\Pelos.cs" />
     <Compile Include="Enums\Pets\Portes.cs" />

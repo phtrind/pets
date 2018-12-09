@@ -927,16 +927,71 @@
 
     base.BtnFaleConoscoClick = function () {
 
+        base.EmailFaleConosco = '';
+        base.MensagemFaleConosco = '';
+        base.ErroEmailFaleConsco = false;
+        base.ErroMensagemFaleConsco = false;
+
         $('#modalFaleConosco').modal('show');
 
     }
 
     base.EnviarMensagemFaleConosco = function () {
 
-        //TODO: implementar fale consoco
+        if (base.ValidarMensagemFaleConosco()) {
 
-        $('#modalFaleConosco').modal('hide');
-        $('#modalFaleConoscoSucesso').modal('show');
+            base.EnviandoFaleConosco = true;
+
+            var request = {
+                IdUsuario: sessionStorage.getItem('IdUsuario'),
+                Email: base.EmailFaleConosco == '' ? null : base.EmailFaleConosco,
+                Mensagem: base.MensagemFaleConosco
+            };
+
+            $http({
+                method: 'POST',
+                url: base.servicePath + 'FaleConosco',
+                data: request
+            }).success(function (response) {
+
+                $('#modalFaleConosco').modal('hide');
+                $('#modalFaleConoscoSucesso').modal('show');
+
+            }).error(function (err, status) {
+
+                //TODO: Implementar tratamento de erro na base
+
+            }).finally(function () {
+
+                base.EnviandoFaleConosco = false;
+
+            });
+
+        }
+        
+    }
+
+    base.ValidarMensagemFaleConosco = function () {
+
+        var contErro = 0;
+
+        if (!base.IsLogged() && !base.EmailIsValid(base.EmailFaleConosco)) {
+            base.ErroEmailFaleConsco = true;
+            contErro++;
+        }
+        else {
+            base.ErroEmailFaleConsco = false;
+        }
+
+        if (base.StringIsEmpty(base.MensagemFaleConosco)) {
+            base.ErroMensagemFaleConsco = true;
+            contErro++;
+        }
+        else {
+            base.ErroEmailFaleConsco = false;
+        }
+
+        return contErro == 0;
 
     }
 

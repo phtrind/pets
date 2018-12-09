@@ -1,21 +1,16 @@
 ﻿<button id="buttonFaleConosco" class="btn btn-secondary" ng-click="ctrl.base.BtnFaleConoscoClick()">
-    <img src="icons/talkwithus.png" width="30px">
+    <img src="../icons/talkwithus.png" width="30px">
 </button>
 
 <!-- Modal mensagem fale conosco -->
-<div class="modal fade" id="modalFaleConosco" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="modalFaleConosco" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body">
-                <p class="color-primary">Olá Saver,</p>
-                <p class="color-primary">Sua opinião é muito importante pra gente.</p>
-                <p class="color-primary">Fique a vontade para nos enviar sua dúvida ou sugestão.</p>
-                <p class="color-primary">Vamos te responder o mais rápido possível.</p>
-                <div class="form-group" ng-class="{'has-error':ctrl.base.ErroEmailFaleConsco}" ng-hide="ctrl.base.IsLogged()">
-                    <input type="email" class="form-control" placeholder="E-mail"
-                           style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.EmailFaleConosco">
-                    <small class="form-control-feedback" ng-show="ctrl.base.ErroEmailFaleConsco">E-mail inválido</small>
-                </div>
+                <p style="text-align: left !important; font-size: 16px" class="color-primary">Olá Saver,</p>
+                <p style="text-align: left !important; font-size: 16px" class="color-primary">Sua opinião é muito importante pra gente.</p>
+                <p style="text-align: left !important; font-size: 16px" class="color-primary">Fique a vontade para nos enviar sua dúvida ou sugestão.</p>
+                <p style="text-align: left !important; font-size: 16px" class="color-primary">Vamos te responder o mais rápido possível.</p>
                 <div class="form-group" ng-class="{'has-error':ctrl.base.ErroMensagemFaleConsco}">
                     <textarea class="form-control" style="height: 150px; border-radius: 5px;" ng-model="ctrl.base.MensagemFaleConosco" placeholder="Escreva sua mensagem aqui..."></textarea>
                     <small class="form-control-feedback" ng-show="ctrl.base.ErroMensagemFaleConsco">Mensagem inválida</small>
@@ -32,11 +27,11 @@
 </div>
 
 <!-- Modal mensagem fale conosco sucesso -->
-<div class="modal fade" id="modalFaleConoscoSucesso" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="modalFaleConoscoSucesso" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body" style="text-align:center">
-                <img src="icons/ok.png" style="width:150px">
+                <img src="../icons/ok.png" style="width:150px">
                 <br /><br />
                 <span style="font-size: 24px">Sua mensagem foi enviada com sucesso!</span>
             </div>

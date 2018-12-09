@@ -131,6 +131,7 @@
     <Compile Include="Controllers\Anuncios\AnuncioController.cs" />
     <Compile Include="Controllers\Chat\InboxController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
+    <Compile Include="Controllers\FaleConosco\FaleConoscoController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FileUploaderController.cs" />
     <Compile Include="Controllers\Localizacao\CidadeController.cs" />

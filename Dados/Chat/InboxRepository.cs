@@ -12,6 +12,8 @@ namespace PetSaver.Repository.Chat
     {
         protected override void ValidarCadastro(InboxEntity aObjeto)
         {
+            ValidarAtributos(aObjeto);
+
             if (aObjeto.Id != default)
             {
                 throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Id definido");
