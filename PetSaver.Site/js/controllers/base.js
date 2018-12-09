@@ -262,7 +262,7 @@
             base.ErroSenhaCadastroVazia = true;
             contErro++;
         }
-        else if (base.SenhaCadastro.length < 8) {
+        else if (base.SenhaCadastro.length < 6) {
             base.ErroSenhaCadastro = true;
             base.ErroSenhaCadastroPequena = true;
             contErro++;
