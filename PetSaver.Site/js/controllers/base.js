@@ -923,4 +923,22 @@
 
     //#endregion
 
+    //#region .: Fale conosco :.
+
+    base.BtnFaleConoscoClick = function () {
+
+        $('#modalFaleConosco').modal('show');
+
+    }
+
+    base.EnviarMensagemFaleConosco = function () {
+
+        //TODO: implementar fale consoco
+
+        $('#modalFaleConosco').modal('hide');
+        $('#modalFaleConoscoSucesso').modal('show');
+
+    }
+
+    //#endregion
 });

@@ -225,3 +225,21 @@ th {
         width: 0%;
         content: "";
     }
+
+/* #region .: Botão flutuante :. */
+
+#buttonFaleConosco {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    z-index: 999;
+    /*right: calc(vw - 35px);*/
+    right: 35px;
+    bottom: 35px;
+    border-radius: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* #endregion */
