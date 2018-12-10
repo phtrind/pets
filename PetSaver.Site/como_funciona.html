@@ -1,0 +1,60 @@
+﻿<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="unidos podemos salvar a vida de milhões de pets">
+    <meta property="og:url" content="https://www.petsaver.com.br" />
+    <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon_pata.ico">
+    <title>PetSaver</title>
+    <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/myStyle.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+</head>
+<body class="fix-header fix-sidebar" style="min-height: 100vh; display: flex; align-items: center" ng-app="pets" ng-controller="comoFuncionaController as ctrl" ng-init="ctrl.OnInit()">
+    <div id="main-wrapper">
+        <div class="unix-login">
+            <div class="container">
+                <div class="col-md-12" style="text-align: center; margin-bottom: 20px; margin-top: 1%;">
+                    <img src="images/logos/logo_fundo_branco_fina.gif" style="width: 70%" cursor: pointer;"
+                         onclick="document.location.href='home.html'">
+                </div>
+                <div class="col-md-12" ng-show="ctrl.Tipo == 1">
+                    <img style="width: 100%" src="images/como_funciona/adocao/1.png" />
+                    <a href="index.html"><img style="width: 100%" src="images/como_funciona/adocao/2.png" /></a>
+                    <img style="width: 100%" src="images/como_funciona/adocao/3.png" />
+                    <img style="width: 100%" src="images/como_funciona/adocao/4.png" />
+                    <img style="width: 100%" src="images/como_funciona/adocao/5.png" />
+                    <img style="width: 100%" src="images/como_funciona/adocao/6.png" />
+                </div>
+                <div class="col-md-12" ng-show="ctrl.Tipo == 2">
+                    <img style="width: 100%" src="images/como_funciona/doacao/1.png" />
+                    <img style="width: 100%" src="images/como_funciona/doacao/2.png" />
+                    <img style="width: 100%" src="images/como_funciona/doacao/3.png" />
+                    <img style="width: 100%" src="images/como_funciona/doacao/4.png" />
+                    <img style="width: 100%" src="images/como_funciona/doacao/5.png" />
+                    <img style="width: 100%" src="images/como_funciona/doacao/6.png" />
+                </div>
+                <div class="col-md-12" ng-show="ctrl.Tipo == 3">
+                    <img style="width: 100%" src="images/como_funciona/pet_perdido/1.png" />
+                    <img style="width: 100%" src="images/como_funciona/pet_perdido/2.png" />
+                    <img style="width: 100%" src="images/como_funciona/pet_perdido/3.png" />
+                    <img style="width: 100%" src="images/como_funciona/pet_perdido/4.png" />
+                    <img style="width: 100%" src="images/como_funciona/pet_perdido/5.png" />
+                    <img style="width: 100%" src="images/como_funciona/pet_perdido/6.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/controllers/app.js"></script>
+    <script src="js/controllers/base.js"></script>
+    <script src="js/controllers/comoFunciona.js"></script>
+
+</body>
+</html>

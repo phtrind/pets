@@ -4,20 +4,6 @@
 
     ctrl.base = $controller('baseController', {});
 
-    ctrl.isRegister = false;
-
-    $('#modalSaibaMaisA').on('hidden.bs.modal', function () {
-        ctrl.isRegister = true;
-    });
-
-    $('#modalSaibaMaisB').on('hidden.bs.modal', function () {
-        ctrl.isRegister = true;
-    });
-
-    $('#modalSaibaMaisC').on('hidden.bs.modal', function () {
-        ctrl.isRegister = true;
-    });
-
     ctrl.OnInit = function () {
 
         $http({
@@ -97,7 +83,15 @@
 
     }
 
+    ctrl.AbrirComoFunciona = function (aTipo) {
+
+        window.open('como_funciona.html?tipo=' + aTipo, '_blank');
+
+    }
+
 });
+
+//#region .: Scroll :.
 
 //--- DEFINE a reusable animation function: ---//
 function scrollThere(targetElement, speed) {
@@ -185,3 +179,5 @@ $(window).on('mousewheel', function (e) {
 
 }); // end on mousewheel event
 //--- END SCROLL EVENTS ---//
+
+//#endregion
