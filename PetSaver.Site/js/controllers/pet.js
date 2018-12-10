@@ -330,11 +330,19 @@
             $('#modalQueroAdotar').modal('hide');
             $('#modalInteresseRealizado').modal('show');
 
+            ctrl.IdInteresseCadastrado = response;
+
         }).error(function (err, status) {
 
             //TODO: Implementar tratamento de erro na base
 
         });
+
+    }
+
+    ctrl.AbrirChat = function () {
+
+        window.location = "conta/chats.html?idChat=" + ctrl.IdInteresseCadastrado;
 
     }
 
