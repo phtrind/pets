@@ -996,4 +996,10 @@
     }
 
     //#endregion
+
+    base.BtnFaqClick = function () {
+
+        window.open('faq.html', '_blank');
+
+    }
 });
