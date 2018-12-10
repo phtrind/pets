@@ -17,21 +17,6 @@
                 'page_path': '/pet'
             });
     </script>
-    <script type="text/javascript">
-        //set path
-        ZeroClipboard.setMoviePath('http://davidwalsh.name/demo/ZeroClipboard.swf');
-        //create client
-        var clip = new ZeroClipboard.Client();
-        //event
-        clip.addEventListener('mousedown', function () {
-            clip.setText(document.getElementById('copy').value);
-        });
-        clip.addEventListener('complete', function (client, text) {
-            alert('copied: ' + text);
-        });
-        //glue it to the button
-        clip.glue('copy');
-    </script>
 
     <!-- ############################################### -->
     <!-- Google Analytics Produção -->
@@ -316,13 +301,13 @@
                             </div>
                             <div class="row col-md-8 offset-md-2" style="text-align: center;">
                                 <div class="col-4">
-                                    <img id="copy" name="copy" value="Copy to Clipboard" class="imgIconShare" src="icons/copy.png">
+                                    <img id="copy" data-toggle="tooltip" title="Copiar link do anúncio" class="imgIconShare" src="icons/copy.png" ng-click="ctrl.CopyLink()">
                                 </div>
                                 <div class="col-4">
-                                    <a href="{{ctrl.linkCompartilharWpp}}" id="whatsapp-share-btt" rel="nofollow" target="_blank"><img class="imgIconShare" src="icons/whatsapp.png"></a>
+                                    <img data-toggle="tooltip" title="Compartilhar pelo WhatsApp" class="imgIconShare" src="icons/whatsapp.png" ng-click="ctrl.ShareWpp()">
                                 </div>
                                 <di class="col-4">
-                                    <a target="_blank" data-href="{{ctrl.linkCompartilharFace}}" data-layout="button_count" href="{{ctrl.linkCompartilharFace}}"><img class="imgIconShare" src="icons/facebook.png"></a>
+                                    <img data-toggle="tooltip" title="Compartilhar pelo Facebook" class="imgIconShare" src="icons/facebook.png" ng-click="ctrl.ShareFacebook()">
                                 </di>
                             </div>
                         </div>
@@ -444,11 +429,14 @@
     <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
     <!--Custom JavaScript -->
     <script src="js/custom.min.js"></script>
+
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="js/controllers/app.js"></script>
     <script src="js/controllers/base.js"></script>
     <script src="js/controllers/pet.js"></script>
+
+    <div id="fb-root"></div>
 
 </body>
 

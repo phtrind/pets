@@ -113,8 +113,6 @@
 
             });
 
-            ctrl.PreencherLinksCompartilhamento();
-
         }
         else {
             //TODO: Mostrar mensagem que o anúncio não foi encontrado
@@ -126,13 +124,6 @@
 
     ctrl.AcoesDisabled = function () {
         return !ctrl.HabilitarAcoes || (ctrl.Anunciante.Id == sessionStorage.getItem('IdUsuario'));
-    }
-
-    ctrl.PreencherLinksCompartilhamento = function () {
-
-        ctrl.linkCompartilharWpp = "https://api.whatsapp.com/send?text=%Olá%,%veja%esse%pet%na%PetSaver:%"+"http://petsaver.com.br/pet.html?pet="+idAnuncio;
-        ctrl.linkCompartilharFace = "http://www.facebook.com/soupetsaver" + "Olá, veja esse pet na PetSaver: "+"http://petsaver.com.br/pet.html?pet="+idAnuncio;
-
     }
 
 
@@ -404,4 +395,46 @@
 
     //#endregion
 
+    //#region .: Mapa :.
+
+    ctrl.CopyLink = function () {
+
+        var text_to_share = location.href;
+
+        // create temp element
+        var copyElement = document.createElement("span");
+        copyElement.appendChild(document.createTextNode(text_to_share));
+        copyElement.id = 'tempCopyToClipboard';
+        angular.element(document.body.append(copyElement));
+
+        // select the text
+        var range = document.createRange();
+        range.selectNode(copyElement);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+
+        // copy & cleanup
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        copyElement.remove();
+
+    }
+
+    ctrl.ShareWpp = function () {
+
+        var encodedMenssage = encodeURI("Olá, acesse o link e nos ajude a salvar a vida de mais um Pet:");
+
+        var encodedLink = encodeURI(location.href);
+
+        window.open('https://wa.me/?text=' + encodedMenssage + "%0D%0A" + encodedLink, '_blank');
+
+    }
+
+    ctrl.ShareFacebook = function () {
+
+        window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURI(location.href), '_blank');
+
+    }
+
+    //#endregion
 });
