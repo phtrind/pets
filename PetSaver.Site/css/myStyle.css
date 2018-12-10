@@ -219,6 +219,7 @@ th {
     .dateclass.placeholderclass::before {
         width: 100%;
         content: attr(placeholder);
+        color: gray;
     }
 
     .dateclass.placeholderclass:hover::before {
