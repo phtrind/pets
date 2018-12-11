@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using PetSaver.Entity.Usuarios;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Usuarios;
+using PetSaver.Utilities;
 
 namespace PetSaver.Business.Usuarios
 {
@@ -48,6 +50,18 @@ namespace PetSaver.Business.Usuarios
         public bool VerificarEmailExistente(string aEmail)
         {
             return new LoginRepository().BuscarPorEmail(aEmail) != null;
+        }
+
+        public async Task EsqueceuSenhaAsync(string aEmail)
+        {
+            var loginEntity = new LoginRepository().BuscarPorEmail(aEmail);
+
+            if (loginEntity == null)
+            {
+                throw new BusinessException("O e-mail informado não existe.");
+            }
+
+            await new Email().EnviarEmail("Recuparar senha", $"Olá Saver, <br><br>Sua senha é: {loginEntity.Senha} <br><br>www.petsaver.com.br", aEmail, true);
         }
     }
 }

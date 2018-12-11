@@ -46,6 +46,7 @@
     <Compile Include="BugsnagHelper.cs" />
     <Compile Include="Constantes.cs" />
     <Compile Include="Conversor.cs" />
+    <Compile Include="Email.cs" />
     <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="MimeTypeHelper.cs" />
     <Compile Include="StringUtility.cs" />

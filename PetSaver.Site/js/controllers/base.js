@@ -19,6 +19,11 @@
 
         base.isRegister = false;
 
+        base.ErroEmailEsqueciSenhaInvalido = false;
+        base.ErroEmailEsqueciSenha = false;
+        base.ErroEmailEsqueciSenhaInexistente = false;
+        base.EmailEsqueciSenha = '';
+
     }
 
     base.IsLogged = function () {
@@ -337,6 +342,57 @@
         }
         else {
             base.Cadastrando = false;
+        }
+
+    }
+
+    base.EsqueceuSenha = function () {
+
+        $('#modalLogarCadastrar').modal('hide');
+        $('#modalEsqueciSenha').modal('show');
+
+    }
+
+    base.ConfirmarEsqueceuSenha = function () {
+
+        base.RecuperandoSenha = true;
+
+        if (!base.EmailIsValid(base.EmailEsqueciSenha)) {
+            base.ErroEmailEsqueciSenhaInvalido = true;
+            base.ErroEmailEsqueciSenha = true;
+
+            base.RecuperandoSenha = false;
+        }
+        else {
+            base.ErroEmailEsqueciSenhaInvalido = false;
+            base.ErroEmailEsqueciSenha = false;
+
+            $http({
+                method: 'GET',
+                url: base.servicePath + 'Login/EsqueceuSenha/' + base.EmailEsqueciSenha + '/',
+            }).success(function (response) {
+
+                $('#modalEsqueciSenha').modal('hide');
+                $('#modalEsqueciSenhaSucesso').modal('show');
+
+                base.EmailEsqueciSenha = '';
+
+            }).error(function (err, status) {
+
+                if (status == 400) {
+                    base.ErroEmailEsqueciSenhaInexistente = true;
+                    base.ErroEmailEsqueciSenha = true;
+                }
+                else {
+                    //TODO: Implementar tratamento de erro na base
+                }
+
+            }).finally(function () {
+
+                base.RecuperandoSenha = false;
+
+            });
+
         }
 
     }
@@ -968,7 +1024,7 @@
             });
 
         }
-        
+
     }
 
     base.ValidarMensagemFaleConosco = function () {

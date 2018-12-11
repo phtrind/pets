@@ -42,7 +42,7 @@
                                             <img style="width:40px;" src="images/loading.gif" ng-show="ctrl.base.Logando" />
                                         </div>
                                         <div class="checkbox">
-                                            <label class="pull-right" style="color: #500b89 !important">
+                                            <label class="pull-right link" style="color: #500b89 !important" ng-click="ctrl.base.EsqueceuSenha()">
                                                 Esqueceu
                                                 a senha?
                                             </label>
@@ -158,6 +158,45 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal esqueci a senha -->
+<div class="modal fade" id="modalEsqueciSenha" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="color-primary">Olá Saver,</p>
+                <p class="color-primary">Não se preocupe, vamos lhe enviar sua senha via e-mail.</p>
+                <p class="color-primary">Preencha seu e-mail abaixo.</p>
+                <div class="form-group" ng-class="{'has-error':ctrl.base.ErroEmailEsqueciSenha}">
+                    <input type="text" class="form-control" placeholder="E-mail"
+                           style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.EmailEsqueciSenha">
+                    <small class="form-control-feedback" ng-show="ctrl.base.ErroEmailEsqueciSenhaInvalido">O e-mail é inválido</small>
+                    <small class="form-control-feedback" ng-show="ctrl.base.ErroEmailEsqueciSenhaInexistente">O e-mail não foi encontrado</small>
+                </div>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-primary" ng-click="ctrl.base.ConfirmarEsqueceuSenha()" ng-hide="ctrl.base.RecuperandoSenha">Receber senha</button>
+                <img src="images/loading.gif" style="width: 50px" ng-show="ctrl.base.RecuperandoSenha" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal senha reenviada sucesso -->
+<div class="modal fade" id="modalEsqueciSenhaSucesso" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="text-align:center">
+                <img src="icons/ok.png" style="width:150px">
+                <br /><br />
+                <p style="font-size: 20px" class="color-primary">Sua senha foi reenviada!</p>
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
