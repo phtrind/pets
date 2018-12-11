@@ -59,6 +59,7 @@
     <Compile Include="Anuncios\AnuncioFotoBusinessTest.cs" />
     <Compile Include="Base\BaseBusinessTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EmailBusinessTest.cs" />
     <Compile Include="Usuarios\LoginBusinessTest.cs" />
     <Compile Include="Usuarios\UsuarioBusinessTest.cs" />
   </ItemGroup>

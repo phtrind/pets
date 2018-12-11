@@ -58,6 +58,7 @@
     <Compile Include="Base\BaseBusiness.cs" />
     <Compile Include="Chat\InboxBusiness.cs" />
     <Compile Include="Contato\FaleConoscoBusiness.cs" />
+    <Compile Include="EmailBusiness.cs" />
     <Compile Include="Localizacao\CidadeBusiness.cs" />
     <Compile Include="Localizacao\EnderecoBusiness.cs" />
     <Compile Include="Localizacao\EstadoBusiness.cs" />
@@ -72,6 +73,11 @@
     <Compile Include="Pets\RacaEspecieBusiness.cs" />
     <Compile Include="Pets\SexoBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios\HistoricoLoginBusiness.cs" />
     <Compile Include="Usuarios\LoginBusiness.cs" />
     <Compile Include="Usuarios\UsuarioBusiness.cs" />
@@ -98,6 +104,12 @@
       <Project>{5b8c2769-c69a-4982-930b-074bac116299}</Project>
       <Name>PetSaver.Utilities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
