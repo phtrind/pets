@@ -222,6 +222,11 @@ th {
         color: gray;
     }
 
+    .dateclass.placeholderclass:focus::before {
+        width: 0%;
+        content: "";
+    }
+
     .dateclass.placeholderclass:hover::before {
         width: 0%;
         content: "";
@@ -234,7 +239,6 @@ th {
     height: 50px;
     position: fixed;
     z-index: 999;
-    /*right: calc(vw - 35px);*/
     right: 35px;
     bottom: 35px;
     border-radius: 100%;
@@ -249,7 +253,6 @@ th {
     position: fixed;
     z-index: 999;
     right: calc(100vw - 85px);
-    /*right: 110px;*/
     bottom: 35px;
     border-radius: 100%;
     text-align: center;

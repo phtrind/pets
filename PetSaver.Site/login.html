@@ -93,7 +93,7 @@
                                             </div>
                                             <div class="col-md-6 form-group" ng-class="{'has-error':ctrl.base.ErroDthNascimentoCadastro}">
                                                 <input type="date" class="form-control dateclass placeholderclass" placeholder="Nascimento"
-                                                       style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.DthNascimentoCadastro" onClick="$(this).removeClass('placeholderclass')">
+                                                       style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.DthNascimentoCadastro" onClick="$(this).removeClass('placeholderclass')" onfocus="$(this).removeClass('placeholderclass')">
                                                 <small class="form-control-feedback" ng-show="ctrl.base.ErroDthNascimentoCadastro">Data de nascimento inválida</small>
                                             </div>
                                         </div>

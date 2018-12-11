@@ -250,7 +250,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="petencontrado_cadastrar.html" aria-expanded="false">
+                                    <a href="petencontrado_cadastrar.html" aria-expanded="false" onclick="location.reload();">
                                         <img src="../icons/binoculars.png" width="30px">
                                         <span class="show-menu">Pet encontrado</span>
                                     </a>
@@ -327,27 +327,27 @@
                             </div>
                         </div>
                         <div class="row" style="text-align: center; margin-top: 20px;">
-                            <div style="margin-left: 55px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.dogSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.dogSelected}"
+                            <div class="col-md-2 offset-md-1 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.dogSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.dogSelected}"
                                  ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Cachorro');">
                                 <img src="../icons/dog.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Cachorro</h3>
                             </div>
-                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.catSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.catSelected}"
+                            <div class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.catSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.catSelected}"
                                  ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Gato');">
                                 <img src="../icons/cat.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Gato</h3>
                             </div>
-                            <div style="margin-left: 20px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.hamsterSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.hamsterSelected}"
+                            <div class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.hamsterSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.hamsterSelected}"
                                  ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Roedor');">
                                 <img src="../icons/hamster.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Roedor</h3>
                             </div>
-                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.birdSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.birdSelected}"
+                            <div class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.birdSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.birdSelected}"
                                  ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Ave');">
                                 <img src="../icons/bird.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Ave</h3>
                             </div>
-                            <div style="margin-left: 40px;" class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.othersSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.othersSelected}"
+                            <div class="col-md-2 boxSelecaoPet" ng-class="{'boxSelecaoPetSelecionado': ctrl.base.ctrlCadastroAnuncio.othersSelected, 'boxSelecaoPet': !ctrl.base.ctrlCadastroAnuncio.othersSelected}"
                                  ng-click="ctrl.base.ctrlCadastroAnuncio.SelectPet('Outros');">
                                 <img src="../icons/others.png" style="width: 105%; padding: 10px; margin-bottom: 9px;">
                                 <h3>Outros</h3>
