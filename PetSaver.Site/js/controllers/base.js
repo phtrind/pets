@@ -74,6 +74,10 @@
 
         base.LimparSessionAuth();
 
+        if (location.href.indexOf('pet.html') != -1) {
+            angular.element('body').controller().OnInit();
+        }
+
     }
 
     base.FazerLogoffInside = function () {
@@ -178,6 +182,11 @@
             sessionStorage.setItem("DthValidadeToken", response.DthValidadeToken);
 
             base.NomeUsuario = response.Nome;
+
+            if (location.href.indexOf('pet.html') != -1) {
+                angular.element('body').controller().OnInit();
+            }
+
 
         }).error(function (err, status) {
 

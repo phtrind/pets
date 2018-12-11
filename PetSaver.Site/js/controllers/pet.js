@@ -426,6 +426,8 @@
         window.getSelection().removeAllRanges();
         copyElement.remove();
 
+        $('#modalLinkCopiado').modal('show');
+
     }
 
     ctrl.ShareWpp = function () {
