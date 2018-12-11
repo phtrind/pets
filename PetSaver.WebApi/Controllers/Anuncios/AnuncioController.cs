@@ -18,18 +18,16 @@ namespace PetSaver.WebApi.Controllers.Anuncios
         [Authorize]
         [Route("api/Anuncio/CadastrarInteresse")]
         [HttpPost]
-        public HttpResponseMessage CadastrarInteresse([FromBody]CadastrarInteresseRequest aRequest)
+        public int CadastrarInteresse([FromBody]CadastrarInteresseRequest aRequest)
         {
             try
             {
-                new InteresseBusiness().Cadastrar(aRequest);
+                return new InteresseBusiness().Cadastrar(aRequest);
             }
             catch (Exception ex)
             {
                 throw TratarErro(ex);
             }
-
-            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         [Authorize]
