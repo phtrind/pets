@@ -15,7 +15,7 @@ namespace PetSaver.Utilities.Tests
         {
             var emailEntity = new Email();
             
-            await emailEntity.EnviarEmail("Assunto", "Conteudo", "phtrind@hotmail.com");
+            await emailEntity.EnviarEmail("Assunto", "Conteudo", "phtrind@hotmail.com", false);
         }
     }
 }
