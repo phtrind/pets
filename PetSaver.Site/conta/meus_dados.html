@@ -258,17 +258,17 @@
                                 <div class="row">
                                     <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroNomeMeusDados}">
                                         <label class="color-primary">Nome</label>
-                                        <input type="text" value="José Alberto" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.NomeMeusDados">
+                                        <input type="text" value="{{ctrl.MeusDados.Nome}}" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.NomeMeusDados">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroNomeMeusDados">Nome inválido</small>
                                     </div>
                                     <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroSobrenomeMeusDados}">
                                         <label class="color-primary">Sobrenome</label>
-                                        <input type="text" value="Santos" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.SobrenomeMeusDados">
+                                        <input type="text" value="{{ctrl.MeusDados.Sobrenome}}" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.SobrenomeMeusDados">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroSobrenomeMeusDados">Sobrenome inválido</small>
                                     </div>
                                     <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroDthNascimentoMeusDados}">
                                         <label class="color-primary">Nascimento</label>
-                                        <input type="text" value="26/11/1997" class="form-control" style="border-radius: 8px"
+                                        <input type="text" value="{{ctrl.MeusDados.Nascimento}}" class="form-control" style="border-radius: 8px"
                                                onfocus="(this.type='date')" onblur="(this.type='text')"
                                                autocomplete="off" ng-model="ctrl.DthNascimentoMeusDados">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroDthNascimentoMeusDados">Data de nascimento inválida</small>
@@ -298,17 +298,17 @@
                                     </div>
                                     <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroEmailMeusDados}">
                                         <label class="color-primary">E-mail</label>
-                                        <input type="text" value="petsaver@gmail.com" autocomplete="off" class="form-control" style="border-radius: 8px" ng-model="ctrl.EmailMeusDados">
+                                        <input type="text" value="{{ctrl.MeusDados.Email}}" autocomplete="off" class="form-control" style="border-radius: 8px" ng-model="ctrl.EmailMeusDados">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroEmailMeusDados">E-mail inválido</small>
                                     </div>
                                     <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroSenhaMeusDados}">
                                         <label class="color-primary">Senha</label>
-                                        <input type="password" value="&32j2hu24$34" class="form-control" autocomplete="off" style="border-radius: 8px" ng-model="ctrl.SenhaMeusDados">
+                                        <input type="password" value="{{ctrl.MeusDados.Senha}}" class="form-control" autocomplete="off" style="border-radius: 8px" ng-model="ctrl.SenhaMeusDados">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroSenhaMeusDadosPequena">A senha deve ter no mínimo 8 caracteres</small>
                                     </div>
                                     <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroConfirmacaoSenhaMeusDados}">
                                         <label class="color-primary">Confirmar senha</label>
-                                        <input type="password" value="&32j2hu24$34" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.ConfirmacaoSenhaMeusDados">
+                                        <input type="password" value="{{ctrl.MeusDados.Senha}}" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.ConfirmacaoSenhaMeusDados">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroConfirmacaoSenhaMeusDados">A senha não é igual à do campo anterior</small>
                                     </div>
                                 </div>
@@ -327,26 +327,26 @@
                                 <div class="row">
                                     <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroCepMeusDados}">
                                         <label class="color-primary">CEP</label>
-                                        <input type="text" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.CepMeusDados">
+                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Cep}}" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.CepMeusDados">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroCepMeusDados">CEP inválido</small>
                                     </div>
                                     <div class="form-group col-md-3" ng-class="{'has-error':ctrl.ErroLogradouroMeusDados}">
                                         <label class="color-primary">Logradouro</label>
-                                        <input type="text" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.LogradouroMeusDados">
+                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Logradouro}}" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.LogradouroMeusDados">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroLogradouroMeusDados">Logradouro inválido</small>
                                     </div>
                                     <div class="form-group col-md-3" ng-class="{'has-error':ctrl.ErroBairroMeusDados}">
                                         <label class="color-primary">Bairro</label>
-                                        <input type="text" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.BairroMeusDados">
+                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Bairro}}" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.BairroMeusDados">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroBairroMeusDados">Bairro inválido</small>
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label class="color-primary">Número</label>
-                                        <input type="text" class="form-control" style="border-radius: 8px" ng-model="ctrl.NumeroMeusDados">
+                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Numero}}" style="border-radius: 8px" ng-model="ctrl.NumeroMeusDados">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label class="color-primary">Complemento</label>
-                                        <input type="text" class="form-control" style="border-radius: 8px" ng-model="ctrl.ComplementoMeusDados">
+                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Complemento}}" style="border-radius: 8px" ng-model="ctrl.ComplementoMeusDados">
                                     </div>
                                 </div>
                             </form>
