@@ -1,40 +1,12 @@
-var app = angular.module('pets', [])
+app.controller('maintenanceController', function ($controller) {
 
-app.controller('maintenanceController', function ($scope, $http, $compile, $sce) {
+    var ctrl = this;
 
-    $scope.clickBtnResponderPesquisa = function () {
+    ctrl.base = $controller('baseController', {});
 
-        gtag('event',
-            'Click',
-            {
-                'event_category': 'Pesquisa',
-                'event_label': 'Responder Pesquisa',
-                'value': 1
-            });
+    ctrl.MinhaConta = function () {
 
-    }
-
-    $scope.clickBtnFacebook = function () {
-
-        gtag('event',
-            'Click',
-            {
-                'event_category': 'Redes Sociais',
-                'event_label': 'Facebook',
-                'value': 1
-            });
-
-    }
-
-    $scope.clickBtnInstagram = function () {
-
-        gtag('event',
-            'Click',
-            {
-                'event_category': 'Redes Sociais',
-                'event_label': 'Instagram',
-                'value': 1
-            });
+        window.location = "conta/dashboard.html";
 
     }
 
