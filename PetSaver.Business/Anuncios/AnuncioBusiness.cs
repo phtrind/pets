@@ -156,6 +156,11 @@ namespace PetSaver.Business.Anuncios
 
         }
 
+        public void AtivarAnuncio()
+        {
+            //TODO: implementar ativação de anúncio e envio de email
+        }
+
         #endregion
 
         #region .: Buscas :.

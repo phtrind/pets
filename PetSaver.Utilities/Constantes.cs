@@ -13,5 +13,13 @@
         public const string NomePastaFotos = "NomePastaFotos";
 
         #endregion
+
+        #region .: Links :.
+
+        public const string LinkPetSaver = "http://www.petsaver.com.br/";
+        public const string LinkInstagram = "https://www.instagram.com/soupetsaver/";
+        public const string LinkFacebook = "https://www.facebook.com/soupetsaver";
+
+        #endregion
     }
 }

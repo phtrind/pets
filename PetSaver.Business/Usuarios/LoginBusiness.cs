@@ -52,7 +52,7 @@ namespace PetSaver.Business.Usuarios
             return new LoginRepository().BuscarPorEmail(aEmail) != null;
         }
 
-        public async Task EsqueceuSenhaAsync(string aEmail)
+        public void EsqueceuSenha(string aEmail)
         {
             var loginEntity = new LoginRepository().BuscarPorEmail(aEmail);
 
@@ -61,7 +61,7 @@ namespace PetSaver.Business.Usuarios
                 throw new BusinessException("O e-mail informado não existe.");
             }
 
-            await new Email().EnviarEmail("Recuparar senha", $"Olá Saver, <br><br>Sua senha é: {loginEntity.Senha} <br><br>www.petsaver.com.br", aEmail, true);
+            new Email().EnviarEmail("Recuparar senha", $"Olá Saver, <br><br>Sua senha é: {loginEntity.Senha} <br><br>www.petsaver.com.br", aEmail, true);
         }
     }
 }

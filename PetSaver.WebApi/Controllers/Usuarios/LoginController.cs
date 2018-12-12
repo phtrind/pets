@@ -27,11 +27,11 @@ namespace PetSaver.WebApi.Controllers.Usuarios
 
         [Route("api/Login/EsqueceuSenha/{aEmail}")]
         [HttpGet]
-        public async Task<HttpResponseMessage> EsqueceuSenhaAsync(string aEmail)
+        public HttpResponseMessage EsqueceuSenhaAsync(string aEmail)
         {
             try
             {
-                await new LoginBusiness().EsqueceuSenhaAsync(aEmail);
+                new LoginBusiness().EsqueceuSenha(aEmail);
 
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }

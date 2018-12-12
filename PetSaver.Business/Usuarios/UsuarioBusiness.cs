@@ -14,6 +14,8 @@ namespace PetSaver.Business.Usuarios
 
         public int CadastrarBasico(CadastroBasicoRequest aObjeto)
         {
+            int idUsuario;
+
             using (var transaction = new TransactionScope())
             {
                 var idLogin = new LoginBusiness().Inserir(new LoginEntity()
@@ -23,7 +25,7 @@ namespace PetSaver.Business.Usuarios
                     IdTipo = Utilities.Conversor.EnumParaInt(TiposLogin.Usuario)
                 });
 
-                var idUsuario = new UsuarioBusiness().Inserir(new UsuarioEntity()
+                idUsuario = new UsuarioBusiness().Inserir(new UsuarioEntity()
                 {
                     Nome = aObjeto.Nome,
                     Sobrenome = aObjeto.Sobrenome,
@@ -34,9 +36,11 @@ namespace PetSaver.Business.Usuarios
                 });
 
                 transaction.Complete();
-
-                return idUsuario;
             }
+
+            new EmailBusiness().CadastroUsuarioAprovado(aObjeto.Email);
+
+            return idUsuario;
         }
 
         #endregion
@@ -61,7 +65,7 @@ namespace PetSaver.Business.Usuarios
             {
                 IdLogin = Convert.ToInt32(teste.LOG_CODIGO),
                 IdUsuario = Convert.ToInt32(teste.USU_CODIGO),
-                Nome = Convert.ToString(teste.USU_NOME),    
+                Nome = Convert.ToString(teste.USU_NOME),
                 DthValidadeToken = DateTime.Now.AddHours(Utilities.Constantes.HorasValidadeToken - 0.5)
             };
         }

@@ -121,31 +121,76 @@
     <value>&lt;!DOCTYPE html&gt;
 &lt;!-- saved from url=(0014)about:internet --&gt;
 &lt;html xmlns='http://www.w3.org/1999/xhtml'&gt;
+
 &lt;head&gt;
-&lt;title&gt;anuncio aprovado.png&lt;/title&gt;
+  &lt;title&gt;anuncio aprovado.png&lt;/title&gt;
+  &lt;meta http-equiv='Content-Type' content='text/html; charset=utf-8' /&gt;
+  &lt;style type='text/css'&gt;
+    td img {
+      display: block;
+    }
+  &lt;/style&gt;
+  &lt;!--Fireworks CS6 Dreamweaver CS6 target.  Created Mon Dec 10 23:08:50 GMT-0200 2018--&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;table style='display: inline-table;' bgcolor='#c6acce' border='0' cellpadding='0' cellspacing='0' width='600'&gt;
+    &lt;!-- fwtable fwsrc='anuncio aprovado.fw.png' fwpage='Página 1' fwbase='anuncio aprovado.png' fwstyle='Dreamweaver' fwdocid = '719698552' fwnested='0' --&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src='spacer.gif' width='600' height='1' alt='' /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src='spacer.gif' width='1' height='1' alt='' /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href="__LinkAnuncio__" target='_blank'&gt;&lt;img name='anuncioaprovado_r1_c1' src='http://i67.tinypic.com/15rktoy.pnganuncio%20aprovado_r1_c1.png' width='600'
+          height='140' id='anuncioaprovado_r1_c1' alt='' /&gt;
+        &lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src='spacer.gif' width='1' height='140' alt='' /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href='__LinkPetSaver__' target='_blank'&gt;&lt;img name='anuncioaprovado_r2_c1' src='http://i64.tinypic.com/de1fuq.png'
+            width='600' height='575' id='anuncioaprovado_r2_c1' alt='' /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src='spacer.gif' width='1' height='575' alt='' /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href="__LinkInstagram__" target='_blank'&gt;&lt;img name='anuncioaprovado_r3_c1' src='http://i63.tinypic.com/28vpn9y.png' width='600' height='173' id='anuncioaprovado_r3_c1'
+          alt='' /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src='spacer.gif' width='1' height='173' alt='' /&gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</value>
+  </data>
+  <data name="EmailCadastroUsuarioAprovado" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;!-- saved from url=(0014)about:internet --&gt;
+&lt;html xmlns='http://www.w3.org/1999/xhtml'&gt;
+&lt;head&gt;
+&lt;title&gt;cadastro.png&lt;/title&gt;
 &lt;meta http-equiv='Content-Type' content='text/html; charset=utf-8' /&gt;
 &lt;style type='text/css'&gt;td img {display: block;}&lt;/style&gt;
-&lt;!--Fireworks CS6 Dreamweaver CS6 target.  Created Mon Dec 10 23:08:50 GMT-0200 2018--&gt;
+&lt;!--Fireworks CS6 Dreamweaver CS6 target.  Created Mon Dec 10 23:42:14 GMT-0200 2018--&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;table style='display: inline-table;' bgcolor='#c6acce' border='0' cellpadding='0' cellspacing='0' width='600'&gt;
-&lt;!-- fwtable fwsrc='anuncio aprovado.fw.png' fwpage='Página 1' fwbase='anuncio aprovado.png' fwstyle='Dreamweaver' fwdocid = '719698552' fwnested='0' --&gt;
+&lt;!-- fwtable fwsrc='cadastro.fw.png' fwpage='Página 1' fwbase='cadastro.png' fwstyle='Dreamweaver' fwdocid = '1615885160' fwnested='0' --&gt;
   &lt;tr&gt;
    &lt;td&gt;&lt;img src='spacer.gif' width='600' height='1' alt='' /&gt;&lt;/td&gt;
    &lt;td&gt;&lt;img src='spacer.gif' width='1' height='1' alt='' /&gt;&lt;/td&gt;
   &lt;/tr&gt;
 
   &lt;tr&gt;
-   &lt;td&gt;&lt;img name='anuncioaprovado_r1_c1' src='http://i67.tinypic.com/15rktoy.pnganuncio%20aprovado_r1_c1.png' width='600' height='140' id='anuncioaprovado_r1_c1' alt='' /&gt;&lt;/a&gt;&lt;/td&gt;
-   &lt;td&gt;&lt;img src='spacer.gif' width='1' height='140' alt='' /&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;a href="__LinkPetSaver__" target='_blank'&gt;&lt;img name='cadastro_r1_c1' src='http://i65.tinypic.com/2a9y3v6.jpg' width='600' height='191' id='cadastro_r1_c1' alt='' /&gt;&lt;/a&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;img src='spacer.gif' width='1' height='191' alt='' /&gt;&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td&gt;&lt;a href='http://petsaver.com.br/' target='_blank'&gt;&lt;img name='anuncioaprovado_r2_c1' src='http://i64.tinypic.com/de1fuq.png' width='600' height='575' id='anuncioaprovado_r2_c1' alt='' /&gt;&lt;/a&gt;&lt;/td&gt;
-   &lt;td&gt;&lt;img src='spacer.gif' width='1' height='575' alt='' /&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;a href='__LinkPetSaver__' target='_blank'&gt;&lt;img name='cadastro_r2_c1' src='http://i64.tinypic.com/357rj1e.png' width='600' height='893' id='cadastro_r2_c1' alt='' /&gt;&lt;/a&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;img src='spacer.gif' width='1' height='893' alt='' /&gt;&lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td&gt;&lt;img name='anuncioaprovado_r3_c1' src='http://i63.tinypic.com/28vpn9y.png' width='600' height='173' id='anuncioaprovado_r3_c1' alt='' /&gt;&lt;/td&gt;
-   &lt;td&gt;&lt;img src='spacer.gif' width='1' height='173' alt='' /&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;a href="__LinkInstagram__" target='_blank'&gt;&lt;img name='cadastro_r3_c1' src='http://i68.tinypic.com/8zekw0.png' width='600' height='196' id='cadastro_r3_c1' alt='' /&gt;&lt;/a&gt;&lt;/td&gt;
+   &lt;td&gt;&lt;img src='spacer.gif' width='1' height='196' alt='' /&gt;&lt;/td&gt;
   &lt;/tr&gt;
 &lt;/table&gt;
 &lt;/body&gt;

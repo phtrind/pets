@@ -15,7 +15,7 @@ namespace PetSaver.Utilities
         private string Username { get; } = "sou@petsaver.com.br";
         private string Senha { get; } = "Pet@!Sucesso2019";
 
-        public async Task EnviarEmail(string aAssunto, string aConteudo, string aDestinatario, bool isHtml)
+        public void EnviarEmail(string aAssunto, string aConteudo, string aDestinatario, bool isHtml)
         {
             if (string.IsNullOrEmpty(aAssunto) || string.IsNullOrEmpty(aConteudo) || string.IsNullOrEmpty(aDestinatario))
             {

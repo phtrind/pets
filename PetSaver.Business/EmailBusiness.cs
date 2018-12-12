@@ -10,9 +10,23 @@ namespace PetSaver.Business
 {
     public class EmailBusiness
     {
-        public void AnuncioPublicado(int aIdAnuncio, string aEmail)
+        public void AnuncioAprovado(int aIdAnuncio, string aEmail)
         {
-            new Email().EnviarEmail("Olá Saver, seu anúncio está ativo!", Resources.EmailAnuncioAprovado, aEmail, true);
+            string conteudo = Resources.EmailAnuncioAprovado
+                                            .Replace("__LinkAnuncio__", $"{Constantes.LinkPetSaver}pet.html?idAnuncio={aIdAnuncio}")
+                                            .Replace("__LinkPetSaver__", Constantes.LinkPetSaver)
+                                            .Replace("__LinkInstagram__", Constantes.LinkInstagram);
+
+            new Email().EnviarEmail("Olá Saver, seu anúncio está ativo!", conteudo, aEmail, true);
+        }
+
+        public void CadastroUsuarioAprovado(string aEmail)
+        {
+            string conteudo = Resources.EmailCadastroUsuarioAprovado
+                                            .Replace("__LinkPetSaver__", Constantes.LinkPetSaver)
+                                            .Replace("__LinkInstagram__", Constantes.LinkInstagram);
+
+            new Email().EnviarEmail("Olá Saver, seja bem vindo!", conteudo, aEmail, true);
         }
     }
 }

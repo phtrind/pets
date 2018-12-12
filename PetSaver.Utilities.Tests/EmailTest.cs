@@ -15,7 +15,7 @@ namespace PetSaver.Utilities.Tests
         {
             var emailEntity = new Email();
             
-            await emailEntity.EnviarEmail("Assunto", "Conteudo", "phtrind@hotmail.com", false);
+            emailEntity.EnviarEmail("Assunto", "Conteudo", "phtrind@hotmail.com", false);
         }
 
         [TestMethod]
@@ -23,7 +23,7 @@ namespace PetSaver.Utilities.Tests
         {
             var emailEntity = new Email();
             
-            await emailEntity.EnviarEmail("Olá Saver!", @"<!DOCTYPE html>
+            emailEntity.EnviarEmail("Olá Saver!", @"<!DOCTYPE html>
 <!-- saved from url=(0014)about:internet -->
 <html xmlns='http://www.w3.org/1999/xhtml'>
 <head>
