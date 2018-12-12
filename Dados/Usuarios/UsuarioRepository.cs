@@ -93,6 +93,19 @@ namespace PetSaver.Repository.Usuarios
             }
         }
 
+        public dynamic BuscarCompleto(int aIdUsuario)
+        {
+            if (aIdUsuario == default)
+            {
+                throw new BusinessException("O Id informado é inválido.");
+            }
+
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.QueryFirstOrDefault(Resource.BuscarUsuarioCompleto, new { @IdUsuario = aIdUsuario });
+            }
+        }
+
         #endregion
     }
 }

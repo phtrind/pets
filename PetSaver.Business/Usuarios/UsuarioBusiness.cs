@@ -54,19 +54,46 @@ namespace PetSaver.Business.Usuarios
                 throw new BusinessException("É obrigatorio informar o e-mail do usuário.");
             }
 
-            dynamic teste = new UsuarioRepository().BuscarInformacoesSession(aEmail);
+            dynamic retornoDb = new UsuarioRepository().BuscarInformacoesSession(aEmail);
 
-            if (teste == null)
+            if (retornoDb == null)
             {
                 throw new BusinessException("O usuário não foi encontrado.");
             }
 
             return new UsuarioSessionContract()
             {
-                IdLogin = Convert.ToInt32(teste.LOG_CODIGO),
-                IdUsuario = Convert.ToInt32(teste.USU_CODIGO),
-                Nome = Convert.ToString(teste.USU_NOME),
+                IdLogin = Convert.ToInt32(retornoDb.LOG_CODIGO),
+                IdUsuario = Convert.ToInt32(retornoDb.USU_CODIGO),
+                Nome = Convert.ToString(retornoDb.USU_NOME),
                 DthValidadeToken = DateTime.Now.AddHours(Utilities.Constantes.HorasValidadeToken - 0.5)
+            };
+        }
+
+        public UsuarioCompletoResponse BuscarCompleto(int aIdUsuario)
+        {
+            if (aIdUsuario == default)
+            {
+                throw new BusinessException("O Id é inválido.");
+            }
+
+            dynamic retornoDb = new UsuarioRepository().BuscarCompleto(aIdUsuario);
+
+            if (retornoDb == null)
+            {
+                throw new BusinessException("O usuário não foi encontrado.");
+            }
+
+            return new UsuarioCompletoResponse()
+            {
+                IdUsuario = Convert.ToInt32(retornoDb.USU_CODIGO),
+                Nome = Convert.ToString(retornoDb.USU_NOME),
+                Sobrenome = Convert.ToString(retornoDb.USU_SOBRENOME),
+                Nascimento = Convert.ToDateTime(retornoDb.USU_DTHNASCIMENTO),
+                Sexo = retornoDb.USU_SEXO != null ? Convert.ToString(retornoDb.USU_SEXO) : null,
+                Documento = Convert.ToString(retornoDb.USU_DOCUMENTO),
+                Email = Convert.ToString(retornoDb.LOG_EMAIL),
+                Senha = Convert.ToString(retornoDb.LOG_SENHA)
             };
         }
 

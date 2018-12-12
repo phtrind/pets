@@ -327,6 +327,17 @@ namespace PetSaver.Repository {
         ///FROM USU_USUARIOS
         ///WHERE USU_DOCUMENTO = @Documento.
         /// </summary>
+        internal static string BuscarUsuarioCompleto {
+            get {
+                return ResourceManager.GetString("BuscarUsuarioCompleto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT *
+        ///FROM USU_USUARIOS
+        ///WHERE USU_DOCUMENTO = @Documento.
+        /// </summary>
         internal static string BuscarUsuarioPorDocumento {
             get {
                 return ResourceManager.GetString("BuscarUsuarioPorDocumento", resourceCulture);

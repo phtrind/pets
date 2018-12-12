@@ -9,6 +9,8 @@ namespace PetSaver.WebApi.Controllers.Usuarios
 {
     public class UsuarioController : BaseController
     {
+        #region .: Cadastro :.
+
         [Route("api/Usuario/CadastrarBasico")]
         [HttpPost]
         public HttpResponseMessage CadastrarBasico([FromBody]CadastroBasicoRequest value)
@@ -25,6 +27,10 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        #endregion
+
+        #region .: Buscas :.
+
         [Authorize]
         [Route("api/Usuario/InformacoesSession/{aEmail}")]
         [HttpGet]
@@ -39,5 +45,22 @@ namespace PetSaver.WebApi.Controllers.Usuarios
                 throw TratarErro(ex);
             }
         }
+
+        [Authorize]
+        [Route("api/Usuario/Completo/{aIdUsuario}")]
+        [HttpGet]
+        public UsuarioCompletoResponse Completo(int aIdUsuario)
+        {
+            try
+            {
+                return new UsuarioBusiness().BuscarCompleto(aIdUsuario);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        } 
+
+        #endregion
     }
 }
