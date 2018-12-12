@@ -59,14 +59,6 @@
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
 
-    <style>
-        #nenhumaDoacao p {
-            color: #500B89 !important;
-            font-size: 20px;
-            text-align: center;
-        }
-    </style>
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -75,7 +67,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="meusDadosController as ctrl">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="meusDadosController as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -218,11 +210,11 @@
                             </a>
                         </li>
                         <!--<li style="position: absolute; bottom: 15px;">
-                            <a href="contribuir.html" aria-expanded="false">
-                                <img src="../icons/donate_money.png" width="30px">
-                                <span class="hide-menu">Quero contribuir</span>
-                            </a>
-                        </li>-->
+                        <a href="contribuir.html" aria-expanded="false">
+                            <img src="../icons/donate_money.png" width="30px">
+                            <span class="hide-menu">Quero contribuir</span>
+                        </a>
+                    </li>-->
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -241,130 +233,95 @@
             <!-- End Bread crumb -->
             <!-- Container fluid  -->
             <div class="container-fluid">
-                <!-- Start Page Content -->
-                <div>
-                    <div class="row">
-                        <div>
-                            <p>Saver, aqui estão todos os seus dados pessoais</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <h4 class="text-primary">Dados básicos</h4>
-                    </div>
+                <div ng-show="ctrl.Loading" class="col-12" style="text-align: center">
+                    <img style="width:60px;" src="../images/loading.gif" />
+                </div>
+                <!-- Inputs edição -->
+                <div ng-hide="ctrl.Loading">
+                    <!--<div class="row">
+                    <h4 class="text-primary">Dados básicos</h4>
+                </div>-->
                     <div class="row" style="margin-top:20px;"></div>
                     <div class="row">
                         <div class="col-md-12" id="formFiltro">
                             <form>
                                 <div class="row">
-                                    <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroNomeMeusDados}">
+                                    <div class="form-group col-md-6" ng-class="{'has-error':ctrl.ErroNomeMeusDados}">
                                         <label class="color-primary">Nome</label>
-                                        <input type="text" value="{{ctrl.MeusDados.Nome}}" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.NomeMeusDados">
+                                        <input type="text" class="form-control" autocomplete="off" ng-model="ctrl.Nome">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroNomeMeusDados">Nome inválido</small>
                                     </div>
-                                    <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroSobrenomeMeusDados}">
+                                    <div class="form-group col-md-6" ng-class="{'has-error':ctrl.ErroSobrenomeMeusDados}">
                                         <label class="color-primary">Sobrenome</label>
-                                        <input type="text" value="{{ctrl.MeusDados.Sobrenome}}" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.SobrenomeMeusDados">
+                                        <input type="text" class="form-control" autocomplete="off" ng-model="ctrl.Sobrenome">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroSobrenomeMeusDados">Sobrenome inválido</small>
-                                    </div>
-                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroDthNascimentoMeusDados}">
-                                        <label class="color-primary">Nascimento</label>
-                                        <input type="text" value="{{ctrl.MeusDados.Nascimento}}" class="form-control" style="border-radius: 8px"
-                                               onfocus="(this.type='date')" onblur="(this.type='text')"
-                                               autocomplete="off" ng-model="ctrl.DthNascimentoMeusDados">
-                                        <small class="form-control-feedback" ng-show="ctrl.ErroDthNascimentoMeusDados">Data de nascimento inválida</small>
-                                    </div>
-                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroSexoMeusDados}">
-                                        <label class="color-primary">Sexo</label>
-                                        <select class="form-control custom-select" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.SexoMeusDados">
-                                            <option>Masculino</option>
-                                            <option>Feminino</option>
-                                        </select>
-                                        <small class="form-control-feedback" ng-show="ctrl.ErroSexoMeusDados">Sexo inválido</small>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroDocumentoMeusDados}">
-                                        <label class="color-primary">Documento</label>
-                                        <select class="form-control custom-select" style="border-radius: 8px" ng-model="ctrl.DocumentoMeusDados" disabled>
-                                            <option>CPF</option>
-                                            <option>CNPJ</option>
+                                    <div class="form-group col-md-2">
+                                        <label class="color-primary">Sexo</label>
+                                        <select class="form-control custom-select" autocomplete="off" ng-model="ctrl.Sexo">
+                                            <option value="">Selecione</option>
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Feminino</option>
                                         </select>
-                                        <small class="form-control-feedback" ng-show="ctrl.ErroDocumentoMeusDados">Data de nascimento inválida</small>
                                     </div>
                                     <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroCpfCnpjMeusDados}">
                                         <label class="color-primary">CPF/CNPJ</label>
-                                        <input type="text" class="form-control" style="border-radius: 8px" ng-model="ctrl.CpfCnpjMeusDados" disabled>
-                                        <small class="form-control-feedback" ng-show="ctrl.ErroCpfCnpjMeusDados">Data de nascimento inválida</small>
+                                        <input type="text" class="form-control" ng-model="ctrl.CpfCnpj" ng-change="ctrl.SomenteNumero()" maxlength="14">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroCpfCnpjMeusDados">Documento inválido</small>
                                     </div>
-                                    <div class="form-group col-md-4" ng-class="{'has-error':ctrl.ErroEmailMeusDados}">
+                                    <div class="form-group col-md-2">
+                                        <label class="color-primary">Nascimento</label>
+                                        <input type="date" class="form-control" autocomplete="off" ng-model="ctrl.DthNascimento" disabled>
+                                    </div>
+                                    <div class="form-group col-md-2">
                                         <label class="color-primary">E-mail</label>
-                                        <input type="text" value="{{ctrl.MeusDados.Email}}" autocomplete="off" class="form-control" style="border-radius: 8px" ng-model="ctrl.EmailMeusDados">
-                                        <small class="form-control-feedback" ng-show="ctrl.ErroEmailMeusDados">E-mail inválido</small>
+                                        <input type="text" autocomplete="off" class="form-control" ng-model="ctrl.Email" disabled>
                                     </div>
                                     <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroSenhaMeusDados}">
                                         <label class="color-primary">Senha</label>
-                                        <input type="password" value="{{ctrl.MeusDados.Senha}}" class="form-control" autocomplete="off" style="border-radius: 8px" ng-model="ctrl.SenhaMeusDados">
-                                        <small class="form-control-feedback" ng-show="ctrl.ErroSenhaMeusDadosPequena">A senha deve ter no mínimo 8 caracteres</small>
+                                        <input type="password" class="form-control" autocomplete="off" ng-model="ctrl.Senha">
+                                        <small class="form-control-feedback" ng-show="ctrl.ErroSenhaMeusDadosPequena">A senha deve ter no mínimo 6 caracteres</small>
                                     </div>
                                     <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroConfirmacaoSenhaMeusDados}">
                                         <label class="color-primary">Confirmar senha</label>
-                                        <input type="password" value="{{ctrl.MeusDados.Senha}}" class="form-control" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.ConfirmacaoSenhaMeusDados">
+                                        <input type="password" class="form-control" autocomplete="off" ng-model="ctrl.ConfirmacaoSenha">
                                         <small class="form-control-feedback" ng-show="ctrl.ErroConfirmacaoSenhaMeusDados">A senha não é igual à do campo anterior</small>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-
-                    <div class="row" style="margin-top:20px;"></div>
-                    <div class="row">
-                        <h4 class="text-primary">Dados adicionais</h4>
-                    </div>
-                    <div class="row" style="margin-top:10px;"></div>
-                    <div class="row">
-                        <div class="col-md-12" id="formFiltro">
-                            <form>
-                                <div class="row">
-                                    <div class="form-group col-md-2" ng-class="{'has-error':ctrl.ErroCepMeusDados}">
-                                        <label class="color-primary">CEP</label>
-                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Cep}}" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.CepMeusDados">
-                                        <small class="form-control-feedback" ng-show="ctrl.ErroCepMeusDados">CEP inválido</small>
-                                    </div>
-                                    <div class="form-group col-md-3" ng-class="{'has-error':ctrl.ErroLogradouroMeusDados}">
-                                        <label class="color-primary">Logradouro</label>
-                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Logradouro}}" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.LogradouroMeusDados">
-                                        <small class="form-control-feedback" ng-show="ctrl.ErroLogradouroMeusDados">Logradouro inválido</small>
-                                    </div>
-                                    <div class="form-group col-md-3" ng-class="{'has-error':ctrl.ErroBairroMeusDados}">
-                                        <label class="color-primary">Bairro</label>
-                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Bairro}}" style="border-radius: 8px" autocomplete="off" ng-model="ctrl.BairroMeusDados">
-                                        <small class="form-control-feedback" ng-show="ctrl.ErroBairroMeusDados">Bairro inválido</small>
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="color-primary">Número</label>
-                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Numero}}" style="border-radius: 8px" ng-model="ctrl.NumeroMeusDados">
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label class="color-primary">Complemento</label>
-                                        <input type="text" class="form-control" value="{{ctrl.MeusDados.Complemento}}" style="border-radius: 8px" ng-model="ctrl.ComplementoMeusDados">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
                     <div class="row" style="margin-top:20px;">
-                        <div class="col-12" style="text-align: center;">
-                            <button class="btn btn-primary" ng-click="ctrl.AtualizarMeusDados()" ng-show="!ctrl.Atualizar">Atualizar</button>
+                        <div class="col-12" style="text-align: center;" ng-hide="ctrl.Atualizando">
+                            <button class="btn btn-primary" ng-click="ctrl.AtualizarMeusDados()">Atualizar</button>
                         </div>
-                        <div class="col-12" style="text-align: center">
-                            <img style="width:40px;" src="images/loading.gif" ng-show="ctrl.Atualizando" />
+                        <div class="col-12" style="text-align: center" ng-show="ctrl.Atualizando">
+                            <img style="width:40px;" src="../images/loading.gif" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End PAge Content -->
+
+        <!-- Modal login sucesso -->
+        <div class="modal" id="modalAlteracaoCadastroSucesso" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="text-align:center">
+                        <img src="../icons/ok.png" style="width:150px">
+                        <br /><br />
+                        <span style="font-size: 24px">Cadastro editado com sucesso!</span>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- End Container fluid  -->
     <div ng-include="'fale_conosco.html'"></div>

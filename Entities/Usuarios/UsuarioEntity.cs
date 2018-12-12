@@ -23,6 +23,7 @@ namespace PetSaver.Entity.Usuarios
         public override string Sobrenome { get; set; }
         public override DateTime DataNascimento { get; set; }
         public override string Documento { get; set; }
+        public override string Sexo { get; set; }
 
         #endregion
 

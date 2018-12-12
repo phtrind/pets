@@ -27,6 +27,11 @@ namespace PetSaver.Entity.Usuarios
         /// </summary>
         public virtual string Documento { get; set; }
 
+        /// <summary>
+        /// Sexo da pessoa
+        /// </summary>
+        public virtual string Sexo { get; set; }
+
         #endregion
 
         #region .: Foreign Key :.

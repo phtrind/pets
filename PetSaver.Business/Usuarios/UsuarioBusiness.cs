@@ -43,6 +43,43 @@ namespace PetSaver.Business.Usuarios
             return idUsuario;
         }
 
+        public void Editar(CadastroEdicaoRequest aRequest)
+        {
+            if (aRequest.IdUsuario == default)
+            {
+                throw new BusinessException("O Id do usuário é inválido.");
+            }
+
+            if (aRequest.IdLogin == default)
+            {
+                throw new BusinessException("O Id do login é inválido.");
+            }
+
+            var usuarioEntity = Listar(aRequest.IdUsuario);
+
+            usuarioEntity.Nome = aRequest.Nome;
+            usuarioEntity.Sobrenome = aRequest.Sobrenome;
+            usuarioEntity.Sexo = aRequest.Sexo;
+            usuarioEntity.Documento = aRequest.Documento;
+            usuarioEntity.IdLoginAlteracao = aRequest.IdLogin;
+
+            var loginBusiness = new LoginBusiness();
+
+            var loginEntity = loginBusiness.Listar(usuarioEntity.IdLogin);
+
+            loginEntity.Senha = aRequest.Senha;
+            loginEntity.IdLoginAlteracao = aRequest.IdLogin;
+
+            using (var transaction = new TransactionScope())
+            {
+                Atualizar(usuarioEntity);
+
+                loginBusiness.Atualizar(loginEntity);
+
+                transaction.Complete();
+            }
+        }
+
         #endregion
 
         #region .: Buscas :.

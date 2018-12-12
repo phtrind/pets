@@ -17,6 +17,7 @@ namespace PetSaver.Repository
             Map(x => x.Sobrenome).ToColumn("USU_SOBRENOME");
             Map(x => x.DataNascimento).ToColumn("USU_DTHNASCIMENTO");
             Map(x => x.Documento).ToColumn("USU_DOCUMENTO"); 
+            Map(x => x.Sexo).ToColumn("USU_SEXO"); 
 
             #endregion
 

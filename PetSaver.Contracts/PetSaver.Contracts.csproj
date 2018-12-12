@@ -87,6 +87,7 @@
     <Compile Include="Pets\Response\FiltrosPorAnimalResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\Request\CadastroBasicoRequest.cs" />
+    <Compile Include="Usuario\Request\CadastroEdicaoRequest.cs" />
     <Compile Include="Usuario\Response\UsuarioCompletoResponse.cs" />
     <Compile Include="Usuario\UsuarioSessionContract.cs" />
   </ItemGroup>

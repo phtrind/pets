@@ -31,6 +31,11 @@ namespace PetSaver.Repository.Usuarios
                 throw new DbValidationException("Não é possível cadastrar um objeto que já tenha um Login de Alteração definido.");
             }
 
+            if (BuscarPorEmail(aObjeto.Email) != null)
+            {
+                throw new BusinessException("O e-mail do Login já está cadastrado no sistema.");
+            }
+
             ValidarAtributos(aObjeto);
         }
 
@@ -82,11 +87,6 @@ namespace PetSaver.Repository.Usuarios
             if (aObjeto.IdTipo == default || !Enum.IsDefined(typeof(TiposLogin), aObjeto.IdTipo))
             {
                 throw new DbValidationException("Id do tipo de login inválido.");
-            }
-
-            if (BuscarPorEmail(aObjeto.Email) != null)
-            {
-                throw new BusinessException("O e-mail do Login já está cadastrado no sistema.");
             }
         }
 

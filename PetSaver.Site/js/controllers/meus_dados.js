@@ -1,18 +1,83 @@
-﻿app.controller('meusDadosController', function ($controller) {
+﻿app.controller('meusDadosController', function ($controller, $http) {
 
     var ctrl = this;
 
     ctrl.base = $controller('baseController', {});
-    
+
+    ctrl.OnInit = function () {
+
+        ctrl.Loading = true;
+
+        $http({
+            method: 'GET',
+            url: ctrl.base.servicePath + 'Usuario/Completo/' + sessionStorage.getItem('IdUsuario'),
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            ctrl.Nome = response.Nome;
+            ctrl.Sobrenome = response.Sobrenome;
+            ctrl.DthNascimento = new Date(response.Nascimento);
+            ctrl.Sexo = response.Sexo;
+            ctrl.CpfCnpj = response.Documento;
+            ctrl.Email = response.Email;
+            ctrl.Senha = response.Senha;
+            ctrl.ConfirmacaoSenha = response.Senha;
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        }).finally(function () {
+            ctrl.Loading = false;
+        });
+
+    }
+
     ctrl.AtualizarMeusDados = function () {
 
-        //TODO: Implementar loading
+        if (ctrl.ValidarDados() != 0) {
+            return;
+        }
+
         ctrl.Atualizando = true;
+
+        var request = {
+            IdLogin: sessionStorage.getItem('IdLogin'),
+            IdUsuario: sessionStorage.getItem('IdUsuario'),
+            Nome: ctrl.Nome,
+            Sobrenome: ctrl.Sobrenome,
+            Sexo: ctrl.Sexo,
+            Documento: ctrl.CpfCnpj,
+            Senha: ctrl.Senha
+        };
+
+        $http({
+            method: 'POST',
+            url: ctrl.base.servicePath + 'Usuario/AlterarDados',
+            data: request,
+            headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
+        }).success(function (response) {
+
+            $('#modalAlteracaoCadastroSucesso').modal('show');
+
+        }).error(function (err, status) {
+
+            //TODO: Implementar tratamento de erro na base
+
+        }).finally(function () {
+
+            ctrl.Atualizando = false;
+
+        });
+
+    }
+
+    ctrl.ValidarDados = function () {
 
         var contErro = 0;
 
         //Nome
-        if (ctrl.base.StringIsEmpty(ctrl.NomeMeusDados)) {
+        if (ctrl.base.StringIsEmpty(ctrl.Nome)) {
             ctrl.ErroNomeMeusDados = true;
             contErro++;
         }
@@ -21,7 +86,7 @@
         }
 
         //Sobrenome
-        if (ctrl.base.StringIsEmpty(ctrl.SobrenomeMeusDados)) {
+        if (ctrl.base.StringIsEmpty(ctrl.Sobrenome)) {
             ctrl.ErroSobrenomeMeusDados = true;
             contErro++;
         }
@@ -29,35 +94,8 @@
             ctrl.ErroSobrenomeMeusDados = false;
         }
 
-        //Data nascimento
-        if (ctrl.base.StringIsEmpty(ctrl.DthNascimentoMeusDados)) {
-            ctrl.ErroDthNascimentoMeusDados = true;
-            contErro++;
-        }
-        else {
-            ctrl.ErroDthNascimentoMeusDados = false;
-        }
-
-        //Sexo
-        if (ctrl.base.StringIsEmpty(ctrl.SexoMeusDados)) {
-            ctrl.ErroSexoMeusDados = true;
-            contErro++;
-        }
-        else {
-            ctrl.ErroSexoMeusDados = false;
-        }
-
-        //Documento
-        if (ctrl.base.StringIsEmpty(ctrl.DocumentoMeusDados)) {
-            ctrl.ErroDocumentoMeusDados = true;
-            contErro++;
-        }
-        else {
-            ctrl.ErroDocumentoMeusDados = false;
-        }
-
         //CPF/CNPJ
-        if (ctrl.base.StringIsEmpty(ctrl.CpfCnpjMeusDados)) {
+        if (ctrl.CpfCnpj != undefined && ctrl.CpfCnpj.length != 11 && ctrl.CpfCnpj.length != 14) {
             ctrl.ErroCpfCnpjMeusDados = true;
             contErro++;
         }
@@ -65,34 +103,19 @@
             ctrl.ErroCpfCnpjMeusDados = false;
         }
 
-        //Email
-        if (ctrl.base.EmailIsValid(ctrl.EmailMeusDados)) {
-            ctrl.ErroEmailMeusDados = false;
-        }
-        else {
-            ctrl.ErroEmailMeusDados = true;
-            contErro++;
-        }
-
         //Senha
-        if (ctrl.base.StringIsEmpty(ctrl.SenhaMeusDados)) {
-            ctrl.ErroSenhaMeusDados = true;
-            ctrl.ErroSenhaMeusDadosVazia = true;
-            contErro++;
-        }
-        else if (ctrl.SenhaMeusDados.length < 8) {
+        if (ctrl.base.StringIsEmpty(ctrl.Senha) || ctrl.Senha.length < 6) {
             ctrl.ErroSenhaMeusDados = true;
             ctrl.ErroSenhaMeusDadosPequena = true;
             contErro++;
         }
         else {
             ctrl.ErroSenhaMeusDados = false;
-            ctrl.ErroSenhaMeusDadosVazia = false;
             ctrl.ErroSenhaMeusDadosPequena = false;
         }
 
         //Confirmação senha
-        if (ctrl.SenhaMeusDados != ctrl.ConfirmacaoSenhaMeusDados) {
+        if (ctrl.Senha != ctrl.ConfirmacaoSenha) {
             ctrl.ErroConfirmacaoSenhaMeusDados = true;
             contErro++;
         }
@@ -100,93 +123,13 @@
             ctrl.ErroConfirmacaoSenhaMeusDados = false;
         }
 
-        if (!ctrl.base.StringIsEmpty(ctrl.CepMeusDados) ||
-            !ctrl.base.StringIsEmpty(ctrl.BairroMeusDados) ||
-            !ctrl.base.StringIsEmpty(ctrl.NumeroMeusDados) ||
-            !ctrl.base.StringIsEmpty(ctrl.ComplementoMeusDados) ||
-            !ctrl.base.StringIsEmpty(ctrl.LogradouroMeusDados))
-        {
-            //Cep
-            if (ctrl.base.StringIsEmpty(ctrl.CepMeusDados)) {
-                ctrl.ErroCepMeusDados = true;
-                contErro++;
-            }
-            else {
-                ctrl.ErroCepMeusDados = false;
-            }
-            //Logradouro
-            if (ctrl.base.StringIsEmpty(ctrl.LogradouroMeusDados)) {
-                ctrl.ErroLogradouroMeusDados = true;
-                contErro++;
-            }
-            else {
-                ctrl.ErroLogradouroMeusDados = false;
-            }
-            //Bairro
-            if (ctrl.base.StringIsEmpty(ctrl.BairroMeusDados)) {
-                ctrl.ErroBairroMeusDados = true;
-                contErro++;
-            }
-            else {
-                ctrl.ErroBairroMeusDados = false;
-            }
-        }
+        return contErro;
+    }
 
-        //TODO: CONTINUAR VALIDAÇÃO DE ADOS DO ENDEREÇO E NA TELA TAMBEM
+    ctrl.SomenteNumero = function () {
 
-        if (contErro == 0) {
+        ctrl.CpfCnpj = ctrl.CpfCnpj.replace(/\D/g, '');
 
-        //    var request = {
-        //        Nome: ctrl.NomeMeusDados,
-        //        Sobrenome: ctrl.SobrenomeMeusDados,
-        //        DataNascimento: ctrl.DthNascimentoMeusDados,
-        //        Sexo: ctrl.Sexo,
-        //        Email: ctrl.EmailMeusDados,
-        //        Senha: ctrl.SenhaMeusDados
-        //    };
+    }
 
-        //    $http({
-        //        method: 'POST',
-        //        url: base.servicePath + 'Usuario/AlterarDados',
-        //        data: request
-        //    }).success(function (response) {
-
-        //        $http({
-        //            method: 'POST',
-        //            url: ctrl.base.servicePath + 'token',
-        //            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        //            data: "grant_type=password&username=" + request.Email + "&password=" + request.Senha
-        //        }).success(function (response) {
-
-        //            sessionStorage.setItem("Token", response.access_token);
-        //            sessionStorage.setItem("DataHoraAutenticacao", new Date().toLocaleString());
-        //            sessionStorage.setItem("TokenExpiresIn", response.expires_in);
-
-        //            ctrl.base.BuscarInformacoesSession(ctrl.base.EmailLogin);
-
-        //        }).error(function (err, status) {
-
-        //            sessionStorage.clear();
-
-        //            //TODO: Implementar tratamento de erro na base
-
-        //        });
-
-        //    }).error(function (err, status) {
-
-        //        //TODO: Implementar tratamento de erro na base
-
-        //    }).finally(function () {
-
-        //        ctrl.Atualizando = false;
-
-        //    });
-
-        }
-        else {
-                ctrl.Atualizando = false;
-            }
-
-        }
-
-    });
+});

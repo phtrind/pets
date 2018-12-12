@@ -27,6 +27,23 @@ namespace PetSaver.WebApi.Controllers.Usuarios
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [Authorize]
+        [Route("api/Usuario/AlterarDados")]
+        [HttpPost]
+        public HttpResponseMessage AlterarDados([FromBody]CadastroEdicaoRequest aRequest)
+        {
+            try
+            {
+                new UsuarioBusiness().Editar(aRequest);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
         #endregion
 
         #region .: Buscas :.
