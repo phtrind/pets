@@ -114,6 +114,7 @@ $(window).on('mousewheel', function (e) {
         div3y = $('#porque').offset().top,
         div4y = $('#pets').offset().top,
         div5y = $('#buscar').offset().top,
+        div6y = $('#rodape').offset().top,
         // get window's current scroll position:
         lastScrollTop = $(this).scrollTop(),
         // for getting user's scroll direction:
@@ -149,7 +150,7 @@ $(window).on('mousewheel', function (e) {
         targetDown = $('#buscar');
     } else if (lastScrollTop === div5y) {
         targetUp = $('#pets');
-        targetDown = $('#buscar');
+        targetDown = $('#rodape');
     } else if (lastScrollTop < div2y) {
         targetUp = $('#header');
         targetDown = $('#servicos');
@@ -164,7 +165,7 @@ $(window).on('mousewheel', function (e) {
         targetDown = $('#buscar');
     } else if (lastScrollTop > div5y) {
         targetUp = $('#buscar');
-        targetDown = $('#buscar');
+        targetDown = $('#rodape');
     } // end else if
 
     // condition: determine which of targetUp or targetDown to scroll to, based on scrollDirection:
