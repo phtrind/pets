@@ -8,6 +8,13 @@
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
 
+<script>
+    document.addEventListener('keypress', function (e) {
+        if (e.which == 13) {
+            if (e.which == 13) $('#entrar').click();
+        }
+    }, false);
+</script>
 
 <div id="main-wrapper">
     <div class="unix-login">
@@ -34,7 +41,7 @@
                                                    style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.SenhaLogin">
                                             <small class="form-control-feedback" ng-show="ctrl.base.ErroSenhaLogin">Senha inválida</small>
                                         </div>
-                                        <button type="button" class="btn btn-primary btn-flat m-b-20 m-t-10"
+                                        <button type="button" id="entrar" class="btn btn-primary btn-flat m-b-20 m-t-10"
                                                 style="background-color: #500b89" ng-click="ctrl.base.FazerLogin()" ng-hide="ctrl.base.Logando">
                                             Entrar
                                         </button>
