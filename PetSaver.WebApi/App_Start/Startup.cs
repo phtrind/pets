@@ -21,7 +21,7 @@ namespace PetSaver.WebApi
 
             config.UseBugsnag(Bugsnag.ConfigurationSection.Configuration.Settings);
 
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
+            //config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             config.MapHttpAttributeRoutes();
 
