@@ -39,6 +39,36 @@ namespace PetSaver.Repository.Usuarios
             ValidarAtributos(aObjeto);
         }
 
+        protected override void ValidarAtualizacao(LoginEntity aObjeto)
+        {
+            ValidarAtributos(aObjeto);
+
+            if (aObjeto.Id == default)
+            {
+                throw new DbValidationException("Não é possível editar um objeto que não tenha um Id definido");
+            }
+
+            if (aObjeto.DataCadastro == default)
+            {
+                throw new DbValidationException("Data de cadastro inválida.");
+            }
+
+            if (aObjeto.IdLoginCadastro != Listar(aObjeto.Id).IdLoginCadastro)
+            {
+                throw new DbValidationException("Não é possível editar o usuário responsável pelo cadastro.");
+            }
+
+            if (!aObjeto.DataAlteracao.HasValue)
+            {
+                throw new DbValidationException("Data de alteração inválida.");
+            }
+
+            if (!aObjeto.IdLoginAlteracao.HasValue || !LoginExiste(aObjeto.IdLoginAlteracao.Value))
+            {
+                throw new DbValidationException("O Id do usuário responsável pela edição é inválido.");
+            }
+        }
+
         #region .: Buscas :.
 
         /// <summary>
