@@ -76,8 +76,8 @@ namespace PetSaver.Business.Properties {
         ///  &lt;!--Fireworks CS6 Dreamweaver CS6 target.  Created Mon Dec 10 23:08:50 GMT-0200 2018--&gt;
         ///&lt;/head&gt;
         ///
-        ///&lt;body&gt;
-        ///  &lt;table style=&apos;display: inline-table;&apos; bgcolor=&apos;#c6acce&apos; border=&apos;0&apos; cellpadding=&apos;0&apos; cell [rest of string was truncated]&quot;;.
+        ///&lt;body style=&quot;text-align: center&quot;&gt;
+        ///  &lt;table style=&apos;display: inline-table;&apos; bgcolor=&apos;#c6acce&apos; bord [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string EmailAnuncioAprovado {
             get {
@@ -95,9 +95,8 @@ namespace PetSaver.Business.Properties {
         ///&lt;style type=&apos;text/css&apos;&gt;td img {display: block;}&lt;/style&gt;
         ///&lt;!--Fireworks CS6 Dreamweaver CS6 target.  Created Mon Dec 10 23:42:14 GMT-0200 2018--&gt;
         ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///&lt;table style=&apos;display: inline-table;&apos; bgcolor=&apos;#c6acce&apos; border=&apos;0&apos; cellpadding=&apos;0&apos; cellspacing=&apos;0&apos; width=&apos;600&apos;&gt;
-        ///&lt;!-- fwtable fwsrc=&apos; [rest of string was truncated]&quot;;.
+        ///&lt;body style=&quot;text-align: center&quot;&gt;
+        ///&lt;table style=&apos;display: inline-table;&apos; bgcolor=&apos;#c6acce&apos; border=&apos;0&apos; cellpadding=&apos;0&apos; cellspacing=&apos;0&apos; width=&apos; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string EmailCadastroUsuarioAprovado {
             get {
