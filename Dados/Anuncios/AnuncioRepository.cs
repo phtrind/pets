@@ -201,12 +201,12 @@ namespace PetSaver.Repository.Anuncios
 
                 if (Validador.FiltroIsValid(aFiltro.DataCadastroInicio))
                 {
-                    stringBuilder.Append($" AND ANU.ANU_DTHCADASTRO >= '{aFiltro.DataCadastroInicio.Value.Date}'");
+                    stringBuilder.Append($" AND FORMAT(ANU.ANU_DTHCADASTRO, 'yyyy-MM-dd HH:mm:ss.fff') >= '{aFiltro.DataCadastroInicio.Value.Date.ToString("yyyy-MM-dd HH:mm:ss.fff")}'");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.DataCadastroFim))
                 {
-                    stringBuilder.Append($" AND ANU.ANU_DTHCADASTRO <= '{aFiltro.DataCadastroFim.Value.Date.AddDays(1)}'");
+                    stringBuilder.Append($" AND FORMAT(ANU.ANU_DTHCADASTRO, 'yyyy-MM-dd HH:mm:ss.fff') <= '{aFiltro.DataCadastroFim.Value.Date.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss.fff")}'");
                 }
 
                 if (Validador.FiltroIsValid(aFiltro.Status))
