@@ -154,6 +154,8 @@ namespace PetSaver.Business.Anuncios
                 transaction.Complete();
             }
 
+            new EmailBusiness().AlteracaoStatusAnuncio(new LoginBusiness().Listar(usuario.IdLogin).Email);
+
         }
 
         public void AtivarAnuncio()

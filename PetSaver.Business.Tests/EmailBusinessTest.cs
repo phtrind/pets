@@ -9,14 +9,20 @@ namespace PetSaver.Business.Tests
         [TestMethod]
         public void AnuncioAprovado_ValidEmail_SendsEmail()
         {
-            new EmailBusiness().AnuncioAprovado(1, "phtrind@hotmail.com");
+            new EmailBusiness().AnuncioAprovado(1, "phtrind@hotmail.com"); //brunomarcos.s.lima@gmail.com
             //new EmailBusiness().AnuncioAprovado(1, "brunomarcos.s.lima@gmail.com");
         }
 
         [TestMethod]
         public void CadastroUsuarioAprovado_ValidEmail_SendsEmail()
         {
-            new EmailBusiness().CadastroUsuarioAprovado("brunomarcos.s.lima@hotmail.com");
+            new EmailBusiness().CadastroUsuarioAprovado("phtrind@hotmail.com");
+        }
+
+        [TestMethod]
+        public void AlteracaoStatusAnuncio_ValidEmail_SendsEmail()
+        {
+            new EmailBusiness().AlteracaoStatusAnuncio("phtrind@hotmail.com");
         }
     }
 }
