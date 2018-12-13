@@ -9,11 +9,17 @@
     }(document, 'script', 'facebook-jssdk'));</script>
 
 <script>
-    document.addEventListener('keypress', function (e) {
-        if (e.which == 13) {
-            if (e.which == 13) $('#entrar').click();
+    $("#emailLogin").keypress(function (event) {
+        if (event.which == 13) {
+            if (event.which == 13) $('#entrar').click();
         }
-    }, false);
+    });
+
+    $("#senhaLogin").keypress(function (event) {
+        if (event.which == 13) {
+            if (event.which == 13) $('#entrar').click();
+        }
+    });
 </script>
 
 <div id="main-wrapper">
@@ -33,12 +39,12 @@
                                     <form autocomplete="off">
                                         <div class="form-group" ng-class="{'has-error':ctrl.base.ErroEmailLogin}">
                                             <input type="email" class="form-control" placeholder="E-mail"
-                                                   style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.EmailLogin">
+                                                   style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.EmailLogin" id="emailLogin">
                                             <small class="form-control-feedback" ng-show="ctrl.base.ErroEmailLogin">E-mail inválido</small>
                                         </div>
                                         <div class="form-group" ng-class="{'has-error':ctrl.base.ErroSenhaLogin}">
                                             <input type="password" class="form-control" placeholder="Senha"
-                                                   style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.SenhaLogin">
+                                                   style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.SenhaLogin" id="senhaLogin">
                                             <small class="form-control-feedback" ng-show="ctrl.base.ErroSenhaLogin">Senha inválida</small>
                                         </div>
                                         <button type="button" id="entrar" class="btn btn-primary btn-flat m-b-20 m-t-10"
