@@ -1,4 +1,5 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html lang="pt">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +11,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/logos/favicon_pata.ico">
     <title>PetSaver</title>
     <link href="css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/helper.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/myStyle.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
           crossorigin="anonymous">
     <link href="css/myStyle.css" rel="stylesheet">
@@ -21,7 +24,7 @@
         }
     </style>
 </head>
-<body class="fix-header fix-sidebar" style="min-height: 100vh; display: flex; align-items: center">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="indexController as ctrl" style="min-height: 100vh; display: flex; align-items: center">
     <div id="main-wrapper">
         <div class="unix-login">
             <div class="container">
@@ -73,7 +76,7 @@
                         <p style="padding-left:10px; color:black;">
                             Resposta: A PetSaver é um projeto 100% mantido por seus idealizadores, sem nenhum tipo de apoio financeiro, aporte de capital ou ajuda institucional.
                         </p>
-                        <p>
+                        <!--<p>
                             <br />Pergunta: Que legal o trabalho da PetSaver! Posso ajudar o projeto com alguma doação e assim ajudar a manter o crescimento do projeto?
                         </p>
                         <p style="padding-left:10px; color:black;">
@@ -81,9 +84,9 @@
                         </p>
                         <p>
                             <br />Pergunta: Tenho um site e gostaria muito de ajudar a compartilhar o trabalho que realizam. O que posso fazer?
-                        </p>
+                        </p>-->
                         <p style="padding-left:10px; color:black;">
-                            Resposta: É muito legal saber que existem pessoas interessadas a ajudar nossa causa. Para mais informações, entre em contato com a gente: www.PetSaver.com.br/contato
+                            Resposta: É muito legal saber que existem pessoas interessadas a ajudar nossa causa. Para mais informações, clique no botão flutuante ao lado inferior direito da tela e nos envie uma mensagem.
                         </p>
                         <p>
                             <br />Pergunta: Posso usar os serviços da PetSaver em qualquer cidade?
@@ -95,7 +98,22 @@
                 </div>
             </div>
         </div>
+        <div ng-include="'fale_conosco.html'"></div>
     </div>
+
+    <script src="js/lib/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/controllers/app.js"></script>
+    <script src="js/controllers/base.js"></script>
+    <script src="js/controllers/index.js"></script>
 
 </body>
 </html>
