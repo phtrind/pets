@@ -16,7 +16,7 @@ namespace PetSaver.Business.Tests
         [TestMethod]
         public void CadastroUsuarioAprovado_ValidEmail_SendsEmail()
         {
-            new EmailBusiness().CadastroUsuarioAprovado("phtrind@hotmail.com");
+            new EmailBusiness().CadastroUsuarioAprovado("brunomarcos.s.lima@hotmail.com");
         }
     }
 }
