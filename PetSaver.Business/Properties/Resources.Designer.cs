@@ -147,6 +147,25 @@ namespace PetSaver.Business.Properties {
         ///&lt;!-- saved from url=(0014)about:internet --&gt;
         ///&lt;html xmlns=&apos;http://www.w3.org/1999/xhtml&apos;&gt;
         ///&lt;head&gt;
+        ///&lt;title&gt;interesse recebido.png&lt;/title&gt;
+        ///&lt;meta http-equiv=&apos;Content-Type&apos; content=&apos;text/html; charset=utf-8&apos; /&gt;
+        ///&lt;style type=&apos;text/css&apos;&gt;td img {display: block;}&lt;/style&gt;
+        ///&lt;!--Fireworks CS6 Dreamweaver CS6 target.  Created Tue Dec 11 00:06:08 GMT-0200 2018--&gt;
+        ///&lt;/head&gt;
+        ///&lt;body style=&apos;text-align: center&apos;&gt;
+        ///&lt;table style=&apos;display: inline-table;&apos; bgcolor=&apos;#c6acce&apos; border=&apos;0&apos; cellpadding=&apos;0&apos; cellspacing=&apos; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EmailInteresseRecebido {
+            get {
+                return ResourceManager.GetString("EmailInteresseRecebido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
+        ///&lt;!-- saved from url=(0014)about:internet --&gt;
+        ///&lt;html xmlns=&apos;http://www.w3.org/1999/xhtml&apos;&gt;
+        ///&lt;head&gt;
         ///&lt;title&gt;confirmar remocao de interesse.png&lt;/title&gt;
         ///&lt;meta http-equiv=&apos;Content-Type&apos; content=&apos;text/html; charset=utf-8&apos; /&gt;
         ///&lt;style type=&apos;text/css&apos;&gt;td img {display: block;}&lt;/style&gt;

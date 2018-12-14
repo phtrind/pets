@@ -52,5 +52,13 @@ namespace PetSaver.Business
 
             new Email().EnviarEmail("Olá Saver, seu interesse foi cancelado!", conteudo, aEmail, true);
         }
+
+        public void InteresseRecebido(string aEmail)
+        {
+            string conteudo = Resources.EmailInteresseRecebido
+                                            .Replace("__LinkPetSaver__", Constantes.LinkPetSaver);
+
+            new Email().EnviarEmail("Olá Saver, encontramos um interessado no seu anúncio!", conteudo, aEmail, true);
+        }
     }
 }

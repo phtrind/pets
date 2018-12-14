@@ -57,6 +57,10 @@ namespace PetSaver.Business.Anuncios
 
             new EmailBusiness().InteresseDemonstrado(new LoginBusiness().Listar(idLogin).Email);
 
+            var idLoginAnuncio = new AnuncioBusiness().Listar(aRequest.IdAnuncio).IdLoginCadastro;
+
+            new EmailBusiness().InteresseRecebido(new LoginBusiness().Listar(idLoginAnuncio).Email);
+
             return idInteresse;
         }
 
