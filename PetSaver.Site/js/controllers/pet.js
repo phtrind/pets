@@ -219,6 +219,8 @@
         }
         else {
 
+            ctrl.EnviandoPergunta = true;
+
             ctrl.ErroTxtPergunta = false;
 
             var request = {
@@ -243,6 +245,10 @@
 
                 //TODO: Implementar tratamento de erro na base
 
+            }).finally(function () {
+
+                ctrl.EnviandoPergunta = false;
+
             });
         }
     }
@@ -263,6 +269,8 @@
             ctrl.ErroTxtResposta = true;
         }
         else {
+
+            ctrl.EnviandoResposta = true;
 
             ctrl.ErroTxtResposta = false;
 
@@ -291,6 +299,10 @@
 
                 //TODO: Implementar tratamento de erro na base
 
+            }).finally(function () {
+
+                ctrl.EnviandoResposta = false;
+
             });
         }
     }
@@ -318,6 +330,8 @@
             IdUsuario: sessionStorage.getItem('IdUsuario')
         };
 
+        ctrl.DemonstrandoInteresse = true;
+
         $http({
             method: 'POST',
             url: ctrl.base.servicePath + 'Anuncio/CadastrarInteresse',
@@ -335,6 +349,10 @@
         }).error(function (err, status) {
 
             //TODO: Implementar tratamento de erro na base
+
+        }).finally(function () {
+
+            ctrl.DemonstrandoInteresse = false;
 
         });
 

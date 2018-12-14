@@ -372,9 +372,12 @@
                             Você tem certeza que deseja cancelar seu interesse?
                         </div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer" ng-hide="ctrl.CancelandoInteresse">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
                         <button type="button" class="btn btn-primary" ng-click="ctrl.CancelarInteresse()">Sim</button>
+                    </div>
+                    <div class="modal-footer" ng-show="ctrl.CancelandoInteresse">
+                        <img style="width:45px;" src="../images/loading.gif" />
                     </div>
                 </div>
             </div>

@@ -161,9 +161,12 @@
                                             <br><br>
                                             #SouPetSaver
                                         </div>
-                                        <div class="modal-footer">
+                                        <div class="modal-footer" ng-hide="ctrl.DemonstrandoInteresse">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                             <button type="button" class="btn btn-primary" ng-click="ctrl.BtnConfirmarInteresse()">Confirmar</button>
+                                        </div>
+                                        <div class="modal-footer" ng-show="ctrl.DemonstrandoInteresse">
+                                            <img style="width:45px;" src="images/loading.gif" />
                                         </div>
                                     </div>
                                 </div>
@@ -207,9 +210,12 @@
                                         <br>
                                         #SouPetSaver
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer" ng-hide="ctrl.EnviandoPergunta">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                         <button type="button" class="btn btn-primary" ng-click="ctrl.BtnConfirmarPergunta()">Perguntar</button>
+                                    </div>
+                                    <div class="modal-footer" ng-show="ctrl.EnviandoPergunta">
+                                        <img style="width:45px;" src="images/loading.gif" />
                                     </div>
                                 </div>
                             </div>
@@ -405,9 +411,12 @@
                     <br>
                     #SouPetSaver
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" ng-hide="ctrl.EnviandoResposta">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-primary" ng-click="ctrl.BtnConfirmarResposta()">Responder</button>
+                </div>
+                <div class="modal-footer" ng-show="ctrl.EnviandoResposta">
+                    <img style="width:45px;" src="images/loading.gif" />
                 </div>
             </div>
         </div>

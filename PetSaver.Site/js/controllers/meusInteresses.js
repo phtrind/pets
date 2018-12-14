@@ -101,13 +101,13 @@
 
     ctrl.CancelarInteresse = function () {
 
-        $('#modalConfirmarCancelamento').modal('hide');
-
         var request = {
             IdUsuario: sessionStorage.getItem('IdUsuario'),
             IdLogin: sessionStorage.getItem('IdLogin'),
             IdInteresse: ctrl.anuncioCancelamento
         };
+
+        ctrl.CancelandoInteresse = true;
 
         $http({
             method: 'POST',
@@ -116,6 +116,8 @@
             headers: { 'Authorization': 'Bearer ' + sessionStorage.getItem('Token') }
         }).success(function () {
 
+            $('#modalConfirmarCancelamento').modal('hide');
+
             $('#modalConfirmacaoCancelamento').modal('show');
 
             ctrl.FiltrarInteresses();
@@ -123,6 +125,10 @@
         }).error(function (err, status) {
 
             //TODO: Implementar tratamento de erro na base
+
+        }).finally(function () {
+
+            ctrl.CancelandoInteresse = false;
 
         });
     }
