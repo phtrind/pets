@@ -76,5 +76,13 @@ namespace PetSaver.Business
 
             new Email().EnviarEmail("Olá Saver, sua pergunta foi respondida!", conteudo, aEmail, true);
         }
+
+        public void ChatRespondido(string aEmail)
+        {
+            string conteudo = Resources.EmailChatRecebido
+                                            .Replace("__LinkPetSaver__", Constantes.LinkPetSaver);
+
+            new Email().EnviarEmail("Olá Saver, você recebeu um chat!", conteudo, aEmail, true);
+        }
     }
 }

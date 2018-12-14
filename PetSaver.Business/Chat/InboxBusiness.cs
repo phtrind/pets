@@ -1,4 +1,5 @@
 ﻿using PetSaver.Business.Anuncios;
+using PetSaver.Business.Usuarios;
 using PetSaver.Contracts.Chat;
 using PetSaver.Entity.Chat;
 using PetSaver.Exceptions;
@@ -48,6 +49,10 @@ namespace PetSaver.Business.Chat
             }
 
             Inserir(inboxEntity);
+
+            var idLogin = new UsuarioBusiness().Listar(inboxEntity.IdDestinatário).IdLogin;
+
+            new EmailBusiness().ChatRespondido(new LoginBusiness().Listar(idLogin).Email);
         }
 
         private void ValidarNovaMensagem(CadastroInboxRequest aRequest)
