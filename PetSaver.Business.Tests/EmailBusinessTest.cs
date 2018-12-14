@@ -24,5 +24,11 @@ namespace PetSaver.Business.Tests
         {
             new EmailBusiness().AlteracaoStatusAnuncio("phtrind@hotmail.com");
         }
+
+        [TestMethod]
+        public void InteresseDemonstrado_ValidEmail_SendsEmail()
+        {
+            new EmailBusiness().InteresseDemonstrado("phtrind@hotmail.com");
+        }
     }
 }
