@@ -48,5 +48,11 @@ namespace PetSaver.Business.Tests
         {
             new EmailBusiness().PerguntaRecebida("phtrind@hotmail.com");
         }
+
+        [TestMethod]
+        public void PerguntaRespondida_ValidEmail_SendsEmail()
+        {
+            new EmailBusiness().PerguntaRespondida("phtrind@hotmail.com", 35);
+        }
     }
 }

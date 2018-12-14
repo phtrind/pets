@@ -97,6 +97,8 @@ namespace PetSaver.Business.Anuncios
             duvidaEntity.DataAlteracao = DateTime.Now;
 
             Atualizar(duvidaEntity);
+
+            new EmailBusiness().PerguntaRespondida(new LoginBusiness().Listar(duvidaEntity.IdLoginCadastro).Email, duvidaEntity.IdAnuncio);
         }
     }
 }

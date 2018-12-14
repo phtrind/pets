@@ -366,4 +366,49 @@
 &lt;/body&gt;
 &lt;/html&gt;</value>
   </data>
+  <data name="EmailPerguntaRespondida" xml:space="preserve">
+    <value>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;!-- saved from url=(0014)about:internet --&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+
+&lt;head&gt;
+  &lt;title&gt;resposta recebida.png&lt;/title&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
+  &lt;style type="text/css"&gt;
+    td img {
+      display: block;
+    }
+  &lt;/style&gt;
+  &lt;!--Fireworks CS6 Dreamweaver CS6 target.  Created Tue Dec 11 00:13:02 GMT-0200 2018--&gt;
+&lt;/head&gt;
+
+&lt;body style="text-align: center"&gt;
+  &lt;table style="display: inline-table;" bgcolor="#c6acce" border="0" cellpadding="0" cellspacing="0" width="600"&gt;
+    &lt;!-- fwtable fwsrc="resposta recebida.fw.png" fwpage="Página 1" fwbase="resposta recebida.png" fwstyle="Dreamweaver" fwdocid = "1615885160" fwnested="0" --&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;img src="spacer.gif" width="600" height="1" alt="" /&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src="spacer.gif" width="1" height="1" alt="" /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href='__LinkAnuncio__' target='_blank'&gt;&lt;img name="respostarecebida_r1_c1" src="http://i65.tinypic.com/2a9y3v6.jpg"
+            width="600" height="191" id="respostarecebida_r1_c1" alt="" /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src="spacer.gif" width="1" height="191" alt="" /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href='__LinkAnuncio__' target='_blank'&gt;&lt;img name="respostarecebida_r2_c1" src="http://i66.tinypic.com/2qcjeid.png"
+            width="600" height="728" id="respostarecebida_r2_c1" alt="" /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src="spacer.gif" width="1" height="728" alt="" /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href="__LinkAnuncio__" target="_blank"&gt;&lt;img name="respostarecebida_r3_c1" src="http://i65.tinypic.com/fw812b.png"
+            width="600" height="191" id="respostarecebida_r3_c1" alt="" /&gt;&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;img src="spacer.gif" width="1" height="191" alt="" /&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</value>
+  </data>
 </root>

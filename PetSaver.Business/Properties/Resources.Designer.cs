@@ -198,5 +198,28 @@ namespace PetSaver.Business.Properties {
                 return ResourceManager.GetString("EmailPerguntaRecebida", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+        ///&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+        ///&lt;!-- saved from url=(0014)about:internet --&gt;
+        ///&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///
+        ///&lt;head&gt;
+        ///  &lt;title&gt;resposta recebida.png&lt;/title&gt;
+        ///  &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+        ///  &lt;style type=&quot;text/css&quot;&gt;
+        ///    td img {
+        ///      display: block;
+        ///    }
+        ///  &lt;/style&gt;
+        ///  &lt;!--Fireworks CS6 Dreamweaver CS6 target.  Created Tue Dec 11 00:13:02 GMT-0200 2018--&gt;
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string EmailPerguntaRespondida {
+            get {
+                return ResourceManager.GetString("EmailPerguntaRespondida", resourceCulture);
+            }
+        }
     }
 }
