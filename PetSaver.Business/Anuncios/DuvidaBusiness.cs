@@ -41,13 +41,19 @@ namespace PetSaver.Business.Anuncios
                 throw new BusinessException("O usuário informado é inválido.");
             }
 
-            return Inserir(new DuvidaEntity()
+            var idDuvida = Inserir(new DuvidaEntity()
             {
                 IdLoginCadastro = usuario.IdLogin,
                 IdUsuario = aRequest.IdUsuario,
                 IdAnuncio = aRequest.IdAnuncio,
                 Pergunta = aRequest.Pergunta
             });
+
+            var idLogin = new AnuncioBusiness().Listar(aRequest.IdAnuncio).IdLoginCadastro;
+
+            new EmailBusiness().PerguntaRecebida(new LoginBusiness().Listar(idLogin).Email);
+
+            return idDuvida;
         }
 
         public void CadastrarResposta(CadastrarRespostaRequest aRequest)
