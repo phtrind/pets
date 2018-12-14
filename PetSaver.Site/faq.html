@@ -54,7 +54,7 @@
         }
     </style>
 </head>
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="indexController as ctrl" style="min-height: 100vh; display: flex; align-items: center">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="indexController as ctrl" ng-init="ctrl.OnInit()" style="min-height: 100vh; display: flex; align-items: center">
     <div id="main-wrapper">
         <div class="unix-login">
             <div class="container">
@@ -107,14 +107,14 @@
                             Resposta: A PetSaver é um projeto 100% mantido por seus idealizadores, sem nenhum tipo de apoio financeiro, aporte de capital ou ajuda institucional.
                         </p>
                         <!--<p>
-                            <br />Pergunta: Que legal o trabalho da PetSaver! Posso ajudar o projeto com alguma doação e assim ajudar a manter o crescimento do projeto?
-                        </p>
-                        <p style="padding-left:10px; color:black;">
-                            Resposta: É muito importante para a PetSaver saber que outras pessoas querem ajudar a manter nosso projeto. É muito fácil doar qualquer valor para a PetSaver, clique aqui: www.PetSaver.com.br/quero-ajudar
-                        </p>
-                        <p>
-                            <br />Pergunta: Tenho um site e gostaria muito de ajudar a compartilhar o trabalho que realizam. O que posso fazer?
-                        </p>-->
+                        <br />Pergunta: Que legal o trabalho da PetSaver! Posso ajudar o projeto com alguma doação e assim ajudar a manter o crescimento do projeto?
+                    </p>
+                    <p style="padding-left:10px; color:black;">
+                        Resposta: É muito importante para a PetSaver saber que outras pessoas querem ajudar a manter nosso projeto. É muito fácil doar qualquer valor para a PetSaver, clique aqui: www.PetSaver.com.br/quero-ajudar
+                    </p>
+                    <p>
+                        <br />Pergunta: Tenho um site e gostaria muito de ajudar a compartilhar o trabalho que realizam. O que posso fazer?
+                    </p>-->
                         <p style="padding-left:10px; color:black;">
                             Resposta: É muito legal saber que existem pessoas interessadas a ajudar nossa causa. Para mais informações, clique no botão flutuante ao lado inferior direito da tela e nos envie uma mensagem.
                         </p>
@@ -128,7 +128,54 @@
                 </div>
             </div>
         </div>
-        <div ng-include="'fale_conosco.html'"></div>
+        <button id="buttonFaleConosco" class="btn btn-secondary" ng-click="ctrl.base.BtnFaleConoscoClick()">
+            <img data-toggle="tooltip" title="Enviar uma mensagem para PetSaver" src="icons/talkwithus.png" width="30px">
+        </button>
+
+        <!-- Modal mensagem fale conosco -->
+        <div class="modal fade" id="modalFaleConosco" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p class="color-primary">Olá Saver,</p>
+                        <p class="color-primary">Sua opinião é muito importante pra gente.</p>
+                        <p class="color-primary">Fique a vontade para nos enviar sua dúvida ou sugestão.</p>
+                        <p class="color-primary">Vamos te responder o mais rápido possível.</p>
+                        <div class="form-group" ng-class="{'has-error':ctrl.base.ErroEmailFaleConsco}" ng-hide="ctrl.base.IsLogged()">
+                            <input type="email" class="form-control" placeholder="E-mail"
+                                   style="border-radius: 8px" autocomplete="off" ng-model="ctrl.base.EmailFaleConosco">
+                            <small class="form-control-feedback" ng-show="ctrl.base.ErroEmailFaleConsco">E-mail inválido</small>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error':ctrl.base.ErroMensagemFaleConsco}">
+                            <textarea class="form-control" style="height: 150px; border-radius: 5px;" ng-model="ctrl.base.MensagemFaleConosco" placeholder="Escreva sua mensagem aqui..."></textarea>
+                            <small class="form-control-feedback" ng-show="ctrl.base.ErroMensagemFaleConsco">Mensagem inválida</small>
+                        </div>
+                        <br>
+                        <span class="color-primary">#SouPetSaver</span>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.base.EnviarMensagemFaleConosco()" ng-disabled="ctrl.base.EnviandoFaleConosco">Enviar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal mensagem fale conosco sucesso -->
+        <div class="modal fade" id="modalFaleConoscoSucesso" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body" style="text-align:center">
+                        <img src="icons/ok.png" style="width:150px">
+                        <br /><br />
+                        <span style="font-size: 24px">Sua mensagem foi enviada com sucesso!</span>
+                    </div>
+                    <div class="modal-footer" style="text-align: center">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="js/lib/jquery/jquery.min.js"></script>
