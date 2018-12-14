@@ -30,9 +30,11 @@ namespace PetSaver.Business.Anuncios
 
             int idInteresse;
 
+            int idLogin;
+
             using (var transaction = new TransactionScope())
             {
-                var idLogin = new UsuarioBusiness().Listar(aRequest.IdUsuario)?.IdLogin ?? default;
+                idLogin = new UsuarioBusiness().Listar(aRequest.IdUsuario)?.IdLogin ?? default;
 
                 idInteresse = Inserir(new InteresseEntity()
                 {
@@ -52,6 +54,8 @@ namespace PetSaver.Business.Anuncios
                 transaction.Complete();
 
             }
+
+            new EmailBusiness().InteresseDemonstrado(new LoginBusiness().Listar(idLogin).Email);
 
             return idInteresse;
         }

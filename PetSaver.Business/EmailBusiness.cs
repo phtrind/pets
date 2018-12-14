@@ -28,5 +28,21 @@ namespace PetSaver.Business
 
             new Email().EnviarEmail("Olá Saver, seja bem vindo!", conteudo, aEmail, true);
         }
+
+        public void AlteracaoStatusAnuncio(string aEmail)
+        {
+            string conteudo = Resources.EmailAlteracaoStatusAnuncio
+                                            .Replace("__LinkPetSaver__", Constantes.LinkPetSaver);
+
+            new Email().EnviarEmail("Olá Saver, status alterado com sucesso!", conteudo, aEmail, true);
+        }
+
+        public void InteresseDemonstrado(string aEmail)
+        {
+            string conteudo = Resources.EmailInteresseDemonstrado
+                                            .Replace("__LinkPetSaver__", Constantes.LinkPetSaver);
+
+            new Email().EnviarEmail("Olá Saver, recebemos o seu interesse!", conteudo, aEmail, true);
+        }
     }
 }
