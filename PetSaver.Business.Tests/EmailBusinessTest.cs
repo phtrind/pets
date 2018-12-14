@@ -30,5 +30,11 @@ namespace PetSaver.Business.Tests
         {
             new EmailBusiness().InteresseDemonstrado("phtrind@hotmail.com");
         }
+
+        [TestMethod]
+        public void InteresseRemovido_ValidEmail_SendsEmail()
+        {
+            new EmailBusiness().InteresseRemovido("phtrind@hotmail.com");
+        }
     }
 }

@@ -111,6 +111,8 @@ namespace PetSaver.Business.Anuncios
 
                 transaction.Complete();
             }
+
+            new EmailBusiness().InteresseRemovido(new LoginBusiness().Listar(aRequest.IdLogin).Email);
         }
 
         public void ConcretizarInteresse(ConcretizarInteresseRequest aRequest)
