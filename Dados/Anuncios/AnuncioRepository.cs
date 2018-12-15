@@ -262,5 +262,13 @@ namespace PetSaver.Repository.Anuncios
                 return db.QueryFirstOrDefault<int>(Resource.CountAnunciosPorStatus, new { @IdStatus = Conversor.EnumParaInt(aStatus) });
             }
         }
+
+        public IEnumerable<dynamic> RelatorioAnunciosPendentes()
+        {
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.Query(Resource.RelatorioAnunciosPendentes);   
+            }
+        }
     }
 }

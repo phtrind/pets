@@ -46,6 +46,7 @@
     <Compile Include="Anuncios\CadastroPetContract.cs" />
     <Compile Include="Anuncios\InteressadosContract.cs" />
     <Compile Include="Anuncios\RelatorioInteressesContract.cs" />
+    <Compile Include="Anuncios\Request\AtivarAnuncioRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarDuvidaRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarGosteiRequest.cs" />
     <Compile Include="Anuncios\Request\CadastrarInteresseRequest.cs" />
@@ -59,6 +60,8 @@
     <Compile Include="Anuncios\Request\RelatorioInteressesRequest.cs" />
     <Compile Include="Anuncios\Response\AnuncioMiniaturaResponse.cs" />
     <Compile Include="Anuncios\Request\FiltroAnuncioRequest.cs" />
+    <Compile Include="Anuncios\Response\AnunciosPendentesContract.cs" />
+    <Compile Include="Anuncios\Response\DetalharAnuncioAprovacaoContract.cs" />
     <Compile Include="Anuncios\Response\FiltroRelatorioAnunciosResponse.cs" />
     <Compile Include="Anuncios\RelatorioAnunciosContract.cs" />
     <Compile Include="Anuncios\Response\FiltroRelatorioInteressesResponse.cs" />

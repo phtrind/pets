@@ -211,6 +211,23 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
+        [Authorize]
+        [Route("api/Anuncio/AtivarAnuncio")]
+        [HttpPost]
+        public HttpResponseMessage AtivarAnuncio(AtivarAnuncioRequest aRequest)
+        {
+            try
+            {
+                new AnuncioBusiness().AtivarAnuncio(aRequest);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
         #endregion
 
         #region .: Busca :.
@@ -340,6 +357,21 @@ namespace PetSaver.WebApi.Controllers.Anuncios
             try
             {
                 return new InteresseBusiness().BuscarInteressados(aIdAnuncio);
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        [Authorize]
+        [Route("api/Anuncio/DetalharAnuncioAprovacao/{aIdAnuncio}")]
+        [HttpGet]
+        public DetalharAnuncioAprovacaoContract DetalharAnuncioAprovacao(int aIdAnuncio)
+        {
+            try
+            {
+                return new AnuncioBusiness().DetalharAnuncioAprovacao(aIdAnuncio);
             }
             catch (Exception ex)
             {

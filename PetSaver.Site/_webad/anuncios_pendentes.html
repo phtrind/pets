@@ -13,8 +13,8 @@
 
         gtag('config', 'UA-128203439-1',
             {
-                'page_title': 'DashboardFuncionario',
-                'page_path': '/_webad/dashboard'
+                'page_title': 'AnunciosPendentesFuncionario',
+                'page_path': '/_webad/anuncios_pendentes'
             });
     </script>
 
@@ -29,8 +29,8 @@
 
         gtag('config', 'UA-128174105-1',
             {
-                'page_title': 'DashboardFuncionario',
-                'page_path': '/_webad/dashboard'
+                'page_title': 'AnunciosPendentesFuncionario',
+                'page_path': '/_webad/anuncios_pendentes'
             });
     </script> -->
 
@@ -55,8 +55,18 @@
     <link href="../css/helper.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <link href="../css/myStyle.css" rel="stylesheet">
+    <link href="../css/toggle.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+
+    <style>
+        #nenhumAnuncio p {
+            color: #500B89 !important;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -65,7 +75,7 @@
     <![endif]-->
 </head>
 
-<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="dashboardController as ctrl" ng-init="ctrl.OnInit()">
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="anunciosPendentesController as ctrl" ng-init="ctrl.OnInit()">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
@@ -127,7 +137,7 @@
                                         </a>
                                     </li>
                                     <li class="link" ng-click="ctrl.base.FazerLogoffFuncionario(); ">
-                                        <a style="color: #500B89 !important;">
+                                        <a style="color: #500B89 !important;" href="#">
                                             <img style="cursor: pointer;" src="../icons/logout.png" width="30px" alt="sair"></i>
                                             sair
                                         </a>
@@ -175,93 +185,133 @@
         </div>
         <!-- End Left Sidebar  -->
         <!-- Page wrapper  -->
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="background-color: white;">
             <!-- Bread crumb -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">Visão geral</h3>
+                    <h3 class="text-primary">Meus anúncios</h3>
                 </div>
             </div>
             <!-- End Bread crumb -->
             <!-- Container fluid  -->
             <div class="container-fluid">
                 <!-- Start Page Content -->
-                <div ng-show="ctrl.Loading" class="col-md-12" style="text-align: center; margin-top: 30px">
-                    <img style="width:100px;" src="../images/loading.gif" />
-                </div>
-
-                <div class="col-md-12" ng-hide="ctrl.Loading">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="card bg-primary p-20 link" onclick="document.location.href='../index.html'">
-                                <div class="media widget-ten">
-                                    <div class="media-left meida media-middle">
-                                        <span>
-                                            <i class="ti-bag f-s-40"></i>
-                                        </span>
-                                    </div>
-                                    <div class="media-body media-text-right">
-                                        <h2 class="color-white">{{ctrl.QuantidadeAnunciosAtivos}}</h2>
-                                        <p class="m-b-0">anúncios ativos</p>
-                                    </div>
-                                </div>
+                <div>
+                    <div ng-show="!ctrl.Anuncios || ctrl.Anuncios.length == 0">
+                        <div class="row">
+                            <div class="col-md-12" id="nenhumAnuncio">
+                                <p>Nenhum anúncio encontrado.</p>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="card bg-warning p-20 link" onclick="document.location.href='anuncios_pendentes.html'">
-                                <div class="media widget-ten">
-                                    <div class="media-left meida media-middle">
-                                        <span>
-                                            <i class="ti-comment f-s-40"></i>
-                                        </span>
-                                    </div>
-                                    <div class="media-body media-text-right">
-                                        <h2 class="color-white">{{ctrl.QuantidadeAnunciosPendentes}}</h2>
-                                        <p class="m-b-0">anúncios pendentes</p>
-                                    </div>
-                                </div>
+                    </div>
+                    <div ng-hide="!ctrl.Anuncios || ctrl.Anuncios.length == 0">
+                        <div class="row">
+                            <div>
+                                <p>Aqui estão todos os anúncios pendentes</p>
+                                <p>Clique em detalhar para ver os detalhes e aprovar</p>
                             </div>
                         </div>
-
-                        <div class="col-md-3">
-                            <div class="card bg-success p-20">
-                                <div class="media widget-ten">
-                                    <div class="media-left meida media-middle">
-                                        <span>
-                                            <i class="ti-vector f-s-40"></i>
-                                        </span>
-                                    </div>
-                                    <div class="media-body media-text-right">
-                                        <h2 class="color-white">{{ctrl.QuantidadeInteracoes}}</h2>
-                                        <p class="m-b-0">interesses demonstrados</p>
-                                    </div>
+                        <div ng-show="ctrl.Buscando" class="col-md-12" style="text-align: center; margin-top: 30px">
+                            <img style="width:100px;" src="../images/loading.gif" />
+                        </div>
+                        <div id="tableAnuncios" ng-hide="ctrl.Buscando || !ctrl.Anuncios || ctrl.Anuncios.length < 1" class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th class="columnFitCenter">#</th>
+                                        <th>Saver</th>
+                                        <th>Pet</th>
+                                        <th>Tipo Anúncio</th>
+                                        <th>Data cadastro</th>
+                                        <th class="columnFitCenter">Detalhes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="x in ctrl.Anuncios">
+                                        <th class="columnFitCenter" scope="row">{{$index + 1}}</th>
+                                        <td><span>{{x.Nome}}</span></td>
+                                        <td><span>{{x.Animal}}</span></td>
+                                        <td><span class="badge" ng-class="{'badge-danger': x.TipoAnuncio == 'Pet perdido', 'badge-success': x.TipoAnuncio == 'Pet encontrado', 'badge-primary': x.TipoAnuncio == 'Doação'}">{{x.TipoAnuncio}}</span></td>
+                                        <td><span>{{x.DataCadastro}}</span></td>
+                                        <td class="columnFitCenter">
+                                            <img class="link" src="../icons/find.png" width="30px" ng-click="ctrl.DetalharAnuncio(x.IdAnuncio)">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div ng-show="ctrl.BuscandoDetalhes" class="col-md-12" style="text-align: center; margin-top: 30px">
+                            <img style="width:100px;" src="../images/loading.gif" />
+                        </div>
+                        <div id="saversInteressados" class="row" style="margin-top: 40px" ng-show="ctrl.Detalhes && !ctrl.BuscandoDetalhes">
+                            <div class="col-6">
+                                <h2 class="color-primary">Detalhes do anúncio</h2>
+                            </div>
+                            <div class="col-6" style="text-align: right">
+                                <button class="btn btn-secondary" ng-click="ctrl.FecharDetalhes()">Fechar</button>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-3">
+                                    <span>Nome:</span>
+                                    <p>{{ctrl.Detalhes.NomePet}}</p>
+                                </div>
+                                <div class="col-md-9">
+                                    <span>Sobre:</span>
+                                    <p>{{ctrl.Detalhes.Sobre}}</p>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card bg-pink p-20 link" onclick="document.location.href='fale_conosco.html'">
-                                <div class="media widget-ten">
-                                    <div class="media-left meida media-middle">
-                                        <span>
-                                            <i class="ti-comment f-s-40"></i>
-                                        </span>
-                                    </div>
-                                    <div class="media-body media-text-right">
-                                        <h2 class="color-white">{{ctrl.QuantidadeFaleConosco}}</h2>
-                                        <p class="m-b-0">mensages pendentes</p>
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-3" ng-repeat="x in ctrl.Detalhes.Fotos">
+                                    <img src="../{{x.Valor}}" style="width: 100%" />
                                 </div>
+                            </div>
+                            <div class="col-md-12" style="text-align: center; margin-top: 25px">
+                                <button class="btn btn-primary" ng-click="ctrl.AbrirModalConfirmacao()" ng-disabled="ctrl.Aprovando">Aprovar</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End PAge Content -->
             </div>
-            <!-- End Container fluid  -->
         </div>
-        <!-- End Page wrapper  -->
+        <!-- End PAge Content -->
     </div>
+    <!-- Modal sucesso ativação-->
+    <div class="col-md-12">
+        <div class="modal" id="modalConfirmacaoAtivacao" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div>
+                            Deseja realmente ativar esse anúncio?
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-primary" ng-click="ctrl.AprovarAnuncio(ctrl.Detalhes.IdAnuncio)" ng-disabled="ctrl.Aprovando">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal sucesso ativação-->
+    <div class="col-md-12">
+        <div class="modal" id="modalSucessoAtivacao" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div>
+                            Anúncio ativado com sucesso!
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Container fluid  -->
+    <!-- End Page wrapper  -->
     <!-- End Wrapper -->
     <!-- All Jquery -->
     <script src="../js/lib/jquery/jquery.min.js"></script>
@@ -272,6 +322,8 @@
     <script src="../js/jquery.slimscroll.js"></script>
     <!--Menu sidebar -->
     <script src="../js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="../js/custom.min.js"></script>
     <!--stickey kit -->
     <script src="../js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
 
@@ -280,19 +332,11 @@
     <script src="../js/lib/datamap/datamaps.world.min.js"></script>
     <script src="../js/lib/datamap/datamap-init.js"></script>
 
-    <script src="../js/lib/weather/jquery.simpleWeather.min.js"></script>
-    <script src="../js/lib/weather/weather-init.js"></script>
-    <script src="../js/lib/owl-carousel/owl.carousel.min.js"></script>
-    <script src="../js/lib/owl-carousel/owl.carousel-init.js"></script>
-
-    <!--Custom JavaScript -->
-    <script src="../js/custom.min.js"></script>
-
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="../js/controllers/app.js"></script>
     <script src="../js/controllers/base.js"></script>
-    <script src="../js/controllers/_webad/dashboard.js"></script>
+    <script src="../js/controllers/_webad/anunciosPendentes.js"></script>
 
 </body>
 

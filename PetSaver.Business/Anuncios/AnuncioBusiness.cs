@@ -158,9 +158,48 @@ namespace PetSaver.Business.Anuncios
 
         }
 
-        public void AtivarAnuncio()
+        public void AtivarAnuncio(AtivarAnuncioRequest aRequest)
         {
-            //TODO: implementar ativação de anúncio e envio de email
+            if (aRequest == null)
+            {
+                throw new BusinessException("O objeto de request é inválido.");
+            }
+
+            if (aRequest.IdAnuncio == default)
+            {
+                throw new BusinessException("O Id do anúncio é inválido.");
+            }
+
+            if (aRequest.IdLogin == default)
+            {
+                throw new BusinessException("O Id do login é inválido.");
+            }
+
+            if (aRequest.IdFuncionario == default)
+            {
+                throw new BusinessException("O Id do funcionário é inválido.");
+            }
+
+            if (!new FuncionarioBusiness().IsFuncionario(aRequest.IdLogin))
+            {
+                throw new BusinessException("Esse login não tem permissão.");
+            }
+
+            var anuncioEntity = Listar(aRequest.IdAnuncio);
+
+            if (anuncioEntity == null)
+            {
+                throw new BusinessException("O Id do anúncio é inválido.");
+            }
+
+            anuncioEntity.IdLoginAlteracao = aRequest.IdLogin;
+            anuncioEntity.IdStatus = Conversor.EnumParaInt(StatusAnuncio.Ativo);
+
+            Atualizar(anuncioEntity);
+
+            var loginUsuario = new LoginBusiness().Listar(anuncioEntity.IdLoginCadastro);
+
+            new EmailBusiness().AnuncioAprovado(aRequest.IdAnuncio, loginUsuario.Email);
         }
 
         #endregion
@@ -386,6 +425,43 @@ namespace PetSaver.Business.Anuncios
         public int QuantidadeAnunciosPorStatus(StatusAnuncio aStatus)
         {
             return new AnuncioRepository().QuantidadeAnunciosPorStatus(aStatus);
+        }
+
+        public IEnumerable<AnunciosPendentesContract> RelatorioAnunciosPendentes()
+        {
+            return new AnuncioRepository().RelatorioAnunciosPendentes().Select(x => new AnunciosPendentesContract()
+            {
+                IdAnuncio = Convert.ToInt32(x.ANU_CODIGO),
+                Nome = Convert.ToString(x.USU_NOME),
+                Animal = Convert.ToString(x.ANI_NOME),
+                TipoAnuncio = Convert.ToString(x.ANT_DESCRICAO),
+                DataCadastro = Convert.ToDateTime(x.ANU_DTHCADASTRO).ToString("dd/MM/yyyy")
+            });
+        }
+
+        public DetalharAnuncioAprovacaoContract DetalharAnuncioAprovacao(int aIdAnuncio)
+        {
+            if (aIdAnuncio == default)
+            {
+                throw new BusinessException("O Id do anúncio é inválido.");
+            }
+
+            var anuncioEnity = Listar(aIdAnuncio);
+
+            if (anuncioEnity == null)
+            {
+                throw new BusinessException("O Id do anúncio é inválido.");
+            }
+
+            var petEntity = new PetBusiness().Listar(anuncioEnity.IdPet);
+
+            return new DetalharAnuncioAprovacaoContract()
+            {
+                IdAnuncio = aIdAnuncio,
+                Fotos = new AnuncioFotoBusiness().BuscarPorAnuncio(aIdAnuncio),
+                NomePet = petEntity.Nome ?? Constantes.Desconhecido,
+                Sobre = petEntity.Descricao ?? Constantes.Indefinido
+            };
         }
 
         #endregion

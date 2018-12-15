@@ -217,6 +217,21 @@ namespace PetSaver.WebApi.Controllers
             }
         }
 
+        [Authorize]
+        [Route("api/Page/Webad/AnunciosPendentes")]
+        [HttpGet]
+        public IEnumerable<AnunciosPendentesContract> AnunciosPendentes()
+        {
+            try
+            {
+                return new AnuncioBusiness().RelatorioAnunciosPendentes();
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
         #endregion
     }
 }

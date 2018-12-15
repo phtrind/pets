@@ -163,6 +163,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\Queries\Anuncios\RelatorioAnunciosPendentes.sql" />
     <Content Include="Resources\Queries\Anuncios\FinalizarDemaisInteresses.sql" />
     <Content Include="Resources\Queries\Anuncios\BuscarInteressados.sql" />
     <Content Include="Resources\Queries\Anuncios\AlterarFotoDestaque.sql" />
