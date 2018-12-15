@@ -267,6 +267,11 @@ namespace PetSaver.Business.Anuncios
             });
         }
 
+        public int QuantidadeInteresses()
+        {
+            return new InteresseRepository().QuantidadeInteresses();
+        }
+
         #endregion
     }
 }

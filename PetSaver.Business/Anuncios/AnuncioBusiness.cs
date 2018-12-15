@@ -383,6 +383,11 @@ namespace PetSaver.Business.Anuncios
             return new AnuncioRepository().BuscarFavoritos(aIdUsuario).Count();
         }
 
+        public int QuantidadeAnunciosPorStatus(StatusAnuncio aStatus)
+        {
+            return new AnuncioRepository().QuantidadeAnunciosPorStatus(aStatus);
+        }
+
         #endregion
 
         #region .: Utilitários :.

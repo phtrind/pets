@@ -43,6 +43,23 @@
 
     }
 
+    base.IsLoggedFuncionario = function () {
+
+        if (!base.StringIsEmpty(sessionStorage.getItem('Token')) &&
+            !base.StringIsEmpty(sessionStorage.getItem('IdFuncionario')) &&
+            !base.StringIsEmpty(sessionStorage.getItem('DthValidadeToken'))) {
+
+            //TODO: Mostrar modal informando que o login expirou
+
+            return base.ValidarToken();
+
+        }
+        else {
+            return false;
+        }
+
+    }
+
     base.ValidarToken = function () {
 
         try {
@@ -63,6 +80,7 @@
         sessionStorage.removeItem('DthValidadeToken');
         sessionStorage.removeItem('IdLogin');
         sessionStorage.removeItem('IdUsuario');
+        sessionStorage.removeItem('IdFuncionario');
         sessionStorage.removeItem('Nome');
         sessionStorage.removeItem('Token');
         sessionStorage.removeItem('DataHoraAutenticacao');
@@ -85,6 +103,14 @@
         base.LimparSessionAuth();
 
         window.location.href = '../home.html';
+
+    }
+
+    base.FazerLogoffFuncionario = function () {
+
+        base.LimparSessionAuth();
+
+        window.location.href = 'login.html';
 
     }
 

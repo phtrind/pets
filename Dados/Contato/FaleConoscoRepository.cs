@@ -1,4 +1,7 @@
-﻿using PetSaver.Entity.Contato;
+﻿using System;
+using System.Data.SqlClient;
+using Dapper;
+using PetSaver.Entity.Contato;
 using PetSaver.Exceptions;
 using PetSaver.Repository.Usuarios;
 
@@ -42,6 +45,14 @@ namespace PetSaver.Repository.Contato
             if (string.IsNullOrEmpty(aObjeto.Mensagem))
             {
                 throw new BusinessException("É obrigatório informar a mensagem.");
+            }
+        }
+
+        public int QuantidadeMensagensPendentes()
+        {
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.QueryFirstOrDefault<int>(Resource.CountFaleConoscoPendente);
             }
         }
     }

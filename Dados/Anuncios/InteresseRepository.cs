@@ -137,6 +137,14 @@ namespace PetSaver.Repository.Anuncios
             }
         }
 
+        public int QuantidadeInteresses()
+        {
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.QueryFirstOrDefault<int>(Resource.CountInteresses);
+            }
+        }
+
         #endregion
     }
 }

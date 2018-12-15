@@ -84,6 +84,7 @@
     <Compile Include="Paginas\Response\HomePageResponse.cs" />
     <Compile Include="Paginas\Response\PetPageResponse.cs" />
     <Compile Include="Paginas\Response\PetPage\PetContract.cs" />
+    <Compile Include="Paginas\Response\Webad\WebadDashboardPageResponse.cs" />
     <Compile Include="Pets\Response\FiltrosPorAnimalResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario\Request\CadastroBasicoRequest.cs" />

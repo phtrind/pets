@@ -199,5 +199,24 @@ namespace PetSaver.WebApi.Controllers
         }
 
         #endregion
+
+        #region .: Webad :.
+
+        [Authorize]
+        [Route("api/Page/Webad/Dashboard")]
+        [HttpGet]
+        public WebadDashboardPageResponse WebadDashboard()
+        {
+            try
+            {
+                return new PageBusiness().InicializarWebadDashboard();
+            }
+            catch (Exception ex)
+            {
+                throw TratarErro(ex);
+            }
+        }
+
+        #endregion
     }
 }

@@ -254,5 +254,13 @@ namespace PetSaver.Repository.Anuncios
                 return db.Query(Resource.BuscarAnunciosFavoritos, new { @IdUsuario = aIdUsuario });
             }
         }
+
+        public int QuantidadeAnunciosPorStatus(StatusAnuncio aStatus)
+        {
+            using (var db = new SqlConnection(StringConnection))
+            {
+                return db.QueryFirstOrDefault<int>(Resource.CountAnunciosPorStatus, new { @IdStatus = Conversor.EnumParaInt(aStatus) });
+            }
+        }
     }
 }

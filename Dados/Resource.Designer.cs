@@ -375,6 +375,38 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT COUNT(ANU_CODIGO) AS QUANTIDADE
+        ///FROM ANU_ANUNCIOS
+        ///WHERE ANS_CODIGO = @IdStatus.
+        /// </summary>
+        internal static string CountAnunciosPorStatus {
+            get {
+                return ResourceManager.GetString("CountAnunciosPorStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT COUNT(FCN_CODIGO) AS QUANTIDADE
+        ///FROM FCN_FALECONOSCO
+        ///WHERE FCN_RESPOSTA IS NULL.
+        /// </summary>
+        internal static string CountFaleConoscoPendente {
+            get {
+                return ResourceManager.GetString("CountFaleConoscoPendente", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT COUNT(INT_CODIGO) AS QUANTIDADE
+        ///FROM INT_INTERESSES.
+        /// </summary>
+        internal static string CountInteresses {
+            get {
+                return ResourceManager.GetString("CountInteresses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] estados_cidades {

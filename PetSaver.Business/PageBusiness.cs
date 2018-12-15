@@ -1,5 +1,6 @@
 ﻿using PetSaver.Business.Anuncios;
 using PetSaver.Business.Chat;
+using PetSaver.Business.Contato;
 using PetSaver.Business.Localizacao;
 using PetSaver.Business.Pets;
 using PetSaver.Business.Usuarios;
@@ -192,6 +193,23 @@ namespace PetSaver.Business
                 QuantidadeAnuncios = new AnuncioBusiness().QuantidadeAnunciosUsuario(aIdUsuario),
                 QuantidadeFavoritos = new AnuncioBusiness().QuantidadeFavoritosUsuario(aIdUsuario),
                 QuantidadeInteracoes = new InteresseBusiness().QuantidadeInteracoesUsuario(aIdUsuario)
+            };
+        }
+
+        #endregion
+
+        #region .: Webad :.
+
+        public WebadDashboardPageResponse InicializarWebadDashboard()
+        {
+            var anuncioBusiness = new AnuncioBusiness();
+
+            return new WebadDashboardPageResponse()
+            {
+                QuantidadeAnunciosAtivos = anuncioBusiness.QuantidadeAnunciosPorStatus(StatusAnuncio.Ativo),
+                QuantidadeAnunciosPendentes = anuncioBusiness.QuantidadeAnunciosPorStatus(StatusAnuncio.EmAnalise),
+                QuantidadeInteracoes = new InteresseBusiness().QuantidadeInteresses(),
+                QuantidadeFaleConosco = new FaleConoscoBusiness().QuantidadeMensagensPendentes()
             };
         }
 

@@ -58,6 +58,7 @@ app.controller('loginController', function ($controller, $http) {
                 return;
             }
 
+            sessionStorage.setItem("Token", aToken);
             sessionStorage.setItem("IdLogin", response.IdLogin);
             sessionStorage.setItem("IdFuncionario", response.IdFuncionario);
             sessionStorage.setItem("Nome", response.Nome);
