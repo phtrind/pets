@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+    <!-- Google Analytics Desenvolvimento -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128203439-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-128203439-1',
+            {
+                'page_title': 'LoginWebad',
+                'page_path': '/_webad/login'
+            });
+    </script>
+
+    <!-- ############################################### -->
+    <!-- Google Analytics Produção -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-128174105-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-128174105-1',
+            {
+                'page_title': 'LoginWebad',
+                'page_path': '/_webad/login'
+            });
+    </script> -->
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="unidos podemos salvar a vida de milhões de pets">
+    <meta property="og:url" content="https://www.petsaver.com.br" />
+    <meta property="og:image" content="http://petsaver.com.br/images/logos/logo_pequena.png">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/logos/favicon_pata.ico">
+    <title>PetSaver</title>
+
+    <link href="../css/lib/chartist/chartist.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../css/lib/owl.theme.default.min.css" rel="stylesheet" />
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/helper.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/myStyle.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
+    <!--[if lt IE 9]>
+        <script src="https:**oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar" ng-app="pets" ng-controller="loginController as ctrl" style="height: 100vh; display: flex; align-items: center">
+    <!-- Preloader - style you can find in spinners.css -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- Main wrapper  -->
+    <div class="container">
+        <div class="row">
+                <div class="col-md-4 offset-md-4">
+                    <div class="card-body">
+                        <div class="col-md-12" align="center" style="margin-bottom: 50px;">
+                            <img src="../images/logos/logo_fundo_branco_fina.gif" style="width: 100%">
+                            <h2 class="color-primary">Funcionários</h2>
+                        </div>
+                        <div class="basic-form">
+                            <form>
+                                <div class="form-group" ng-class="{'has-error':ctrl.erroUsuario}">
+                                    <label>Usuario</label>
+                                    <input type="text" class="form-control" ng-model="ctrl.usuario">
+                                    <small class="form-control-feedback" ng-show="ctrl.erroUsuario">Usuário inválido</small>
+                                </div>
+                                <div class="form-group" ng-class="{'has-error':ctrl.erroSenha}">
+                                    <label>Senha</label>
+                                    <input type="password" class="form-control" ng-model="ctrl.senha">
+                                    <small class="form-control-feedback" ng-show="ctrl.erroSenha">Senha inválida</small>
+                                </div>
+                                <div style="text-align: center">
+                                    <button type="submit" class="btn btn-primary" ng-hide="ctrl.Logando" ng-click="ctrl.FazerLogin()">Entrar</button>
+                                    <img src="../images/loading.gif" width="50" style="margin: 10px" ng-show="ctrl.Logando">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-12" align="center" style="color:#fc6180; font-weight: 700; margin-top: 30px;" ng-show="ctrl.loginIncorreto">
+                            <span><i>Login incorreto!</i></span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!-- End Wrapper -->
+        <!-- All Jquery -->
+        <script src="../js/lib/jquery/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="../js/lib/bootstrap/js/popper.min.js"></script>
+        <script src="../js/lib/bootstrap/js/bootstrap.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="../js/jquery.slimscroll.js"></script>
+        <!--Menu sidebar -->
+        <script src="../js/sidebarmenu.js"></script>
+        <!--stickey kit -->
+        <script src="../js/lib/sticky-kit-master/dist/sticky-kit.min.js"></script>
+
+        <script src="../js/lib/datamap/d3.min.js"></script>
+        <script src="../js/lib/datamap/topojson.js"></script>
+        <script src="../js/lib/datamap/datamaps.world.min.js"></script>
+        <script src="../js/lib/datamap/datamap-init.js"></script>
+
+        <script src="../js/lib/weather/jquery.simpleWeather.min.js"></script>
+        <script src="../js/lib/weather/weather-init.js"></script>
+        <script src="../js/lib/owl-carousel/owl.carousel.min.js"></script>
+        <script src="../js/lib/owl-carousel/owl.carousel-init.js"></script>
+
+        <!--Custom JavaScript -->
+        <script src="../js/custom.min.js"></script>
+
+        <!-- AngularJS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="../js/controllers/app.js"></script>
+        <script src="../js/controllers/base.js"></script>
+        <script src="../js/controllers/_webad/login.js"></script>
+
+</body>
+
+</html>

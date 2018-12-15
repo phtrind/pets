@@ -89,6 +89,7 @@
     <Compile Include="Usuario\Request\CadastroBasicoRequest.cs" />
     <Compile Include="Usuario\Request\CadastroEdicaoRequest.cs" />
     <Compile Include="Usuario\Response\UsuarioCompletoResponse.cs" />
+    <Compile Include="Usuario\Response\VerificarFuncionarioReponse.cs" />
     <Compile Include="Usuario\UsuarioSessionContract.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

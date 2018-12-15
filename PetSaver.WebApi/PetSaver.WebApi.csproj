@@ -136,6 +136,7 @@
     <Compile Include="Controllers\Localizacao\CidadeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\Pets\PetController.cs" />
+    <Compile Include="Controllers\Usuarios\FuncionarioController.cs" />
     <Compile Include="Controllers\Usuarios\LoginController.cs" />
     <Compile Include="Controllers\Usuarios\UsuarioController.cs" />
     <Compile Include="FileUploader\FileUpload.cs" />

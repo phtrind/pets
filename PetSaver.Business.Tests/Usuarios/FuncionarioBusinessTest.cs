@@ -60,6 +60,48 @@ namespace PetSaver.Business.Tests.Usuarios
             Assert.IsTrue(list.Any());
         }
 
+        [TestMethod]
+        public void BuscarPorLogin_Existente_ReturnsEntity()
+        {
+            var entity = new FuncionarioBusiness().BuscarPorLogin(38);
+
+            Assert.IsNotNull(entity);
+        }
+
+        [TestMethod]
+        public void BuscarPorLogin_Inexistente_ReturnsNull()
+        {
+            var entity = new FuncionarioBusiness().BuscarPorLogin(5000);
+
+            Assert.IsNull(entity);
+        }
+
+        [TestMethod]
+        public void BuscarPorLogin_Invalido_ReturnsNull()
+        {
+            var entity = new FuncionarioBusiness().BuscarPorLogin(0);
+
+            Assert.IsNull(entity);
+        }
+
+        [TestMethod]
+        public void IsFuncionario_Funcionario_ReturnsTrue()
+        {
+            Assert.IsTrue(new FuncionarioBusiness().IsFuncionario(38));
+        }
+
+        [TestMethod]
+        public void IsFuncionario_Invalido_ReturnsFalse()
+        {
+            Assert.IsFalse(new FuncionarioBusiness().IsFuncionario(0));
+        }
+
+        [TestMethod]
+        public void IsFuncionario_Nao_ReturnsFalse()
+        {
+            Assert.IsFalse(new FuncionarioBusiness().IsFuncionario(10));
+        }
+
         #endregion
     }
 }

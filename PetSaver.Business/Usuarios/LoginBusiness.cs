@@ -63,5 +63,15 @@ namespace PetSaver.Business.Usuarios
 
             new Email().EnviarEmail("Recuparar senha", $"Olá Saver, <br><br>Sua senha é: {loginEntity.Senha} <br><br>www.petsaver.com.br", aEmail, true);
         }
+
+        public LoginEntity BuscarPorEmail (string aEmail)
+        {
+            if (string.IsNullOrEmpty(aEmail))
+            {
+                return null;
+            }
+
+            return new LoginRepository().BuscarPorEmail(aEmail);
+        }
     }
 }
