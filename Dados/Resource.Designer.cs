@@ -234,6 +234,17 @@ namespace PetSaver.Repository {
         
         /// <summary>
         ///   Looks up a localized string similar to SELECT *
+        ///FROM FUN_FUNCIONARIOS
+        ///WHERE LOG_CODIGO = @IdLogin.
+        /// </summary>
+        internal static string BuscarFuncionarioPorLogin {
+            get {
+                return ResourceManager.GetString("BuscarFuncionarioPorLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT *
         ///FROM INB_INBOX
         ///WHERE INT_CODIGO = @IdInteresse.
         /// </summary>
@@ -323,9 +334,17 @@ namespace PetSaver.Repository {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT *
-        ///FROM USU_USUARIOS
-        ///WHERE USU_DOCUMENTO = @Documento.
+        ///   Looks up a localized string similar to SELECT USU.USU_CODIGO, 
+        ///       USU.USU_NOME, 
+        ///       USU.USU_SOBRENOME, 
+        ///       USU.USU_DTHNASCIMENTO, 
+        ///       USU.USU_SEXO, 
+        ///       USU.USU_DOCUMENTO, 
+        ///       LOGINS.LOG_EMAIL, 
+        ///       LOGINS.LOG_SENHA
+        ///FROM USU_USUARIOS USU
+        ///     INNER JOIN LOG_LOGINS LOGINS ON USU.LOG_CODIGO = LOGINS.LOG_CODIGO
+        ///WHERE USU.USU_CODIGO = @IdUsuario.
         /// </summary>
         internal static string BuscarUsuarioCompleto {
             get {

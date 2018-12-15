@@ -1,5 +1,4 @@
-﻿using PetSaver.Entity.Localizacao;
-using System;
+﻿using System;
 
 namespace PetSaver.Entity.Usuarios
 {

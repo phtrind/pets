@@ -104,6 +104,7 @@
     <Compile Include="Mapeamento\Pets\PorteMap.cs" />
     <Compile Include="Mapeamento\Pets\RacaEspecieMap.cs" />
     <Compile Include="Mapeamento\Pets\SexoMap.cs" />
+    <Compile Include="Mapeamento\Usuario\FuncionarioMap.cs" />
     <Compile Include="Mapeamento\Usuario\HistoricoLoginMap.cs" />
     <Compile Include="Pets\AnimalRepository.cs" />
     <Compile Include="Pets\CorRepository.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Pets\PorteRepository.cs" />
     <Compile Include="Pets\RacaEspecieRepository.cs" />
     <Compile Include="Pets\SexoRepository.cs" />
+    <Compile Include="Usuarios\FuncionarioRepository.cs" />
     <Compile Include="Usuarios\HistoricoLoginRepository.cs" />
     <Compile Include="Mapeamento\Usuario\LoginMap.cs" />
     <Compile Include="Mapeamento\RegisterMappings.cs" />
@@ -184,6 +186,7 @@
     <Content Include="Resources\Queries\Pets\BuscarRacaEspeciePorAnimal.sql" />
     <Content Include="Resources\Queries\Usuario\BuscarUsuarioCompleto.sql" />
     <Content Include="Resources\Queries\Usuario\BuscarUsuarioPorDocumento.sql" />
+    <Content Include="Resources\Queries\Usuario\BuscarFuncionarioPorLogin.sql" />
     <Content Include="Resources\Queries\Usuario\BuscarUsuarioPorLogin.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

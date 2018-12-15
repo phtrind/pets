@@ -78,6 +78,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\FuncionarioBusiness.cs" />
     <Compile Include="Usuarios\HistoricoLoginBusiness.cs" />
     <Compile Include="Usuarios\LoginBusiness.cs" />
     <Compile Include="Usuarios\UsuarioBusiness.cs" />
