@@ -23,38 +23,13 @@ namespace PetSaver.Utilities.Tests
         {
             var emailEntity = new Email();
             
-            emailEntity.EnviarEmail("Olá Saver!", @"<!DOCTYPE html>
-<!-- saved from url=(0014)about:internet -->
-<html xmlns='http://www.w3.org/1999/xhtml'>
-<head>
-<title>anuncio com interesse concretizado.png</title>
-<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<style type='text/css'>td img {display: block;}</style>
-<!--Fireworks CS6 Dreamweaver CS6 target.  Created Mon Dec 10 23:33:46 GMT-0200 2018-->
-</head>
-<body>
-<table style='display: inline-table;' bgcolor='#c6acce' border='0' cellpadding='0' cellspacing='0' width='600'>
-<!-- fwtable fwsrc='anuncio com interesse concretizado.fw.png' fwpage='Página 1' fwbase='anuncio com interesse concretizado.png' fwstyle='Dreamweaver' fwdocid = '1615885160' fwnested='0' -->
-  <tr>
-   <td><img src='spacer.gif' width='600' height='1' alt='' /></td>
-   <td><img src='spacer.gif' width='1' height='1' alt='' /></td>
-  </tr>
+            emailEntity.EnviarEmail("Correção cadastro de anúncio", @"<!DOCTYPE html> <!-- saved from url=(0014)about:internet --> <html xmlns='http://www.w3.org/1999/xhtml'> <head> <title>cadastro.png</title> <meta http-equiv='Content-Type' content='text/html; charset=utf-8' /> <style type='text/css'>td img {display: block;}</style> <!--Fireworks CS6 Dreamweaver CS6 target. Created Mon Dec 10 23:42:14 GMT-0200 2018-->
 
-  <tr>
-   <td><img name='anunciocominteresseconcretizado_r1_c1' src='http://i65.tinypic.com/2a9y3v6.png' width='600' height='191' id='anunciocominteresseconcretizado_r1_c1' alt='' /></td>
-   <td><img src='spacer.gif' width='1' height='191' alt='' /></td>
-  </tr>
-  <tr>
-   <td><img name='anunciocominteresseconcretizado_r2_c1' src='http://i67.tinypic.com/2zyfkgo.png' width='600' height='728' id='anunciocominteresseconcretizado_r2_c1' alt='' /></td>
-   <td><img src='spacer.gif' width='1' height='728' alt='' /></td>
-  </tr>
-  <tr>
-   <td><a href='http://petsaver.com.br/' target='_blank'><img name='anunciocominteresseconcretizado_r3_c1' src='http://i63.tinypic.com/2v1lpuh.png' width='600' height='193' id='anunciocominteresseconcretizado_r3_c1' alt='' /></a></td>
-   <td><img src='spacer.gif' width='1' height='193' alt='' /></td>
-  </tr>
-</table>
-</body>
-</html>", "phtrind@hotmail.com", true);
+<link href='https://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet'>
+
+<style> body { font-family: 'Work Sans', sans-serif; color: #500B89; } </style> </head> <body style='text-align: center'> <table style='display: inline-table;' bgcolor='#c6acce' border='0' cellpadding='0' cellspacing='0' width='600'> <!-- fwtable fwsrc='cadastro.fw.png' fwpage='Página 1' fwbase='cadastro.png' fwstyle='Dreamweaver' fwdocid = '1615885160' fwnested='0' --> <tr> <td><img src='spacer.gif' width='600' height='1' alt='' /></td> <td><img src='spacer.gif' width='1' height='1' alt='' /></td> </tr>
+
+ <tr> <td><a href='http://www.petsaver.com.br' target='_blank'><img name='cadastro_r1_c1' src='http://i65.tinypic.com/2a9y3v6.jpg' width='600' height='191' id='cadastro_r1_c1' alt='' /></a></td> <td><img src='spacer.gif' width='1' height='191' alt='' /></td> </tr> <tr> <td style='text-align: left; padding: 20px; font-size: 18px'> <p>Olá Saver, tudo bem?</p> <p>Verificamos que pode ter ocorrido um erro ao tentar cadastrar o seu anúncio.</p> <p>O problema foi solucionado e por isso pedimos que tente realizar o cadastro novamente.</p> <p>O seu feedback é essencial para juntos salvarmos a vida de milhões de pets.</p> <p>#SouPetSaver</p> </td> <td><img src='spacer.gif' width='1' height='200' alt='' /></td> </tr> <tr> <td><a href='https://www.instagram.com/soupetsaver/' target='_blank'><img name='cadastro_r3_c1' src='http://i68.tinypic.com/8zekw0.png' width='600' height='196' id='cadastro_r3_c1' alt='' /></a></td> <td><img src='spacer.gif' width='1' height='196' alt='' /></td> </tr> </table> </body> </html> ", "lorrayne.20@hotmail.com", true);
         }
     }
 }
