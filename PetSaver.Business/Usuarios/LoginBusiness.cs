@@ -61,7 +61,7 @@ namespace PetSaver.Business.Usuarios
                 throw new BusinessException("O e-mail informado não existe.");
             }
 
-            new Email().EnviarEmail("Recuparar senha", $"Olá Saver, <br><br>Sua senha é: {loginEntity.Senha} <br><br>www.petsaver.com.br", aEmail, true);
+            new Email().EnviarEmail("Recuperar senha", $"Olá Saver, <br><br>Sua senha é: {loginEntity.Senha} <br><br>www.petsaver.com.br", aEmail, true);
         }
 
         public LoginEntity BuscarPorEmail (string aEmail)
