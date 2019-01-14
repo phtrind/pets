@@ -1,0 +1,6 @@
+{
+  "appId": "petsaver.com.br",
+  "appName": "petsaver",
+  "bundledWebRuntime": false,
+  "webDir": "www"
+}
