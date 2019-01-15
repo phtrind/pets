@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { HomePage } from './pages/home/home.page';
+import { ListPage } from './pages/list/list.page';
+
 const routes: Routes = [
   {
     path: '',
@@ -9,11 +12,11 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    component: HomePage
   },
   {
     path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
+    component: ListPage
   }
 ];
 
